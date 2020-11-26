@@ -2,6 +2,7 @@ package common.config;
 
 import javax.sql.DataSource;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAspectJAutoProxy
 @EnableScheduling
 @EnableTransactionManagement
+@MapperScan(basePackages = { "common" })
 @ComponentScan(basePackages = { "common" }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 @PropertySource(value = { "classpath:config/common/data.properties",
