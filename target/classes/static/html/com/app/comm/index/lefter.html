@@ -1,0 +1,255 @@
+<style>
+.index-lefter {
+    position: relative;
+    height: 100%;
+}
+
+.index-lefter .logo {
+    height: 100px;
+    background-color: #66BB6A;
+}
+
+.index-lefter .logo .home>span {
+    display: inline-block;
+    width: 250px;
+    height: 100px;
+    background: url("images/natural_js.png") no-repeat 50% 50%;
+    background-size: auto 75px;
+}
+
+.index-lefter .logo .lefter-toggle-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: margin-right 0.5s ease;
+}
+
+.index-lefter .logo .lefter-toggle-button>span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    background: url("images/lefter-toggle-button.png") no-repeat 50% 50%;
+    transition: transform 0.3s ease;
+}
+
+.index-lefter .logo .lefter-toggle-button:hover>span {
+    will-change: transform;
+}
+
+.index-lefter .left-menu::-webkit-scrollbar {
+    width: 10px;
+}
+
+.index-lefter .left-menu:hover::-webkit-scrollbar-track {
+    background: #2E7D32;
+}
+
+.index-lefter .left-menu:hover::-webkit-scrollbar-thumb {
+    background: #43A047;
+    border-radius: 5px;
+}
+
+.index-lefter .left-menu {
+    padding: 0.7em 0 0.7em 1em;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.9em;
+}
+
+.index-lefter .left-menu ul {
+    margin: 0;
+    padding: 0.4em 0 0.4em 0.2em;
+    list-style: none;
+}
+
+.index-lefter .left-menu > ul {
+    padding-left: 0;
+}
+
+.index-lefter .left-menu ul li {
+    margin: 0;
+    padding: 0.3em 0;
+}
+
+.index-lefter .left-menu ul > li > ul > li {
+    padding-left: 1.1em;
+    background: url("images/comm/icon/right.png") no-repeat 0 8px;
+}
+
+.index-lefter .left-menu .expand {
+    background: url("images/comm/icon/down.png") no-repeat 0 8px;
+}
+
+.index-lefter .left-menu ul > li.leaf-node {
+    background: none;
+}
+
+.index-lefter .left-menu > ul > li > a > span {
+}
+
+.index-lefter .left-menu > ul > li > ul > li > a {
+}
+
+.index-lefter .left-menu > ul > li > ul > li > ul > li > a {
+}
+
+.index-lefter .left-menu ul > li > a > span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.index-lefter .left-menu ul > li.leaf-node > a > span {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.index-lefter .left-menu .folding {
+    display: none;
+}
+
+.index-lefter .left-menu sup {
+    color: yellow;
+}
+</style>
+
+<article class="index-lefter">
+    <div class="logo">
+        <a class="home" href="./"><span></span></a>
+        <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
+    </div>
+    <div class="left-menu">
+        <ul>
+            <li>
+                <a href="#"><span>Natural-TEMPLATE</span></a>
+                <ul>
+                    <li class="expand">
+                        <a href="#"><span>가이드 문서</span></a>
+                        <ul>
+                            <li class="leaf-node"><a href="html/com/app/sample/documents.html" data-pageid="documents"><span>개발가이드</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="expand">
+                        <a href="#"><span>UI 표준</span></a>
+                        <ul>
+                            <li class="leaf-node"><a href="html/com/app/sample/temp0101.html" data-pageid="temp0101"><span>메시지(N.alert, N.notify)</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/temp0201.html" data-pageid="temp0201"><span>버튼+이벤트(N.button)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="expand">
+                        <a href="#"><span>샘플</span></a>
+                        <ul>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0101.html" data-pageid="type0101"><span>조회폼+그리드</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0201.html" data-pageid="type0201"><span>조회폼+그리드(CRUD)</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0301.html" data-pageid="type0301"><span>조회폼+그리드+DB페이징</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0401.html" data-pageid="type0401"><span>조회폼+그리드+상세폼(수평배치)</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0402.html" data-pageid="type0402"><span>조회폼+그리드+상세폼(수직배치)</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0501.html" data-pageid="type0501"><span>조회폼+리스트+그리드+상세폼</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0601.html" data-pageid="type0601"><span>트리+그리드(CRUD)</span></a></li>
+                            <li class="leaf-node"><a href="html/com/app/sample/type0701.html" data-pageid="type0701"><span>조회폼+탭</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</article>
+
+<script type="text/javascript">
+    N(".index-lefter").cont({
+        init : function(view, request) {
+            N(".left-menu", view).on("click.left-menu", "a", function(e) {
+                e.preventDefault();
+
+                // .leaf-node a[data-pageid]
+                var selfEle = N(this);
+
+                if(selfEle.parent().is(".leaf-node") && selfEle.is("[data-pageid]")) {
+                    location.hash = btoa(encodeURIComponent(selfEle.data("pageid") + "$" + selfEle.find("span").text()) + "$" + encodeURIComponent(selfEle.attr("href")));
+
+                     if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
+                        N(".lefter-toggle-button", view).trigger("click.lefter");
+                    }
+                }
+
+                if(selfEle.closest(".leaf-node").length === 0) {
+                    selfEle.parent("li").toggleClass("expand");
+                    selfEle.siblings("ul:last").toggleClass("folding");
+                }
+
+                selfEle = undefined;
+            });
+
+            N(".lefter-toggle-button>span", view).bind("mouseover.lefter", function() {
+                $(this).css("transform", "rotate(90deg)");
+            }).bind("mouseout.lefter", function() {
+                $(this).css("transform", "");
+            });
+
+            N(".lefter-toggle-button", view).on("click.lefter", function(e) {
+                e.preventDefault();
+
+                var selfEle = N(this);
+                var mainNav = view.closest(".main-nav");
+
+                if (selfEle.data("status") === "show") {
+                    if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
+                        N(".content-wrap", "body").off("click.lefter");
+                    }
+
+                    N(".lefter-toggle-button>span", view).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
+
+                    mainNav.css("margin-left", "-" + mainNav.width() + "px");
+                    if($(window).width() > 1001) { // 768 + 250 - 17px(?)
+                        mainNav.siblings(".content-wrap").css("margin-left", "0");
+                    }
+                    selfEle.data("status", "hide").css("margin-right", "-32px");
+
+                } else {
+                    if($(window).width() > 1001) { // 768 + 250 - 17px(?)
+                        mainNav.siblings(".content-wrap").css("margin-left", "");
+                    }
+                    mainNav.css("margin-left", "");
+                    selfEle.data("status", "show").css("margin-right", "");
+
+                    N(".lefter-toggle-button>span", view).on("mouseover.lefter", function() {
+                        $(this).css("transform", "rotate(90deg)");
+                    }).on("mouseout.lefter", function() {
+                        $(this).css("transform", "");
+                    });
+
+                    if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
+                        N(".content-wrap", "body").on("click.lefter", function(e) {
+                            e.preventDefault();
+                            N(".lefter-toggle-button", view).trigger("click.lefter");
+                        });
+                    }
+                }
+
+                mainNav = undefined;
+                selfEle = undefined;
+            });
+
+            N(window).on("resize.left-menu", function() {
+                N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
+
+                if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
+                    N(".lefter-toggle-button", view).data("status", "show");
+                    N(".content-wrap", "body").css({
+                        "transition": "none",
+                        "margin-left": "0"
+                    });
+                    N(".main-nav", "body").show().css({
+                        "transition": "none"
+                    });
+                    N(".lefter-toggle-button", view).trigger("click.lefter");
+                    setTimeout(function() {
+                        N(".main-nav", "body").css("transition", "");
+                        N(".content-wrap", "body").css("transition", "");
+                    }, 0);
+                } else {
+                    N(".lefter-toggle-button", view).data("status", "hide").trigger("click.lefter");
+                }
+            }).trigger("resize.left-menu");
+
+        }
+    });
+</script>

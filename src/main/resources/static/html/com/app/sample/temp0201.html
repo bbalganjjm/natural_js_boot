@@ -1,0 +1,47 @@
+<article class="temp0201">
+    <div class="view-intro">
+        <h1>버튼+이벤트</h1>
+    </div>
+    
+    <h3>버튼+이벤트(N.button)</h3>
+    
+    <div>
+        <a class="button" href="#"><span>Button</span></a> <span class="italic">N.button 컴포넌트를 이용하여 버튼을 생성할 수 있습니다.</span>
+    </div>
+    
+    <h3>N.cont object에 e.{id}.{event}를 선언</h3>
+    <div>
+        <a id="btnEvent" href="#">Event Button</a> <span class="italic">N.cont object에 e.{id}.{event}를 선언하면 N.button 컴포넌트 초기화와 jQuery 이벤트 바인딩이 동시에 처리됩니다.</span>
+    </div>
+    
+    <h3>버튼 옵션</h3>
+    <div>
+        <a id="btnOption" href="#" data-opts='{ "size" : "large", "color" : "green" }'>Button Option</a> <span class="italic">N.button 컴포넌트의 옵션을 버튼(a, input[type=button], button) 태그의 data-opts 속성으로 선언할 수 있습니다.</span>
+    </div>
+    
+    <div class="apiDemo" data-file="button"></div>
+    
+</article>
+
+<script type="text/javascript">
+(function() {
+
+    var cont = N(".temp0201").cont({
+        "e.btnEvent.click" : function(e) {
+            e.preventDefault();
+
+            N(window).alert("N.cont object에 e.{id}.{event}를 선언하면 N.button 컴포넌트 초기화와 jQuery 이벤트 바인딩이 동시에 처리됩니다.").show();
+        },
+        "e.btnOption.click" : function(e) {
+            e.preventDefault();
+
+            N(window).alert("N.button 컴포넌트의 옵션을 버튼(a, input[type=button], button) 태그에 data-opts 속성으로 선언할 수 있습니다.").show();
+        },
+        init : function(view, request) {
+            
+            N(".button", view).button();
+        }
+    });
+
+})();
+</script>

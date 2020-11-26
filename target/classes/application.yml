@@ -1,0 +1,86 @@
+spring:
+  profiles:
+    active: default
+  datasource:
+    #name: ds-common
+    platform: hsqldb
+    schema: classpath*:config/db/hsqldb/schema.sql
+    data: classpath*:config/db/hsqldb/data.sql
+    sqlScriptEncoding: UTF-8
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:hsqldb:mem:dataSource
+    username: sa
+    password: ''
+    tomcat:
+      initialSize: 1
+      #maxActive: 80
+      #maxIdle: 80
+      #testWhileIdle: true
+      #timeBetweenEvictionRunsMillis: 60000
+      #validationQuery: select 1 from dual
+      #test-on-borrow: true
+  messages:
+    basename: messages/message
+    encoding: UTF-8
+    use-code-as-default-message: true
+    cache-duration: 60
+  mvc:
+    servlet:
+      path: /
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+  servlet:
+    contextPath: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    include-exception: true
+    include-stacktrace: always
+
+mybatis:
+  configuration:
+    default-statement-timeout: 30
+    cache-enabled: true
+    lazy-loading-enabled: true
+    default-fetch-size: 50
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    default-executor-type: simple
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null
+    lazy-load-trigger-methods: equals,clone,hashCode,toString
+  mapper-locations:
+  - classpath*:/**/mappers/**/*.xml
+logging:
+  level:
+    root: info
+
+
+
+
+---
+spring:
+  profiles: prod
+  messages:
+    cache-duration: 
+  thymeleaf:
+    cache: true
+    
+server:
+  port: 80
+  error:
+    include-exception: false
+    include-stacktrace: never
+    
+logging:
+  level:
+    root: warn

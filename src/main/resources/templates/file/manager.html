@@ -1,0 +1,368 @@
+<style>
+.file_manager__ {
+    padding: 0 !important;
+}
+
+.file_manager__ .file_contents__ {
+    padding: 10px 20px;
+    min-width: 600px;
+    overflow: auto;
+}
+
+.file_manager__ .file_upload__, .file_manager__ .file_download__ {
+    border: 1px solid #80CBC4;
+    padding: 10px;
+}
+
+.file_manager__ ol {
+    padding: 0;
+    margin: 0;
+}
+
+.file_manager__ li {
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.file_manager__ .file_upload_items__ li, .file_manager__ .file_download_items__ li {
+    list-style: circle;
+}
+
+.file_manager__ .file_upload_items__ .empty, .file_manager__ .file_download_items__ .empty {
+    list-style: none;
+    text-align: center;
+}
+
+.file_manager__ .file_group__ {
+    margin-bottom: 5px;
+}
+
+.file_manager__ .file_group__ li {
+    padding: 5px 10px 0 0;
+    list-style: decimal;
+}
+
+.file_manager__ .file_name__ {
+    font-weight: bold;
+}
+
+.file_manager__ .delete_file_item__ > span, .file_manager__ .delete_file__ > span {
+    display: inline-block;
+    text-indent: -1000px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIYCDkVrZsQowAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAADZSURBVDjLtZOxDgFBEIa/uIv23sA7aEm8BI03uUJDwRNodBoaCp6AggjRX0NBLSERxTU0u8lmM3PuEiaZbHbn3293Z2bhx1YBVsAQCBRNB9gBVQ1wAt7GpwJo4MRvEmjtCKxPHFBfiF/t5tCMCdDwwG0jvgCxcPvEXygDM+E0zTdAJOUlL2irAVzQvCig5M1T6a2OnYHnt17p5XjOOKOP6BZIrAiKFfEeWCqxkQ85KoDIJHshxO8+pAY8HMHBq4IPSoGWlJO6+RNaH9jyv4BmVnWCHL895B/2AShtccx+lX2aAAAAAElFTkSuQmCC') no-repeat right 4px;
+    background-size: 12px 12px;
+    height: 20px;
+    width: 12px;
+    margin-left: 10px;
+}
+
+.file_manager__ .desc > ul {
+    margin: 5px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.file_manager__ .max_upload_file_cnt__ {
+    font-weight: normal;
+}
+
+.file_manager__ .btn-box {
+    padding: 20px;
+}
+
+.file_manager__ .upload__, .file_manager__ .download__ {
+    display: none;
+}
+
+.file_manager__ #btnOk {
+    display: inline-block;
+}
+</style>
+
+<article class="file_manager__" title="파일 관리">
+    <div class="file_contents__">
+        <div class="upload__ flex-horizental">
+            <div class="btn-box">
+                <a id="btnAdd" href="#">추가</a>
+                <a id="btnUpload" href="#" class="R">업로드</a>
+            </div>
+        </div>
+        <h4 class="download__">다운로드</h4>
+        <div class="download__ file_download__">
+            <ol class="file_download_items__"></ol>
+        </div>
+        <h4 class="upload__">업로드<span class="max_upload_file_cnt__"></span></h4>
+        <div class="upload__ file_upload__">
+            <ol class="file_upload_items__"></ol>
+        </div>
+        <div class="upload__ desc"></div>
+    </div>
+    <div class="btn-box" style="text-align: center;">
+        <a id="btnOk" href="#" data-opts='{ "color" : "gray", "size" : "large" }' class="upload__">확인</a>
+    </div>
+</article>
+
+<script type="text/javascript">
+(function() {
+
+    var cont = N(".file_manager__").cont({
+        "c.getFileList" : function(fileId) {
+            if(!fileId) {
+                throw N.error('The "fileId" argument is missing.');
+            }
+            return N({ "fileId" : fileId }).comm("file/getFileList.json");
+        },
+        "c.saveFile" : function(formData) {
+            return N.comm({
+                url: "file/saveFile.json" + (cont.fileId ? "?fileId=" + cont.fileId : ""),
+                data : formData,
+                type: "POST",
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: "json"
+            });
+        },
+        "c.deleteFile" : function(fileId, fileSeq) {
+            if(!fileId) {
+                throw N.error('The "fileId" argument is missing.');
+            }
+            if(!fileSeq) {
+                throw N.error('The "fileSeq" argument is missing.');
+            }
+            return N({ "fileId" : fileId, "fileSeq" : fileSeq }).comm("file/deleteFile.json");
+        },
+        "e.btnAdd.click" : function(e) {
+            e.preventDefault();
+
+            var fileInput = N('<input type="file" class="file_upload_input__" multiple style="position: absolute; width: 0; height: 0; opacity: 0;" />');
+
+            var fileLi = N("<li />", {
+                "class" : "file_upload_item__"
+            }).hide().append(fileInput);
+
+            N(".file_upload_items__", cont.view).append(fileLi);
+
+            // 파일 선택 다이얼로그에서 취소 버튼 클릭 시 생성한 라인을 제거.
+            document.body.onfocus = function() {
+                setTimeout(function() {
+                    if(fileInput.get(0).files.length === 0) {
+                        fileLi.remove();
+        		    } else {
+        		        N(".file_upload_items__ .guide-text", cont.view).remove();
+        		    }
+                }, 1000);
+    		    document.body.onfocus = undefined;
+    		};
+
+            fileInput.click();
+        },
+        "e.btnUpload.click" : function(e) {
+            e.preventDefault();
+
+            if(cont.uploadFileItems.length === 0) {
+                N(window).alert("업로드 가능한 파일이 선택되지 않았습니다. 추가버튼을 클릭하여 업로드할 파일을 선택해 주세요.").show();
+                return false;
+            }
+
+            N(window).alert({
+                msg : "파일을 서버에 업로드 하시겠습니까?",
+                confirm : true,
+                onOk : function() {
+                    var formData = new FormData();
+                    N(cont.uploadFileItems).each(function(i, file) {
+                        formData.append("files[" + i + "]", file, this.name);
+                    });
+
+                    cont["c.saveFile"](formData).submit(function(data){
+                        cont.fileId = data.fileId;
+
+                        N.notify.add("파일 저장이 완료되었습니다.");
+
+    					cont.resetFileUploadItems();
+    					cont.resetFileDownloadItems();
+
+    					cont.createDownloadList(data.fileId);
+                    });
+                }
+            }).show();
+        },
+        "e.btnOk.click" : function(e) {
+            e.preventDefault();
+            cont.caller.close({
+                fileId : cont.fileId,
+                downloadList : cont.downloadList
+            });
+        },
+        fileNotAllowExts : "${fileNotAllowExts}",
+        fileUploadMaxEach : "${fileUploadMaxEach}",
+        fileUploadMaxAll : "${fileUploadMaxAll}",
+        uploadFileItems : [],
+        init : function(view, request) {
+            view.closest(".msg_box__").siblings(".msg_title_box__").find(".msg_title_close_btn__").remove();
+
+            var fileNotAllowExtsArr = cont.fileNotAllowExts.split(",");
+            fileNotAllowExtsArr.pop();
+
+            N(".desc", view).html("<ul><li>파일별 최대 크기 제한 : "
+                    + (Math.round((Number(cont.fileUploadMaxEach)/1024/1024)*100)*0.01)
+                    + "MB</li><li>파일 전체 크기 제한 : " + (Math.round((Number(cont.fileUploadMaxAll)/1024/1024)*100)*0.01)
+                    + "MB</li><li>허용되지 않는 파일 형식 : " + fileNotAllowExtsArr.join(", ") + "</li></ul>");
+
+            cont.updateDownloadDesc();
+            cont.updateUploadDesc();
+
+            // 업로드될 파일 생성
+            N(".file_upload_items__", cont.view).on("change", ".file_upload_input__", function(e) {
+                N(".file_upload_items__ .empty", cont.view).remove();
+
+                N(".file_upload_items__ .file_upload_item__:not(:visible)", cont.view).show();
+
+                var selfEle = e.target;
+                var files = selfEle.files;
+
+                var fileGroupUl;
+                if(files.length > 0) {
+                    fileGroupUl = N("<ol />", {
+                        "class" : "file_group__"
+                    });
+                }
+
+                var fileNames = [];
+                var fileNameText;
+                var warnStyle;
+                var fileExt;
+                N(files).each(function(i, file) {
+                    fileExt = file.name.substring(file.name.lastIndexOf(".") + 1).toLowerCase();
+                    fileNames.push(file.name);
+
+                    if(cont.fileNotAllowExts.indexOf(fileExt + ",") > -1) {
+                        warnStyle = ' style="color: #999"';
+                        fileNameText = file.name + "(허용되지 않는 파일형식)";
+                    } else if(file.size > Number(cont.fileUploadMaxEach)) {
+                        warnStyle = ' style="color: #999"';
+                        fileNameText = file.name + "(파일별 허용 크기 초과(" + (Math.round((Number(cont.fileUploadMaxEach)/1024/1024)*100)*0.01) + "MB))";
+                    } else {
+                        cont.uploadFileItems.push(file);
+
+                        warnStyle = "";
+                        fileNameText = file.name;
+                    }
+
+                    fileGroupUl.append('<li><span' + warnStyle + '>' + fileNameText + '</span><a data-fileid="' + (file.lastModified + file.name + file.size) + '" class="delete_file_item__" href="#"><span>삭제</span></a></li>');
+                });
+
+                if(files.length > 0) {
+                    N(selfEle).parent("li").append("<div><span class=\"file_name__\">" + N.formatter.limit(fileNames.join(", "), [80, "..."]) + "(" + files.length + "개)</span></div>").append(fileGroupUl);
+                }
+
+                cont.updateMaxUploadFileCnt();
+            });
+
+         	// 다운로드 파일 삭제
+            N(".file_download_items__", cont.view).on("click", ".delete_file__", function(e) {
+                e.preventDefault();
+
+                var fileLinkEle = $(this).siblings(".file_download_link__");
+
+                N(window).alert({
+                    msg : '"' + fileLinkEle.text() + '" 파일을 삭제 하겠습니까?',
+                    confirm : true,
+                    onOk : function() {
+                        cont["c.deleteFile"](fileLinkEle.data("fileid"), fileLinkEle.data("fileseq")).submit(function() {
+                            N.notify.add('"' + fileLinkEle.text() + '" 파일이 삭제되었습니다.');
+                            fileLinkEle.parent("li").remove();
+                            cont.updateDownloadDesc();
+                        });
+                    }
+                }).show();
+            });
+
+            // 업로드될 파일 삭제
+            N(".file_upload_items__", cont.view).on("click", ".delete_file_item__", function(e) {
+                e.preventDefault();
+                var selfEle = N(this);
+                cont.uploadFileItems = N(cont.uploadFileItems).filter(function() {
+                    return this.lastModified + this.name + this.size !== selfEle.data("fileid");
+                });
+
+                var li = selfEle.parent("li");
+                var fileGroup = li.parent(".file_group__");
+                li.remove();
+                if(fileGroup.find(">li").length === 0) {
+                    fileGroup.parent("li").remove();
+                }
+
+                cont.updateMaxUploadFileCnt();
+                cont.updateUploadDesc();
+            });
+
+            if(this.caller.options.mode === "download") {
+                N(".download__", view).show();
+            } else if(this.caller.options.mode === "upload") {
+                N(".upload__", view).show();
+            } else {
+                N(".upload__, .download__", view).show();
+            }
+
+            N(".file_contents__", cont.view).css("max-height", N(window).height() - 300);
+        },
+        resetFileUploadItems : function() {
+            N(".file_upload_items__", cont.view).empty();
+			N(".max_upload_file_cnt__", this.view).empty();
+            cont.uploadFileItems = [];
+			cont.updateUploadDesc();
+        },
+        resetFileDownloadItems : function() {
+            N(".file_download_items__", cont.view).empty();
+			cont.updateDownloadDesc();
+        },
+        updateMaxUploadFileCnt : function() {
+            N(".max_upload_file_cnt__", this.view).text("(업로드 가능한 파일 : " + cont.uploadFileItems.length + " 개)");
+        },
+        updateDownloadDesc : function() {
+            if(N(".file_download_items__ > li", this.view).length === 0) {
+                N(".file_download_items__", this.view).html('<li class="empty"><span class="guide-text">다운로드 가능한 파일이 없습니다.</span></li>');
+            }
+        },
+        updateUploadDesc : function() {
+            if(N(".file_upload_items__ > li", this.view).length === 0) {
+                N(".file_upload_items__", this.view).html('<li class="empty"><span class="guide-text">추가 버튼을 클릭하여 업로드할 파일을 선택(멀티선택가능)해 주세요.</span></li>');
+            }
+        },
+        createDownloadList : function(fileId) {
+            cont["c.getFileList"](fileId).submit(function(data) {
+                cont.downloadList = data;
+                N(".file_download_items__ .empty", cont.view).remove();
+                $(data).each(function() {
+                    var li = $("<li />");
+
+                    // 다운로드 링크
+                    li.append($('<a />', {
+                        text : this.fileName,
+                        href : "file/getFile/" + fileId + "/" + this.fileSeq
+                    }).addClass("file_download_link__").data("fileid", fileId).data("fileseq", this.fileSeq))
+
+                    // 삭제버튼
+                    li.append($('<a class="delete_file__" href="#"><span>삭제</span></a>'));
+
+                    li.appendTo(N(".file_download_items__", cont.view));
+
+                    cont.updateDownloadDesc();
+                });
+            });
+        },
+		onOpen : function(fileId) {
+		    cont.resetFileUploadItems();
+		    cont.resetFileDownloadItems();
+	        cont.fileId = N.string.trimToUndefined(fileId);
+
+		    if(!N.string.isEmpty(fileId)) {
+		        cont.createDownloadList(fileId);
+		    }
+        }
+    });
+
+})();
+</script>

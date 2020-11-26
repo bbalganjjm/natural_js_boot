@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="common.naturaljs.app.sample.mappers.SampleMapper">
+
+	<select id="getSampleList" parameterType="java.util.Map" resultType="java.util.Map">
+		/* common.naturaljs.app.sample.mappers.SampleMapper.getSampleList */
+       SELECT 
+               <if test="startRowNum != null and startRowNum != '' and countPerPage != null and countPerPage != ''">
+               -- COUNT(*) OVER() AS total_count, -- ORACLE
+               (SELECT COUNT(*) FROM sample
+	               <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	                   <if test="deptCd != null and deptCd != ''">
+            	   AND dept_cd = #{deptCd}
+	                   </if>
+	                   <if test="age != null and age != ''">
+            	   AND age = #{age}
+	                   </if>
+	                   <if test="name != null and name != ''">
+            	   AND name like '%' || #{name} || '%'
+	                   </if>
+	                   <if test="gender != null and gender != ''">
+            	   AND gender = #{gender}
+	                   </if>
+                       <if test="eyeColor != null and eyeColor != ''">
+            	   AND eye_color = #{eyeColor}
+	                   </if>
+	                   <if test="company != null and company != ''">
+            	   AND company = #{company}
+	                   </if>
+	               </trim>
+               ) AS total_count, -- FIXME temp code
+               </if>
+               key,
+               dept_cd,
+               (SELECT dept_nm FROM sample_dept WHERE dept_cd = a.dept_cd) dept_nm,
+               index,
+               guid,
+               is_active,
+               balance,
+               picture,
+               age,
+               eye_color,
+               name,
+               gender,
+               company,
+               email,
+               phone,
+               address,
+               about,
+               to_char(registered, 'YYYYMMDD') registered,
+               latitude,
+               longitude,
+               greeting,
+               favorite_fruit,
+               file_id
+          FROM sample a
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+        	<if test="deptCd != null and deptCd != ''">
+           AND dept_cd = #{deptCd}
+        	</if>
+        	<if test="age != null and age != ''">
+           AND age = #{age}
+        	</if>
+        	<if test="name != null and name != ''">
+           AND name like '%' || #{name} || '%'
+        	</if>
+        	<if test="gender != null and gender != ''">
+           AND gender = #{gender}
+        	</if>
+        	<if test="eyeColor != null and eyeColor != ''">
+           AND eye_color = #{eyeColor}
+        	</if>
+        	<if test="company != null and company != ''">
+           AND company = #{company}
+        	</if>
+        </trim>
+      ORDER BY index DESC
+        <if test="startRowNum != null and startRowNum != '' and countPerPage != null and countPerPage != ''">
+        OFFSET ${startRowNum - 1} ROWS FETCH NEXT ${countPerPage} ROWS ONLY
+        </if>
+	</select>
+
+	<select id="getSampleBigList" parameterType="java.util.Map" resultType="java.util.Map" fetchSize="1000">
+        /* common.naturaljs.app.sample.mappers.SampleMapper.getSampleBigList */
+        SELECT index || '-' || LPAD(ROWNUM, 6, '0') AS index, name, email, phone, age, gender, eye_color, favorite_fruit
+          FROM sample, sample
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+        	<if test="deptCd != null and deptCd != ''">
+           AND dept_cd = #{deptCd}
+        	</if>
+        	<if test="age != null and age != ''">
+           AND age = #{age}
+        	</if>
+        	<if test="name != null and name != ''">
+           AND name like '%' || #{name} || '%'
+        	</if>
+        	<if test="gender != null and gender != ''">
+           AND gender = #{gender}
+        	</if>
+        	<if test="eyeColor != null and eyeColor != ''">
+           AND eye_color = #{eyeColor}
+        	</if>
+        </trim>
+        
+        UNION ALL
+        
+        SELECT index || '-' || LPAD(ROWNUM, 6, '0') AS index, name, email, phone, age, gender, eye_color, favorite_fruit
+          FROM sample, sample
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="deptCd != null and deptCd != ''">
+           AND dept_cd = #{deptCd}
+            </if>
+            <if test="age != null and age != ''">
+           AND age = #{age}
+            </if>
+            <if test="name != null and name != ''">
+           AND name like '%' || #{name} || '%'
+            </if>
+            <if test="gender != null and gender != ''">
+           AND gender = #{gender}
+            </if>
+            <if test="eyeColor != null and eyeColor != ''">
+           AND eye_color = #{eyeColor}
+            </if>
+        </trim>
+        
+        UNION ALL
+        
+        SELECT index || '-' || LPAD(ROWNUM, 6, '0') AS index, name, email, phone, age, gender, eye_color, favorite_fruit
+          FROM sample, sample
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="deptCd != null and deptCd != ''">
+           AND dept_cd = #{deptCd}
+            </if>
+            <if test="age != null and age != ''">
+           AND age = #{age}
+            </if>
+            <if test="name != null and name != ''">
+           AND name like '%' || #{name} || '%'
+            </if>
+            <if test="gender != null and gender != ''">
+           AND gender = #{gender}
+            </if>
+            <if test="eyeColor != null and eyeColor != ''">
+           AND eye_color = #{eyeColor}
+            </if>
+        </trim>
+        
+        UNION ALL
+        
+        SELECT index || '-' || LPAD(ROWNUM, 6, '0') AS index, name, email, phone, age, gender, eye_color, favorite_fruit
+          FROM sample, sample
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="deptCd != null and deptCd != ''">
+           AND dept_cd = #{deptCd}
+            </if>
+            <if test="age != null and age != ''">
+           AND age = #{age}
+            </if>
+            <if test="name != null and name != ''">
+           AND name like '%' || #{name} || '%'
+            </if>
+            <if test="gender != null and gender != ''">
+           AND gender = #{gender}
+            </if>
+            <if test="eyeColor != null and eyeColor != ''">
+           AND eye_color = #{eyeColor}
+            </if>
+        </trim>
+	</select>
+
+	<select id="getSample" parameterType="java.util.Map" resultType="java.util.Map">
+	    /* common.naturaljs.app.sample.mappers.SampleMapper.getSample */
+        SELECT key,
+               dept_cd,
+               (SELECT dept_nm FROM sample_dept WHERE dept_cd = a.dept_cd) dept_nm,
+               index,
+               guid,
+               is_active,
+               balance,
+               picture,
+               age,
+               eye_color,
+               name,
+               gender,
+               company,
+               email,
+               phone,
+               address,
+               about,
+               to_char(registered, 'YYYYMMDD') registered,
+               latitude,
+               longitude,
+               greeting,
+               favorite_fruit,
+               file_id
+	      FROM sample
+	     WHERE KEY = #{key}
+	</select>
+
+	<insert id="insertSample" parameterType="java.util.Map">
+	 /* common.naturaljs.app.sample.mappers.SampleMapper.insertSample */
+     INSERT INTO SAMPLE (
+            index,
+            dept_cd,
+            guid,
+            is_active,
+            balance,
+            picture,
+            age,
+            eye_color,
+            name,
+            gender,
+            company,
+            email,
+            phone,
+            address,
+            about,
+            registered,
+            latitude,
+            longitude,
+            greeting,
+            favorite_fruit,
+            file_id
+          ) VALUES (
+            #{index},
+            #{deptCd},
+            #{guid},
+            #{isActive},
+            #{balance},
+            #{picture},
+            #{age},
+            #{eyeColor},
+            #{name},
+            #{gender},
+            #{company},
+            #{email},
+            #{phone},
+            #{address},
+            #{about},
+            CURRENT_DATE,
+            #{latitude},
+            #{longitude},
+            #{greeting},
+            #{favoriteFruit},
+            #{fileId}
+	      )
+	</insert>
+
+	<update id="updateSample" parameterType="java.util.Map">
+        /* common.naturaljs.app.sample.mappers.SampleMapper.updateSample */
+        UPDATE sample
+        	<trim prefix="SET" suffixOverrides=",">
+        		<if test="deptCd != null and deptCd != ''">
+        	   dept_cd = #{deptCd},
+        		</if>
+        		<if test="index != null and index != ''">
+        	   index = #{index},
+        		</if>
+        		<if test="guid != null and guid != ''">
+        	   guid = #{guid},
+        		</if>
+        		<if test="isActive != null and isActive != ''">
+        	   is_active = #{isActive},
+        		</if>
+        		<if test="balance != null and balance != ''">
+        	   balance = #{balance},
+        		</if>
+        		<if test="picture != null and picture != ''">
+        	   picture = #{picture},
+        		</if>
+        		<if test="age != null and age != ''">
+        	   age = #{age},
+        		</if>
+        		<if test="eyeColor != null and eyeColor != ''">
+        	   eye_color = #{eyeColor},
+        		</if>
+        		<if test="name != null and name != ''">
+        	   name = #{name},
+        		</if>
+        		<if test="gender != null and gender != ''">
+        	   gender = #{gender},
+        		</if>
+        		<if test="company != null and company != ''">
+        	   company = #{company},
+        		</if>
+        		<if test="email != null and email != ''">
+        	   email = #{email},
+        		</if>
+        		<if test="phone != null and phone != ''">
+        	   phone = #{phone},
+        		</if>
+        		<if test="address != null and address != ''">
+        	   address = #{address},
+        		</if>
+        		<if test="about != null and about != ''">
+        	   about = #{about},
+        		</if>
+                <if test="registered != null and registered != ''">
+               registered = to_date(#{registered}, 'YYYYMMDD'),
+                </if>
+        		<if test="latitude != null and latitude != ''">
+        	   latitude = #{latitude},
+        		</if>
+        		<if test="longitude != null and longitude != ''">
+        	   longitude = #{longitude},
+        		</if>
+        		<if test="greeting != null and greeting != ''">
+        	   greeting = #{greeting},
+        		</if>
+        		<if test="favoriteFruit != null and favoriteFruit != ''">
+        	   favorite_fruit = #{favoriteFruit},
+        		</if>
+                <if test="fileId != null and fileId != ''">
+               file_id = #{fileId}
+                </if>
+        	</trim>
+         WHERE key = #{key}
+	</update>
+
+	<delete id="deleteSample" parameterType="java.util.Map">
+        /* common.naturaljs.app.sample.mappers.SampleMapper.deleteSample */
+        DELETE 
+          FROM sample
+         WHERE key = #{key}
+	</delete>
+
+</mapper>

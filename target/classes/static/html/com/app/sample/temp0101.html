@@ -1,0 +1,69 @@
+<article class="temp0101">
+    <div class="view-intro">
+        <h1>메시지</h1>
+    </div>
+
+    <h3>메시지(N.alert, N.notify)</h3>
+
+    <div class="mb10">
+        <a id="btnAlert" href="#">Message Dialog</a> <span class="italic">N() 함수의 인자를 window로 지정하면 메시지 오버레이가 화면 전체를 덮어주고 HTML 요소를 지정하면 지정한 요소만 덮는 오버레이요소가 생성됩니다.</span>
+    </div>
+
+    <div class="mb10">
+        <a id="btnConfirm" href="#">Confirm Dialog</a> <span class="italic">title 옵션 지정 시 타이틀바를 표시하고 confirm 옵션을 true로 지정하면 [확인]/[취소] 버튼을 표시해 줍니다.</span>
+    </div>
+
+    <div>
+        <a id="btnInput" href="#">Input Message</a> <input id="inputText" type="text" style="width: 100px;"> <span class="italic">input, select, textarea 등의 HTML 입력 요소를 지정하면 지정한 요소 옆에 메시지를 표시해 줍니다.</span>
+    </div>
+
+    <h3>N.notify</h3>
+    <div>
+        <a id="btnNotify" href="#">Notify Message</a> <span class="italic">사용자의 확인과정이 필요없는 알림 메시지를 표시합니다.</span>
+    </div>
+
+    <div class="apiDemo" data-file="notify"></div>
+
+</article>
+
+<script type="text/javascript">
+(function() {
+
+    var cont = N(".temp0101").cont({
+        "e.btnAlert.click" : function(e) {
+            e.preventDefault();
+
+            N(window).alert("N() 함수의 인자를 window로 지정하면 메시지 오버레이가 화면 전체를 덮어주고 HTML 요소를 지정하면 지정한 요소만 덮는 오버레이요소가 생성됩니다.").show();
+        },
+        "e.btnConfirm.click" : function(e) {
+            e.preventDefault();
+
+            N(window).alert({
+                title : "Title",
+                msg : "title 옵션 지정 시 타이틀바를 표시하고 confirm 옵션을 true로 지정하면 [확인]/[취소] 버튼을 표시해 줍니다.",
+                confirm : true,
+                onOk : function() {
+                    N(window).alert("확인 버튼을 클릭했습니다.").show();
+                },
+                onCancel : function() {
+                    N(window).alert("메시지 타이틀의 X 아이콘이나 취소버튼, 메시지 오버레이를 클릭했습니다.").show();
+                }
+            }).show();
+        },
+        "e.btnInput.click" : function(e) {
+            e.preventDefault();
+
+            N("#inputText", cont.view).alert("input, select, textarea 등의 HTML 입력 요소를 지정하면 지정한 요소 옆에 메시지를 표시해 줍니다.").show();
+        },
+        "e.btnNotify.click" : function(e) {
+            e.preventDefault();
+
+            N.notify.add("사용자의 확인과정이 필요없는 알림 메시지를 표시합니다.");
+        },
+        init : function(view, request) {
+
+        }
+    });
+
+})();
+</script>
