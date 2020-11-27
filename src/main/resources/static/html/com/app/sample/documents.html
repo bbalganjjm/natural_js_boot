@@ -45,7 +45,7 @@ Natural-TEMPLATE 개발 가이드
 
     * [1. 네이밍(Naming)](#1naming)
         * [1.1. 패키지 구조](#11)
-        * [1.2. URL Mapping](#12urlmapping)
+        * [1.2. @RequestMapping](#12urlmapping)
 
     * [2. Controller 개발](#2controller)
 
@@ -383,7 +383,7 @@ cont["c.getSampleList"]().excelDownload([ "샘플 목록", {
 ```
 
 >N.pagination 컴포넌트를 사용하여 페이징 된 데이터를 페이징되지 않은 엑셀파일 데이터로 내려받기 위해서는 MyBatis Mapper 파일의 페이징 관련 쿼리들을 다음 예와 같이 분기해 줘야 합니다.
->isXlsxRequest 변수는 xlsx 요청일때만 true로 값이 세팅되고 일반 json 요청일 때는 변수 생성되지 않습니다.
+>isXlsxRequest 변수는 xlsx 요청일때만 true로 값이 세팅되고 일반 json 요청일 때는 변수가 생성되지 않습니다.
 
 ```xml
 SELECT
@@ -723,7 +723,7 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 
 * Arguments
     * arguments[0] : 조회 파라미터 - JSON Object 타입으로 조회 파라미터를 정의합니다.
-    * arguments[1] : 조회 URL - 조회 URL을 선언합니다. 조회 URL의 확장자는 .xlsx입니다. .json으로 호출되는 서비스를 확장자만 .xlsx로 바꿔주면 해당 서비스에서 반환되는 데이터를 엑셀파일로 받을 수 있습니다. 해당 서비스의 URL 맵핑(Spring MVC) 시 반드시 확장자를 표기하지 않아야 합니다.
+    * arguments[1] : 조회 URL - 조회 URL을 선언합니다. 조회 URL의 확장자는 .xlsx입니다. .json으로 호출되는 서비스를 확장자만 .xlsx로 바꿔주면 해당 서비스에서 반환되는 데이터를 엑셀파일로 받을 수 있습니다. 해당 서비스의 Controller의 @RequestMapping 에 반드시 `@RequestMapping(value = { "getSampleList.json", "getSampleList.xlsx" })` 와 같이 .json 과 .xlsx 확장자를 가진 URL을 두개 이상 Mapping 해줘야 합니다.
     * arguments[2] : 엑셀 파일 명
     * arguments[3] : N.grid 인스턴스 or 컬럼명 정보 Object - N.grid 인스턴스를 넣으면 헤더의 타이틀을 엑셀파일의 타이틀로 지정해 줍니다. N.list 등 컬럼 타이틀 정보가 없는 컴포넌트를 사용할 때는 Object 타입으로 직접 지정 가능합니다.
     * arguments[4] : 추가 컬럼명 정보 Object - 엑셀 파일의 컬럼 중 N.grid의 헤더에 타이틀 정보가 없는 컬럼들의 타이틀을 추가로 정의할 수 있습니다.
@@ -746,8 +746,8 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 >VO(Value Object) 객체는 get/set Bean으로 처리하지 않고 파라미터부터 리턴되는 데이터까지 모두 `Map&lt;String, Object&gt;` 나 `List&lt;Map&lt;String, Object&gt;&gt;`로 처리됩니다.
 >그러나 Bean 타입의 VO 객체가 필요하면 빈을 만들어서 써도 상관없습니다.
 
-###1.2. URL Mapping
-Controller의 URL Mapping은 Camel Case 문자열 형태로 다음과 같이 정의되어 있습니다.
+###1.2. @RequestMapping
+Controller의 @RequestMapping은 Camel Case 문자열 형태로 다음과 같이 정의되어 있습니다.
  * 단건 조회 : `get` + `MethodName` + `.json`
  * 목록 조회 : `get` + `MethodName` + `List` + `.json`
  * 단건 입력 : `insert` + `MethodName` + `.json`
