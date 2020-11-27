@@ -48,6 +48,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -65,6 +66,7 @@ import common.utils.SecurityUtils;
  * 생성된 엑셀파일은 XlsxStreamingView에서 브라우저로 전송 함.
  */
 @Component
+@Order(101)
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class,
                 BoundSql.class }),

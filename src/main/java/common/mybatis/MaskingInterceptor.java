@@ -27,6 +27,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.Base64Utils;
@@ -40,6 +41,7 @@ import common.utils.MaskingUtils;
  * @since 2018.12.05
  */
 @Component
+@Order(102)
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class,
                 BoundSql.class }),
