@@ -13,12 +13,12 @@ spring:
     password: ''
     tomcat:
       initialSize: 1
-      #maxActive: 80
-      #maxIdle: 80
-      #testWhileIdle: true
-      #timeBetweenEvictionRunsMillis: 60000
-      #validationQuery: select 1 from dual
-      #test-on-borrow: true
+      maxActive: 5
+      maxIdle: 5
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: select 1 from INFORMATION_SCHEMA.SYSTEM_USERS
+      test-on-borrow: true
   messages:
     basename: messages/message-common
     encoding: UTF-8
@@ -65,23 +65,80 @@ logging:
   level:
     root: info
 
-
-
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+        
+        
+        
+        
+        
 ---
 spring:
   profiles: prod
+  datasource:
+    #name: ds-common
+    platform: hsqldb
+    schema: classpath*:config/db/hsqldb/schema.sql
+    data: classpath*:config/db/hsqldb/data.sql
+    sqlScriptEncoding: UTF-8
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:hsqldb:mem:dataSource
+    username: sa
+    password: ''
+    tomcat:
+      initialSize: 20
+      maxActive: 80
+      maxIdle: 80
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: select 1 from INFORMATION_SCHEMA.SYSTEM_USERS
+      test-on-borrow: true
   messages:
+    basename: messages/message-common
+    encoding: UTF-8
+    use-code-as-default-message: true
     cache-duration: -1
+  mvc:
+    servlet:
+      path: /
+    
   thymeleaf:
-    cache: true
-    
+    cache: false
+
 server:
-  port: 80
+  port: 8080
+  servlet:
+    contextPath: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   error:
-    include-exception: false
-    include-stacktrace: never
-    
+    include-exception: true
+    include-stacktrace: always
+
+mybatis:
+  configuration:
+    default-statement-timeout: 30
+    cache-enabled: true
+    lazy-loading-enabled: true
+    default-fetch-size: 50
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    default-executor-type: simple
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null
+    lazy-load-trigger-methods: equals,clone,hashCode,toString
+  mapper-locations:
+  - classpath*:/**/mappers/**/*.xml
 logging:
   level:
     root: warn
