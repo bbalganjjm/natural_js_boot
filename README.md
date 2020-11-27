@@ -80,19 +80,19 @@ Natural-TEMPLATE 개발 가이드
 각각의 html 파일은 다음과 같이 구성됩니다.
 
 ```javascript
-&lt;style&gt;
+<style>
     .page-id {
         /* View(CSS) - 퍼블리셔가 작성, 생략 가능하고 이 파일의 View 에만 스타일을 적용하고 싶을 때만 추가. */
         /* CSS 셀렉터를 선언할 때는 반드시 .page-id #target { } 처럼 .page-id를 맨 앞에 적어 주세요. 안그러면 다른 페이지에도 영향을 미칩니다. */
     }
-&lt;/style&gt;
+</style>
 
-&lt;article class="page-id"&gt;
-    &lt;!-- View - 퍼블리셔가 작성 --&gt;
-    &lt;!-- article 태그에 class 속성으로 page-id를 지정합니다. --&gt;
-&lt;/article&gt;
+<article class="page-id">
+    <!-- View - 퍼블리셔가 작성 -->
+    <!-- article 태그에 class 속성으로 page-id를 지정합니다. -->
+</article>
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     (function() {
 
         // Controller - 업무 개발자가 작성
@@ -104,7 +104,7 @@ Natural-TEMPLATE 개발 가이드
         });
 
     })();
-&lt;/script&gt;
+</script>
 ```
 
 ##N.cont(Controller Object) 작성 규칙
@@ -269,13 +269,13 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
 > 팝업의 onClose 이벤트 옵션을 지정하면 핸들러 함수의 인자(onCloseData) 속성에 파일그룹아이디(fileId)와 다운로드파일목록(downloadList) 정보가 포함되어 반환됩니다.
 
 ```javascript
-&lt;article class="type0401"&gt;
-    &lt;div id="detail"&gt;
-        &lt;a id="btnFile" href="#"&gt;파일&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/article&gt;
+<article class="type0401">
+    <div id="detail">
+        <a id="btnFile" href="#">파일</a>
+    </div>
+</article>
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 (function() {
 
     var cont = N(".type0401").cont({
@@ -306,7 +306,7 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
     });
 
 })();
-&lt;/script&gt;
+</script>
 
 ```
 
@@ -382,26 +382,26 @@ cont["c.getSampleList"]().excelDownload([ "샘플 목록", {
 
 ```xml
 SELECT
-&lt;if test="isXlsxRequest == null"&gt;
+<if test="isXlsxRequest == null">
     COUNT(*) OVER() AS total_count, -- ORACLE
-&lt;/if&gt;
+</if>
 ...
-&lt;if test="isXlsxRequest == null"&gt;
+<if test="isXlsxRequest == null">
     OFFSET #{startRowIndex} ROWS FETCH NEXT #{countPerPage} ROWS ONLY -- ORACLE
-&lt;/if&gt;
+</if>
 ```
 
 >엑셀파일의 컬럼은 쿼리에서 SELECT 한 컬럼들이 기록됩니다. 엑셀파일에만 특정 컬럼을 제외하거나 추가하고 싶을때는 isXlsxRequest 변수를 활용하여 다음과 같이 처리합니다.
 
 ```xml
 SELECT
-&lt;if test="isXlsxRequest == null"&gt;
+<if test="isXlsxRequest == null">
     COL01,
     COL02,
-&lt;/if&gt;
-&lt;if test="isXlsxRequest == true"&gt;
+</if>
+<if test="isXlsxRequest == true">
     COL03,
-&lt;/if&gt;
+</if>
     COL04
 FROM TABLE
 ```
@@ -497,22 +497,22 @@ var cont = N(".page-id").cont({
 
 ```javascript
 ...
-&lt;div class="sampleForm"&gt;
-    &lt;input id="col01"&gt;
-&lt;/div&gt;
-&lt;table class="sampleGrid"&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;
-                &lt;input class="col01" id="col01"&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
+<div class="sampleForm">
+    <input id="col01">
+</div>
+<table class="sampleGrid">
+    <tbody>
+        <tr>
+            <td>
+                <input class="col01" id="col01">
+            </td>
+        </tr>
+    </tbody>
+</table>
 ...
 var cont = N(".page-id").cont({
     "e.col01.click" : {
-        target : ".col01#col01", // "#grid #col01"로 지정하면 찾지 못함. 최상위 요소는 N.grid의 &lt;tr&gt; 이라고 생각해야 함.
+        target : ".col01#col01", // "#grid #col01"로 지정하면 찾지 못함. 최상위 요소는 N.grid의 <tr> 이라고 생각해야 함.
         handler : function(e, idx) {
             // TODO
         }
@@ -738,7 +738,7 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
  * framework.naturaljs.app.sample.service.impl : 비즈니스 로직을 처리하는 Service 소스코드들이 담겨있는 패키지
  * framework.naturaljs.app.sample.mappers : SQL 쿼리가 기록되어 있는 MyBatis Mapper XML 파일과 이 파일안의 쿼리 ID 들을 JAVA 메서드로 연결해주는 Mapper JAVA 인터페이스 파일이 담겨있는 패키지
  * framework.naturaljs.app.sample.vo : VO 객체(get/set Bean)
->VO(Value Object) 객체는 get/set Bean으로 처리하지 않고 파라미터부터 리턴되는 데이터까지 모두 `Map&lt;String, Object&gt;` 나 `List&lt;Map&lt;String, Object&gt;&gt;`로 처리됩니다.
+>VO(Value Object) 객체는 get/set Bean으로 처리하지 않고 파라미터부터 리턴되는 데이터까지 모두 `Map<String, Object>` 나 `List<Map<String, Object>>`로 처리됩니다.
 >그러나 Bean 타입의 VO 객체가 필요하면 빈을 만들어서 써도 상관없습니다.
 
 ###1.2. URL Mapping
@@ -770,32 +770,32 @@ public class SampleController {
     SampleServiceImpl sampleService;
 
     @RequestMapping("getSampleList.json")
-    public List&lt;Map&lt;String, Object&gt;&gt; getSampleList(@RequestBody(required = false) Map&lt;String, Object&gt; vo) {
+    public List<Map<String, Object>> getSampleList(@RequestBody(required = false) Map<String, Object> vo) {
         return sampleService.getSampleList(vo);
     }
 
     @RequestMapping("getSample.json")
-    public List&lt;Map&lt;String, Object&gt;&gt; getSample(@RequestBody Map&lt;String, Object&gt; vo) {
+    public List<Map<String, Object>> getSample(@RequestBody Map<String, Object> vo) {
         return sampleService.getSample(vo);
     }
 
     @RequestMapping("saveSample.json")
-    public Map&lt;String, Object&gt; saveSample(@RequestBody List&lt;Map&lt;String, Object&gt;&gt; voList) {
+    public Map<String, Object> saveSample(@RequestBody List<Map<String, Object>> voList) {
         return sampleService.saveSample(voList);
     }
 
     @RequestMapping("insertSample.json")
-    public int insertSample(@RequestBody Map&lt;String, Object&gt; vo) {
+    public int insertSample(@RequestBody Map<String, Object> vo) {
         return sampleService.insertSample(vo);
     }
 
     @RequestMapping("updateSample.json")
-    public int updateSample(@RequestBody Map&lt;String, Object&gt; vo) {
+    public int updateSample(@RequestBody Map<String, Object> vo) {
         return sampleService.updateSample(vo);
     }
 
     @RequestMapping("deleteSample.json")
-    public int deleteSample(@RequestBody Map&lt;String, Object&gt; vo) {
+    public int deleteSample(@RequestBody Map<String, Object> vo) {
         return sampleService.deleteSample(vo);
     }
 
@@ -811,12 +811,12 @@ Controller 클래스 개발 방법은 다음과 같습니다.
  5. 이제 단위 URL에 매핑될 컨트롤러 메서드를 생성해 줍니다. 먼저 @RequestMapping 어노테이션을 통해 접근할 수 있는 URL을 정의합니다.
   >클래스 선언문 위의 @RequestMapping의 경로와 메서드 선언문 위의 @RequestMapping의 경로가 합해져서 해당 메서드에 접근하는 최종 URL이 생성됩니다.
 
- 6. 컨트롤러 메서드의 리턴타입은 `Map&lt;String, Object&gt;`이나 `List&lt;Map&lt;String, Object&gt;&gt;`로 정의합니다.
+ 6. 컨트롤러 메서드의 리턴타입은 `Map<String, Object>`이나 `List<Map<String, Object>>`로 정의합니다.
   >반환된 Map이나 List 객체는 자동으로 JSON 형태의 문자열로 직렬화되고 HTTP Respose Body에 적제되어 클라이언트 브라우저로 전송됩니다. 전송된 JSON 문자열은 Javascript Object로 인스턴스화됩니다.
 
   >java의 List 객체는 클라이언트 브라우저에서 javascript array[object] 객체로 변환되고 Map 객체는 javascript object로 변환됩니다.
 
- 7. 파라미터 선언은 목록데이터는 `List&lt;Map&lt;String, Object&gt;&gt;` 타입으로 정의하고 단건 데이터는 `Map&lt;String, Object&gt;` 타입으로 선언하되 클라이언트에서 request body에 담아 Ajax로 전달되기 때문에 앞에 @RequestBody 어노테이션을 선언해 줍니다.
+ 7. 파라미터 선언은 목록데이터는 `List<Map<String, Object>>` 타입으로 정의하고 단건 데이터는 `Map<String, Object>` 타입으로 선언하되 클라이언트에서 request body에 담아 Ajax로 전달되기 때문에 앞에 @RequestBody 어노테이션을 선언해 줍니다.
   >클라이언트 브라우저에서 파라미터로 지정한 javascript array[object] 타입의 데이터 객체나 object 타입의 데이터 객체는 JSON 문자열로 직렬화 되에 HTTP Request Body에 적제되어 서버로 전송됩니다. 전송된 JSON 문자열은 java의 List 나 Map 객체로 인스턴스화됩니다.
 
   >전달된 javascript array[object] 객체는 java의 List 객체로 변환되고 javascript object는 Map 객체로 변환됩니다.
@@ -837,23 +837,23 @@ public class SampleServiceImpl {
     @Autowired
     private SampleMapper sampleMapper;
 
-    public List&lt;Map&lt;String, Object&gt;&gt; getSampleList(Map&lt;String, Object&gt; vo) {
+    public List<Map<String, Object>> getSampleList(Map<String, Object> vo) {
         return sampleMapper.getSampleList(vo);
     }
 
-    public List&lt;Map&lt;String, Object&gt;&gt; getSample(Map&lt;String, Object&gt; vo) {
+    public List<Map<String, Object>> getSample(Map<String, Object> vo) {
         return sampleMapper.getSample(vo);
     }
 
-    public Map&lt;String, Object&gt; saveSample(List&lt;Map&lt;String, Object&gt;&gt; voList) {
-        Iterator&lt;Map&lt;String, Object&gt;&gt; iter = voList.iterator();
+    public Map<String, Object> saveSample(List<Map<String, Object>> voList) {
+        Iterator<Map<String, Object>> iter = voList.iterator();
 
-        Map&lt;String, Object&gt; vo;
+        Map<String, Object> vo;
         int insert = 0;
         int update = 0;
         int delete = 0;
         while (iter.hasNext()) {
-            vo = (Map&lt;String, Object&gt;) iter.next();
+            vo = (Map<String, Object>) iter.next();
             if ("insert".equals((String) vo.get("rowStatus"))) {
                 // TODO
                 insert += this.insertSample(vo);
@@ -866,7 +866,7 @@ public class SampleServiceImpl {
             }
         }
 
-        Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("insert", insert);
         resultMap.put("update", update);
         resultMap.put("delete", delete);
@@ -874,15 +874,15 @@ public class SampleServiceImpl {
         return resultMap;
     }
 
-    public int insertSample(Map&lt;String, Object&gt; vo) {
+    public int insertSample(Map<String, Object> vo) {
         return sampleMapper.insertSample(vo);
     }
 
-    public int updateSample(Map&lt;String, Object&gt; vo) {
+    public int updateSample(Map<String, Object> vo) {
         return sampleMapper.updateSample(vo);
     }
 
-    public int deleteSample(Map&lt;String, Object&gt; vo) {
+    public int deleteSample(Map<String, Object> vo) {
         return sampleMapper.deleteSample(vo);
     }
 
@@ -907,12 +907,12 @@ ServiceImpl 클래스의 개발 방법은 다음과 같습니다.
 MyBatis Mapper XML 파일은 기본적으로 다음 예제와 같이 구성되어 있습니다.
 
 ```sql
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-&lt;mapper namespace="framework.naturaljs.app.sample.mappers.SampleMapper"&gt;
+<mapper namespace="framework.naturaljs.app.sample.mappers.SampleMapper">
 ...
-    &lt;select id="getSample" parameterType="java.util.Map" resultType="java.util.Map"&gt;
+    <select id="getSample" parameterType="java.util.Map" resultType="java.util.Map">
         /* framework.naturaljs.app.sample.mappers.SampleMapper.getSample */
         SELECT key,
                dept_cd,
@@ -938,9 +938,9 @@ MyBatis Mapper XML 파일은 기본적으로 다음 예제와 같이 구성되�
                favorite_fruit
           FROM sample
          WHERE KEY = #{key}
-    &lt;/select&gt;
+    </select>
 ...
-&lt;/mapper&gt;
+</mapper>
 ```
 
 MyBatis Mapper XML의 개발 방법은 다음과 같습니다.
@@ -999,17 +999,17 @@ Mapper Interface는 기본적으로 다음 예제와 같이 구성되어 있습�
 @Mapper
 public interface SampleMapper {
 
-    public List&lt;Map&lt;String, Object&gt;&gt; getSampleList(Map&lt;String, Object&gt; vo);
+    public List<Map<String, Object>> getSampleList(Map<String, Object> vo);
 
-    public List&lt;Map&lt;String, Object&gt;&gt; getSampleBigList(Map&lt;String, Object&gt; vo);
+    public List<Map<String, Object>> getSampleBigList(Map<String, Object> vo);
 
-    public List&lt;Map&lt;String, Object&gt;&gt; getSample(Map&lt;String, Object&gt; vo);
+    public List<Map<String, Object>> getSample(Map<String, Object> vo);
 
-    public int insertSample(Map&lt;String, Object&gt; vo);
+    public int insertSample(Map<String, Object> vo);
 
-    public int updateSample(Map&lt;String, Object&gt; vo);
+    public int updateSample(Map<String, Object> vo);
 
-    public int deleteSample(Map&lt;String, Object&gt; vo);
+    public int deleteSample(Map<String, Object> vo);
 
 }
 ```
@@ -1022,9 +1022,9 @@ Mapper 인터페이스의 개발 방법은 다음과 같습니다.
  2. 인터페이스 메서드를 생성합니다.
  > 메서드의 명칭은 Mapper XML 파일의 연결하고자 하는 쿼리의 id와 일치해야 합니다.
 
- > Arguments 타입은 Service에서 단건으로 처리되어 넘어오므로 `Map&lt;String, Object&gt;`로 선언합니다.
+ > Arguments 타입은 Service에서 단건으로 처리되어 넘어오므로 `Map<String, Object>`로 선언합니다.
 
- > 리턴타입은 java.util.Map 도 Map 인터페이스를 상속하여 구현된 객체이므로 `List&lt;Map&lt;String, Object&gt;&gt;`로 선언합니다. 단건 조회도 UI 개발의 편의성을 위해 `List&lt;Map&lt;String, Object&gt;&gt;`로 선언 바랍니다(Natural-JS는 단건이든 다건이든 Array 타입으로 컴포넌트에 바인딩 함).
+ > 리턴타입은 java.util.Map 도 Map 인터페이스를 상속하여 구현된 객체이므로 `List<Map<String, Object>>`로 선언합니다. 단건 조회도 UI 개발의 편의성을 위해 `List<Map<String, Object>>`로 선언 바랍니다(Natural-JS는 단건이든 다건이든 Array 타입으로 컴포넌트에 바인딩 함).
 
 ##6. 기타
 ###6.1. 예외처리(Exception)
