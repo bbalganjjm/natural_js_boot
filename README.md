@@ -1,5 +1,7 @@
 Natural-JS BOOT
 ===
+Natural-JS BOOT 는 Front-End 는 Natural-JS 로 구성하고 Beck-End 는 Spring Boot 구성한 MSA(Micro Service Architecture) 기반의 웹 개발을 위한 Start-Up 키트 입니다.
+Natural-JS BOOT 개인정보보호, 웹 취약점 보완, 파일 관리등의 Beck-End 의 공통 기능을 제공합니다.
 
 설치
 ===
