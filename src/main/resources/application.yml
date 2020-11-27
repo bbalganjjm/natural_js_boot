@@ -58,11 +58,12 @@ mybatis:
     local-cache-scope: session
     jdbc-type-for-null: null
     lazy-load-trigger-methods: equals,clone,hashCode,toString
+    log-impl: SLF4J
   mapper-locations:
   - classpath*:/**/mappers/**/*.xml
 logging:
   level:
-    root: info
+    root: debug
 
 
 

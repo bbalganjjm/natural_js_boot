@@ -27,7 +27,7 @@ public class SampleController {
 	public List<Map<String, Object>> getSampleList(@RequestBody(required = false) Map<String, Object> vo) {
 		return sampleService.getSampleList(vo);
 	}
-	
+
 	@RequestMapping("getSampleBigList")
 	public List<Map<String, Object>> getSampleBigList(@RequestBody(required = false) Map<String, Object> vo) {
 		return sampleService.getSampleBigList(vo);
