@@ -10,16 +10,13 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
 .loadpath
 .recommenders
 
 ### Eclipse Patch ###
 # Eclipse Core
-.project
 
 # JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 .idea/
 *.iml
