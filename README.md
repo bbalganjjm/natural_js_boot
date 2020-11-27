@@ -7,16 +7,16 @@ Natural-JS BOOT
 [eclipse-download]: https://www.eclipse.org/downloads/eclipse-packages/
 [jdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-[img-0]: ./images/gtst/gtst2000/0.png
-[img-1]: ./images/gtst/gtst2000/1.png
-[img-2]: ./images/gtst/gtst2000/2.png
-[img-3]: ./images/gtst/gtst2000/3.png
-[img-4]: ./images/gtst/gtst2000/4.png
-[img-5]: ./images/gtst/gtst2000/5.png
-[img-6]: ./images/gtst/gtst2000/6.png
-[img-7]: ./images/gtst/gtst2000/7.png
-[img-8]: ./images/gtst/gtst2000/8.png
-[img-9]: ./images/gtst/gtst2000/9.png
+[img-0]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/0.png
+[img-1]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/1.png
+[img-2]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/2.png
+[img-3]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/3.png
+[img-4]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/4.png
+[img-5]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/5.png
+[img-6]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/6.png
+[img-7]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/7.png
+[img-8]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/8.png
+[img-9]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/9.png
 
 ## 샘플 프로젝트 구성
 
