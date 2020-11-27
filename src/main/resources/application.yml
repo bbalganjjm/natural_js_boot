@@ -7,8 +7,8 @@ spring:
     schema: classpath*:config/db/hsqldb/schema.sql
     data: classpath*:config/db/hsqldb/data.sql
     sqlScriptEncoding: UTF-8
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:hsqldb:mem:dataSource
+    driver-class-name: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:dataSource
     username: sa
     password: ''
     tomcat:
@@ -58,7 +58,6 @@ mybatis:
     local-cache-scope: session
     jdbc-type-for-null: null
     lazy-load-trigger-methods: equals,clone,hashCode,toString
-    log-impl: SLF4J
   mapper-locations:
   - classpath*:/**/mappers/**/*.xml
 logging:
