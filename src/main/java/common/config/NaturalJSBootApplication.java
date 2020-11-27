@@ -41,19 +41,27 @@ public class NaturalJSBootApplication {
         SpringApplication.run(NaturalJSBootApplication.class, args);
     }
 
+    /**
+     * Properties
+     */
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+    /**
+     * Transaction
+     */
     @Autowired
     private DataSource dataSource;
-
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource);
     }
 
+    /**
+     * Mybatis
+     */
     @Bean
     public ConfigurationCustomizer mybatisConfigurationCustomizer(){
         return new ConfigurationCustomizer() {

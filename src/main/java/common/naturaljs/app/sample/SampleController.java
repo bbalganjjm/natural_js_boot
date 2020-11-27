@@ -23,7 +23,7 @@ public class SampleController {
     @Resource(name = "sampleService")
     SampleServiceImpl sampleService;
 
-    @RequestMapping("getSampleList.json")
+    @RequestMapping(value = { "getSampleList.json", "getSampleList.xlsx" })
     public List<Map<String, Object>> getSampleList(@RequestBody(required = false) Map<String, Object> vo) {
         return sampleService.getSampleList(vo);
     }

@@ -20,7 +20,7 @@ spring:
       #validationQuery: select 1 from dual
       #test-on-borrow: true
   messages:
-    basename: messages/message
+    basename: messages/message-common
     encoding: UTF-8
     use-code-as-default-message: true
     cache-duration: 60
@@ -72,7 +72,7 @@ logging:
 spring:
   profiles: prod
   messages:
-    cache-duration: 
+    cache-duration: -1
   thymeleaf:
     cache: true
     

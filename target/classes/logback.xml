@@ -17,7 +17,7 @@ jdbc.connection : Logs connection open and close events
 
 	<logger name="jdbc" level="OFF" />
 
-	<logger name="jdbc.sqlonly" level="DEBUG" additivity="false">
+	<logger name="jdbc.sqlonly" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
@@ -28,7 +28,7 @@ jdbc.connection : Logs connection open and close events
 	<logger name="com.naturaljs" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-	
+
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
