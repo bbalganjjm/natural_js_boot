@@ -74,7 +74,7 @@ public class FileController {
 		model.addAttribute("fileUploadMaxEach", fileUploadMaxEach);
 		model.addAttribute("fileUploadMaxAll", fileUploadMaxAll);
 
-		return "comm/file/manager";
+		return "common/file/manager";
 	}
 
 	@RequestMapping(value = "saveFile.json", method = RequestMethod.POST)

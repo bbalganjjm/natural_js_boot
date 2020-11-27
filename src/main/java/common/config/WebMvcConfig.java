@@ -161,7 +161,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public ExceptionResolver exceptionResolver() {
         ExceptionResolver er = new ExceptionResolver();
         er.setJson("jsonView");
-        er.setForm("comm/error/500"); // web(thymeleaf) form request
+        er.setForm("common/error/500"); // web(thymeleaf) form request
         return er;
     }
 
