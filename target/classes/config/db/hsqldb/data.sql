@@ -1,4 +1,5 @@
 -- SAMPLE TABLE
+DELETE FROM SAMPLE;
 INSERT INTO SAMPLE(dept_cd,index,guid,is_active,balance,picture,age,eye_color,name,gender,company,email,phone,address,about,registered,latitude,longitude,greeting,favorite_fruit) VALUES ('C-PROSELY',RAND() * 1000,'1a9e5450-c664-4bfd-8174-d03005eca08d','Y',1284.38,'http://placehold.it/32x32',26,'green','Dean Stanley','male','SALESFORCE','deanstanley@zentia.com','010-409-2680','936 Meserole Street, Vicksburg, Massachusetts, 1198','Mollit elit qui reprehenderit fugiat excepteur adipisicing sunt id proident laborum sint proident.
 Amet cupidatat ipsum do irure qui magna sunt pariatur commodo eiusmod ipsum qui ad culpa.
 Nisi tempor cupidatat do tempor reprehenderit irure consectetur cupidatat deserunt fugiat.
@@ -338,6 +339,7 @@ INSERT INTO SAMPLE(dept_cd,index,guid,is_active,balance,picture,age,eye_color,na
 ',CURRENT_DATE,-20.5024,-118.271754,'Hello, Donovan Mercado! You have 3 unread messages.','strawberry');
 
 -- SAMPLE_CODE TABLE
+DELETE FROM SAMPLE_CODE;
 INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('gender', 'male', 'male');
 INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('gender', 'female', 'female');
 INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('eyeColor', 'blue', 'blue');
@@ -359,6 +361,7 @@ INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('favoriteFruit', 'banana', 'ban
 
 
 -- SAMPLE_DEPT TABLE
+DELETE FROM SAMPLE_DEPT;
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('ROOT', null, 'Department', 1);
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('C-PROSELY', 'ROOT', 'PROSELY', 2);
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('C-ASSISTIX', 'ROOT', 'ASSISTIX', 2);

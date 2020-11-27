@@ -23,7 +23,7 @@ public class SampleDeptController {
 	@Resource(name = "sampleDeptService")
 	SampleDeptServiceImpl sampleDeptService;
 
-	@RequestMapping("getSampleDeptList")
+	@RequestMapping("getSampleDeptList.json")
 	public List<Map<String, Object>> getSampleDeptList(@RequestBody(required = false) Map<String, Object> vo) {
 		return sampleDeptService.getSampleDeptList(vo);
 	}

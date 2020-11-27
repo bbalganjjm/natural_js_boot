@@ -3,6 +3,7 @@ package common.config;
 import javax.sql.DataSource;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import common.mybatis.MapWrapperFactory;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
@@ -49,5 +52,15 @@ public class NaturalJSBootApplication {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Bean
+    public ConfigurationCustomizer mybatisConfigurationCustomizer(){
+        return new ConfigurationCustomizer() {
+            @Override
+            public void customize(org.apache.ibatis.session.Configuration configuration) {
+                configuration.setObjectWrapperFactory(new MapWrapperFactory());
+            }
+        };
     }
 }

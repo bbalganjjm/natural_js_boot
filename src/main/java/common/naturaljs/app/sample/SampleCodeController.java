@@ -23,12 +23,12 @@ public class SampleCodeController {
 	@Resource(name = "sampleCodeService")
 	SampleCodeServiceImpl sampleCodeService;
 
-	@RequestMapping("getSampleCodeList")
+	@RequestMapping("getSampleCodeList.json")
 	public List<Map<String, Object>> getSampleCodeList(@RequestBody Map<String, Object> vo) {
 		return sampleCodeService.getSampleCodeList(vo);
 	}
 
-	@RequestMapping("getSampleCodeCompanyList")
+	@RequestMapping("getSampleCodeCompanyList.json")
 	public List<Map<String, Object>> getSampleCodeCompanyList(@RequestBody(required = false) Map<String, Object> vo) {
 		return sampleCodeService.getSampleCodeCompanyList(vo);
 	}

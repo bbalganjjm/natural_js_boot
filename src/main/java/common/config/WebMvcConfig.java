@@ -134,7 +134,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public ContentNegotiationManagerFactoryBean contentNegotiationManager() {
         ContentNegotiationManagerFactoryBean cnmfb = new ContentNegotiationManagerFactoryBean();
         cnmfb.setIgnoreAcceptHeader(true);
-        cnmfb.setDefaultContentType(MediaType.TEXT_HTML);
+        cnmfb.setDefaultContentType(MediaType.APPLICATION_JSON);
         cnmfb.addMediaType("json", MediaType.APPLICATION_JSON);
         cnmfb.addMediaType("view", MediaType.TEXT_HTML);
         cnmfb.addMediaType("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
@@ -150,8 +150,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         cnvr.setViewResolvers(viewResolvers);
 
         List<View> defaultViews = new ArrayList<View>();
-        defaultViews.add(new XlsxStreamingView());
         defaultViews.add(jsonView());
+        defaultViews.add(new XlsxStreamingView());
         cnvr.setDefaultViews(defaultViews);
 
         return cnvr;
