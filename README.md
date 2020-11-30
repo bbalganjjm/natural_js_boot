@@ -149,10 +149,10 @@ http://localhost:8080/index.html
 
 # 프로젝트 구성
 
-프로젝트의 기술 요소들은 다음과 같이 구성되어 있습니다.
+Natural-Js Boot의 기술 요소들은 다음과 같이 구성되어 있습니다.
 * **Front-End**
      * 기반기술 : HTML5, CSS3, Javascript(ECMA4+), jQuery v1.12.4
-     * 프레임워크 : Natural-JS
+     * 프레임워크 : Natural-JS(Natural-TEMPLATE)
      * 지원브라우저 : Internet Explorer 11, Chrome 최신버전, Opera 최신버전, Firefox 최신버전, Eage 최신버전
 
 * **Back-End**
