@@ -1,7 +1,7 @@
 Natural-JS Boot
 ===
-Natural-JS BOOT는 [Natural-JS](https://bbalganjjm.github.io/natural_js)(Natural-TEMPLATE)와 Spring Boot 로 구성된 MSA(Micro Service Architecture) 기반 웹 개발을 위한 최고의 Start-Up 키트 입니다.
-Natural-JS BOOT는 아키텍처 프레임웍와 더불어 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 기능을 제공합니다.
+Natural-JS Boot는 [Natural-JS](https://bbalganjjm.github.io/natural_js)(Natural-TEMPLATE)와 Spring Boot 로 구성된 MSA(Micro Service Architecture) 기반 웹 개발을 위한 최고의 Start-Up 키트 입니다.
+Natural-JS Boot는 아키텍처 프레임웍와 더불어 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 기능을 제공합니다.
 
 ## 설치
 
