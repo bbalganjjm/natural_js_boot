@@ -1,4 +1,4 @@
-package common.naturaljs.app.sample.mappers;
+package common.app.code.mappers;
 
 import java.util.List;
 import java.util.Map;

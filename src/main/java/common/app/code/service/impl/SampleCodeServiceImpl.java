@@ -1,4 +1,4 @@
-package common.naturaljs.app.sample.service.impl;
+package common.app.code.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import common.naturaljs.app.sample.mappers.SampleCodeMapper;
+import common.app.code.mappers.SampleCodeMapper;;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )

@@ -1,4 +1,4 @@
-package common.naturaljs.app.sample;
+package common.app.code;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import common.naturaljs.app.sample.service.impl.SampleCodeServiceImpl;
+import common.app.code.service.impl.SampleCodeServiceImpl;;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
