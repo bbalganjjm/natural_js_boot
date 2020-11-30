@@ -36,10 +36,10 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-import common.app.file.FileView;
 import common.exception.ExceptionResolver;
 import common.filter.XSSFilter;
 import common.interceptor.PermissionCheckInterceptor;
+import common.views.FileView;
 import common.views.XlsxStreamingView;
 
 @Configuration

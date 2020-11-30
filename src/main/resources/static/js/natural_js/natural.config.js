@@ -922,7 +922,7 @@
              * @codeKey Property name of common code classification code
              */
             codes : {
-                codeUrl : "sample/code/getCommonCodeList.json",
+                codeUrl : "code/getCommonCodeList.json",
                 codeKey : "code"
             }
         },

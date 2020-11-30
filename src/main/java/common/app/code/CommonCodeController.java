@@ -17,7 +17,7 @@ import common.app.code.service.impl.CommonCodeServiceImpl;;
  */
 
 @Controller
-@RequestMapping("sample/code")
+@RequestMapping("code")
 public class CommonCodeController {
 
 	@Resource(name = "sampleCodeService")

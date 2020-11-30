@@ -1,4 +1,4 @@
-package common.app.file;
+package common.views;
 
 import java.io.File;
 import java.io.FileInputStream;
