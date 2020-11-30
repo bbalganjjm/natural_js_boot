@@ -3,8 +3,8 @@ Natural-JS Boot
 Natural-JS BOOT는 [Natural-JS](https://bbalganjjm.github.io/natural_js)(Natural-TEMPLATE)와 Spring Boot 로 구성된 MSA(Micro Service Architecture) 기반 웹 개발을 위한 최고의 Start-Up 키트 입니다.
 Natural-JS BOOT는 아키텍처 프레임웍와 더불어 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 기능을 제공합니다.
 
-설치
-===
+## 설치
+
 [eclipse]: https://www.eclipse.org
 [eclipse-download]: https://www.eclipse.org/downloads/eclipse-packages/
 [jdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -20,19 +20,6 @@ Natural-JS BOOT는 아키텍처 프레임웍와 더불어 개인정보보호, �
 [img-8]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/8.png
 [img-9]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/9.png
 
-## 샘플 프로젝트 구성
-
-샘플 프로젝트의 기반 기술은 다음과 같이 구성되어 있습니다.
-* **Front-End**
-     * 언어 : HTML, CSS, Javascript
-     * 프레임워크 : Natural-JS
-* **Back-End**
-     * 언어 : JAVA
-     * 프레임워크 : Spring Boot
-     * DB : HSQLDB
-
-## 설치
-
 ### 1. 이클립스 설치
 [이클립스][eclipse] 사이트에서 Eclipse IDE for Java EE Developers를 [다운로드][eclipse-download]해서 압축을 해제하고 eclipse.exe 파일을 실행합니다.
 >이클립스를 구동하기 위해서는 [Java SE Development Kit][jdk]이 설치되어 있어야 합니다.
@@ -46,7 +33,7 @@ Natural-JS BOOT는 아키텍처 프레임웍와 더불어 개인정보보호, �
 
 설치가 완료되었으면 이클립스를 재시작합니다.
 
-### 2. 샘플 프로젝트 내려받기
+### 2. 프로젝트 내려받기
 이클립스 실행이 완료되었으면 이클립스에서 다음 순서대로 실행합니다.
 
 먼저 아래 URL을 선택 후 복사(Ctrl + C)합니다. 복사만 해 두면 됩니다.
@@ -162,7 +149,7 @@ http://localhost:8080/index.html
 
 # 프로젝트 구성
 
-샘플 프로젝트의 기술 요소들은 다음과 같이 구성되어 있습니다.
+프로젝트의 기술 요소들은 다음과 같이 구성되어 있습니다.
 * **Front-End**
      * 기반기술 : HTML5, CSS3, Javascript(ECMA4+), jQuery v1.12.4
      * 프레임워크 : Natural-JS
