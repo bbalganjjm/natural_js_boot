@@ -104,7 +104,7 @@ public class FileController {
 		MultipartFile mFile;
 		String fileName;
 		String fileNameExt;
-		String copyFileName;
+		String strdFileName;
 
 
 		Map<String, Object> paramMap;
@@ -136,14 +136,14 @@ public class FileController {
 
 			fileName = mFile.getOriginalFilename();
 			fileNameExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-			copyFileName = UUID.randomUUID().toString();
+			strdFileName = UUID.randomUUID().toString();
 
 			paramMap.put("fileName", fileName);
 			paramMap.put("fileNameExt", fileNameExt);
 			paramMap.put("fileSize", mFile.getSize());
 			fileSizeSum += mFile.getSize();
-			paramMap.put("copyFilePath", fileUploadPath);
-			paramMap.put("copyFileName", copyFileName);
+			paramMap.put("strdFilePath", fileUploadPath);
+			paramMap.put("strdFileName", strdFileName);
 
 			// 파일 확장자 체크
 			for(int i=0; i < fileNotAllowExts.length; i++) {
@@ -169,9 +169,9 @@ public class FileController {
 			}
 
 			if(logger.isDebugEnabled()) {
-				logger.debug("File to upload : " + fileName + "(" + fileUploadPath + File.separator + copyFileName + ")");
+				logger.debug("File to upload : " + fileName + "(" + fileUploadPath + File.separator + strdFileName + ")");
 			}
-			mFile.transferTo(new File(fileUploadPath + File.separator + copyFileName));
+			mFile.transferTo(new File(fileUploadPath + File.separator + strdFileName));
 
 			saveFileList.add(paramMap);
 		}
@@ -191,8 +191,8 @@ public class FileController {
 		vo.put("fileSeq", fileSeq);
 		Map<String, Object> fileInfo = fileService.getFile(vo);
 
-		model.addAttribute("copyFilePath", fileInfo.get("copyFilePath"));
-	    model.addAttribute("copyFileName", fileInfo.get("copyFileName"));
+		model.addAttribute("strdFilePath", fileInfo.get("strdFilePath"));
+	    model.addAttribute("strdFileName", fileInfo.get("strdFileName"));
 	    model.addAttribute("fileName", fileInfo.get("fileName"));
 
 	    return "fileView";
@@ -202,7 +202,7 @@ public class FileController {
 	public void deleteFile(@RequestBody Map<String, Object> vo) throws Exception {
 		Map<String, Object> fileInfo = fileService.getFile(vo);
 
-		File uploadedFile = new File(fileInfo.get("copyFilePath") + File.separator + fileInfo.get("copyFileName"));
+		File uploadedFile = new File(fileInfo.get("strdFilePath") + File.separator + fileInfo.get("strdFileName"));
 		if(!uploadedFile.delete()) {
 			throw new CommonException(-28);
 		}
@@ -222,7 +222,7 @@ public class FileController {
 		Iterator<Map<String, Object>> iter = saveFileList.iterator();
 		while (iter.hasNext()) {
 			Map<String, Object> fileInfo = (Map<String, Object>) iter.next();
-			File uploadedFile = new File(fileInfo.get("copyFilePath") + File.separator + fileInfo.get("copyFileName"));
+			File uploadedFile = new File(fileInfo.get("strdFilePath") + File.separator + fileInfo.get("strdFileName"));
 			if(!uploadedFile.delete()) {
 				if(logger.isWarnEnabled()) {
 					logger.warn(messageSource.getMessage("-29", new String[] { uploadedFile.getName() }, Locale.getDefault()));

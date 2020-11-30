@@ -19,11 +19,11 @@ public class FileView extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> fileMap, HttpServletRequest request,
 	        HttpServletResponse response) throws Exception {
 
-		String copyFilePath = (String) fileMap.get("copyFilePath");
-		String copyFileName = (String) fileMap.get("copyFileName");
+		String strdFilePath = (String) fileMap.get("strdFilePath");
+		String strdFileName = (String) fileMap.get("strdFileName");
 		String fileName = (String) fileMap.get("fileName");
 
-		File file = new File(copyFilePath + File.separator + copyFileName);
+		File file = new File(strdFilePath + File.separator + strdFileName);
 
 		int contentLength = (int) file.length();
 

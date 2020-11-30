@@ -37,8 +37,8 @@ public class FileServiceImpl implements FileService {
 			i++;
 			vo.put("uploadFileCnt", i);
 		}
-		vo.remove("copyFileName");
-		vo.remove("copyFilePath");
+		vo.remove("strdFileName");
+		vo.remove("strdFilePath");
 		vo.remove("fileName");
 		vo.remove("fileNameExt");
 		vo.remove("fileSize");

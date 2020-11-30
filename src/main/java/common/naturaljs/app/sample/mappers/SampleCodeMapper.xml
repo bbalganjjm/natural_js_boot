@@ -6,7 +6,7 @@
     <select id="getSampleCodeList" parameterType="java.util.Map" resultType="java.util.Map">
         /* common.naturaljs.app.sample.mappers.SampleMapper.getSampleList */
         SELECT *
-          FROM sample_code
+          FROM COMMON_CODE
         <trim prefix="WHERE" prefixOverrides="AND |OR ">
             <if test="codes != null">
                 AND code IN
@@ -20,7 +20,7 @@
     <select id="getSampleCodeCompanyList" parameterType="java.util.Map" resultType="java.util.Map">
         /* common.naturaljs.app.sample.mappers.SampleMapper.getSampleCodeCompanyList */
         SELECT *
-          FROM sample_code
+          FROM COMMON_CODE
          WHERE code = 'company'
         <if test="company != null and company != ''">
             AND val like UPPER('%' || #{company} || '%')

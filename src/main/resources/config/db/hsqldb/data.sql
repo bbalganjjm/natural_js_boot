@@ -338,26 +338,26 @@ INSERT INTO SAMPLE(dept_cd,index,guid,is_active,balance,picture,age,eye_color,na
 INSERT INTO SAMPLE(dept_cd,index,guid,is_active,balance,picture,age,eye_color,name,gender,company,email,phone,address,about,registered,latitude,longitude,greeting,favorite_fruit) VALUES ('C-ASSISTIX',RAND() * 1000,'36f54c25-33d3-4f8c-830c-b425b2b97ece','Y',2747.08,'http://placehold.it/32x32',32,'blue','Donovan Mercado','male','SALESFORCE','donovanmercado@xth.com','010-476-2428','960 Rapelye Street, Marne, Minnesota, 3803','Exercitation labore cillum veniam id amet. Proident deserunt laborum exercitation ex sit. Cupidatat esse esse mollit aliqua. Dolore dolore culpa fugiat ad velit consectetur sit deserunt et adipisicing ipsum veniam cillum exercitation. Irure ipsum Lorem id reprehenderit fugiat nostrud dolore qui. Lorem officia eu et consequat.
 ',CURRENT_DATE,-20.5024,-118.271754,'Hello, Donovan Mercado! You have 3 unread messages.','strawberry');
 
--- SAMPLE_CODE TABLE
-DELETE FROM SAMPLE_CODE;
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('gender', 'male', 'male');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('gender', 'female', 'female');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('eyeColor', 'blue', 'blue');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('eyeColor', 'brown', 'brown');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('eyeColor', 'green', 'green');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'APPLE', 'APPLE');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'ORACLE', 'ORACLE');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'MICROSOFT', 'MICROSOFT');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'SAP', 'SAP');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'AWS', 'AWS');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'FACEBOOK', 'FACEBOOK');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'GOOGLE', 'GOOGLE');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'IBM', 'IBM');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'SALESFORCE', 'SALESFORCE');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('company', 'SAMSUNG', 'SAMSUNG');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('favoriteFruit', 'apple', 'apple');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('favoriteFruit', 'strawberry', 'strawberry');
-INSERT INTO SAMPLE_CODE (code, key, val) VALUES ('favoriteFruit', 'banana', 'banana');
+-- COMMON_CODE TABLE
+DELETE FROM COMMON_CODE;
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('gender', 'male', 'male');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('gender', 'female', 'female');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('eyeColor', 'blue', 'blue');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('eyeColor', 'brown', 'brown');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('eyeColor', 'green', 'green');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'APPLE', 'APPLE');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'ORACLE', 'ORACLE');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'MICROSOFT', 'MICROSOFT');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'SAP', 'SAP');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'AWS', 'AWS');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'FACEBOOK', 'FACEBOOK');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'GOOGLE', 'GOOGLE');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'IBM', 'IBM');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'SALESFORCE', 'SALESFORCE');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('company', 'SAMSUNG', 'SAMSUNG');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('favoriteFruit', 'apple', 'apple');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('favoriteFruit', 'strawberry', 'strawberry');
+INSERT INTO COMMON_CODE (code, key, val) VALUES ('favoriteFruit', 'banana', 'banana');
 
 
 -- SAMPLE_DEPT TABLE
