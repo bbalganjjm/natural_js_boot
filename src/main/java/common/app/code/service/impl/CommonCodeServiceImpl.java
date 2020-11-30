@@ -13,18 +13,18 @@ import common.app.code.mappers.CommonCodeMapper;;
  * @since 2018.12.05
  */
 
-@Service("sampleCodeService")
+@Service("commonCodeService")
 public class CommonCodeServiceImpl {
 
 	@Autowired
-	private CommonCodeMapper sampleCodeMapper;
+	private CommonCodeMapper commonCodeMapper;
 
 	public List<Map<String, Object>> getCommonCodeList(Map<String, Object> vo) {
-		return sampleCodeMapper.getCommonCodeList(vo);
+		return commonCodeMapper.getCommonCodeList(vo);
 	}
 
 	public List<Map<String, Object>> getCommonCodeCompanyList(Map<String, Object> vo) {
-		return sampleCodeMapper.getCommonCodeCompanyList(vo);
+		return commonCodeMapper.getCommonCodeCompanyList(vo);
 	}
 
 }

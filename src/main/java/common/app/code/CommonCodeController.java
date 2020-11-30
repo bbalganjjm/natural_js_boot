@@ -20,17 +20,17 @@ import common.app.code.service.impl.CommonCodeServiceImpl;;
 @RequestMapping("code")
 public class CommonCodeController {
 
-	@Resource(name = "sampleCodeService")
-	CommonCodeServiceImpl sampleCodeService;
+	@Resource(name = "commonCodeService")
+	CommonCodeServiceImpl commonCodeService;
 
 	@RequestMapping("getCommonCodeList.json")
 	public List<Map<String, Object>> getCommonCodeList(@RequestBody Map<String, Object> vo) {
-		return sampleCodeService.getCommonCodeList(vo);
+		return commonCodeService.getCommonCodeList(vo);
 	}
 
 	@RequestMapping("getCommonCodeCompanyList.json")
 	public List<Map<String, Object>> getCommonCodeCompanyList(@RequestBody(required = false) Map<String, Object> vo) {
-		return sampleCodeService.getCommonCodeCompanyList(vo);
+		return commonCodeService.getCommonCodeCompanyList(vo);
 	}
 
 }
