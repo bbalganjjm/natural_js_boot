@@ -181,7 +181,7 @@
             "code" : "favoriteFruit"
         },
         "p.select.age" : {
-            "comm" : "c.getSampleCodeList",
+            "comm" : "c.getCommonCodeList",
             key : "age",
             val : "age",
             "filter" : function(data) {
@@ -228,7 +228,7 @@
                 }
             }
         },
-        "c.getSampleCodeList" : function() {
+        "c.getCommonCodeList" : function() {
             return N.comm("sample/getSampleList.json");
         },
         "c.getSampleList" : function() {

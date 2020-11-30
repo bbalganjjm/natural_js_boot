@@ -229,8 +229,8 @@
                 }
             }
         },
-        "c.getSampleCodeCompanyList" : function() {
-            return cont["p.form.search"].data(false).comm("sample/code/getSampleCodeCompanyList.json");
+        "c.getCommonCodeCompanyList" : function() {
+            return cont["p.form.search"].data(false).comm("sample/code/getCommonCodeCompanyList.json");
         },
         "c.getSampleList" : function() {
             var params = {};
@@ -252,7 +252,7 @@
             N.docs.createLoadIndicator.call(APP.indx.docs);
             
             if (cont["p.form.search"].validate()) {
-                cont["c.getSampleCodeCompanyList"]().submit(function(data) {
+                cont["c.getCommonCodeCompanyList"]().submit(function(data) {
                     cont["p.list.codeMaster"].bind(data);
                 });
             }
@@ -261,7 +261,7 @@
             e.preventDefault();
 
             if (cont["p.form.search"].validate()) {
-                cont["c.getSampleCodeCompanyList"]().excelStreaming([ "N.list 목록", {
+                cont["c.getCommonCodeCompanyList"]().excelStreaming([ "N.list 목록", {
                     "code" : "코드구분",
                     "key" : "회사명",
                     "val" : "회사코드"

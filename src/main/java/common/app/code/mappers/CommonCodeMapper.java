@@ -11,10 +11,10 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 @Mapper
-public interface SampleCodeMapper {
+public interface CommonCodeMapper {
 
-	public List<Map<String, Object>> getSampleCodeList(Map<String, Object> vo);
+	public List<Map<String, Object>> getCommonCodeList(Map<String, Object> vo);
 
-	public List<Map<String, Object>> getSampleCodeCompanyList(Map<String, Object> vo);
+	public List<Map<String, Object>> getCommonCodeCompanyList(Map<String, Object> vo);
 
 }

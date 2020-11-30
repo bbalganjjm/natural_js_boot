@@ -168,7 +168,7 @@
         "p.select.eyeColor" : [ "eyeColor" ],
         "p.select.company" : [ "company" ],
         "p.select.favoriteFruit" : [ "favoriteFruit" ],
-        "p.select.age" : [ "c.getSampleCodeList", "age", "age", function(data) {
+        "p.select.age" : [ "c.getCommonCodeList", "age", "age", function(data) {
             return N(N.array.deduplicate(data, "age")).datasort("age");
         }],
         "p.form.search" : {
@@ -238,7 +238,7 @@
                 }
             }
         },
-        "c.getSampleCodeList" : function() {
+        "c.getCommonCodeList" : function() {
             return N.comm("sample/getSampleList.json");
         },
         "c.getSampleList" : function() {

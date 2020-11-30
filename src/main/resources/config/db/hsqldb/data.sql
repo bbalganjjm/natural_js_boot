@@ -362,7 +362,7 @@ INSERT INTO COMMON_CODE (code, key, val) VALUES ('favoriteFruit', 'banana', 'ban
 
 -- SAMPLE_DEPT TABLE
 DELETE FROM SAMPLE_DEPT;
-INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('ROOT', null, 'Department', 1);
+INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('ROOT', '', 'Department', 1);
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('C-PROSELY', 'ROOT', 'PROSELY', 2);
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('C-ASSISTIX', 'ROOT', 'ASSISTIX', 2);
 INSERT INTO SAMPLE_DEPT (dept_cd, p_dept_cd, dept_nm, dept_lv) VALUES ('C-IDETICA', 'ROOT', 'IDETICA', 2);

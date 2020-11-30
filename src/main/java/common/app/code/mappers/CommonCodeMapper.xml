@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="common.app.code.mappers.SampleCodeMapper">
+<mapper namespace="common.app.code.mappers.CommonCodeMapper">
 
-    <select id="getSampleCodeList" parameterType="java.util.Map" resultType="java.util.Map">
+    <select id="getCommonCodeList" parameterType="java.util.Map" resultType="java.util.Map">
         /* c.a.c.m.SampleMapper.getSampleList */
         SELECT *
           FROM COMMON_CODE
@@ -17,8 +17,8 @@
         </trim>
     </select>
 
-    <select id="getSampleCodeCompanyList" parameterType="java.util.Map" resultType="java.util.Map">
-        /* c.a.c.m.SampleMapper.getSampleCodeCompanyList */
+    <select id="getCommonCodeCompanyList" parameterType="java.util.Map" resultType="java.util.Map">
+        /* c.a.c.m.SampleMapper.getCommonCodeCompanyList */
         SELECT *
           FROM COMMON_CODE
          WHERE code = 'company'

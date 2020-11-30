@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="common.file.mappers.FileMapper">
+<mapper namespace="common.app.file.mappers.FileMapper">
 
 	<select id="getFileList" parameterType="java.util.Map" resultType="java.util.Map">
-		/* c.f.m.FileMapper.getFileList */
+		/* c.a.f.m.FileMapper.getFileList */
         SELECT FILE_SEQ,
                FILE_NAME,
                FILE_NAME_EXT,
@@ -14,7 +14,7 @@
 	</select>
 
 	<select id="getFile" parameterType="java.util.Map" resultType="java.util.Map">
-	    /* c.f.m.FileMapper.getFile */
+	    /* c.a.f.m.FileMapper.getFile */
         SELECT FILE_NAME,
                FILE_NAME_EXT,
                FILE_SIZE,
@@ -26,7 +26,7 @@
 	</select>
 
 	<insert id="insertFile" parameterType="java.util.Map">
-	 /* c.f.m.FileMapper.insertFile */
+	 /* c.a.f.m.FileMapper.insertFile */
      INSERT INTO COMMON_FILE (
             FILE_ID,
             FILE_NAME,
@@ -45,7 +45,7 @@
 	</insert>
 
 	<delete id="deleteFile" parameterType="java.util.Map">
-        /* c.f.m.FileMapper.deleteFile */
+        /* c.a.f.m.FileMapper.deleteFile */
         DELETE
           FROM COMMON_FILE
          WHERE FILE_ID = #{fileId}
