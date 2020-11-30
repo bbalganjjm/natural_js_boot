@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="common.naturaljs.app.sample.mappers.SampleDeptMapper">
+<mapper namespace="common.app.sample.mappers.SampleDeptMapper">
 
     <select id="getSampleDeptList" parameterType="java.util.Map" resultType="java.util.Map">
-        /* common.naturaljs.app.sample.mappers.SampleMapper.getSampleDeptList */
+        /* c.a.s.m.SampleMapper.getSampleDeptList */
         SELECT dept_cd,
                p_dept_cd,
                dept_nm,
