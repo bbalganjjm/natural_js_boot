@@ -1,4 +1,4 @@
-package common.file.mappers;
+package common.app.file.mappers;
 
 import java.util.List;
 import java.util.Map;

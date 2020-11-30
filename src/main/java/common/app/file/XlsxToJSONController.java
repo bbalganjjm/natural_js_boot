@@ -1,4 +1,4 @@
-package common.file;
+package common.app.file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,8 +30,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import common.app.file.service.XlsxFIleService;
 import common.exception.CommonException;
-import common.file.service.XlsxFIleService;
 import common.utils.SecurityUtils;
 
 /**

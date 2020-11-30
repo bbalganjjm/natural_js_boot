@@ -1,4 +1,4 @@
-package common.file.service;
+package common.app.file.service;
 
 import java.util.List;
 import java.util.Map;

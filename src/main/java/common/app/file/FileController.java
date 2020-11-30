@@ -1,4 +1,4 @@
-package common.file;
+package common.app.file;
 
 import java.io.File;
 import java.lang.invoke.MethodHandles;
@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import common.app.file.service.FileService;
 import common.exception.CommonException;
-import common.file.service.FileService;
 import common.utils.SecurityUtils;
 
 /**

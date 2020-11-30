@@ -1,4 +1,4 @@
-package common.file.service.impl;
+package common.app.file.service.impl;
 
 import java.util.Iterator;
 import java.util.List;
@@ -8,8 +8,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import common.file.mappers.FileMapper;
-import common.file.service.FileService;
+import common.app.file.mappers.FileMapper;
+import common.app.file.service.FileService;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
