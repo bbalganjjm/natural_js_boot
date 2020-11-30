@@ -3,7 +3,7 @@
 
 <mapper namespace="common.app.sample.mappers.SampleMapper">
 
-	<select id="getSampleList" parameterType="java.util.Map" resultType="java.util.Map">
+	<select id="getSampleList" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
 		/* c.a.s.m.SampleMapper.getSampleList */
        SELECT
                <if test="startRowNum != null and startRowNum != '' and countPerPage != null and countPerPage != ''">
@@ -81,7 +81,7 @@
         </if>
 	</select>
 
-	<select id="getSampleBigList" parameterType="java.util.Map" resultType="java.util.Map" fetchSize="1000">
+	<select id="getSampleBigList" parameterType="java.util.Map" resultType="java.util.LinkedHashMap" fetchSize="1000">
         /* c.a.s.m.SampleMapper.getSampleBigList */
         SELECT index || '-' || LPAD(ROWNUM, 6, '0') AS index, name, email, phone, age, gender, eye_color, favorite_fruit
           FROM sample, sample
