@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ShellController {
 
     @RequestMapping("index.view")
-    public String index(@RequestBody(required = false) Map<String, Object> vo) {
+    public String index() {
         return "comm/shell/index";
     }
 
     @RequestMapping("header.view")
-    public String header(@RequestBody(required = false) Map<String, Object> vo) {
+    public String header() {
         return "comm/shell/header";
     }
 
     @RequestMapping("contents.view")
-    public String contents(@RequestBody(required = false) Map<String, Object> vo) {
+    public String contents() {
         return "comm/shell/contents";
     }
 
     @RequestMapping("lefter.view")
-    public String lefter(@RequestBody(required = false) Map<String, Object> vo) {
+    public String lefter() {
         return "comm/shell/lefter";
     }
 
     @RequestMapping("footer.view")
-    public String footer(@RequestBody(required = false) Map<String, Object> vo) {
+    public String footer() {
         return "comm/shell/footer";
     }
 }
