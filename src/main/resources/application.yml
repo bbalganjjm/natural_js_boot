@@ -42,6 +42,18 @@ server:
   error:
     include-exception: true
     include-stacktrace: always
+  compression:
+    enabled: true
+    mime-types:
+    - application/json
+    - application/xml
+    - text/html
+    - text/xml
+    - text/plain
+    - text/css
+    - text/javascript
+    - application/javascript
+    min-response-size: 2048
 
 mybatis:
   configuration:
