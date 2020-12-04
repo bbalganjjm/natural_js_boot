@@ -1204,12 +1204,12 @@ Cross Site Scripting(XSS) 공격을 차단하기 위해 서버에는 XSS 공격 
 
 | 문자 | HTML 특수문자 코드 |
 | :--: | :--: |
-| `&amp;` | `&amp;amp;` |
-| `/` | `&amp;#x2F;` |
-| `<` | `&amp;lt;` |
-| `>` | `&amp;gt;` |
-| `'` | `&amp;#x27;` |
-| `\` | `&amp;quot;` |
+| `&` | `&amp;` |
+| `/` | `&#x2F;` |
+| `<` | `&lt;` |
+| `>` | `&gt;` |
+| `'` | `&#x27;` |
+| `\` | `&quot;` |
 
 HttpServletRequest.getParametor()로 값을 가져올 수 있는 GET이나 POST 요청 뿐만 아니라 Natural-JS의 N.comm에 의해 Request Body에 실려 넘어오는 JSON 문자열도
 Controller 메서드들의 Map이나 List 타입의 인자로 변환되면서 XSS Filter가 적용됩니다.
