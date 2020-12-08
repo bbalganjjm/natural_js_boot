@@ -1220,3 +1220,20 @@ src/main/resources/egovframework/egovProps/globals.properties 파일의 xss.excl
 
 
 src/main/resources/egovframework/egovProps/globals.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
+
+
+
+Supports
+===
+
+### Support browsers
+
+* PC : Internet Explorer 8 or later(Optimized for Internet Explorer 9 or later), Chrome, Firefox, Safari(OSX), Opera latest version
+* Mobile : iOS Safari, iOS UIWebView, Android Browser, Android Chrome, Android WebView
+
+### Training and support
+
+* Please contact us at <bbalganjjm@gmail.com>.
+
+### License
+This software is licensed under the [LGPL v2.1](https://github.com/bbalganjjm/natural_js/blob/master/LICENSE) &copy; KIM HWANG MAN&lt;<bbalganjjm@gmail.com>&gt;
