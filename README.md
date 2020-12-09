@@ -1221,8 +1221,7 @@ src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속�
 
 
 
-Supports
-===
+#Supports
 
 ### Support browsers
 
