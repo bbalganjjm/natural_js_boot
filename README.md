@@ -1133,8 +1133,9 @@ if(Condition) {
 }
 ```
 
-메시지 프로퍼티는 src/main/resources/messages 폴더의 message-{업무대분류코드}.properties 파일에(없으면 생성 바람) {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
+메시지 프로퍼티는 src/main/resources/messages 폴더의 message-{업무대분류코드}.properties 파일에 {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
 
+> src/main/resources/messages/message-{업무대분류코드}.properties 파일이 없으면 application.yml 파일의 messages 속성의 basename 속성값에 ", message-{업무대분류코드}"를 추가하고 파일을 생성해야 합니다.
 >메시지에 대한 파라미터는  BizException 생성자 함수의 두 번째 인자(Array 타입)로 지정 가능하고 메시지의 변수는 파라미터 배열의 순서에 따라 {0}, {1}, {2} 와같이 선언합니다.
 
 ```text
