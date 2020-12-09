@@ -9,8 +9,8 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 목차
 ===
 * [설치](#설치)
-    * [1. 이클립스 설치](#1-이클립스-설치)
-    * [2. 프로젝트 내려받기](#2-프로젝트-내려받기)
+    * [이클립스 설치](#1-이클립스-설치)
+    * [프로젝트 내려받기](#2-프로젝트-내려받기)
 
 * [프로젝트 구성](#프로젝트-구성)
 
@@ -63,9 +63,9 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
         * [6.4. XSS 공격 차단](#64-xss-공격-차단)
 
 * [Supports](#supports)
-    * [1. Support browsers](#1-support-browsers)
-    * [2. Training and support](#2-training-and-support)
-    * [3. License](#3-license)
+    * [Support browsers](#1-support-browsers)
+    * [Training and support](#2-training-and-support)
+    * [License](#3-license)
 
 # 설치
 
@@ -84,7 +84,7 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 [img-8]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/8.png
 [img-9]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/9.png
 
-### 1. 이클립스 설치
+### 이클립스 설치
 [이클립스][eclipse] 사이트에서 Eclipse IDE for Java EE Developers를 [다운로드][eclipse-download]해서 압축을 해제하고 eclipse.exe 파일을 실행합니다.
 >이클립스를 구동하기 위해서는 [Java SE Development Kit][jdk]이 설치되어 있어야 합니다.
 
@@ -97,7 +97,7 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 
 설치가 완료되었으면 이클립스를 재시작합니다.
 
-### 2. 프로젝트 내려받기
+### 프로젝트 내려받기
 이클립스 실행이 완료되었으면 이클립스에서 다음 순서대로 실행합니다.
 
 먼저 아래 URL을 선택 후 복사(Ctrl + C)합니다. 복사만 해 두면 됩니다.
@@ -1232,14 +1232,14 @@ src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속�
 
 # Supports
 
-### 1. Support browsers
+### Support browsers
 
 * PC : Internet Explorer 8 or later(Optimized for Internet Explorer 9 or later), Chrome, Firefox, Safari(OSX), Opera latest version
 * Mobile : iOS Safari, iOS UIWebView, Android Browser, Android Chrome, Android WebView
 
-### 2. Training and support
+### Training and support
 
 * Please contact us at <bbalganjjm@gmail.com>
 
-### 3. License
+### License
 This software is licensed under the [LGPL v2.1](https://github.com/bbalganjjm/natural_js/blob/master/LICENSE) &copy; KIM HWANG MAN&lt;<bbalganjjm@gmail.com>&gt;
