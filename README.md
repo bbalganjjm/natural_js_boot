@@ -161,11 +161,11 @@ Natural-Js Boot의 기술 요소들은 다음과 같이 구성되어 있습니�
      * DB : HSQLDB(Sample DB)
 
 
-#Front-End 개발
-###Natrual-JS의 기본적인 사용법과 컴포넌트의 옵션은 [Natrual-JS 홈페이지의 API/DEMO](https://bbalganjjm.github.io/natural_js)를 참고 바랍니다.
+# Front-End 개발
+### Natrual-JS의 기본적인 사용법과 컴포넌트의 옵션은 [Natrual-JS 홈페이지의 API/DEMO](https://bbalganjjm.github.io/natural_js)를 참고 바랍니다.
 
 
-##UI 파일 별 기본 코드 작성 규칙
+## UI 파일 별 기본 코드 작성 규칙
 
 각각의 html 파일은 다음과 같이 구성됩니다.
 
@@ -197,10 +197,10 @@ Natural-Js Boot의 기술 요소들은 다음과 같이 구성되어 있습니�
 </script>
 ```
 
-##N.cont(Controller Object) 작성 규칙
+## N.cont(Controller Object) 작성 규칙
 N.cont 함수의 인자인 컨트롤러 객체는 미리 정의된 속성명 룰들이 있습니다. 미리 정의된 속성명으로 객체 변수명을 선언하고 객체나 함수등을할당하면 AOP에 의해 N.cont 객체의 init 함수가 실행되기 전에 정의한 작업들을 처리해 줍니다.
 
-###1. "p."으로 시작(UI 컴포넌트 초기화)
+### 1. "p."으로 시작(UI 컴포넌트 초기화)
 Natural-UI의 컴포넌트 들을 자동으로 초기 화해 줍니다.
 컴포넌트 초기화 속성명은 다음과 같이 조합하여 사용할 수 있습니다.
 
@@ -248,7 +248,7 @@ var cont = N(".page-id").cont({
 컴포넌트 옵션은 Natural-UI의 컴포넌트별 기본 옵션 외에 해당 컴포넌트의 용도를 지정하거나 초기화 후 바로 실행할 함수 등을 지정할 수 있는 옵션이 더 추가되어 있습니다.
 N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 
-###1.1. N.select - 공통코드 조회 시
+### 1.1. N.select - 공통코드 조회 시
 | 속성명 | 옵션명 | 변수타입 | 필수 여부 | 기능 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
 | p.select.{id} | - | - | - | - | N.select 컴포넌트를 초기화 한다 |
@@ -257,7 +257,7 @@ N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 | - | selected | string | | 기본 선택 코드 값 | 데이터를 바인딩 한 후 기본으로 선택할 값. |
 >p.select.{id} : [ "code", filterFunction ] 처럼 Array 타입으로도 간단하게 선언할 수 있습니다.. filter가 필요 없으면 [ "code" ] 만 선언해도 됩니다.
 
-###1.2. N.select - 일반 목록 데이터를 선택 요소(select, radio, checkbox)에 바인딩 시
+### 1.2. N.select - 일반 목록 데이터를 선택 요소(select, radio, checkbox)에 바인딩 시
 | 속성명 | 옵션명 | 변수타입 | 필수 여부 | 기능 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
 | p.select.{id} | - | - | - | - | N.select 컴포넌트를 초기화 한다 |
@@ -267,7 +267,7 @@ N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 | - | val | string | O | 선택 요소의 값에 바인딩될 데이터 컬럼 명 | 조회 데이터의 컬럼명을 입력한다. |
 | - | filter | function | | 데이터 필터 | 조회한 데이터를 가공하여 바인딩 한다. |
 | - | selected | string | | 기본 선택 코드 값 | 데이터를 바인딩 한 후 기본으로 선택할 값. |
-####1.2.1. "filter" 옵션 예제
+#### 1.2.1. "filter" 옵션 예제
 ```javascript
 ...
 "filter" : function (data) {
@@ -279,7 +279,7 @@ N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 ```
 >p.select.{id} : [ "comm", "key", "val", filterFunction ] 처럼 Array 타입으로도 간단하게 선언할 수 있습니다. filter가 필요 없으면 [ "comm", "key", "val" ] 만 선언해도 됩니다.
 
-###1.3. N.form
+### 1.3. N.form
 | 속성명 | 옵션명 | 변수타입 | 필수 여부 | 기능 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
 | p.form.{id} | - | - | - | - | N.form 컴포넌트를 초기화 한다 |
@@ -312,12 +312,12 @@ N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 ...
 ```
 
-###1.4. 기타 모든 컴포넌트
+### 1.4. 기타 모든 컴포넌트
 | 속성명 | 추가옵션 | 변수타입 | 필수 여부 | 기능 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
 | p.{component}.{id} | - | - | - | - | 지정한 컴포넌트를 초기화 한다. N.alert을 제외한 모든 컴포넌트를 이와 같은 방법으로 초기화 가능 하다. |
 
-###1.5. 엑셀 데이터 바인딩
+### 1.5. 엑셀 데이터 바인딩
 N.grid의 bindExcel 메서드를 통해 엑셀 파일(Xlsx)의 데이터를 그리드에 바인딩할 수 있습니다.
 
 ```
@@ -346,7 +346,7 @@ bindExcel 메서드의 인자는 다음과 같습니다.
     * after : 엑셀 데이터 추출 완료 후 실행할 콜백 함수(함수의 첫 번째 인자로 추출된 JSON 타입의 엑셀 데이터가 반환 됨)
 >Excel 데이터 추출을 브라우저에서 javascript로 처리하려면 "/natural_js_egov/src/main/webapp/js/lib/xlsx.full.min.js" 파일을 임포트해야 합니다.
 
-###1.6. 파일관리 공통 팝업
+### 1.6. 파일관리 공통 팝업
 Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 공통 팝업을 인스턴스를 생성해 줍니다.
 > 파일관리 공통 팝업은 파일다운로드/파일업로드 기능을 제공합니다.
 > 옵션은 N.popup 컴포넌트와 동일하고 mode 옵션이 추가되어 있습니다.
@@ -400,7 +400,7 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
 
 ```
 
-##2. "c."으로 시작(N.comm(커뮤니케이터) 정의)
+## 2. "c."으로 시작(N.comm(커뮤니케이터) 정의)
 해당 컨트롤러 내에서 서버와 통신하는 모든 N.comm(Communicator) 들을 모두 정의합니다.
 N.comm의 초기화 속성명은 다음과 같이 조합하여 사용할 수 있습니다.
 
@@ -435,7 +435,7 @@ var cont = N(".page-id").cont({
 >커뮤니케이터들의 정의는 직접 오브젝트나 값을 대입하는것이 아닌 실행 함수를 지정하는 방식이므로 사용 시 `cont["c.{액션명}"]().submit`와 같이 함수 실행 구문 `()`을 추가하는것에 유의 바랍니다.
 >커뮤니케이터의 파라미터를 위 예제와 같이 N.form이나 N.grid / N.list의 data() 메서드에 연결(정의)해 놓으면 커뮤케이터의 submit 메서드가 호출되는 시점의 컴포넌트 데이터를 서버로의 요청 파라미터로 쉽게 추출할 수 있습니다.
 
-###2.1. 엑셀 다운로드
+### 2.1. 엑셀 다운로드
 N.comm의 excelDownload 메서드를 통해 서버에서 데이터를 엑셀파일로 받을 수 있습니다.
 
 >[APP.comm.utils.excelDownload](#appcommutilsexceldownload) 함수를 사용하면 N.comm을 사용하지 않고 파라미터와 URL을 직접 정의하여 데이터를 Excel 파일로 다운로드할 수 있습니다.
@@ -496,7 +496,7 @@ SELECT
 FROM TABLE
 ```
 
-###2.2. 엑셀 대용량(Streaming) 다운로드
+### 2.2. 엑셀 대용량(Streaming) 다운로드
 N.comm의 excelStreaming 메서드를 통해 서버에서 대용량 데이터를 엑셀파일로 받을 수 있습니다.
 
 사용법은 N.comm의 excelDownload 메서드와 동일 하지만 데이터 리턴 시 Controller, Sevice를 거치지 않고 MyBatis 단에서 바로 엑셀파일을 생성하여 데이터를 반환하므로 반환데이터에 대해 후 처리를할 수 없습니다.
@@ -512,7 +512,7 @@ if (cont["p.form.search"].validate()) {
 ```
 
 
-##3. "e."으로 시작(이벤트 바인딩)
+## 3. "e."으로 시작(이벤트 바인딩)
 페이지(View) 안의 모든 요소들에 이벤트를 간단하게 정의할 수 있습니다.
 >a, button, input[type=button] 요소에 이벤트를 정의하면 N.button 컴포넌트가 자동으로 초기화되어 버튼으로 생성됩니다.
 
@@ -636,10 +636,10 @@ var cont = N(".page-id").cont({
 ...
 ```
 
-##4. 기타 유틸리티
+## 4. 기타 유틸리티
 샘플 프로젝트의 공통 유틸리티입니다.
 
-####콘솔 로그 및 에러 처리
+#### 콘솔 로그 및 에러 처리
 
 Natural-CORE 패키지에는 console 객체에서 제공하는 log, warn, info 등의 함수들을 Wrapping하여 로그레벨을 중앙에서 컨트롤할 수 있는 기능을 제공합니다. 이 기능을 사용하기 위해서는 다음과 같은 명령어로 로그와 에러등을 처리해야 합니다.
 * N.log : 브라우저 콘솔에 LOG(DEBUG) 메시지를 표시합니다. 사용법은 Javascript의 console.log와 동일하고 `N.log("디버그 메시지");`와 같이 간단하게 사용할 수 있습니다.
@@ -654,7 +654,7 @@ Natural-CORE 패키지에는 console 객체에서 제공하는 log, warn, info �
 
 * N.error : 에러객체를 생성하고 에러 메시지와 Error stack trace를 브라우저 콘솔에 표시해 줍니다. 기본적인 사용법은 Javascript의 console.error와 동일 하나 N.error 함수는 에러 객체를 생성해 주므로 `throw N.error("에러 메시지");`와 같이 선언하면 에러메시지를 표시하고 에러를 발생시켜 이후 로직들이 중단됩니다.
 
-####APP.comm.utils.del
+#### APP.comm.utils.del
 
 N.grid 나 N.list에서 체크되거나 선택된 행들을 삭제하기 위한 함수 - 삭제 전 동의 메시지 다이얼로그 표시 후 remove 함수 호출 등의 반복적인 루틴들을 한 번에 처리해 줍니다.
 
@@ -686,7 +686,7 @@ N.grid 나 N.list에서 체크되거나 선택된 행들을 삭제하기 위한 
 ...
 ```
 
-####APP.comm.utils.save
+#### APP.comm.utils.save
 
 추가, 수정, 삭제된 데이터를 저장하는 함수 - 저장 전 데이터 검증, 변경된 데이터 확인, 저장 메시지 다이얼로그 표시등 데이터 저장에 대한 반복적인 루틴들을 한 번에 처리해 줍니다.
 
@@ -722,7 +722,7 @@ N.grid 나 N.list에서 체크되거나 선택된 행들을 삭제하기 위한 
 ...
 ```
 
-####APP.comm.utils.selectNBind
+#### APP.comm.utils.selectNBind
 
 N.grid 나 N.list의 행을 선택했을 때(onSelect 이벤트 핸들러 함수 이용) N.form 컴포넌트에 같은 데이터를 연동하기 위한 반복적인 루틴들을 한 번에 처리해 줍니다.
 
@@ -750,7 +750,7 @@ N.grid 나 N.list의 행을 선택했을 때(onSelect 이벤트 핸들러 함수
 ...
 ```
 
-####APP.comm.utils.createFileSummaryList
+#### APP.comm.utils.createFileSummaryList
 
 파일 요약 목록을 만들어 줍니다.
 
@@ -776,7 +776,7 @@ N.grid 나 N.list의 행을 선택했을 때(onSelect 이벤트 핸들러 함수
 ...
 ```
 
-####APP.comm.utils.getFileSummaryList
+#### APP.comm.utils.getFileSummaryList
 
 fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을 만들어 줍니다.
 
@@ -802,7 +802,7 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 ...
 ```
 
-####APP.comm.utils.excelDownload
+#### APP.comm.utils.excelDownload
 
 데이터를 엑셀 파일로 다운로드합니다.
 
@@ -819,10 +819,10 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 
 #Back-End 개발
 
-###이 예제의 Back-End 프레임워크는 전자정부프레임워크 v3.7로 구성되어 있습니다. `JAVA와 Spring에 대한 학습이 선행`되어야 하고 전자정부프레임워크(eGovFrame)의 자세한 사용법은 [전자정부프레임워크 매뉴얼 사이트](http://www.egovframe.go.kr/wiki/doku.php)를 참고 바랍니다.
+### 이 예제의 Back-End 프레임워크는 전자정부프레임워크 v3.7로 구성되어 있습니다. `JAVA와 Spring에 대한 학습이 선행`되어야 하고 전자정부프레임워크(eGovFrame)의 자세한 사용법은 [전자정부프레임워크 매뉴얼 사이트](http://www.egovframe.go.kr/wiki/doku.php)를 참고 바랍니다.
 
-##1. 네이밍(Naming)
-###1.1. 패키지 구조
+## 1. 네이밍(Naming)
+### 1.1. 패키지 구조
 이 예제의 JAVA 기본 패키지는 framework.naturaljs.app.sample이고 Sample 패키지를 예를 들어 패키지 구조를 설명하면 다음과 같습니다.
  * framework.naturaljs.app.sample : Spring MVC의 Controller 소스코드들이 담겨 있는 패키지
  * framework.naturaljs.app.sample.service.impl : 비즈니스 로직을 처리하는 Service 소스코드들이 담겨있는 패키지
@@ -831,7 +831,7 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 >VO(Value Object) 객체는 get/set Bean으로 처리하지 않고 파라미터부터 리턴되는 데이터까지 모두 `Map<String, Object>` 나 `List<Map<String, Object>>`로 처리됩니다.
 >그러나 Bean 타입의 VO 객체가 필요하면 빈을 만들어서 써도 상관없습니다.
 
-###1.2. @RequestMapping
+### 1.2. @RequestMapping
 Controller의 @RequestMapping은 Camel Case 문자열 형태로 다음과 같이 정의되어 있습니다.
  * 단건 조회 : `get` + `MethodName` + `.json`
  * 목록 조회 : `get` + `MethodName` + `List` + `.json`
@@ -847,7 +847,7 @@ Controller, ServiceImpl, Mapper 클래스의 메서드명이나 Mapper XML의 id
 
 >목록 조회와 엑셀 다운로드는 URL의 확장자로만 구분하고 같은 Controller, ServiceImpl, Mapper 클래스를 사용합니다.
 
-##2. Controller 개발
+## 2. Controller 개발
 Controller는 기본적으로 다음 예제와 같이 구성되어 있습니다.
 
 ```java
@@ -916,7 +916,7 @@ Controller 클래스 개발 방법은 다음과 같습니다.
 
  8. 컨트롤러 메서드 선언이 끝났으면 service 클래스를 이용하여 데이터를 반환하는등의 컨트롤러 메서드의 로직을 채워 줍니다.
 
-##3. ServiceImpl(Service) 개발
+## 3. ServiceImpl(Service) 개발
 Service는 기본적으로 다음 예제와 같이 구성되어 있습니다.
 
 ```java
@@ -993,7 +993,7 @@ ServiceImpl 클래스의 개발 방법은 다음과 같습니다.
 
  > save 메서드는 그리드(N.grid)나 리스트(N.list)에서 넘어온 다건의 입력/수정/삭제를 처리하는 메서드입니다. 위 예제의 구문을 그대로 복사하여 사용하거나 rowStatus 별로 관련 로직을 더 채워 사용하면 됩니다.
 
-##4. MyBatis Mapper XML 개발
+## 4. MyBatis Mapper XML 개발
 MyBatis Mapper XML 파일은 기본적으로 다음 예제와 같이 구성되어 있습니다.
 
 ```sql
@@ -1050,7 +1050,7 @@ MyBatis Mapper XML의 개발 방법은 다음과 같습니다.
 [MyBatis Mapper XML 매뉴얼](html/com/app/sample/mybatis-mapper-xml.pdf) 과
 [MyBatis 동적 SQL 매뉴얼](html/com/app/sample/mybatis-dynamic-sql.pdf)을 참고 바랍니다.
 
-###4.1. DB 페이징
+### 4.1. DB 페이징
 페이징은 Natural-JS의 N.pagination 컴포넌트를 사용합니다.
 N.pagination의 사용방법은 [조회폼+그리드+DB페이징](#dHlwZTAzMDElMjQlRUMlQTElQjAlRUQlOUElOEMlRUQlOEYlQkMlMkIlRUElQjclQjglRUIlQTYlQUMlRUIlOTMlOUMlMkJEQiVFRCU4RSU5OCVFQyU5RCVCNCVFQyVBNyU5NSUyNGZhbHNl) 템플릿과 [Natural-UI API Document의 Pagination 탭](naturaljs/index.html#refr/refr0105)을 참고 바랍니다.
 N.pagination에서 Mybatis Mapper SQL의 변수로 다음과 같은 페이징 정보를 전달해 줍니다.
@@ -1081,7 +1081,7 @@ OFFSET #{startRowIndex} ROWS FETCH NEXT #{countPerPage} ROWS ONLY -- 페이징 �
 
 ```
 
-##5. Mapper Interface 개발
+## 5. Mapper Interface 개발
 Mapper Interface는 기본적으로 다음 예제와 같이 구성되어 있습니다.
 
 ```java
@@ -1116,8 +1116,8 @@ Mapper 인터페이스의 개발 방법은 다음과 같습니다.
 
  > 리턴타입은 java.util.Map 도 Map 인터페이스를 상속하여 구현된 객체이므로 `List<Map<String, Object>>`로 선언합니다. 단건 조회도 UI 개발의 편의성을 위해 `List<Map<String, Object>>`로 선언 바랍니다(Natural-JS는 단건이든 다건이든 Array 타입으로 컴포넌트에 바인딩 함).
 
-##6. 기타
-###6.1. 예외처리(Exception)
+## 6. 기타
+### 6.1. 예외처리(Exception)
 서버에서 BizException을 던지면 화면에 N.alert 컴포넌트로 던진 메시지가 표시됩니다.
 
 BizException의 생성자 메서드는 다음과 표와 같이 인자의 개수 또는 타입에 따라 다음과 같은 기능을 제공합니다.
@@ -1156,7 +1156,7 @@ if(Condition) {
 -30003={0}는 {1} 보다 이전 날짜를 지정해 주세요.
 ```
 
-###6.2. 마스킹
+### 6.2. 마스킹
 
 마스킹은 DB의 스키마나 테이블 상관없이 대상 컬럼명들을 src/main/resources/egovframework/egovProps/globals.properties 파일의 masking.columns 속성 값으로 다음과 같이 정의해 주면 됩니다.
 
@@ -1191,13 +1191,13 @@ masking.exclude.urls=/**/sample/getSampleList.json, /**/sample/getSampleBigList.
 @RequestMapping(value = { "getSampleList", "getAdminSampleList" })
 ```
 
-###6.3. 최대 조회건수 제한
+### 6.3. 최대 조회건수 제한
 쾌적한 서버 운영환경을 유지하기 위해 DB 데이터의 최대 행(row) 수를 제한할 수 있습니다.
 src/main/resources/egovframework/egovProps/globals.properties 파일의 max.rows.limit 속성 값에 최대 행 수를 지정 가능하고 max.rows.exclude.urls 속성에 예외 URL 들을 등록 가능합니다.
 
 >엑셀 다운로드 요청은 최대 조회 건수 제한에 걸리지 않고 모든 데이터를 내려 받습니다.
 
-###6.4. XSS 공격 차단
+### 6.4. XSS 공격 차단
 Cross Site Scripting(XSS) 공격을 차단하기 위해 서버에는 XSS 공격 문자열을 HTML 특수문자 코드로 변환해 주는 필터가 걸려 있습니다.
 
 변환되는 문자열은 다음과 같습니다.
