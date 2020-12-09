@@ -819,8 +819,6 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 
 # Back-End 개발
 
-### 이 예제의 Back-End 프레임워크는 전자정부프레임워크 v3.7로 구성되어 있습니다. `JAVA와 Spring에 대한 학습이 선행`되어야 하고 전자정부프레임워크(eGovFrame)의 자세한 사용법은 [전자정부프레임워크 매뉴얼 사이트](http://www.egovframe.go.kr/wiki/doku.php)를 참고 바랍니다.
-
 ## 1. 네이밍(Naming)
 ### 1.1. 패키지 구조
 이 예제의 JAVA 기본 패키지는 framework.naturaljs.app.sample이고 Sample 패키지를 예를 들어 패키지 구조를 설명하면 다음과 같습니다.
