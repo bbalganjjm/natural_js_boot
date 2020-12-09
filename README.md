@@ -9,8 +9,8 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 목차
 ===
 * [설치](#설치)
-    * [이클립스 설치](#1-이클립스-설치)
-    * [프로젝트 내려받기](#2-프로젝트-내려받기)
+    * [이클립스 설치](#이클립스-설치)
+    * [프로젝트 내려받기](#프로젝트-내려받기)
 
 * [프로젝트 구성](#프로젝트-구성)
 
@@ -63,9 +63,9 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
         * [6.4. XSS 공격 차단](#64-xss-공격-차단)
 
 * [Supports](#supports)
-    * [Support browsers](#1-support-browsers)
-    * [Training and support](#2-training-and-support)
-    * [License](#3-license)
+    * [Support browsers](#support-browsers)
+    * [Training and support](#training-and-support)
+    * [License](#license)
 
 # 설치
 
