@@ -8,8 +8,12 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 
 목차
 ===
-* [설치](#프로젝트-구성)
+* [설치](#설치)
+    * [1. 이클립스 설치](#1-이클립스-설치)
+    * [2. 프로젝트 내려받기](#2-프로젝트-내려받기)
+
 * [프로젝트 구성](#프로젝트-구성)
+
 * [**Front-End 개발**](#front-end-개발)
     * [UI 파일 별 기본 코드 작성 규칙](#ui-파일-별-기본-코드-작성-규칙)
 
@@ -58,6 +62,10 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
         * [6.3. 최대 조회건수 제한](#63-최대-조회건수-제한)
         * [6.4. XSS 공격 차단](#64-xss-공격-차단)
 
+* [Supports](#설치)
+    * [1. Support browsers](#1-이클립스-설치)
+    * [2. Training and support](#2-프로젝트-내려받기)
+    * [3. License](#2-프로젝트-내려받기)
 
 # 설치
 
@@ -1224,14 +1232,14 @@ src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속�
 
 # Supports
 
-### Support browsers
+### 1. Support browsers
 
 * PC : Internet Explorer 8 or later(Optimized for Internet Explorer 9 or later), Chrome, Firefox, Safari(OSX), Opera latest version
 * Mobile : iOS Safari, iOS UIWebView, Android Browser, Android Chrome, Android WebView
 
-### Training and support
+### 2. Training and support
 
 * Please contact us at <bbalganjjm@gmail.com>
 
-### License
+### 3. License
 This software is licensed under the [LGPL v2.1](https://github.com/bbalganjjm/natural_js/blob/master/LICENSE) &copy; KIM HWANG MAN&lt;<bbalganjjm@gmail.com>&gt;
