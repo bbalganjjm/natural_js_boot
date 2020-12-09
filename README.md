@@ -344,7 +344,7 @@ bindExcel 메서드의 인자는 다음과 같습니다.
     * pk : mode 옵션이 update 일 때 INSERT, UPDATE를 판단할 기준 키 컬럼 명(array)
     * server : JSON 데이터를 추출하기 위해 Excel 파일을 Server에 업로드하여 처리할 것인지 브라우저에서 javascript로 처리할 것인지 여부(boolean)
     * after : 엑셀 데이터 추출 완료 후 실행할 콜백 함수(함수의 첫 번째 인자로 추출된 JSON 타입의 엑셀 데이터가 반환 됨)
->Excel 데이터 추출을 브라우저에서 javascript로 처리하려면 "/natural_js_egov/src/main/webapp/js/lib/xlsx.full.min.js" 파일을 임포트해야 합니다.
+>Excel 데이터 추출을 브라우저에서 javascript로 처리하려면 "js/lib/xlsx.full.min.js" 파일을 임포트해야 합니다.
 
 ### 1.6. 파일관리 공통 팝업
 Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 공통 팝업을 인스턴스를 생성해 줍니다.
@@ -821,11 +821,11 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 
 ## 1. 네이밍(Naming)
 ### 1.1. 패키지 구조
-이 예제의 JAVA 기본 패키지는 framework.naturaljs.app.sample이고 Sample 패키지를 예를 들어 패키지 구조를 설명하면 다음과 같습니다.
- * framework.naturaljs.app.sample : Spring MVC의 Controller 소스코드들이 담겨 있는 패키지
- * framework.naturaljs.app.sample.service.impl : 비즈니스 로직을 처리하는 Service 소스코드들이 담겨있는 패키지
- * framework.naturaljs.app.sample.mappers : SQL 쿼리가 기록되어 있는 MyBatis Mapper XML 파일과 이 파일안의 쿼리 ID 들을 JAVA 메서드로 연결해주는 Mapper JAVA 인터페이스 파일이 담겨있는 패키지
- * framework.naturaljs.app.sample.vo : VO 객체(get/set Bean)
+이 예제의 JAVA 기본 패키지는 common.app.sample이고 Sample 패키지를 예를 들어 패키지 구조를 설명하면 다음과 같습니다.
+ * common.app.sample : Spring MVC의 Controller 소스코드들이 담겨 있는 패키지
+ * common.app.sample.service.impl : 비즈니스 로직을 처리하는 Service 소스코드들이 담겨있는 패키지
+ * common.app.sample.mappers : SQL 쿼리가 기록되어 있는 MyBatis Mapper XML 파일과 이 파일안의 쿼리 ID 들을 JAVA 메서드로 연결해주는 Mapper JAVA 인터페이스 파일이 담겨있는 패키지
+ * common.app.sample.vo : VO 객체(get/set Bean)
 >VO(Value Object) 객체는 get/set Bean으로 처리하지 않고 파라미터부터 리턴되는 데이터까지 모두 `Map<String, Object>` 나 `List<Map<String, Object>>`로 처리됩니다.
 >그러나 Bean 타입의 VO 객체가 필요하면 빈을 만들어서 써도 상관없습니다.
 
@@ -998,10 +998,10 @@ MyBatis Mapper XML 파일은 기본적으로 다음 예제와 같이 구성되�
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="framework.naturaljs.app.sample.mappers.SampleMapper">
+<mapper namespace="common.app.sample.mappers.SampleMapper">
 ...
     <select id="getSample" parameterType="java.util.Map" resultType="java.util.Map">
-        /* framework.naturaljs.app.sample.mappers.SampleMapper.getSample */
+        /* common.app.sample.mappers.SampleMapper.getSample */
         SELECT key,
                dept_cd,
                (SELECT dept_nm FROM sample_dept WHERE dept_cd = a.dept_cd) dept_nm,
@@ -1133,7 +1133,7 @@ if(Condition) {
 }
 ```
 
-메시지 프로퍼티는 /natural_js_egov/src/main/resources/egovframework/message 폴더의 message-{업무대분류코드}.properties 파일에(없으면 생성 바람) {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
+메시지 프로퍼티는 src/main/resources/messages 폴더의 message-{업무대분류코드}.properties 파일에(없으면 생성 바람) {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
 
 >메시지에 대한 파라미터는  BizException 생성자 함수의 두 번째 인자(Array 타입)로 지정 가능하고 메시지의 변수는 파라미터 배열의 순서에 따라 {0}, {1}, {2} 와같이 선언합니다.
 
@@ -1156,7 +1156,7 @@ if(Condition) {
 
 ### 6.2. 마스킹
 
-마스킹은 DB의 스키마나 테이블 상관없이 대상 컬럼명들을 src/main/resources/egovframework/egovProps/globals.properties 파일의 masking.columns 속성 값으로 다음과 같이 정의해 주면 됩니다.
+마스킹은 DB의 스키마나 테이블 상관없이 대상 컬럼명들을 src/main/resources/config/common/data.properties 파일의 masking.columns 속성 값으로 다음과 같이 정의해 주면 됩니다.
 
 ```
 {컬럼명}|{마스킹룰명}, {컬럼명}|{마스킹룰명}
@@ -1168,7 +1168,7 @@ masking.columns=rrnNo|rrn, name|name, phone|phone, address|address, email|email,
 >컬럼명은 카멜케이싱(camel-case)된 컬럼명으로 선언해 줘야하고 콤마(,)로 구분하여 여러 개 선언 가능합니다.
 >get으로 시작하는 Url Mapping 만 처리됩니다.
 
-마스킹 룰은 ```name(성명), rrn(주민등록번호), frn(외국인등록번호), pn(여권번호), dln(운전면허번호), phone(전화번호, 휴대폰번호), email(이메일주소), card(카드번호), an(계좌번호), ip(IP주소)```가 있고 MaskingUtils(src/main/java/framework/utils/MaskingUtils.java)를 통해 처리됩니다.
+마스킹 룰은 ```name(성명), rrn(주민등록번호), frn(외국인등록번호), pn(여권번호), dln(운전면허번호), phone(전화번호, 휴대폰번호), email(이메일주소), card(카드번호), an(계좌번호), ip(IP주소)```가 있고 MaskingUtils(src/main/java/common/utils/MaskingUtils.java)를 통해 처리됩니다.
 
 >마스킹 룰을 추가하려면 MaskingUtils의 maskString 메서드에 추가하고 싶은 룰의 케이스를 추가해 주고 같은 룰명으로 처리 함수를 추가해 주면 됩니다.
 
@@ -1191,7 +1191,7 @@ masking.exclude.urls=/**/sample/getSampleList.json, /**/sample/getSampleBigList.
 
 ### 6.3. 최대 조회건수 제한
 쾌적한 서버 운영환경을 유지하기 위해 DB 데이터의 최대 행(row) 수를 제한할 수 있습니다.
-src/main/resources/egovframework/egovProps/globals.properties 파일의 max.rows.limit 속성 값에 최대 행 수를 지정 가능하고 max.rows.exclude.urls 속성에 예외 URL 들을 등록 가능합니다.
+src/main/resources/config/common/data.properties 파일의 max.rows.limit 속성 값에 최대 행 수를 지정 가능하고 max.rows.exclude.urls 속성에 예외 URL 들을 등록 가능합니다.
 
 >엑셀 다운로드 요청은 최대 조회 건수 제한에 걸리지 않고 모든 데이터를 내려 받습니다.
 
@@ -1214,10 +1214,10 @@ Controller 메서드들의 Map이나 List 타입의 인자로 변환되면서 XS
 
 변환된 문자열은 DB 단까지 전달되어 그대로 저장되고 DB에서 데이터를 다시 조회하여 UI로 넘어왔을때 Natrual-UI의 데이터 관련 여러 컴포넌트들이 HTML 컨트롤의 특성을 파악하여 자동으로 원래 문자열로 표시해 줍니다.
 
-src/main/resources/egovframework/egovProps/globals.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
+src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
 
 
-src/main/resources/egovframework/egovProps/globals.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
+src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
 
 
 
