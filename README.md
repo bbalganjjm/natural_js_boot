@@ -3,7 +3,62 @@ Natural-JS Boot
 Natural-JS Boot는 [Natural-JS](https://bbalganjjm.github.io/natural_js)(Natural-TEMPLATE)와 Spring Boot 로 구성된 MSA(Micro Service Architecture) 기반 웹 개발을 위한 최고의 Start-Up 키트 입니다.
 Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불어 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 기능을 제공합니다.
 
-## 설치
+개발 가이드
+===
+
+목차
+===
+* [프로젝트 구성](#프로젝트-구성)
+* [**Front-End 개발**](#front-end-개발)
+    * [UI 파일 별 기본 코드 작성 규칙](#ui-파일-별-기본-코드-작성-규칙)
+
+    * [N.cont(Controller Object) 작성 규칙](#ncontcontroller-object-작성-규칙)
+
+        * [1. "p."으로 시작(UI 컴포넌트 초기화)](#1-p으로-시작ui-컴포넌트-초기화)
+            * [1.1. N.select - 공통코드 조회 시](#11-nselect---공통코드-조회-시)
+            * [1.2. N.select - 일반 목록 데이터를 선택 요소(select, radio, checkbox)에 바인딩 시](#12-nselect---일반-목록-데이터를-선택-요소select-radio-checkbox에-바인딩-시)
+            * [1.3. N.form](#13-nform)
+            * [1.4. 기타 모든 컴포넌트](#14-기타-모든-컴포넌트)
+            * [1.5. 엑셀 데이터 바인딩](#15-엑셀-데이터-바인딩)
+            * [1.6. 파일관리 공통 팝업](#16-파일관리-공통-팝업)
+
+        * [2. "c."으로 시작(N.comm(커뮤니케이터) 정의)](#2-c으로-시작ncomm커뮤니케이터-정의)
+            * [2.1. 엑셀 다운로드](#21-엑셀-다운로드)
+            * [2.2. 엑셀 대용량(Streaming) 다운로드](#22-엑셀-대용량streaming-다운로드)
+
+        * [3. "e."으로 시작(이벤트 바인딩)](#3-e으로-시작이벤트-바인딩)
+
+        * [4. 기타 유틸리티](#4-기타-유틸리티)
+            * [콘솔 로그 및 에러 처리](#콘솔-로그-및-에러-처리)
+            * [APP.comm.utils.del](#appcommutilsdel)
+            * [APP.comm.utils.save](#appcommutilssave)
+            * [APP.comm.utils.selectNBind](#appcommutilsselectnbind)
+            * [APP.comm.utils.createFileSummaryList](#appcommutilscreatefilesummarylist)
+            * [APP.comm.utils.getFileSummaryList](#appcommutilsgetfilesummarylist)
+            * [APP.comm.utils.excelDownload](#appcommutilsexceldownload)
+
+* [**Back-End 개발**](#back-end-개발)
+
+    * [1. 네이밍(Naming)](#1-네이밍naming)
+        * [1.1. 패키지 구조](#11-패키지-구조)
+        * [1.2. @RequestMapping](#12-requestmapping)
+
+    * [2. Controller 개발](#2-controller-개발)
+
+    * [3. ServiceImpl(Service) 개발](#3-serviceimplservice-개발)
+
+    * [4. MyBatis Mapper XML 개발](#4-mybatis-mapper-xml-개발)
+        * [4.1. DB 페이징](#41-db-페이징)
+
+    * [5. Mapper Interface 개발](#5-mapper-interface-개발)
+    * [6. 기타](#6-기타)
+        * [6.1. 예외처리(Exception)](#61-예외처리exception)
+        * [6.2. 마스킹](#62-마스킹)
+        * [6.3. 최대 조회건수 제한](#63-최대-조회건수-제한)
+        * [6.4. XSS 공격 차단](#64-xss-공격-차단)
+
+
+# 설치
 
 [eclipse]: https://www.eclipse.org
 [eclipse-download]: https://www.eclipse.org/downloads/eclipse-packages/
@@ -89,62 +144,6 @@ Maven 프로젝트로 전환이 완료될 때까지 기다립니다.
 http://localhost:8080/index.html
 ```
 페이지가 정상적으로 표시되면 설치가 완료된 것입니다.
-
-
-
-개발 가이드
-===
-
-목차
-===
-* [프로젝트 구성](#프로젝트-구성)
-* [**Front-End 개발**](#front-end-개발)
-    * [UI 파일 별 기본 코드 작성 규칙](#ui-파일-별-기본-코드-작성-규칙)
-
-    * [N.cont(Controller Object) 작성 규칙](#ncontcontroller-object-작성-규칙)
-
-        * [1. "p."으로 시작(UI 컴포넌트 초기화)](#1-p으로-시작ui-컴포넌트-초기화)
-            * [1.1. N.select - 공통코드 조회 시](#11-nselect---공통코드-조회-시)
-            * [1.2. N.select - 일반 목록 데이터를 선택 요소(select, radio, checkbox)에 바인딩 시](#12-nselect---일반-목록-데이터를-선택-요소select-radio-checkbox에-바인딩-시)
-            * [1.3. N.form](#13-nform)
-            * [1.4. 기타 모든 컴포넌트](#14-기타-모든-컴포넌트)
-            * [1.5. 엑셀 데이터 바인딩](#15-엑셀-데이터-바인딩)
-            * [1.6. 파일관리 공통 팝업](#16-파일관리-공통-팝업)
-
-        * [2. "c."으로 시작(N.comm(커뮤니케이터) 정의)](#2-c으로-시작ncomm커뮤니케이터-정의)
-            * [2.1. 엑셀 다운로드](#21-엑셀-다운로드)
-            * [2.2. 엑셀 대용량(Streaming) 다운로드](#22-엑셀-대용량streaming-다운로드)
-
-        * [3. "e."으로 시작(이벤트 바인딩)](#3-e으로-시작이벤트-바인딩)
-
-        * [4. 기타 유틸리티](#4-기타-유틸리티)
-            * [콘솔 로그 및 에러 처리](#콘솔-로그-및-에러-처리)
-            * [APP.comm.utils.del](#appcommutilsdel)
-            * [APP.comm.utils.save](#appcommutilssave)
-            * [APP.comm.utils.selectNBind](#appcommutilsselectnbind)
-            * [APP.comm.utils.createFileSummaryList](#appcommutilscreatefilesummarylist)
-            * [APP.comm.utils.getFileSummaryList](#appcommutilsgetfilesummarylist)
-            * [APP.comm.utils.excelDownload](#appcommutilsexceldownload)
-
-* [**Back-End 개발**](#back-end-개발)
-
-    * [1. 네이밍(Naming)](#1-네이밍naming)
-        * [1.1. 패키지 구조](#11-패키지-구조)
-        * [1.2. @RequestMapping](#12-requestmapping)
-
-    * [2. Controller 개발](#2-controller-개발)
-
-    * [3. ServiceImpl(Service) 개발](#3-serviceimplservice-개발)
-
-    * [4. MyBatis Mapper XML 개발](#4-mybatis-mapper-xml-개발)
-        * [4.1. DB 페이징](#41-db-페이징)
-
-    * [5. Mapper Interface 개발](#5-mapper-interface-개발)
-    * [6. 기타](#6-기타)
-        * [6.1. 예외처리(Exception)](#61-예외처리exception)
-        * [6.2. 마스킹](#62-마스킹)
-        * [6.3. 최대 조회건수 제한](#63-최대-조회건수-제한)
-        * [6.4. XSS 공격 차단](#64-xss-공격-차단)
 
 
 # 프로젝트 구성
