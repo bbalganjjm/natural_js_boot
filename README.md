@@ -62,10 +62,10 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
         * [6.3. 최대 조회건수 제한](#63-최대-조회건수-제한)
         * [6.4. XSS 공격 차단](#64-xss-공격-차단)
 
-* [Supports](#설치)
-    * [1. Support browsers](#1-이클립스-설치)
-    * [2. Training and support](#2-프로젝트-내려받기)
-    * [3. License](#2-프로젝트-내려받기)
+* [Supports](#supports)
+    * [1. Support browsers](#1-support-browsers)
+    * [2. Training and support](#2-training-and-support)
+    * [3. License](#3-license)
 
 # 설치
 
