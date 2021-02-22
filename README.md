@@ -1242,4 +1242,4 @@ src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속�
 * Please contact us at <bbalganjjm@gmail.com>
 
 ### License
-This software is licensed under the [LGPL v2.1](https://github.com/bbalganjjm/natural_js/blob/master/LICENSE) &copy; KIM HWANG MAN&lt;<bbalganjjm@gmail.com>&gt;
+This software is licensed under the [Apache License v2.0](https://github.com/bbalganjjm/natural_js/blob/master/LICENSE) &copy; KIM HWANG MAN&lt;<bbalganjjm@gmail.com>&gt;
