@@ -77,7 +77,7 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 [img-1]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/1.png
 [img-2]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/2.png
 [img-3]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/3.png
-[img-5]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/5.png
+[img-4]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/4.png
 [img-6]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/6.png
 [img-7]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/7.png
 [img-8]: https://bbalganjjm.github.io/natural_js/images/gtst/gtst2000/8.png
@@ -123,9 +123,9 @@ https://github.com/bbalganjjm/natural_js_boot.git
 를 직접 입력합니다.
 입력 항목 중 `User`와 `Password`는 Github 로그인 정보를 입력하면 됩니다. 인증 정보를 저장하려면 `Store in Secure Store`를 체크하고 `Finish` 버튼을 클릭합니다.
 
-2.5. Natural-JS Source Git Repository의 브랜치 목록에서 main 브랜치를 체크한 후 `Finish` 버튼을 클릭합니다.
+![img-4][]
 
-![img-5][]
+2.5. Natural-JS Source Git Repository의 브랜치 목록에서 main 브랜치를 체크한 후 `Finish` 버튼을 클릭합니다.
 
 2.6. `Directory` 입력 항목에 소스코드를 저장할 대상 디렉토리를 지정하고 `Finish` 버튼을 클릭합니다.
 
