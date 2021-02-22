@@ -66,7 +66,7 @@ Natural-JS Boot는 웹 어플리케이션 아키텍처 프레임워크와 더불
 
 # 프로젝트 구성
 
-Natural-Js Boot의 기술 요소들은 다음과 같이 구성되어 있습니다.
+Natural-JS Boot의 기술 요소들은 다음과 같이 구성되어 있습니다.
 * **Front-End**
      * 기반기술 : HTML5, CSS3, Javascript(ECMA4+), jQuery v1.12.4
      * 프레임워크 : Natural-JS(Natural-TEMPLATE)
