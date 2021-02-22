@@ -125,7 +125,7 @@ https://github.com/bbalganjjm/natural_js_boot.git
 
 ![img-4][]
 
-2.5. Natural-JS Source Git Repository의 브랜치 목록에서 main 브랜치를 체크한 후 `Finish` 버튼을 클릭합니다.
+2.5. Natural-JS Source Git Repository의 브랜치 목록에서 master 브랜치를 체크한 후 `Finish` 버튼을 클릭합니다.
 
 2.6. `Directory` 입력 항목에 소스코드를 저장할 대상 디렉토리를 지정하고 `Finish` 버튼을 클릭합니다.
 
