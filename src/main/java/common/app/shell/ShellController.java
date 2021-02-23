@@ -13,26 +13,26 @@ public class ShellController {
 
     @RequestMapping("index.view")
     public String index() {
-        return "comm/shell/index";
+        return "common/shell/index";
     }
 
     @RequestMapping("header.view")
     public String header() {
-        return "comm/shell/header";
+        return "common/shell/header";
     }
 
     @RequestMapping("contents.view")
     public String contents() {
-        return "comm/shell/contents";
+        return "common/shell/contents";
     }
 
     @RequestMapping("lefter.view")
     public String lefter() {
-        return "comm/shell/lefter";
+        return "common/shell/lefter";
     }
 
     @RequestMapping("footer.view")
     public String footer() {
-        return "comm/shell/footer";
+        return "common/shell/footer";
     }
 }
