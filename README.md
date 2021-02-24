@@ -79,8 +79,8 @@ Natural-JS Boot의 기술 요소는 다음과 같습니다.
 
 
 # Front-End 개발
-### Natrual-JS의 기본적인 사용법과 컴포넌트의 옵션은 [Natrual-JS 홈페이지의 API/DEMO](https://bbalganjjm.github.io/natural_js)를 참고 바랍니다.
 
+#### Front-End 개발을 위해 HTML, CSS, Javascript, [jQuery](https://jquery.com), [Natrual-JS](https://bbalganjjm.github.io/natural_js)에 대한 학습이 선행되어야 합니다.
 
 ## UI 파일 별 기본 코드 작성 규칙
 
@@ -736,7 +736,7 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 
 # Back-End 개발
 
-### 이 예제의 Back-End 프레임워크는 Spring Boot 2.3.5 로 구성되어 있습니다. JAVA와 Spring에 대한 학습이 선행되어야 하고 Spring Boot는 [공식사이트](https://spring.io/projects/spring-boot)를 참고 바랍니다.
+#### Back-End 개발을 위해 JAVA와 Spring MVC에 대한 학습이 선행되어야 합니다.
 
 ## 1. 네이밍(Naming)
 ### 1.1. 패키지 구조
