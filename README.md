@@ -734,9 +734,9 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
 자세한 사용법은 [2.1. 엑셀 다운로드](#21)를 참고 바랍니다.
 
 
-#Back-End 개발
+# Back-End 개발
 
-###이 예제의 Back-End 프레임워크는 Spring Boot 2.3.5 로 구성되어 있습니다. JAVA와 Spring에 대한 학습이 선행되어야 하고 Spring Boot는 [공식사이트](https://spring.io/projects/spring-boot)를 참고 바랍니다.
+### 이 예제의 Back-End 프레임워크는 Spring Boot 2.3.5 로 구성되어 있습니다. JAVA와 Spring에 대한 학습이 선행되어야 하고 Spring Boot는 [공식사이트](https://spring.io/projects/spring-boot)를 참고 바랍니다.
 
 ## 1. 네이밍(Naming)
 ### 1.1. 패키지 구조
