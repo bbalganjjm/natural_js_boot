@@ -560,7 +560,7 @@ var cont = N(".page-id").cont({
 
 Natural-CORE 패키지에는 console 객체에서 제공하는 log, warn, info 등의 함수들을 Wrapping하여 로그레벨을 중앙에서 컨트롤할 수 있는 기능을 제공합니다. 이 기능을 사용하기 위해서는 다음과 같은 명령어로 로그와 에러등을 처리해야 합니다.
 * N.log : 브라우저 콘솔에 LOG(DEBUG) 메시지를 표시합니다. 사용법은 Javascript의 console.log와 동일하고 `N.log("디버그 메시지");`와 같이 간단하게 사용할 수 있습니다.
-* N.info : 브라우저 콘솔에 INFO 레벨의 메시지를 표시합니다. 사용법은 Javascript의 console.info와 동일하고 `N.warn("디버그 메시지");`와 같이 간단하게 사용할 수 있습니다.
+* N.info : 브라우저 콘솔에 INFO 레벨의 메시지를 표시합니다. 사용법은 Javascript의 console.info와 동일하고 `N.info("디버그 메시지");`와 같이 간단하게 사용할 수 있습니다.
 
 > 브라우저에서 console.info을 지원하지 않으면 N.log와 같이 작동됩니다.
 
