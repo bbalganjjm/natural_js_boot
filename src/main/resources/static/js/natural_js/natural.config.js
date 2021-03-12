@@ -914,6 +914,9 @@
      * Natural-TEMPLATE Config
      */
     N.context.attr("template", {
+        design : {
+            type : "md"
+        },
         aop : {
             /**
              * Common code request information
