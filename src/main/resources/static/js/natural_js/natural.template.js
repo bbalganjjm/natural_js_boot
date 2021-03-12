@@ -19,10 +19,36 @@
                      * Material Design
                      */
                     md : {
+                        isLibLoaded : false,
                         init : function(cont) {
-                            this.button(cont);
+                            if(TEMPLATE.aop.design.md.isLibLoaded === false) {
+                                $("<link/>", {
+                                    rel: "stylesheet",
+                                    type: "text/css",
+                                    href: "https://fonts.googleapis.com/icon?family=Material+Icons"
+                                }).appendTo("head");
+                                $("<link/>", {
+                                    rel: "stylesheet",
+                                    type: "text/css",
+                                    href: "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                                }).appendTo("head");
+                                $.getScript("https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js", function() {
+                                    TEMPLATE.aop.design.md.button(cont);
+                                    TEMPLATE.aop.design.md.isLibLoaded = true;
+                                });
+                            } else {
+                                TEMPLATE.aop.design.md.button(cont);
+                            }
                         },
+                        /**
+                         * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
+                         */
                         button : function(cont) {
+                            if(N.context.attr("ui").button === undefined) {
+                                N.context.attr("ui").button = {};
+                            }
+                            N.context.attr("ui").button.customStyle = true;
+                            
                             N('.mdc-button', cont.view).each(function(i, el) {
                                 el.className = el.className.replace(/btn_common__|btn_white__|btn_medium__/g, "") + " mdc-button";
                                 var icon = el.getAttribute('data-icon');
