@@ -28,7 +28,7 @@ public class CommonCodeController {
 		return commonCodeService.getCommonCodeList(vo);
 	}
 
-	@RequestMapping("getCommonCodeCompanyList.json")
+	@RequestMapping(value = { "getCommonCodeCompanyList.json", "getCommonCodeCompanyList.xlsx" })
 	public List<Map<String, Object>> getCommonCodeCompanyList(@RequestBody(required = false) Map<String, Object> vo) {
 		return commonCodeService.getCommonCodeCompanyList(vo);
 	}
