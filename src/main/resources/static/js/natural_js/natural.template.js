@@ -12,45 +12,42 @@
     (function(N) {
 
         var TEMPLATE = N.template = {
-            
+            design : {
+                md : function(callback) {
+                    // Load Material Design Libraries.
+                    $("<link/>", {
+                        rel: "stylesheet",
+                        type: "text/css",
+                        href: "https://fonts.googleapis.com/icon?family=Material+Icons"
+                    }).appendTo("head");
+                    $("<link/>", {
+                        rel: "stylesheet",
+                        type: "text/css",
+                        href: "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                    }).appendTo("head");
+                    $.getScript("https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js", function() {
+                        // Disable mouse related events.
+                        if(N.context.attr("ui").button === undefined) {
+                            N.context.attr("ui").button = {};
+                        }
+                        N.context.attr("ui").button.customStyle = true;
+
+                        callback();
+                    });
+                }
+            },
             aop : {
                 design : {
                     /**
                      * Material Design
                      */
                     md : {
-                        isLibLoaded : false,
-                        init : function(cont) {
-                            if(TEMPLATE.aop.design.md.isLibLoaded === false) {
-                                $("<link/>", {
-                                    rel: "stylesheet",
-                                    type: "text/css",
-                                    href: "https://fonts.googleapis.com/icon?family=Material+Icons"
-                                }).appendTo("head");
-                                $("<link/>", {
-                                    rel: "stylesheet",
-                                    type: "text/css",
-                                    href: "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
-                                }).appendTo("head");
-                                $.getScript("https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js", function() {
-                                    TEMPLATE.aop.design.md.button(cont);
-                                    TEMPLATE.aop.design.md.isLibLoaded = true;
-                                });
-                            } else {
-                                TEMPLATE.aop.design.md.button(cont);
-                            }
-                        },
                         /**
                          * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
                          */
                         button : function(cont) {
-                            if(N.context.attr("ui").button === undefined) {
-                                N.context.attr("ui").button = {};
-                            }
-                            N.context.attr("ui").button.customStyle = true;
-                            
                             N('.mdc-button', cont.view).each(function(i, el) {
-                                el.className = el.className.replace(/btn_common__|btn_white__|btn_medium__/g, "") + " mdc-button";
+                                el.className = N.string.trim(el.className.replace(/btn_.*?__/g, ""));
                                 var icon = el.getAttribute('data-icon');
                                 if(icon) {
                                     icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>&nbsp;';
@@ -374,6 +371,9 @@
                         // If the target element is a button element(a, button, input[type=button]), the N.button component is automatically applied.
                         if(targetEle.is("a, button, input[type=button]")) {
                             targetEle.button();
+                            if(N.context.attr("template").design) {
+                                TEMPLATE.aop.design[N.context.attr("template").design].button(cont);
+                            }
                         } else {
                             if(eventName && eventName.indexOf("click") > -1) {
                                 targetEle.css("cursor", "pointer");

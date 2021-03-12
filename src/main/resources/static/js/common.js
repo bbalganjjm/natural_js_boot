@@ -343,6 +343,10 @@
         if(opts === undefined) {
             opts = {};
         }
+        
+        // FIXME 자바스크립트로 업로드하는게 고장났음.
+        opts.server = true;
+
         if(opts.start === undefined) {
             opts.start = 1;
         }

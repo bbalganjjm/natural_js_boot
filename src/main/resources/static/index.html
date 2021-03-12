@@ -27,9 +27,17 @@
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        APP.indx.init();
-    });
+    if(N.context.attr("template").design) {
+        N.template.design[N.context.attr("template").design](function() {
+            $(document).ready(function() {
+                APP.indx.init();
+            })
+        });
+    } else {
+        $(document).ready(function() {
+            APP.indx.init();
+        })
+    }
 </script>
 
 </head>

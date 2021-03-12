@@ -66,8 +66,6 @@
                     APP.indx.i18n(undefined, cont.request.options.target);
                     // Natural-CODE
                     N.template.aop.codes(cont, joinPoint);
-                    // Apply Material Design.
-                    N.template.aop.design.md.init(cont);
                 }
             }, { // Pointcut for executing onOpen after a delayed init on a popup or tab
                 "pointcut" : "^onOpen",
