@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/common.pub.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 
-<link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" />
+<!-- Natural Template <link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" /> -->
 
 <script type="text/javascript" charset="utf-8" src="js/natural_js/lib/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.js.min.js"></script>
@@ -27,6 +27,12 @@
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
 <script type="text/javascript">
+    $("<link/>", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "js/natural_js/css/natural.ui" + (N.context.attr("template").design ? "." + N.string.trim(N.context.attr("template").design) : "") + ".css"
+    }).appendTo("head");
+    
     if(N.context.attr("template").design) {
         N.template.design[N.context.attr("template").design](function() {
             $(document).ready(function() {

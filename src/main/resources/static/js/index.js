@@ -109,14 +109,17 @@
 
             if(window.localStorage.themeColor !== "green") {
                 $("head > link[rel=stylesheet]").each(function() {
-                    N.comm({
-                        url : $(this).attr("href"),
-                        contentType : "text/css",
-                        dataType : "html",
-                        type : "GET"
-                    }).submit(function(data) {
-                        $('<style type="text/css">\n' + data + '</style>').appendTo("head");
-                    });
+                    var href = $(this).attr("href");
+                    if(href.indexOf("natural") > -1 || href.indexOf("common") > -1) {
+                        N.comm({
+                            url : href,
+                            contentType : "text/css",
+                            dataType : "html",
+                            type : "GET"
+                        }).submit(function(data) {
+                            $('<style type="text/css">\n' + data + '</style>').appendTo("head");
+                        });
+                    }
                 });
             }
         },

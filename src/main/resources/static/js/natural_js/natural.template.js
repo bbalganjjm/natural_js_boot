@@ -13,7 +13,7 @@
 
         var TEMPLATE = N.template = {
             design : {
-                md : function(callback) {
+                material : function(callback) {
                     // Load Material Design Libraries.
                     $("<link/>", {
                         rel: "stylesheet",
@@ -41,7 +41,7 @@
                     /**
                      * Material Design
                      */
-                    md : {
+                    material : {
                         /**
                          * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
                          */
