@@ -18,14 +18,14 @@
                     $("<link/>", {
                         rel: "stylesheet",
                         type: "text/css",
-                        href: "https://fonts.googleapis.com/icon?family=Material+Icons"
+                        href: "js/lib/material/icon.css"
                     }).appendTo("head");
                     $("<link/>", {
                         rel: "stylesheet",
                         type: "text/css",
-                        href: "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                        href: "js/lib/material/material-components-web.min.css"
                     }).appendTo("head");
-                    $.getScript("https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js", function() {
+                    $.getScript("js/lib/material/material-components-web.min.js", function() {
                         // Disable mouse related events.
                         if(N.context.attr("ui").button === undefined) {
                             N.context.attr("ui").button = {};
