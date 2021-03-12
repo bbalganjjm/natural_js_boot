@@ -27,9 +27,12 @@ spring:
   mvc:
     servlet:
       path: /
-    
-  thymeleaf:
-    cache: false
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+      additional-exclude: "**/*.class"
 
 server:
   port: 8080
@@ -117,10 +120,7 @@ spring:
   mvc:
     servlet:
       path: /
-    
-  thymeleaf:
-    cache: false
-
+      
 server:
   port: 8080
   servlet:

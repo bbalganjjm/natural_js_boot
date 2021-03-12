@@ -12,28 +12,31 @@
     (function(N) {
 
         var TEMPLATE = N.template = {
-            design : {
-                type : "md", // default | md(Google Material Design)
-                mdc : {
-                    init : function(cont) {
-                        this.button(cont);
-                    },
-                    button : function(cont) {
-                        N('.mdc-button', cont.view).each(function(i, el) {
-                            el.className = el.className.replace(/btn_common__|btn_white__|btn_medium__/g, "") + " mdc-button";
-                            var icon = el.getAttribute('data-icon');
-                            if(icon) {
-                                icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>&nbsp;';
-                            } else {
-                                icon = "";
-                            }
-                            el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
-                            mdc.ripple.MDCRipple.attachTo(el);
-                        });
-                    }
-                }
-            },
+            
             aop : {
+                design : {
+                    /**
+                     * Material Design
+                     */
+                    md : {
+                        init : function(cont) {
+                            this.button(cont);
+                        },
+                        button : function(cont) {
+                            N('.mdc-button', cont.view).each(function(i, el) {
+                                el.className = el.className.replace(/btn_common__|btn_white__|btn_medium__/g, "") + " mdc-button";
+                                var icon = el.getAttribute('data-icon');
+                                if(icon) {
+                                    icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>&nbsp;';
+                                } else {
+                                    icon = "";
+                                }
+                                el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
+                                mdc.ripple.MDCRipple.attachTo(el);
+                            });
+                        }
+                    }
+                },
                 codes : function(cont, joinPoint, opts) {
                     var options = {
                         codeUrl : null,

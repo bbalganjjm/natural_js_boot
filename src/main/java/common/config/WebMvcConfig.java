@@ -6,8 +6,10 @@ package common.config;
  */
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -18,12 +20,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
+import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -112,7 +117,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         srtr.setPrefix("classpath:templates/");
         srtr.setSuffix(".html");
         srtr.setTemplateMode(TemplateMode.HTML);
-        // srtr.setCacheable(false);
+        srtr.setCacheable(false);
         return srtr;
     }
     @Bean
@@ -130,31 +135,34 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return tvr;
     }
 
-    @Bean
-    public ContentNegotiationManagerFactoryBean contentNegotiationManager() {
-        ContentNegotiationManagerFactoryBean cnmfb = new ContentNegotiationManagerFactoryBean();
-        cnmfb.setIgnoreAcceptHeader(true);
-        cnmfb.setDefaultContentType(MediaType.APPLICATION_JSON);
-        cnmfb.addMediaType("json", MediaType.APPLICATION_JSON);
-        cnmfb.addMediaType("view", MediaType.TEXT_HTML);
-        cnmfb.addMediaType("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-        return cnmfb;
+    @Override
+    public void configureContentNegotiation (ContentNegotiationConfigurer configurer) {
+        Map<String, MediaType> mediaTypes = new HashMap<String, MediaType>();
+        mediaTypes.put("json", MediaType.APPLICATION_JSON);
+        mediaTypes.put("view", MediaType.TEXT_HTML);
+        mediaTypes.put("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+
+        PathExtensionContentNegotiationStrategy pecns = new PathExtensionContentNegotiationStrategy(mediaTypes);
+
+        configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.APPLICATION_JSON).defaultContentTypeStrategy(pecns);
     }
     @Bean
-    public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
-        ContentNegotiatingViewResolver cnvr = new ContentNegotiatingViewResolver();
+    public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
+        ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 
         List<ViewResolver> viewResolvers = new ArrayList<ViewResolver>();
         viewResolvers.add(new BeanNameViewResolver());
         viewResolvers.add(thymeleafViewResolver());
-        cnvr.setViewResolvers(viewResolvers);
+        resolver.setViewResolvers(viewResolvers);
 
         List<View> defaultViews = new ArrayList<View>();
         defaultViews.add(jsonView());
         defaultViews.add(new XlsxStreamingView());
-        cnvr.setDefaultViews(defaultViews);
+        resolver.setDefaultViews(defaultViews);
 
-        return cnvr;
+        resolver.setContentNegotiationManager(manager);
+
+        return resolver;
     }
 
     @Bean

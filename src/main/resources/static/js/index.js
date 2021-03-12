@@ -13,16 +13,16 @@
             this.initBrowserHistorySystem();
         },
         loadHeader : function() {
-            N("header").comm("html/com/app/comm/index/header.html").submit();
+            N("header").comm("header.view").submit();
         },
         loadLefter : function() {
-            N(".main-nav").comm("html/com/app/comm/index/lefter.html").submit();
+            N(".main-nav").comm("lefter.view").submit();
         },
         loadBody : function() {
-            N(".main-contents").comm("html/com/app/comm/index/contents.html").submit();
+            N(".main-contents").comm("contents.view").submit();
         },
         loadFooter : function() {
-            N("footer").comm("html/com/app/comm/index/footer.html").submit();
+            N("footer").comm("footer.view").submit();
         },
         initBrowserHistorySystem : function() {
             var self = this;
