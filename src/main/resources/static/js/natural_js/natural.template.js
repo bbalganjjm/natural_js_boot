@@ -57,6 +57,24 @@
                                 el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
                                 mdc.ripple.MDCRipple.attachTo(el);
                             });
+
+                            N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = this.onBeforeShow;
+                        },
+                        onBeforeShow : function(msgContext, msgContents) {
+                            if(this.options.title !== undefined) {
+                                msgContents.find(".msg_box__").css("padding-top", 0);
+                            }
+                            msgContents.find(".buttonBox__ .button__").each(function(i, el) {
+                                el.className = "mdc-button " + N.string.trim(el.className.replace(/btn_.*?__/g, ""));
+                                var icon = el.getAttribute('data-icon');
+                                if(icon) {
+                                    icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>&nbsp;';
+                                } else {
+                                    icon = "";
+                                }
+                                el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
+                                mdc.ripple.MDCRipple.attachTo(el);
+                            });
                         }
                     }
                 },
