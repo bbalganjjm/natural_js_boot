@@ -9,31 +9,11 @@
 </style>
 
 <article class="type04P0" title="부서조회" style="width: 400px;">
-    <div class="view-intro">
-        <h1>부서조회 팝업</h1>
-        <ul class="view-desc">
-            <li>조회폼(N.form)과 그리드(N.grid)로 구성된 팝업 예제입니다.</li>
-            <li>N.popup의 onOpen, cont.close 함수 들의 사용예제를 참고할 수 있습니다.</li>
-        </ul>
-    </div>
-    
     <div id="search" class="form__">
-        <table>
-            <colgroup>
-                <col style="width: 50%;">
-                <col style="width: auto;">
-            </colgroup>
-            <tbody>
-                <tr>
-                    <th>Department Name</th>
-                    <td><input id="deptNm" type="text"></td>
-                </tr>
-            </tbody>
-        </table>
+        <input id="deptNm" type="text" class="mdc-text-field" placeholder="Department Name" data-type="filled">
     </div>
     
     <div class="flex-horizental">
-        <h3 style="max-width: 50px;">N.grid</h3>
         <div class="btn-box">
             <button id="btnSearch" class="mdc-button mdc-button--raised">조회</button>
         </div>

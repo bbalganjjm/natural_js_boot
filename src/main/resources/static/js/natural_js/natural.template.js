@@ -42,6 +42,18 @@
                      * Material Design
                      */
                     material : {
+                        init : function(cont) {
+                            // FIXME 아래 설정들 한번만 타게 해야함. 지금은 init AOP 때문에 페이지 로딩될때마다 탐.
+                            // Alert, Popup
+                            N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = this.onBeforeShow;
+                            // Grid
+                            N.context.attr("ui").grid.misc.fixedcolHeadMarginTop = N.browser.is("ie") || N.browser.is("firefox") ? -1 : 0;
+                            N.context.attr("ui").grid.misc.fixedcolHeadHeight = N.browser.is("ie") || N.browser.is("firefox") ? 2 : 1;
+                            N.context.attr("ui").grid.misc.fixedcolBodyMarginTop = N.browser.is("ie") ? -0.5 : N.browser.is("firefox") ? -2 : -1;
+
+                            this.button(cont);
+                            this.textfield(cont);
+                        },
                         /**
                          * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
                          */
@@ -49,18 +61,32 @@
                             N('.mdc-button', cont.view).each(function(i, el) {
                                 el.className = N.string.trim(el.className.replace(/btn_.*?__/g, ""));
                                 var icon = el.getAttribute('data-icon');
+                                var html = '<div class="mdc-button__ripple"></div>';
                                 if(icon) {
-                                    icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>&nbsp;';
-                                } else {
-                                    icon = "";
+                                    icon = '<span class="material-icons mdc-icon-button__icon">' + icon + '</span>';
+                                    if(N.string.trim(el.innerText).length > 0) {
+                                        icon += "&nbsp;";
+                                    }
+                                    html += icon;
                                 }
-                                el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
+                                if(N.string.trim(el.innerText).length > 0) {
+                                    html += ('<span class="mdc-button__label">' + el.innerText + '</span>');
+                                }
+
+                                el.innerHTML = html;
                                 mdc.ripple.MDCRipple.attachTo(el);
                             });
 
-                            N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = this.onBeforeShow;
+                            N('.mdc-icon-button', cont.view).each(function(i, el) {
+                                el.className = "material-icons material-icons mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + N.string.trim(el.className.replace(/btn_.*?__/g, ""));
+                                const iconButtonRipple = mdc.ripple.MDCRipple.attachTo(el);
+                                iconButtonRipple.unbounded = true;
+                            });
                         },
                         onBeforeShow : function(msgContext, msgContents) {
+                            if(this.options.isInput) {
+                                return false;
+                            }
                             if(this.options.title !== undefined) {
                                 msgContents.find(".msg_box__").css("padding-top", 0);
                             }
@@ -73,7 +99,57 @@
                                     icon = "";
                                 }
                                 el.innerHTML = '<div class="mdc-button__ripple"></div>' + icon + '<span class="mdc-button__label">' + el.innerText + '</span>';
+
                                 mdc.ripple.MDCRipple.attachTo(el);
+                            });
+                        },
+                        textfield : function(cont) { // textarea, input
+                            N('.mdc-text-field', cont.view).each(function(i, el) {
+                                el = $(el);
+                                var id = el.attr("id");
+                                var placeholder = el.attr("placeholder");
+                                var uid = String(Math.random()).replace("0.", "");
+                                el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
+
+                                if(el.is("textarea")) {
+                                    el.attr("aria-label", placeholder);
+                                } else {
+                                    el.attr("aria-labelledby", id + "-label-" + uid);
+                                }
+                                
+                                el.css({
+                                    "vertical-align": "inherit",
+                                    "box-sizing": "inherit",
+                                    "padding": "inherit",
+                                    "border": "inherit",
+                                    "line-height": "inherit"
+                                });
+                                    
+                                var mdcTextField;
+                                if(el.is("textarea")) { // FIXME 안됨.
+                                    mdcTextField = el.wrap('<span class="mdc-text-field__resizer">').parent();
+                                    mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                    mdcTextField.prepend('<span class="mdc-notched-outline">' 
+                                        + '<span class="mdc-notched-outline__leading"></span>'
+                                        + '<span class="mdc-notched-outline__trailing"></span>'
+                                    + '</span>');
+                                } else {
+                                    if(el.data("type") === "outlined") { // filled | outlined
+                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--outlined"></label>').parent();
+                                        mdcTextField.prepend('<span class="mdc-notched-outline">'
+                                            + '<span class="mdc-notched-outline__leading"></span>'
+                                            + '<span class="mdc-notched-outline__notch">'
+                                                + '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + placeholder +'</span>'
+                                            + '</span>'
+                                            + '<span class="mdc-notched-outline__trailing"></span>'
+                                        + '</span>');
+                                    } else {
+                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled"></label>').parent();
+                                        mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
+                                        mdcTextField.append('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + placeholder +'</span><span class="mdc-line-ripple"></span>');
+                                    }
+                                }
+                                mdc.textField.MDCTextField.attachTo(mdcTextField.get(0));
                             });
                         }
                     }
@@ -229,6 +305,10 @@
                         if(N.type(prop) === "string" && N.string.startsWith(prop, "e.")) {
                             TEMPLATE.aop.events(cont, prop);
                         }
+                    }
+
+                    if(N.context.attr("template").design) {
+                        TEMPLATE.aop.design[N.context.attr("template").design].init(cont);
                     }
 
                     if(compActionDefer.length > 0) {
@@ -389,9 +469,6 @@
                         // If the target element is a button element(a, button, input[type=button]), the N.button component is automatically applied.
                         if(targetEle.is("a, button, input[type=button]")) {
                             targetEle.button();
-                            if(N.context.attr("template").design) {
-                                TEMPLATE.aop.design[N.context.attr("template").design].button(cont);
-                            }
                         } else {
                             if(eventName && eventName.indexOf("click") > -1) {
                                 targetEle.css("cursor", "pointer");

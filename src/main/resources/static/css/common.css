@@ -126,8 +126,8 @@ th, td {
     height: 24px;
 }
 
-th.grid_head_fixed__,
-td.grid_body_fixed__ {
+.grid__ .grid_head_fixed__,
+.grid__ .grid_body_fixed__ {
     padding: 6px 3px;
 }
 
