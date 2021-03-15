@@ -6,15 +6,24 @@
 
 .index-lefter .logo {
     height: 100px;
-    background-color: #66BB6A;
 }
 
 .index-lefter .logo .home>span {
     display: inline-block;
     width: 250px;
     height: 100px;
-    background: url("images/natural_js.png") no-repeat 50% 50%;
     background-size: auto 75px;
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0,0,0,.87);
+    line-height: 100px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.index-lefter .logo .home>span>sup {
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .index-lefter .logo .lefter-toggle-button {
@@ -38,16 +47,17 @@
 }
 
 .index-lefter .left-menu::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
+    height: 5px;
 }
 
 .index-lefter .left-menu:hover::-webkit-scrollbar-track {
-    background: #2E7D32;
+    background: rgba(0,0,0,.06);
 }
 
 .index-lefter .left-menu:hover::-webkit-scrollbar-thumb {
-    background: #43A047;
-    border-radius: 5px;
+    background: rgba(0,0,0,.26);
+    border-radius: 2px;
 }
 
 .index-lefter .left-menu {
@@ -95,11 +105,11 @@
 }
 
 .index-lefter .left-menu ul > li > a > span {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .index-lefter .left-menu ul > li.leaf-node > a > span {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.85);
 }
 
 .index-lefter .left-menu .folding {
@@ -113,7 +123,7 @@
 
 <article class="index-lefter">
     <div class="logo">
-        <a class="home" href="./"><span>Natural-JS BOOT</span></a>
+        <a class="home" href="./"><span>Natural-JS<sup>BOOT</sup></span></a>
         <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
     </div>
     <div class="left-menu">
@@ -165,7 +175,7 @@
                     location.hash = btoa(encodeURIComponent(selfEle.data("pageid") + "$" + selfEle.find("span").text()) + "$" + encodeURIComponent(selfEle.attr("href")));
 
                      if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
-                        N(".lefter-toggle-button", view).trigger("click.lefter");
+                        N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
                     }
                 }
 
@@ -177,13 +187,13 @@
                 selfEle = undefined;
             });
 
-            N(".lefter-toggle-button>span", view).bind("mouseover.lefter", function() {
+            N(".lefter-toggle-button>span", view.closest(".page-wrap")).bind("mouseover.lefter", function() {
                 $(this).css("transform", "rotate(90deg)");
             }).bind("mouseout.lefter", function() {
                 $(this).css("transform", "");
             });
 
-            N(".lefter-toggle-button", view).on("click.lefter", function(e) {
+            N(".lefter-toggle-button", view.closest(".page-wrap")).on("click.lefter", function(e) {
                 e.preventDefault();
 
                 var selfEle = N(this);
@@ -191,34 +201,36 @@
 
                 if (selfEle.data("status") === "show") {
                     if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
-                        N(".content-wrap", "body").off("click.lefter");
+                        N(".content-wrap .main-contents").off("click.lefter");
                     }
 
-                    N(".lefter-toggle-button>span", view).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
+                    N(".lefter-toggle-button>span", view.closest(".page-wrap")).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
 
                     mainNav.css("margin-left", "-" + mainNav.width() + "px");
                     if($(window).width() > 1001) { // 768 + 250 - 17px(?)
-                        mainNav.siblings(".content-wrap").css("margin-left", "0");
+                        N(".index-header .logo").css("margin-left", "-250px");
+                        mainNav.siblings(".main-contents").css("margin-left", "0");
                     }
                     selfEle.data("status", "hide").css("margin-right", "-32px");
 
                 } else {
                     if($(window).width() > 1001) { // 768 + 250 - 17px(?)
-                        mainNav.siblings(".content-wrap").css("margin-left", "");
+                        mainNav.siblings(".main-contents").css("margin-left", "");
+                        N(".index-header .logo").css("margin-left", "");
                     }
                     mainNav.css("margin-left", "");
                     selfEle.data("status", "show").css("margin-right", "");
 
-                    N(".lefter-toggle-button>span", view).on("mouseover.lefter", function() {
+                    N(".lefter-toggle-button>span", view.closest(".page-wrap")).on("mouseover.lefter", function() {
                         $(this).css("transform", "rotate(90deg)");
                     }).on("mouseout.lefter", function() {
                         $(this).css("transform", "");
                     });
 
                     if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
-                        N(".content-wrap", "body").on("click.lefter", function(e) {
+                        N(".content-wrap .main-contents").on("click.lefter", function(e) {
                             e.preventDefault();
-                            N(".lefter-toggle-button", view).trigger("click.lefter");
+                            N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
                         });
                     }
                 }
@@ -231,21 +243,26 @@
                 N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
 
                 if($(window).width() <= 1001) { // 768 + 250 - 17px(?)
-                    N(".lefter-toggle-button", view).data("status", "show");
-                    N(".content-wrap", "body").css({
+                    N(".lefter-toggle-button", view.closest(".page-wrap")).data("status", "show");
+                    N(".index-header .logo").css({
+                        "transition": "none",
+                        "margin-left": "-250px"
+                    });
+                    N(".content-wrap .main-contents").css({
                         "transition": "none",
                         "margin-left": "0"
                     });
-                    N(".main-nav", "body").show().css({
+                    N(".main-nav").show().css({
                         "transition": "none"
                     });
-                    N(".lefter-toggle-button", view).trigger("click.lefter");
+                    N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
                     setTimeout(function() {
-                        N(".main-nav", "body").css("transition", "");
-                        N(".content-wrap", "body").css("transition", "");
+                        N(".main-nav").css("transition", "");
+                        N(".content-wrap .main-contents").css("transition", "");
+                        N(".index-header .logo").css("transition", "");
                     }, 0);
                 } else {
-                    N(".lefter-toggle-button", view).data("status", "hide").trigger("click.lefter");
+                    N(".lefter-toggle-button", view.closest(".page-wrap")).data("status", "hide").trigger("click.lefter");
                 }
             }).trigger("resize.left-menu");
 

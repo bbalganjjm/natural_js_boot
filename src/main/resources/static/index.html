@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/common.pub.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 
-<!-- Natural Template <link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" /> -->
+<link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" />
 
 <script type="text/javascript" charset="utf-8" src="js/natural_js/lib/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.js.min.js"></script>
@@ -27,18 +27,12 @@
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
 <script type="text/javascript">
-    $("<link/>", {
-        rel: "stylesheet",
-        type: "text/css",
-        href: "js/natural_js/css/natural.ui" + (N.context.attr("template").design ? "." + N.string.trim(N.context.attr("template").design) : "") + ".css"
-    }).appendTo("head");
-    
     if(N.context.attr("template").design) {
-        N.template.design[N.context.attr("template").design](function() {
-            $(document).ready(function() {
+        $(document).ready(function() {
+            N.template.design[N.context.attr("template").design](function() {
                 APP.indx.init();
-            })
-        });
+            });
+        })
     } else {
         $(document).ready(function() {
             APP.indx.init();
@@ -50,12 +44,12 @@
 
 <body>
     <section class="page-wrap">
-        <nav class="main-nav"></nav>
+        <header class="page-header"></header>
         <section class="content-wrap">
-            <header class="page-header"></header>
+            <nav class="main-nav"></nav>            
             <div class="main-contents"></div>
-            <footer class="page-footer"></footer>
         </section>
+        <footer class="page-footer"></footer>
     </section>
 </body>
 </html>

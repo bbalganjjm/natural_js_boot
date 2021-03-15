@@ -10,12 +10,13 @@
 
 <article class="type04P0" title="부서조회" style="width: 400px;">
     <div id="search" class="form__">
-        <input id="deptNm" type="text" class="mdc-text-field" placeholder="Department Name" data-type="filled">
-    </div>
-    
-    <div class="flex-horizental">
-        <div class="btn-box">
-            <button id="btnSearch" class="mdc-button mdc-button--raised">조회</button>
+        <div class="criteria-panel">
+            <ul>
+                <li><input id="deptNm" type="text" class="mdc-text-field" placeholder="Department Name" data-type="filled"></li>
+            </ul>
+        </div>
+        <div class="btn-panel">
+            <button id="btnSearch" class="btn-search mdc-button mdc-button--raised">조회</button>
         </div>
     </div>
     <table id="master" class="grid__">
@@ -37,7 +38,7 @@
         </tbody>
     </table>
 
-    <div class="btn-box">
+    <div class="btn-panel">
         <button id="btnOk" class="mdc-button">확인</button>
         <button id="btnCancel" class="mdc-button">취소</button>
     </div>

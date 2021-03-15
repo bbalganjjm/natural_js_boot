@@ -14,24 +14,97 @@
         var TEMPLATE = N.template = {
             design : {
                 material : function(callback) {
-                    // Load Material Design Libraries.
-                    $("<link/>", {
-                        rel: "stylesheet",
-                        type: "text/css",
-                        href: "js/lib/material/icon.css"
-                    }).appendTo("head");
-                    $("<link/>", {
-                        rel: "stylesheet",
-                        type: "text/css",
-                        href: "js/lib/material/material-components-web.min.css"
-                    }).appendTo("head");
-                    $.getScript("js/lib/material/material-components-web.min.js", function() {
-                        // Disable mouse related events.
+                    // Polyfill
+                    if (!String.prototype.includes) {
+                        Object.defineProperty(String.prototype, "includes", {
+                            enumerable: false,
+                            writable: true,
+                            value: function(search, start) {
+                                'use strict';
+                                if (typeof start !== 'number') {
+                                    start = 0;
+                                }
+                    
+                                if (start + search.length > this.length) {
+                                    return false;
+                                } else {
+                                    return this.indexOf(search, start) !== -1;
+                                }
+                            }
+                        });
+                    }
+                    if (!Array.prototype.includes) {
+                        Object.defineProperty(Array.prototype, "includes", {
+                            enumerable: false,
+                            writable: true,
+                            value: function(searchElement /*, fromIndex*/ ) {
+                                'use strict';
+                                var O = Object(this);
+                                var len = parseInt(O.length) || 0;
+                                if (len === 0) {
+                                    return false;
+                                }
+                                var n = parseInt(arguments[1]) || 0;
+                                var k;
+                                if (n >= 0) {
+                                    k = n;
+                                } else {
+                                    k = len + n;
+                                    if (k < 0) {k = 0;}
+                                }
+                                var currentElement;
+                                while (k < len) {
+                                    currentElement = O[k];
+                                    if (searchElement === currentElement ||
+                                        (searchElement !== searchElement && currentElement !== currentElement)) { // NaN !== NaN
+                                            return true;
+                                        }
+                                        k++;
+                                }
+                                return false;
+                            }
+                        });
+                    }
+
+                    // Load libraries
+                    $.getScript("js/lib/material/material-components-web.min.js").done(function(data, textStatus, jqxhr) {
+                        $("<link/>", {
+                            rel: "stylesheet",
+                            type: "text/css",
+                            href: "js/natural_js/css/natural.ui." + N.context.attr("template").design + ".css"
+                        }).appendTo("head");
+                        $("<link/>", {
+                            rel: "stylesheet",
+                            type: "text/css",
+                            href: "css/common." + N.context.attr("template").design + ".css"
+                        }).appendTo("head");
+                        // Load Material Design Libraries.
+                        $("<link/>", {
+                            rel: "stylesheet",
+                            type: "text/css",
+                            href: "js/lib/material/icon" + (N.browser.is("ie") ? "_ie" : "") + ".css"
+                        }).appendTo("head");
+                        $("<link/>", {
+                            rel: "stylesheet",
+                            type: "text/css",
+                            href: "js/lib/material/material-components-web.min.css"
+                        }).appendTo("head");
+
+                        // Disable mouse related events of N.button.
                         if(N.context.attr("ui").button === undefined) {
                             N.context.attr("ui").button = {};
                         }
                         N.context.attr("ui").button.customStyle = true;
-
+                        // Alert, Popup
+                        N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = TEMPLATE.aop.design.material.onBeforeShow;
+                        // Grid
+                        N.context.attr("ui").grid.misc.fixedcolHeadMarginTop = N.browser.is("ie") || N.browser.is("firefox") ? -1 : 0;
+                        N.context.attr("ui").grid.misc.fixedcolHeadHeight = N.browser.is("ie") || N.browser.is("firefox") ? 2 : 1;
+                        N.context.attr("ui").grid.misc.fixedcolBodyMarginTop = N.browser.is("ie") ? 0 : N.browser.is("firefox") ? -1 : 0;
+                        callback();
+                    }).fail(function(data) {
+                        N.log(data);
+                        N.context.attr("template").design = undefined;
                         callback();
                     });
                 }
@@ -43,14 +116,6 @@
                      */
                     material : {
                         init : function(cont) {
-                            // FIXME 아래 설정들 한번만 타게 해야함. 지금은 init AOP 때문에 페이지 로딩될때마다 탐.
-                            // Alert, Popup
-                            N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = this.onBeforeShow;
-                            // Grid
-                            N.context.attr("ui").grid.misc.fixedcolHeadMarginTop = N.browser.is("ie") || N.browser.is("firefox") ? -1 : 0;
-                            N.context.attr("ui").grid.misc.fixedcolHeadHeight = N.browser.is("ie") || N.browser.is("firefox") ? 2 : 1;
-                            N.context.attr("ui").grid.misc.fixedcolBodyMarginTop = N.browser.is("ie") ? -0.5 : N.browser.is("firefox") ? -2 : -1;
-
                             this.button(cont);
                             this.textfield(cont);
                         },
@@ -78,7 +143,7 @@
                             });
 
                             N('.mdc-icon-button', cont.view).each(function(i, el) {
-                                el.className = "material-icons material-icons mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + N.string.trim(el.className.replace(/btn_.*?__/g, ""));
+                                el.className = "material-icons mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + N.string.trim(el.className.replace(/btn_.*?__/g, ""));
                                 const iconButtonRipple = mdc.ripple.MDCRipple.attachTo(el);
                                 iconButtonRipple.unbounded = true;
                             });
@@ -375,6 +440,7 @@
 
                                 // search-box
                                 if(opts.usage === "search-box" || usageOptions["search-box"] !== undefined) {
+                                    opts.context.addClass("search_box__");
                                     if(opts.action === undefined || opts.action !== "add") {
                                         cont[comp].add();
                                     }

@@ -1,49 +1,20 @@
 <article class="type0401">
-    <div class="view-intro">
-        <h1>조회폼+그리드+상세폼(수평배치)</h1>
-        <ul class="view-desc">
-            <li>조회폼(N.form)과 그리드(N.grid)와 연동된 상세 데이터 폼(N.form)으로 구성된 예제입니다.</li>
-            <li>N.grid(또는 N.list)의 onSelect 이벤트 옵션을 통해 N.grid(또는 N.list)와 N.form 컴포넌트를 연동하는 방법을 알 수 있습니다.</li>
-            <li>공통코드 데이터를 자동으로 조회한 후 N.select 컴포넌트를 초기화하고 코드 데이터를 바인딩(Array 타입으로 파라미터 정의)합니다.</li>
-            <li>공통코드 외에 다른 목록 데이터를 선택 요소에 데이터 바인딩하는 방법(Array 타입으로 파라미터 정의)을 알 수 있습니다.</li>
-            <li>폼(N.form)에서 버튼을 통해 N.popup(부서조회 팝업)과 연동하는 방법을 알 수 있습니다.</li>
-        </ul>
-    </div>
-
-    <h3>N.form</h3>
     <div id="search" class="form__">
-        <table>
-            <colgroup>
-                <col style="width: 25%;">
-                <col style="width: 10%;">
-                <col style="width: 15%;">
-                <col style="width: 10%;">
-                <col style="width: 15%;">
-                <col style="width: 10%;">
-                <col style="width: 15%;">
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td><input id="name" type="text" class="mdc-text-field" placeholder="Name" data-type="filled"></td>
-                    <th>Age</th>
-                    <td><select id="age"><option value="">선택</option></select></td>
-                    <th>Gender</th>
-                    <td><input id="gender" type="radio"></td>
-                    <th>Eye Color</th>
-                    <td><select id="eyeColor"><option value="">선택</option></select></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="criteria-panel">
+            <ul>
+                <li><input id="name" type="text" class="mdc-text-field" placeholder="Name" data-type="filled"></li>
+                <li><select id="age"><option value="">Age</option></select></li>
+                <li><select id="gender"><option value="">Gender</option></select></li>
+                <li><select id="eyeColor"><option value="">Eye Color</option></select></li>
+            </ul>
+        </div>
     </div>
 
     <div class="flex-horizental">
         <div style="max-width: 33%;">
-            <div class="flex-horizental">
-                <h3 style="max-width: 50px;">N.grid</h3>
-                <div class="btn-box">
-                    <button id="btnSearch" class="mdc-button mdc-button--raised" data-icon="youtube_searched_for">조회</button>
-                    <button id="btnSave" class="mdc-button" data-icon="save_alt">저장</button>
-                </div>
+            <div class="btn-panel">
+                <button id="btnSearch" class="btn-search mdc-button mdc-button--raised" data-icon="youtube_searched_for">조회</button>
+                <button id="btnSave" class="mdc-button" data-icon="save_alt">저장</button>
             </div>
             <table id="master" class="grid__">
                 <colgroup>
@@ -69,15 +40,11 @@
         </div>
 
         <div>
-            <div class="flex-horizental">
-                <h3>N.form</h3>
-                <div class="btn-box">
-                    <button id="btnAdd" class="mdc-button" data-icon="playlist_add">추가</button>
-                    <button id="btnDelete" class="mdc-button" data-icon="delete_sweep">삭제</button>
-                    <button id="btnRevert" class="mdc-button" data-icon="restart_alt">초기화</button>
-                </div>
+            <div class="btn-panel">
+                <button id="btnAdd" class="mdc-button" data-icon="playlist_add">추가</button>
+                <button id="btnDelete" class="mdc-button" data-icon="delete_sweep">삭제</button>
+                <button id="btnRevert" class="mdc-button" data-icon="restart_alt">초기화</button>
             </div>
-
             <table id="detail" class="form__">
                 <colgroup>
                     <col style="width: 15%;">
@@ -174,7 +141,7 @@
         "p.form.search" : {
             "usage" : {
                 "search-box" : {
-                    "defaultButton" : ".btn-search",
+                    "defaultButton" : ".btnSearch",
                     "events" : [{
                         "event" : "focusin",
                         "target" : "#name",
@@ -258,18 +225,6 @@
                     // N.grid bind
                     cont["p.grid.master"].bind(data);
                 });
-            }
-        },
-        "e.age.change" : {
-        	target : "#search #age",
-        	handler : function(e) {
-        	    cont["e.btnSearch.click"].click();
-            }
-        },
-        "e.eyeColor.change" : {
-        	target : "#search #eyeColor",
-        	handler : function(e) {
-        	    cont["e.btnSearch.click"].click();
             }
         },
         "e.btnDept.click" : function(e) {

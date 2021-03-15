@@ -9,6 +9,7 @@
 	height: 100px;
 	z-index: 0;
 	background: url("images/header-back.png");
+	z-index: 1;
 }
 
 .index-header .i18n-select,
@@ -66,9 +67,51 @@
 	color : #00838F;
 	margin-right: 10px;
 }
+
+.index-header .logo {
+	position: absolute;
+    height: 100px;
+	width: 250px;
+	border-right: 1px solid rgba(0, 0, 0, 0.12);
+	z-index: 2;
+
+	transition: margin-left 0.5s ease;
+}
+
+.index-header .logo .home>span {
+    display: inline-block;
+    width: 250px;
+    height: 100px;
+    background: url("images/natural_js.png") no-repeat 50% 50%;
+    background-size: auto 75px;
+}
+
+.index-header .logo .lefter-toggle-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: margin-right 0.5s ease;
+}
+
+.index-header .logo .lefter-toggle-button>span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    background: url("images/lefter-toggle-button.png") no-repeat 50% 50%;
+    transition: transform 0.3s ease;
+}
+
+.index-header .logo .lefter-toggle-button:hover>span {
+    will-change: transform;
+}
 </style>
 
 <article class="index-header">
+    <div class="logo">
+        <a class="home" href="./"><span></span></a>
+        <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
+    </div>
 	<div class="header-back"></div>
 	<div class="links">
 		<a class="github-link" href="https://github.com/bbalganjjm/natural_js" target="blank" title="Natural-JS GitHub repository"><span>Natural-JS</span></a>
