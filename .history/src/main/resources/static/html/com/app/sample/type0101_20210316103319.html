@@ -1,0 +1,106 @@
+<article class="type0101">
+    <div id="search" class="form__">
+        <div class="criteria-panel">
+            <ul>
+                <li><input id="name" type="text" class="mdc-text-field" placeholder="Name" data-type="filled"></li>
+                <li><select id="gender"><option value="">Gender</option></select></li>
+                <li><select id="eyeColor"><option value="">Eye Color</option></select></li>
+            </ul>
+        </div>
+    </div>
+    <div class="btn-panel">
+        <button id="btnSearch" class="btn-search mdc-button mdc-button--raised">조회</button>
+        <button id="btnExcel" class="mdc-button">엑셀</button>
+    </div>
+    
+    <table id="master" class="grid__">
+        <colgroup>
+            <col style="width: 12%;">
+            <col style="width: 15%;">
+            <col style="width: 15%;">
+            <col style="width: auto;">
+            <col style="width: 6%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 12%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th data-filter="true">Age</th>
+                <th data-filter="true">Gender</th>
+                <th data-filter="true">Eye Color</th>
+                <th data-filter="true">Favorite Fruit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="text-align: center;">
+                <td id="index"></td>
+                <td id="name" style="text-align: left;"></td>
+                <td id="phone"></td>
+                <td id="email" style="text-align: left;"></td>
+                <td id="age"></td>
+                <td id="gender"></td>
+                <td id="eyeColor"></td>
+                <td id="favoriteFruit"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="11" style="text-align: right;"><span>조회 : </span> <span id="totalCnt">0</span> 건</td>
+            </tr>
+        </tfoot>
+    </table>
+</article>
+
+<script type="text/javascript">
+(function() {
+
+    var cont = N(".type0101").cont({
+        "p.select.gender" : [ "gender" ],
+        "p.select.eyeColor" : [ "eyeColor" ],
+        "p.select.favoriteFruit" : [ "favoriteFruit" ],
+        "p.form.search" : {
+            "usage" : "search-box"
+        },
+        "p.grid.master" : {
+            "action" : "bind",
+            filter : false,
+            height : 350,
+            onBind : function(context, data) {
+                N("#totalCnt", cont.view).text(N.formatter.commas(String(data.length)));
+            }
+        },
+        "c.getSampleList" : function() {
+            return cont["p.form.search"].data(false).comm("sample/getSampleBigList.json");
+        },
+        "e.btnSearch.click" : function(e) {
+            e.preventDefault();
+
+            if (cont["p.form.search"].validate()) {
+                cont["c.getSampleList"]().submit(function(data) {
+                    // N.grid bind
+                    cont["p.grid.master"].bind(data);
+                });
+            }
+        },
+        "e.btnExcel.click" : function(e) {
+            e.preventDefault();
+
+            if (cont["p.form.search"].validate()) {
+                cont["c.getSampleList"]().excelStreaming([ "대용량 샘플 목록", cont["p.grid.master"] ]);
+            }
+        },
+        init : function(view, request) {
+            // cont.opener는 탭이 포함된 부모페이지의 Controller Object.
+            if(cont.opener) {
+                cont["p.form.search"].context().hide().prev("h3").hide().prev(".view-intro").hide();
+            }
+        }
+    });
+
+})();
+</script>
