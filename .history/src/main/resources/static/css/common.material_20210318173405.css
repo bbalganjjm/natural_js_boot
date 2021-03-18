@@ -9,7 +9,7 @@ input[type='text'], input[type='number'], input[type='tel'], input[type='passwor
     border-bottom: 1px solid rgba(0,0,0,.38);
     background-color: whitesmoke;
     line-height: 36px;
-    min-width: auto;
+    min-width: 198px;
     border-radius: 4px 4px 0 0;
 }
 select {
@@ -20,6 +20,7 @@ select[multiple='multiple'] {
     padding: 8px;
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 4px;
+    min-width: 230px;
 }
 select[multiple='multiple'] option {
     padding: 8px 16px;
@@ -285,7 +286,7 @@ th, tfoot td {
     color: rgba(0, 0, 0, 0.87);
     background-color: transparent;
     padding: 21px 16px 6px 16px;
-    min-width: 166px;
+    min-width: 198px;
     font-size: 16px;
     border-radius: 0;
     border: none;

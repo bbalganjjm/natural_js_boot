@@ -178,34 +178,31 @@
                                 var id = el.attr("id");
                                 var label = el.data("label");
                                 var uid = String(Math.random()).replace("0.", "");
-                                
-                                el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
-                                el.attr("aria-label", label);
-
+                         
+                                el.css({
+                                    "padding": "0",
+                                    "border": "none"
+                                });
+                                    
                                 var mdcTextField;
                                 if(el.is("textarea")) {
+                                    el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
+                                    el.attr("aria-label", label);
+
                                     if(el.data("type") === "outlined") { // filled | outlined
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
                                         mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">' 
                                             + '<span class="mdc-notched-outline__leading"></span>'
-                                            + '<span class="mdc-notched-outline__notch">'
-                                                + '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>'
-                                            + '</span>'
                                             + '<span class="mdc-notched-outline__trailing"></span>'
                                         + '</span>');
                                     } else {
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
-                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }
                                 } else {
-                                    el.css({
-                                        "padding": "0",
-                                        "border": "none"
-                                    });
-
                                     el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
                                     el.attr("aria-labelledby", id + "-label-" + uid);
 
@@ -220,13 +217,13 @@
                                         + '</span>');
                                     } else {
                                         mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled"></label>').parent();
+                                        mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }
-                                    var btnId = el.data("btnid");
                                     var btnIdAttr = "";
-                                    if(btnId) {
-                                        btnIdAttr = ' id="' + btnId + '"';
+                                    if(el.data("btnid")) {
+                                        btnIdAttr = ' id="' + el.data("btnid") + '"';
                                     }
                                     if(el.data("trailingicon")) {
                                         mdcTextField.addClass("mdc-text-field--with-trailing-icon");
@@ -236,8 +233,8 @@
                                         mdcTextField.addClass("mdc-text-field--with-leading-icon");
                                         el.before('<i' + btnIdAttr + ' class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">' + el.data("leadingicon") + '</i>');
                                     }
-                                    if(btnId) {
-                                        cont["e." + btnId + ".click"] = N("#" + btnId, cont.view).on("click", cont["e." + btnId + ".click"]);
+                                    if(el.data("btnid")) {
+                                        N.log(cont["e." + el.data("btnid") + ".click"]);
                                     }
                                 }
                                 el.data("md_textfield_inst", mdc.textField.MDCTextField.attachTo(mdcTextField.get(0)));

@@ -178,34 +178,32 @@
                                 var id = el.attr("id");
                                 var label = el.data("label");
                                 var uid = String(Math.random()).replace("0.", "");
-                                
-                                el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
-                                el.attr("aria-label", label);
+                                var width = el.data("width");
 
+                                el.css({
+                                    "padding": "0",
+                                    "border": "none"
+                                });
+                                    
                                 var mdcTextField;
                                 if(el.is("textarea")) {
+                                    el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
+                                    el.attr("aria-label", label);
+
                                     if(el.data("type") === "outlined") { // filled | outlined
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
                                         mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">' 
                                             + '<span class="mdc-notched-outline__leading"></span>'
-                                            + '<span class="mdc-notched-outline__notch">'
-                                                + '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>'
-                                            + '</span>'
                                             + '<span class="mdc-notched-outline__trailing"></span>'
                                         + '</span>');
                                     } else {
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
-                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }
                                 } else {
-                                    el.css({
-                                        "padding": "0",
-                                        "border": "none"
-                                    });
-
                                     el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
                                     el.attr("aria-labelledby", id + "-label-" + uid);
 
@@ -220,25 +218,22 @@
                                         + '</span>');
                                     } else {
                                         mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled"></label>').parent();
+                                        mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }
-                                    var btnId = el.data("btnid");
-                                    var btnIdAttr = "";
-                                    if(btnId) {
-                                        btnIdAttr = ' id="' + btnId + '"';
-                                    }
                                     if(el.data("trailingicon")) {
                                         mdcTextField.addClass("mdc-text-field--with-trailing-icon");
-                                        el.after('<i' + btnIdAttr + ' class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">' + el.data("trailingicon") + '</i>');
+                                        mdcTextField.prepend('<i aria-hidden="true" class="material-icons mdc-text-field__icon">' + el.data("trailingicon") + '</i>');
                                     }
                                     if(el.data("leadingicon")) {
                                         mdcTextField.addClass("mdc-text-field--with-leading-icon");
-                                        el.before('<i' + btnIdAttr + ' class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">' + el.data("leadingicon") + '</i>');
+                                        mdcTextField.prepend('<i aria-hidden="true" class="material-icons mdc-text-field__icon">' + el.data("leadingicon") + '</i>');
                                     }
-                                    if(btnId) {
-                                        cont["e." + btnId + ".click"] = N("#" + btnId, cont.view).on("click", cont["e." + btnId + ".click"]);
-                                    }
+                                }
+                                if(width) {
+                                    
+                                    mdcTextField.width(width);
                                 }
                                 el.data("md_textfield_inst", mdc.textField.MDCTextField.attachTo(mdcTextField.get(0)));
                             });
@@ -556,58 +551,55 @@
                         }
 
                         var targetEle = N(idSelector + targetProp, cont.view);
+                        var listCompEle = targetEle.closest(".list__, .grid__");
 
-                        if(targetEle.length > 0) {
-                            var listCompEle = targetEle.closest(".list__, .grid__");
-
-                            var compInst;
-                            if(listCompEle.length > 0 && targetEle.closest("header").length === 0) {
-                                if(listCompEle.hasClass("list__")) {
-                                    compInst = listCompEle.instance("list");
-                                } else if(listCompEle.hasClass("grid__")) {
-                                    compInst = listCompEle.instance("grid");
-                                }
-
-                                if(compInst) {
-                                    targetEle = compInst.tempRowEle.find(idSelector + targetProp);
-
-                                    // If the target element is a checkbox or radio, the element is imported by name selector.(#eleId -> [name='eleId']).
-                                    if(targetEle.is(":radio, :checkbox") && N("[name='" + targetProp + "']", compInst.tempRowEle).length > 1) {
-                                        targetEle = N("[name='" + targetProp + "']", compInst.tempRowEle);
-                                    }
-                                }
-                            } else {
-                                // If the target element is a checkbox or radio, the element is imported by name selector.(#eleId -> [name='eleId']).
-                                if(targetEle.is(":radio, :checkbox") && N("[name='" + targetProp + "']", cont.view).length > 1) {
-                                    targetEle = N("[name='" + targetProp + "']", cont.view);
-                                }
-                            }
-
-                            // If the target element is a button element(a, button, input[type=button]), the N.button component is automatically applied.
-                            if(targetEle.is("a, button, input[type=button]")) {
-                                targetEle.button();
-                            } else {
-                                if(eventName && eventName.indexOf("click") > -1) {
-                                    targetEle.css("cursor", "pointer");
-                                }
+                        var compInst;
+                        if(listCompEle.length > 0 && targetEle.closest("header").length === 0) {
+                            if(listCompEle.hasClass("list__")) {
+                                compInst = listCompEle.instance("list");
+                            } else if(listCompEle.hasClass("grid__")) {
+                                compInst = listCompEle.instance("grid");
                             }
 
                             if(compInst) {
-                                var targetStr;
-                                if(targetEle.is(":radio") || (targetEle.is(":checkbox") && targetEle.length > 1)) {
-                                    targetStr = ">.form__ [name='" + targetProp + "']:radio, >.form__ [name='" + targetProp + "']:checkbox";
-                                } else {
-                                    targetStr = ">.form__ " + idSelector + targetProp;
-                                }
+                                targetEle = compInst.tempRowEle.find(idSelector + targetProp);
 
-                                cont[prop] = listCompEle.on(eventName + "." + cont.view.data("pageid"), targetStr, function() {
-                                    var args = Array.apply(null, arguments);
-                                    args.push(listCompEle.find(">.form__").index($(this).closest(".form__")));
-                                    handler.apply(this, args);
-                                });
-                            } else {
-                                cont[prop] = targetEle.on(eventName + "." + cont.view.data("pageid"), handler);
+                                // If the target element is a checkbox or radio, the element is imported by name selector.(#eleId -> [name='eleId']).
+                                if(targetEle.is(":radio, :checkbox") && N("[name='" + targetProp + "']", compInst.tempRowEle).length > 1) {
+                                    targetEle = N("[name='" + targetProp + "']", compInst.tempRowEle);
+                                }
                             }
+                        } else {
+                            // If the target element is a checkbox or radio, the element is imported by name selector.(#eleId -> [name='eleId']).
+                            if(targetEle.is(":radio, :checkbox") && N("[name='" + targetProp + "']", cont.view).length > 1) {
+                                targetEle = N("[name='" + targetProp + "']", cont.view);
+                            }
+                        }
+
+                        // If the target element is a button element(a, button, input[type=button]), the N.button component is automatically applied.
+                        if(targetEle.is("a, button, input[type=button]")) {
+                            targetEle.button();
+                        } else {
+                            if(eventName && eventName.indexOf("click") > -1) {
+                                targetEle.css("cursor", "pointer");
+                            }
+                        }
+
+                        if(compInst) {
+                            var targetStr;
+                            if(targetEle.is(":radio") || (targetEle.is(":checkbox") && targetEle.length > 1)) {
+                                targetStr = ">.form__ [name='" + targetProp + "']:radio, >.form__ [name='" + targetProp + "']:checkbox";
+                            } else {
+                                targetStr = ">.form__ " + idSelector + targetProp;
+                            }
+
+                            cont[prop] = listCompEle.on(eventName + "." + cont.view.data("pageid"), targetStr, function() {
+                                var args = Array.apply(null, arguments);
+                                args.push(listCompEle.find(">.form__").index($(this).closest(".form__")));
+                                handler.apply(this, args);
+                            });
+                        } else {
+                            cont[prop] = targetEle.on(eventName + "." + cont.view.data("pageid"), handler);
                         }
                     } else {
                         throw N.error(N.message.get(N.context.attr("template").message, "MSG-0006", [ cont.view.data("pageid") + ":" + prop ]));

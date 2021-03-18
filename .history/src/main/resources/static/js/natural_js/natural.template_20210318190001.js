@@ -197,6 +197,7 @@
                                     } else {
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
                                         mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                        mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }

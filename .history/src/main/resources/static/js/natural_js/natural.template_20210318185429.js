@@ -206,9 +206,6 @@
                                         "border": "none"
                                     });
 
-                                    el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
-                                    el.attr("aria-labelledby", id + "-label-" + uid);
-
                                     if(el.data("type") === "outlined") { // filled | outlined
                                         mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--outlined"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">'
@@ -219,7 +216,8 @@
                                             + '<span class="mdc-notched-outline__trailing"></span>'
                                         + '</span>');
                                     } else {
-                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled"></label>').parent();
+                                        mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
+                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }

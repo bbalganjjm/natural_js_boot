@@ -206,9 +206,6 @@
                                         "border": "none"
                                     });
 
-                                    el.addClass("mdc-text-field__input").removeClass("mdc-text-field");
-                                    el.attr("aria-labelledby", id + "-label-" + uid);
-
                                     if(el.data("type") === "outlined") { // filled | outlined
                                         mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--outlined"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">'

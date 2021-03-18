@@ -604,9 +604,8 @@
         "form" : {
             "tpBind" : true,
             "onBeforeBindValue" : function(ele, val, action) {
-                // for Material Design
-                if(!N.string.isEmpty(val) && ele.data("md_textfield_inst")) {
-                    ele.data("md_textfield_inst").value = val;
+                if(ele.data("md_textfield_inst")) {
+                    N.log(val);
                 }
                 return val;
             }
