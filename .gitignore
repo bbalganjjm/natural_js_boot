@@ -21,5 +21,8 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# Local History
+.history
+
 .idea/
 *.iml
