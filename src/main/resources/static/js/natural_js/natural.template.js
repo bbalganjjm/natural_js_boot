@@ -178,6 +178,7 @@
                                 var id = el.attr("id");
                                 var label = el.data("label");
                                 var uid = String(Math.random()).replace("0.", "");
+                                var isNoLabel = el.data("nolabel") ? el.data("nolabel") : false;
 
                                 var mdcTextField;
                                 if(el.is("textarea")) {
@@ -186,17 +187,17 @@
 
                                     if(el.data("type") === "outlined") { // filled | outlined
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
-                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea' + (isNoLabel ? ' mdc-text-field--no-label' : '') + '"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">' 
                                             + '<span class="mdc-notched-outline__leading"></span>'
                                             + '<span class="mdc-notched-outline__notch">'
-                                                + '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>'
+                                            + (!isNoLabel ? '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>' : '')
                                             + '</span>'
                                             + '<span class="mdc-notched-outline__trailing"></span>'
                                         + '</span>');
                                     } else {
                                         mdcTextField = el.wrap('<span class="mdc-text-field__resizer"></span>').parent();
-                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"></label>').parent();
+                                        mdcTextField = mdcTextField.wrap('<label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea' + (isNoLabel ? ' mdc-text-field--no-label' : '') + '"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
@@ -211,17 +212,19 @@
                                     el.attr("aria-labelledby", id + "-label-" + uid);
 
                                     if(el.data("type") === "outlined") { // filled | outlined
-                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--outlined"></label>').parent();
+                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--outlined' + (isNoLabel ? ' mdc-text-field--no-label' : '') + '"></label>').parent();
                                         mdcTextField.prepend('<span class="mdc-notched-outline">'
                                             + '<span class="mdc-notched-outline__leading"></span>'
                                             + '<span class="mdc-notched-outline__notch">'
-                                                + '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>'
+                                                + (!isNoLabel ? '<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>' : '')
                                             + '</span>'
                                             + '<span class="mdc-notched-outline__trailing"></span>'
                                         + '</span>');
                                     } else {
-                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled"></label>').parent();
-                                        mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
+                                        mdcTextField = el.wrap('<label class="mdc-text-field mdc-text-field--filled' + (isNoLabel ? ' mdc-text-field--no-label' : '') + '"></label>').parent();
+                                        if(!isNoLabel) {
+                                            mdcTextField.prepend('<span class="mdc-floating-label" id="' + id + '-label-' + uid + '">' + label +'</span>');
+                                        }
                                         mdcTextField.prepend('<span class="mdc-text-field__ripple"></span>');
                                         mdcTextField.append('<span class="mdc-line-ripple"></span>');
                                     }

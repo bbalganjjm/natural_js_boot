@@ -252,6 +252,11 @@ th, tfoot td {
 }
 
 /* Material Design styles of select element */
+/* Because the font is different. */
+.mdc-floating-label {
+    line-height: 1.25rem !important;
+}
+
 .mdc-njs-select-wrap {
     position: relative;
     border-top-left-radius: var(--mdc-shape-small, 4px);
@@ -340,7 +345,7 @@ th, tfoot td {
     content: '';
     height: 2px;
     width: 0;
-    bottom: 1px;
+    bottom: 0;
     position: absolute;
     background: #2F80ED;
     transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1), left 150ms cubic-bezier(0.4, 0, 0.2, 1), right 150ms cubic-bezier(0.4, 0, 0.2, 1);
