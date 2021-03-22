@@ -52,80 +52,64 @@
                 <button id="btnRevert" class="mdc-button">초기화</button>
             </div>
 
-            <table id="detail" class="form__">
-                <colgroup>
-                    <col style="width: 15%;">
-                    <col style="width: 35%;">
-                    <col style="width: 15%;">
-                    <col style="width: 35%;">
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <th rowspan="7">Picture</th>
-                        <td rowspan="7" style="text-align: center; vertical-align: middle;"><img 
-                            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" height="110"></td>
-                        <th>Name</th>
-                        <td><input id="name" type="text" data-validate='[["required"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Department</th>
-                        <td>
-                            <input id="deptNm" type="text" data-validate='[["required"]]' style="width: 50%;" readonly="readonly">
-                            <button id="btnDept" class="mdc-icon-button mdc-icon-button--mini">search</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td><input id="email" type="text" data-validate='[["required"], ["email"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Password</th>
-                        <td><input id="key" type="text" data-format='[["generic", "@@＊＊＊＊＊＊"]]' data-validate='[["required"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Balance</th>
-                        <td><input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Phone</th>
-                        <td><input id="phone" type="text" data-validate='[["required"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Eye color</th>
-                        <td><select id="eyeColor" class="select__" data-validate='[["required"]]'><option>선택</option></select></td>
-                    </tr>
-                    <tr>
-                        <th rowspan="4">Company</th>
-                        <td rowspan="4"><select id="company" multiple="multiple" class="select__" data-validate='[["required"]]' style="height: 95px;"></select></td>
-                        <th>Gender</th>
-                        <td><input id="gender" type="radio" class="select__"></td>
-                    </tr>
-                    <tr>
-                        <th>Age</th>
-                        <td><input id="age" type="text" data-validate='[["required"], ["integer"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Favorite fruit</th>
-                        <td><input id="favoriteFruit" type="checkbox" class="select__" data-validate='[["required"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>Registered</th>
-                        <td><input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]'></td>
-                    </tr>
-                    <tr>
-                        <th>About</th>
-                        <td colspan="3"><textarea id="about" style="width: 100%;" rows="3" data-validate='[["required"]]'></textarea></td>
-                    </tr>
-                    <tr>
-                        <th>Greeting</th>
-                        <td colspan="3"><textarea id="greeting" style="width: 100%;" rows="3" data-validate='[["required"]]'></textarea></td>
-                    </tr>
-                    <tr>
-                        <th>Active</th>
-                        <td colspan="3"><input id="isActive" type="checkbox"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <ul id="detail" class="form__">
+                <li>
+                    <p class="mdc-njs-fixed-label">Default Picture</p>
+                    <img id="picture" style="height: 56px;">
+                </li>
+                
+
+                <li>
+                    <input id="name" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Name">
+                </li>
+                <li>
+                    <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" class="mdc-text-field" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
+                </li>
+                <li>
+                    <input id="email" type="text" data-validate='[["required"], ["email"]]' class="mdc-text-field" data-label="Email">
+                </li>
+                <li>
+                    <input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]' class="mdc-text-field" data-label="Balance">
+                </li>
+                <li>
+                    <input id="phone" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Phone">
+                </li>
+                <li>
+                    <select id="eyeColor" data-validate='[["required"]]' class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select>
+                </li>
+                <li>
+                    <input id="age" type="text" data-validate='[["required"], ["integer"]]' class="mdc-text-field" data-label="Age">
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Gender</p>
+                    <input id="gender" type="radio">
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Favorite Fruit</p>
+                    <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
+                </li>
+                <li>
+                    <input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]' class="mdc-text-field" data-label="Registered">
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Company</p>
+                    <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 100px;"></select>
+                </li>
+                <li>
+                    <textarea id="about" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="About"></textarea>
+                </li>
+                <li>
+                    <textarea id="greeting" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="Greeting"></textarea>
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Active</p>
+                    <input id="isActive" type="checkbox">
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Attachments</p>
+                    <button id="btnFile" class="mdc-button mdc-button--outlined" data-icon="file_present">File</button>
+                </li>
+            </ul>
         </div>
     </div>
 </article>
@@ -171,7 +155,7 @@
             }
         },
         "p.grid.master" : {
-            height : 412,
+            height : 500,
             select : true,
             selectScroll : false,
             onSelect : function(index, rowEle, data, beforeRow, e) {
@@ -200,6 +184,19 @@
                 if (onCloseData) {
                     cont["p.form.detail"].val("deptNm", onCloseData.deptNm);
                     cont["p.form.detail"].val("deptCd", onCloseData.deptCd);
+                }
+            }
+        },
+        /**
+         * 공통 파일 팝업.
+         */
+        "p.popup.file" : {
+            onClose : function(onCloseData) {
+                if(onCloseData) {
+                    cont["p.form.detail"].val("fileId", onCloseData.fileId);
+
+                	// 파일 요약 목록 생성
+                    APP.comm.utils.createFileSummaryList(onCloseData.downloadList, "fileName", 60, cont["e.btnFile.click"]);
                 }
             }
         },
@@ -252,7 +249,7 @@
                 } ]);
             }
         },
-        "e.btnDept.click" : function(e) {
+        "e.btnDeptCd.click" : function(e) {
             e.preventDefault();
             cont["p.popup.dept"].open(cont["p.form.detail"].data(true)[0]);
         },
@@ -280,6 +277,11 @@
         "e.btnDelete.click" : function(e) {
             e.preventDefault();
             cont["p.form.detail"].remove();
+        },
+        "e.btnFile.click" : function(e) {
+            e.preventDefault();
+
+            cont["p.popup.file"].open(cont["p.form.detail"].val("fileId"));
         },
         "e.btnRevert.click" : function(e) {
             e.preventDefault();

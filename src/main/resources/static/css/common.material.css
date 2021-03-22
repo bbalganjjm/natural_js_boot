@@ -9,7 +9,7 @@ input[type='text'], input[type='number'], input[type='tel'], input[type='passwor
     border-bottom: 1px solid rgba(0,0,0,.38);
     background-color: whitesmoke;
     line-height: 36px;
-    min-width: auto;
+    min-width: 168px;
     border-radius: 4px 4px 0 0;
 }
 select {
@@ -17,7 +17,8 @@ select {
     height: 36px;
 }
 select[multiple='multiple'] {
-    padding: 8px;
+    width: 198px;
+    padding: 8px 0;
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 4px;
 }
@@ -68,25 +69,14 @@ input[type='radio'], input[type='checkbox'] {
     border: none;
 }
 
+.select_input_label__ input[type='radio'], .select_input_label__ input[type='checkbox'] {
+    margin: 0px 8px 0px 16px;
+}
+
 .mdc-text-field input, .mdc-text-field textarea,
 .mdc-text-field input:hover, .mdc-text-field textarea:hover,
 .mdc-text-field input:focus, .mdc-text-field textarea:focus {
     background-color: inherit !important;
-}
-
-
-.popup__ .btn-panel {
-    display: flex;
-    position: relative;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    min-height: 53px;
-    margin: 0;
-    padding: 8px;
-    border-top: 1px solid transparent;
 }
 
 .popup__ .view_context__ {
@@ -142,6 +132,9 @@ th {
 .grid__ .form__ {
     border-top: none;
     border-radius: inherit;
+}
+ul.form__ li {
+    background-color: whitesmoke;    
 }
 .thead_wrap__ thead > tr > th,
 .grid__ tbody > tr > td {
@@ -241,10 +234,6 @@ th, tfoot td {
     background-color: #fff;
 }
 
-.view_context__ .form__.search_box__ {
-    box-shadow: 0 2px 0 rgba(0,0,0,.12);
-}
-
 .mdc-icon-button--mini {
     width: 36px !important;
     height: 36px !important;
@@ -315,7 +304,9 @@ th, tfoot td {
 }
 
 .mdc-njs-select-label {
-    color: #767676;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.6);
     font-size: var(--mdc-typography-subtitle1-font-size, 1rem);
     font-family: var(--mdc-typography-subtitle1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
     font-weight: normal;
@@ -369,4 +360,24 @@ th, tfoot td {
     left: 0;
     pointer-events: none;
     opacity: 0.5;
+}
+
+
+/* Fixed Label */
+.mdc-njs-fixed-label {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.72);
+    font-size: 0.75rem;
+    padding: 4px 16px;
+    margin: 0;
+}
+
+/* Examples */
+.view_context__ .search_box__ {
+    margin-bottom: 10px;
+}
+
+.view_context__ .form__.search_box__ {
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }

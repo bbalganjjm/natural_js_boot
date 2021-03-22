@@ -159,14 +159,17 @@ th, tfoot td {
 ul.form__ {
     display: flex;
     flex-wrap: wrap;
-    padding: 8px 0;
+    padding: 5px;
     margin: 0;
+    background-color: #fff;
 }
 ul.form__ li {
-    flex: 45%;
+    flex: 22%;
     list-style: none;
     padding: 8px 16px;
-    margin: 0;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: #E8F5E9;    
 }
 
 .grid__>tbody:nth-child(odd), .list__>li:nth-child(odd) {
@@ -258,7 +261,7 @@ ul.form__ li {
 }
 
 .page-footer {
-    margin-left: 250px;
+    text-align: right;
     padding: 20px;
 }
 
@@ -269,6 +272,7 @@ ul.form__ li {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .flex-horizental>* {
@@ -278,6 +282,7 @@ ul.form__ li {
     -ms-flex: 1;
     flex: 1;
     margin-right: 10px;
+    min-width: 310px;
 }
 
 .flex-horizental>*:last-child {
@@ -515,7 +520,6 @@ article .btnBox {
 
 /* Examples */
 .view_context__ .search_box__ {
-    border-radius: 3px;
     margin-bottom: 10px;
 }
 
@@ -523,28 +527,25 @@ article .btnBox {
     border: 1px solid #C8E6C9;
     border-radius: 4px;
     background-color: #fff;
+    padding: 5px;
 }
 .view_context__ .form__.search_box__ .criteria-panel {
-    padding: 20px;
+ 
 }
 
-.view_context__ .search_box__ ul {
-    list-style: none;
-    margin: 0;
+.view_context__ .form__.search_box__ .criteria-panel ul {
+    display: flex;
+    flex-wrap: wrap;
     padding: 0;
-    overflow: hidden;
-}
-
-.view_context__ .search_box__ ul li {
-    float: left;
-    margin: 0 32px 0 0;
-}
-.view_context__ .search_box__ ul li:last-child {
     margin: 0;
+    background-color: #fff;
 }
-.view_context__ .search_box__ ul::after {
-    content: '';
-    clear: both;
+.view_context__ .form__.search_box__ .criteria-panel ul li {
+    list-style: none;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 4px;
+    
 }
 
 .view_context__ .grid__ input,

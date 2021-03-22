@@ -98,7 +98,7 @@
         },
         "p.pagination.masterPagination" : {
             blockOnChangeWhenBind : true,
-            countPerPage : 12,
+            countPerPage : 10,
             onChange : function(pageNo, selEle, selData, currPageNavInfo) {
                 cont["c.getSampleList"]().submit(function(data) {
                     cont["p.pagination.masterPagination"].bind(data[0] && data[0].totalCount ? data[0].totalCount : 0 );

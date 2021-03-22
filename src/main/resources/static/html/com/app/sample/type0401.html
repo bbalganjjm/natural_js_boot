@@ -47,59 +47,60 @@
             </div>
             <ul id="detail" class="form__">
                 <li>
-                    <img id="picture" height="100" style="margin: 0;">
+                    <p class="mdc-njs-fixed-label">Default Picture</p>
+                    <img id="picture" style="height: 56px;">
+                </li>
+                
+
+                <li>
+                    <input id="name" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Name">
                 </li>
                 <li>
-                    <span><input id="name" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Name"></span>
+                    <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" class="mdc-text-field" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
                 </li>
                 <li>
-                    <span>
-                        <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" class="mdc-text-field" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
-                    </span>
+                    <input id="email" type="text" data-validate='[["required"], ["email"]]' class="mdc-text-field" data-label="Email">
                 </li>
                 <li>
-                    <span><input id="email" type="text" data-validate='[["required"], ["email"]]' class="mdc-text-field" data-label="Email"></span>
+                    <input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]' class="mdc-text-field" data-label="Balance">
                 </li>
                 <li>
-                    <span><input id="key" type="text" data-format='[["generic", "@@＊＊＊＊＊＊"]]' data-validate='[["required"]]' class="mdc-text-field" data-label="Key"></span>
+                    <input id="phone" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Phone">
                 </li>
                 <li>
-                    <span><input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]' class="mdc-text-field" data-label="Balance"></span>
+                    <select id="eyeColor" data-validate='[["required"]]' class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select>
                 </li>
                 <li>
-                    <span><input id="phone" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Phone"></span>
+                    <input id="age" type="text" data-validate='[["required"], ["integer"]]' class="mdc-text-field" data-label="Age">
                 </li>
                 <li>
-                    <span><select id="eyeColor" data-validate='[["required"]]' class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select></span>
+                    <p class="mdc-njs-fixed-label">Gender</p>
+                    <input id="gender" type="radio">
                 </li>
                 <li>
-                    <span rowspan="4">
-                        <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 150px;"></select>
-                    </span>
-                </li>
-                <li>
-                    <span><input id="gender" type="radio"></span>
-                </li>
-                <li>
-                    <span><input id="age" type="text" data-validate='[["required"], ["integer"]]' class="mdc-text-field" data-label="Age"></span>
-                </li>
-                <li>
-                    <span><input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'></span>
+                    <p class="mdc-njs-fixed-label">Favorite Fruit</p>
+                    <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
                 </li>
                 <li>
                     <input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]' class="mdc-text-field" data-label="Registered">
                 </li>
                 <li>
-                    <span colspan="3"><textarea id="about" rows="3" cols="40" data-validate='[["required"]]' class="mdc-text-field" data-label="About"></textarea></span>
+                    <p class="mdc-njs-fixed-label">Company</p>
+                    <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 100px;"></select>
                 </li>
                 <li>
-                    <span colspan="3"><textarea id="greeting" rows="3" cols="40" data-validate='[["required"]]' class="mdc-text-field" data-label="Greeting"></textarea></span>
+                    <textarea id="about" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="About"></textarea>
                 </li>
                 <li>
-                    <span colspan="3"><input id="isActive" type="checkbox"></span>
+                    <textarea id="greeting" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="Greeting"></textarea>
                 </li>
                 <li>
-                    <span colspan="3"><button id="btnFile" class="mdc-button mdc-button--outlined" data-icon="file_present">File</button></span>
+                    <p class="mdc-njs-fixed-label">Active</p>
+                    <input id="isActive" type="checkbox">
+                </li>
+                <li>
+                    <p class="mdc-njs-fixed-label">Attachments</p>
+                    <button id="btnFile" class="mdc-button mdc-button--outlined" data-icon="file_present">File</button>
                 </li>
             </ul>
         </div>
@@ -136,7 +137,7 @@
             autoUnbind : true
         },
         "p.grid.master" : {
-            height : 442,
+            height : 500,
             select : true,
             selectScroll : false,
             onSelect : function(index, rowEle, data, beforeRow, e) {

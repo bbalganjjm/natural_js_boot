@@ -70,22 +70,14 @@
 .file_manager__ .btn-panel {
     padding: 20px;
 }
-
-.file_manager__ .upload__, .file_manager__ .download__ {
-    display: none;
-}
-
-.file_manager__ #btnOk {
-    display: inline-block;
-}
 </style>
 
 <article class="file_manager__" title="파일 관리">
     <div class="file_contents__">
         <div class="upload__ flex-horizental">
             <div class="btn-panel">
-                <a id="btnAdd" href="#">추가</a>
-                <a id="btnUpload" href="#" class="R">업로드</a>
+                <button id="btnAdd" class="mdc-button" data-icon="playlist_add">추가</button>
+                <button id="btnUpload" class="mdc-button mdc-button--raised" data-icon="file_upload">업로드</button>
             </div>
         </div>
         <h4 class="download__">다운로드</h4>
@@ -98,8 +90,8 @@
         </div>
         <div class="upload__ desc"></div>
     </div>
-    <div class="btn-panel" style="text-align: center;">
-        <a id="btnOk" href="#" data-opts='{ "color" : "gray", "size" : "large" }' class="upload__">확인</a>
+    <div class="btn-panel">
+        <button id="btnOk" class="upload__ mdc-button" data-icon="check_circle">확인</button>
     </div>
 </article>
 
@@ -250,7 +242,7 @@
                         fileNameText = file.name;
                     }
 
-                    fileGroupUl.append('<li><span' + warnStyle + '>' + fileNameText + '</span><a data-fileid="' + (file.lastModified + file.name + file.size) + '" class="delete_file_item__" href="#"><span>삭제</span></a></li>');
+                    fileGroupUl.append('<li><span' + warnStyle + '>' + fileNameText + '</span><button data-fileid="' + (file.lastModified + file.name + file.size) + '" class="delete_file_item__" href="#"><span>삭제</span></button></li>');
                 });
 
                 if(files.length > 0) {
@@ -339,13 +331,13 @@
                     var li = $("<li />");
 
                     // 다운로드 링크
-                    li.append($('<a />', {
+                    li.append($('<button />', {
                         text : this.fileName,
                         href : "file/getFile/" + fileId + "/" + this.fileSeq
                     }).addClass("file_download_link__").data("fileid", fileId).data("fileseq", this.fileSeq))
 
                     // 삭제버튼
-                    li.append($('<a class="delete_file__" href="#"><span>삭제</span></a>'));
+                    li.append($('<button class="delete_file__" href="#"><span>삭제</span></button>'));
 
                     li.appendTo(N(".file_download_items__", cont.view));
 
