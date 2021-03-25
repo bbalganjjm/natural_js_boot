@@ -528,7 +528,7 @@
                 "en_US" : {
                     "year" : "Year",
                     "month" : "Month",
-                    "days" : "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+                    "days" : "S,M,T,W,T,F,S",
                     "yearNaN" : "You can not enter less AD 100 years",
                     "monthNaN" : "You can enter 1 to 12 months value",
                     "dayNaN" : "You can enter 1 to {0} days value",
