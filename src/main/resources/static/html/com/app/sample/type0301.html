@@ -13,7 +13,7 @@
         <button id="btnExcel" class="mdc-button" data-icon="table_chart">엑셀</button>
     </div>
 
-    <div style="position: relative; min-height: 483px;">
+    <div style="position: relative; min-height: 569px;">
         <table id="master" class="grid__">
             <colgroup>
                 <col style="width: 50px;">
@@ -64,15 +64,15 @@
     <div class="pagination-box">
         <div id="masterPagination">
             <ul>
-                <li><a href="#" title="처음">first</a></li>
-                <li><a href="#" title="이전">prev</a></li>
+                <li><a href="#" title="처음"><button class="mdc-icon-button mdc-icon-button--mini">skip_previous</button></a></li>
+                <li><a href="#" title="이전"><button class="mdc-icon-button mdc-icon-button--mini">navigate_before</button></a></li>
             </ul>
             <ul>
                 <li><a href="#"><span>1</span></a></li>
             </ul>
             <ul>
-                <li><a href="#" title="다음">next</a></li>
-                <li><a href="#" title="마지막">last</a></li>
+                <li><a href="#" title="다음"><button class="mdc-icon-button mdc-icon-button--mini">navigate_next</button></a></li>
+                <li><a href="#" title="마지막"><button class="mdc-icon-button mdc-icon-button--mini">skip_next</button></a></li>
             </ul>
         </div>
     </div>
@@ -99,6 +99,7 @@
         "p.pagination.masterPagination" : {
             blockOnChangeWhenBind : true,
             countPerPage : 10,
+            countPerPageSet : $(window).width() <= 751 ? 4 : 10,
             onChange : function(pageNo, selEle, selData, currPageNavInfo) {
                 cont["c.getSampleList"]().submit(function(data) {
                     cont["p.pagination.masterPagination"].bind(data[0] && data[0].totalCount ? data[0].totalCount : 0 );

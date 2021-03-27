@@ -1541,49 +1541,53 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     float: left;
     text-align: center;
     padding: 0;
-    margin: 0 3px 0 3px;
+    margin: 0;
 }
 
 .pagination__ .pagination_lefter__ li {
-    width: 16px;
-    height: 16px;
+    width: auto;
+    height: auto;
     overflow: hidden;
-    text-indent: -9999px;
+    text-indent: 0;
     cursor: pointer;
 }
 
 .pagination__ .pagination_lefter__ li.pagination_first__ {
-    background:    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABrUlEQVQ4y62Tv2tTURTHP+e+ZvFlcnboGgkIuTchCCaPDlXoEqTUulqkOGTXv0B3BxHR1VpFsnTQIeTH9vKeIIRk7eDs5OsSkuPgTbkUEX99p8u53/Pze45wAc65mqoeAlvApjefAn0ReZ5l2aeQL+tHo9G4tFwunwL3gBnQA+b+uwJ0gKvAqyiKummanp0H8M4fgKqIPIjj+Hg4HK7CTO122xRFsaeqz4BpFEU30zQ92wDwmasiciPLsik/gQ945JybqurY+xyI7zkXkbtZlh3xG3DO7avqaxGxxg9sVi6XjwGstW9rtdp1gGazuWGt3Q4cbwF47kxVD42fdm8wGKx73gWu1Ov1y4vF4gS432q1jLX2oaqeAHhuD9gyXqp5WKKIXFutVhNgGygXRfEGeAyYgDYHNkPDX8H4JamERlX9bIypAx+Bb3Ec3wEeAaG0FeDUAH2gkyTJupp3wJfJZPK1VCrtiMiL0Wi0yvP8iYjsAHhuB+j/s4zipXsJ3P7VIgXOVVUdA+/zPD8wAFEUdYGpqo6dc/tBO+dIksT4zGN+rHIX/tcxXSjxj875O8ilzwF57QHOAAAAAElFTkSuQmCC') no-repeat;
+    background: none;
 }
 
 .pagination__ .pagination_lefter__ li.pagination_prev__ {
-    background:    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABsElEQVQ4y62TP2tTURjGf+85HcQbnINTB5e0AcFzkk1y6SIaqMGh1NUORUq+gqBfQYqI6GrJIEXI4BISsl1OhEJMFodOki+Q4nLv6+CJXIKWij7T4bzP++d5/whr8N7fUdVDYAfYjN/nwEBEXocQPpf5sno0m83reZ6/BJ4AM+AUmEdzDegAW8A7a203y7KLXwGi8yegLiJPkyTpjUajopyp1WqZ5XK5p6qvgKm19l6WZRcbADFzXUTuhhCm/AYx4In3fqqq4+hzIFHzREQehxBOuAK89/uq+l5EnIkNmyVJ0iuTGo3GDedcZyXROffcObcLUKlUesBMVQ9N7PbpSnO73Tbe+72iKM6Am9773TzPvwDPVPUawHA4LGKTdzbiqOaxtFuLxeIYMCJypKpHqvrgD0rmwKa5iubLYOKS1ABCCF+r1ep9EXmjqsdAX0QeRs46asC5AQZAJ01TA9Dv94sQQs8Ycxv4FkL4aK3dBl6IyHeAyO0Ag38eowA4594Cjy5bpJJzXVXHwIfJZHJgAKy1XWCqqmPv/f5KThlpmpqYeczPVe7C/zqmtRL/6px/ADoi1tTJ2FWwAAAAAElFTkSuQmCC') no-repeat;
-    margin-right: 12px;
+    background: none;
+    margin-right: 0;
 }
 
 .pagination__ .pagination_righter__ li {
-    width: 16px;
-    height: 16px;
+    width: auto;
+    height: auto;
     overflow: hidden;
-    text-indent: -9999px;
+    text-indent: 0;
     cursor: pointer;
 }
 
 .pagination__ .pagination_righter__ li.pagination_next__ {
-    background:    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABs0lEQVQ4y62TP2tTURjGf+85DtIbnINTBpdqQPCe3E1y6SISqMGh1NUiRSRfQdCvICKltKslg1QhFJeQkO1yIggxWRwySb5Aisu9r4MncimhVPSZzjnv3+d9nyNcgHPunqruA1tALTzPgb6IHHjvv5T9ZXVIkmQjz/M3wFNgCpwCs2DeBNrAbeDYWtvJsuz8T4IQ/Bmoi8jzKIq6w+GwKFdqNptmuVzuqOo7YGKtfZBl2fk1gFC5LiL3vfcT1iAkPHHOTVR1FGL2JHAei8gT7/0JV4BzbldV34tIbMLAplEUdQHiON6O4/hVkiQb4d5uNBo3ygkqlUoXmKrqvgnTPl1xVtXrwMs8z78557aBm0VRfHXO7bRaLQMwGAyKMOQtE1Y1W9NpTVU/Ai0ReaGqzxaLxZlz7lawz4CauQrny2CCSDbX2OYi8gjoqepbETmsVqsPvfffS9qYG6APtNM0NQAi8hN4ba29473/BPwwxtz13nd7vV4BEHzbQP+f1yhhVUfA48uEVAquq+oI+DAej/cMgLW2A0xUdeSc213RKSNNUxMqj/gt5Q78r890ocW/+s6/AOD0176fvuitAAAAAElFTkSuQmCC') no-repeat;
-    margin-left: 12px;
+    background: none;
+    margin-left: 0;
 }
 
 .pagination__ .pagination_righter__ li.pagination_last__ {
-    background:    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABrklEQVQ4y62Tv2tTURTHP+e+ZvFlcnboGgkIuTchCCaPDlVxCSLari1SHLLrX6C7g4joaq0iWToIEvJje3lPKIRk7dDZydcl5B0Hb+QRpFT0O13O+X7P7yuswTlXU9UDYAvY9OZToC8ir5Mk+Vbky+rRaDSuLJfLl8AeMAN6wNy7K0AHuA68C4KgG8fx+e8AXvwFqIrIkzAMj4bDYV7M1G63TZZlD1X1FTANguB2HMfnGwA+c1VEbiVJMuUP8AEPnXNTVR17zb74nlMR2U2S5JBLwDm3o6rvRcQaP7BZuVw+8s47K6K1drvZbG4A1Gq1m9bajwCeO1PVA+On3RsMBjmAqh5ba5+2Wi0DPF4sFsf1ev0qcA14AOC5PWDL+FXNCxUa4HmWZR+AMrCd5/lERG6sdTIHNs1ler4Ixh9JpWDLgWdhGD4CfgBfjTF1VT1Z01aAUwP0gU4URQZARO6lafpiNBrlwJtSqXR3Mpl8B86ATwCe2wH6/7xG8et6C9y/6JAK4qqqjoHPaZruG4AgCLrAVFXHzrmdVTtFRFFkfOYxv065C//rM62V+Fff+ScPFs7+Hr/ZZwAAAABJRU5ErkJggg==') no-repeat;
+    background: none;
 }
 
 .pagination__ .pagination_body__ li.pagination_page__ {
-    margin: 0 3px 0 3px;
-    line-height: 16px;
+    margin: 0;
+    line-height: 36px;
 }
 
 .pagination__ .pagination_body__ li.pagination_page__>a {
+    display: inline-block;
+    line-height: 36px;
+    height: 36px;
+    width: 36px;
     text-decoration: none;
 }
 
@@ -1596,7 +1600,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 }
 
 .pagination__ .pagination_disable__ {
-    opacity: 0.6;
+    opacity: 0.38;
 }
 
 /* Natural-UI.Shell */

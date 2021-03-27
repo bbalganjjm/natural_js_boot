@@ -386,3 +386,9 @@ th, tfoot td {
 .view_context__ .form__.search_box__ {
     border: 1px solid rgba(0, 0, 0, 0.12);
 }
+
+.pagination-box {
+    padding: 0;
+    text-align: center;
+    height: 36px;
+}
