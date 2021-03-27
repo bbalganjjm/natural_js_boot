@@ -1,5 +1,11 @@
 /* common.css */
 
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
 /* input element styles */
 input[type='text'], input[type='number'], input[type='tel'], input[type='password'], select, textarea {
     color: rgba(0, 0, 0, 0.87);
@@ -361,7 +367,6 @@ th, tfoot td {
     pointer-events: none;
     opacity: 0.5;
 }
-
 
 /* Fixed Label */
 .mdc-njs-fixed-label {
