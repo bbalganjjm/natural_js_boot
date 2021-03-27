@@ -13,7 +13,7 @@
         <button id="btnExcel" class="mdc-button" data-icon="table_chart">엑셀</button>
     </div>
 
-    <div style="position: relative; min-height: 569px;">
+    <div style="position: relative; min-height: 520px;">
         <table id="master" class="grid__">
             <colgroup>
                 <col style="width: 50px;">
@@ -98,7 +98,7 @@
         },
         "p.pagination.masterPagination" : {
             blockOnChangeWhenBind : true,
-            countPerPage : 10,
+            countPerPage : 9,
             countPerPageSet : $(window).width() <= 751 ? 4 : 10,
             onChange : function(pageNo, selEle, selData, currPageNavInfo) {
                 cont["c.getSampleList"]().submit(function(data) {

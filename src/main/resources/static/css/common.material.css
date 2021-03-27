@@ -6,6 +6,16 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .mdc-text-field--filled {
+        height : 48px !important;
+    }
+    
+    .mdc-njs-select-wrap .mdc-njs-select {
+        padding-top: 13px !important;
+    }
+}
+
 .main-nav {
     border: none;
 }
