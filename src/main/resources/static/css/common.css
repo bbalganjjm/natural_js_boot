@@ -235,8 +235,8 @@ ul.form__ li {
 
 .main-nav {
     position: fixed;
-    max-width: 250px;
-    min-width: 250px;
+    max-width: 256px;
+    min-width: 256px;
 
     transform-origin: left;
     transition: margin-left 0.5s ease;
@@ -254,7 +254,7 @@ ul.form__ li {
 .main-contents {
     min-height: 100%;
     
-    margin-left: 250px;
+    margin-left: 256px;
     flex: 1;
 
     transition: margin-left 0.5s ease;
