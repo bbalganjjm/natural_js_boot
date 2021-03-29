@@ -120,8 +120,9 @@
                                 this.button(cont);
                                 this.textfield(cont);
                                 this.select(cont);
+                            } else {
+                                this.list(cont);
                             }
-                            this.list(cont);
                         },
                         /**
                          * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
@@ -264,7 +265,7 @@
                                 el.find("li").addClass("mdc-list-item")
                                     .prepend('<span class="mdc-list-item__ripple"></span>')
                                     .find("span[id]").addClass("mdc-list-item__text");
-                                //const list = new MDCList(el.get(0));
+                                // mdc.list.MDCList.attachTo(this); TODO
                             });
                         }
                     }
