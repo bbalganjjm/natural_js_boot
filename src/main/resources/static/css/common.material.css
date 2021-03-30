@@ -27,7 +27,7 @@ input[type='text'], input[type='number'], input[type='tel'], input[type='passwor
     padding: 0 8px;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.38);
-    background-color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.04);
     line-height: 36px;
     min-width: 168px;
     border-radius: 4px 4px 0 0;
@@ -57,7 +57,7 @@ input[type='text']:focus, input[type='number']:focus, input[type='tel']:focus, i
 }
 
 input[readonly], input[readonly]:hover, input[readonly]:focus {
-    background-color: whitesmoke !important;
+    background-color: rgba(0, 0, 0, 0.04) !important;
     border-color: rgba(0, 0, 0, 0.06) !important;
     color: rgba(0, 0, 0, 0.38) !important;
     pointer-events: none;
@@ -78,7 +78,7 @@ input[disabled][type='number']:focus,
 input[disabled][type='tel']:focus,
 select[disabled]:focus,
 textarea[disabled]:focus {
-    background-color: whitesmoke !important;
+    background-color: rgba(0, 0, 0, 0.04) !important;
     border-color: rgba(0, 0, 0, 0.06) !important;
     color: rgba(0, 0, 0, 0.38) !important;
     pointer-events: none;
@@ -154,7 +154,7 @@ th {
     border-radius: inherit;
 }
 ul.form__ li {
-    background-color: whitesmoke;    
+    background-color: rgba(0, 0, 0, 0.04);    
 }
 .thead_wrap__ thead > tr > th,
 .grid__ tbody > tr > td {
@@ -173,8 +173,12 @@ ul.form__ li {
 .grid_wrap__ > .grid__ .form__{
     border-left: none;
 }
-.grid__ .form__:hover > tr {
+.grid__ .form__:hover {
     background-color: rgba(0,0,0,.04);
+}
+
+.grid__ .form__:active {
+    background-color: rgba(0,0,0,.12);
 }
 
 .form__ th, .form__ td {

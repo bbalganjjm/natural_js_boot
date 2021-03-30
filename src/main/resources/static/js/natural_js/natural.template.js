@@ -121,6 +121,7 @@
                                 this.textfield(cont);
                                 this.select(cont);
                             } else {
+                                this.iconButton(cont);
                                 this.list(cont);
                             }
                         },
@@ -146,7 +147,11 @@
                                 el.innerHTML = html;
                                 mdc.ripple.MDCRipple.attachTo(el);
                             });
-
+                        },
+                        /**
+                         * Button style classes : mdc-button__ripple | mdc-button--outlined | mdc-button--raised
+                         */
+                        iconButton : function(cont) {
                             N('.mdc-icon-button', cont.view).each(function(i, el) {
                                 el.className = "material-icons mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + N.string.trim(el.className.replace(/btn_.*?__/g, ""));
                                 const iconButtonRipple = mdc.ripple.MDCRipple.attachTo(el);
@@ -237,6 +242,15 @@
                                     if(el.data("trailingicon")) {
                                         mdcTextField.addClass("mdc-text-field--with-trailing-icon");
                                         el.after('<i' + btnIdAttr + ' class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">' + el.data("trailingicon") + '</i>');
+                                    } else if(el.data("format") && el.data("format")[0] && el.data("format")[0][0] === "date") {
+                                        mdcTextField.addClass("mdc-text-field--with-trailing-icon");
+                                        var btn = N('<i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">date_range</i>');
+                                        btn.on("click.material.textfield.trailing.icon", function(e) {
+                                            e.preventDefault();
+                                            var dpInst = el.instance("datepicker");
+                                            el.trigger("focusin.datepicker");
+                                        });
+                                        el.after(btn);
                                     }
                                     if(el.data("leadingicon")) {
                                         mdcTextField.addClass("mdc-text-field--with-leading-icon");
@@ -262,10 +276,13 @@
                         list : function(cont) {
                             N('.mdc-list', cont.view).each(function(i, el) {
                                 el = N(el);
-                                el.find("li").addClass("mdc-list-item")
-                                    .prepend('<span class="mdc-list-item__ripple"></span>')
-                                    .find("span[id]").addClass("mdc-list-item__text");
-                                // mdc.list.MDCList.attachTo(this); TODO
+                                if(el.is("ul")) {
+                                    var liEl = el.find("li").addClass("mdc-list-item");
+                                    liEl.prepend('<span class="mdc-list-item__ripple"></span>');
+                                    liEl.find("[id]").addClass("mdc-list-item__text");
+                                    // mdc.list.MDCList.attachTo(this);
+                                    // mdc.ripple.MDCRipple.attachTo(liEl.get(0)); // Clone된 요소는 ripple 적용 안됨.
+                                }
                             });
                         }
                     }

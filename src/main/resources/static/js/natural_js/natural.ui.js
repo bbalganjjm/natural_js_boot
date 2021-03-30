@@ -1,5 +1,5 @@
 /*!
- * Natural-UI v0.43.246
+ * Natural-UI v0.43.247
  *
  * Released under the LGPL v2.1 license
  * Date: 2014-09-26T11:11Z
@@ -7,7 +7,7 @@
  * Copyright 2014 KIM HWANG MAN(bbalganjjm@gmail.com)
  */
 (function(window, $) {
-    N.version["Natural-UI"] = "0.43.246";
+    N.version["Natural-UI"] = "0.43.247";
 
     $.fn.extend($.extend(N.prototype, {
         alert : function(msg, vars) {
@@ -1454,6 +1454,7 @@
                 // bind focusin event
                 if(opts.focusin && !opts.context.prop("readonly") && !opts.context.prop("disabled")) {
                     opts.context.unbind("focusin.datepicker").bind("focusin.datepicker", function() {
+                        self.hide();
                         self.show();
                     });
                 }

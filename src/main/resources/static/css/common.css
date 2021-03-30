@@ -545,6 +545,7 @@ article .btnBox {
     padding: 8px 16px;
     margin: 5px;
     border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
     
 }
 
@@ -561,7 +562,7 @@ article .btnBox {
     display: inline-block;
     height: 35px;
     font-weight: bold;
-    color : rgba(0, 0, 0, 0.87);;
+    color : rgba(0, 0, 0, 0.87);
     border: 1px dotted #4CAF50;
     border-radius: 3px;
     box-shadow: 1px 1px 3px #BCFBBC;
