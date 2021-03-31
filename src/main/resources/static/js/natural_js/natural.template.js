@@ -1,5 +1,5 @@
 /*!
- * Natural-TEMPLATE v0.1.11
+ * Natural-TEMPLATE v0.2.11
  *
  * Released under the LGPL v2.1 license
  * Date: 2019-02-28T18:00Z
@@ -7,7 +7,7 @@
  * Copyright 2019 KIM HWANG MAN(bbalganjjm@gmail.com)
  */
 (function(window, $) {
-    N.version["Natural-TEMPLATE"] = "0.1.11";
+    N.version["Natural-TEMPLATE"] = "0.2.11";
 
     (function(N) {
 

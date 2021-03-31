@@ -893,44 +893,45 @@
                 }
 
                 if (opts.msg.length > 0) {
-                    opts.msgContext = opts.context.next(".msg__");
+                    opts.msgContext = opts.context;
+                    // for Material Design
+                    if(opts.msgContext.data("md_textfield_inst")) {
+                        opts.msgContext = opts.msgContext.closest(".mdc-text-field");
+                    }
+                    
+                    opts.msgContents = opts.msgContext.next(".msg__");
                     var isBeforeShow = false;
-                    if (opts.msgContext.length === 0 || isRemoved) {
-                        var limitWidth = opts.context.offset().left + opts.context.outerWidth() + 150;
+                    if (opts.msgContents.length === 0 || isRemoved) {
+                        var limitWidth = opts.msgContext.offset().left + opts.msgContext.outerWidth() + 150;
 
-                        // for Material Design
-                        var targetContext = opts.context;
-                        if(targetContext.data("md_textfield_inst")) {
-                            targetContext = targetContext.closest(".mdc-text-field");
-                        }
                         if(limitWidth > (window.innerWidth ? window.innerWidth : $(window).width())) {
-                            opts.msgContext = targetContext.before('<span class="msg__ alert_before_show__" style="display: none;"><ul class="msg_line_box__"></ul></span>').prev(".msg__");
-                            opts.msgContext.removeClass("orgin_left__").addClass("orgin_right__");
+                            opts.msgContents = opts.msgContext.before('<span class="msg__ alert_before_show__" style="display: none;"><ul class="msg_line_box__"></ul></span>').prev(".msg__");
+                            opts.msgContents.removeClass("orgin_left__").addClass("orgin_right__");
                             isBeforeShow = true;
                         } else {
-                            opts.msgContext = targetContext.after('<span class="msg__ alert_after_show__" style="display: none;"><ul class="msg_line_box__"></ul></span>').next(".msg__");
-                            opts.msgContext.removeClass("orgin_right__").addClass("orgin_left__");
+                            opts.msgContents = opts.msgContext.after('<span class="msg__ alert_after_show__" style="display: none;"><ul class="msg_line_box__"></ul></span>').next(".msg__");
+                            opts.msgContents.removeClass("orgin_right__").addClass("orgin_left__");
                             isBeforeShow = false;
                         }
 
-                        // set style class to msgContext element
-                        opts.msgContext.addClass("alert__ alert_tooltip__ hidden__");
+                        // set style class to msgContents element
+                        opts.msgContents.addClass("alert__ alert_tooltip__ hidden__");
 
-                        opts.msgContext.append('<a href="#" class="msg_close__" title="' + N.message.get(opts.message, "close") + '"></a>');
+                        opts.msgContents.append('<a href="#" class="msg_close__" title="' + N.message.get(opts.message, "close") + '"></a>');
                     }
                     if(opts.alwaysOnTop) {
-                        opts.msgContext.css("z-index", N.element.maxZindex(opts.container.find(opts.alwaysOnTopCalcTarget)) + 1);
+                        opts.msgContents.css("z-index", N.element.maxZindex(opts.container.find(opts.alwaysOnTopCalcTarget)) + 1);
                     }
 
                     var self = this;
-                    opts.msgContext.find(".msg_close__").click(function(e) {
+                    opts.msgContents.find(".msg_close__").click(function(e) {
                         e.preventDefault();
                         self.remove();
                     });
 
-                    var ul_ = opts.msgContext.find(".msg_line_box__").empty();
+                    var ul_ = opts.msgContents.find(".msg_line_box__").empty();
                     if (N.isArray(opts.msg)) {
-                        opts.msgContext.find(".msg_line_box__").empty();
+                        opts.msgContents.find(".msg_line_box__").empty();
                         $(opts.msg).each(function(i, msg_) {
                             if (opts.vars !== undefined) {
                                 opts.msg[i] = N.message.replaceMsgVars(msg_, opts.vars);
@@ -944,7 +945,7 @@
                         ul_.append('<li>' + opts.msg + '</li>');
                     }
                     if(isBeforeShow) {
-                        opts.msgContext.css("margin-left", "-" + String(opts.msgContext.outerWidth()) + "px");
+                        opts.msgContents.css("margin-left", "-" + String(opts.msgContents.outerWidth()) + "px");
                     }
                 } else {
                     this.remove();
@@ -1004,20 +1005,20 @@
                     }
                 } else {
                     if (!N.isEmptyObject(opts.msg)) {
-                        opts.context.parent().css({
+                        opts.msgContext.parent().css({
                             "white-space": "normal"
                         });
 
-                        opts.msgContext.show();
+                        opts.msgContents.show();
 
                         opts.iTime = setTimeout(function() {
-                            opts.context.parent().css({
+                            opts.msgContext.parent().css({
                                 "white-space": ""
                             });
                             self[opts.closeMode]();
                         }, opts.input.displayTimeout);
 
-                        opts.msgContext.removeClass("hidden__").addClass("visible__");
+                        opts.msgContents.removeClass("hidden__").addClass("visible__");
                     }
                 }
 
@@ -1076,7 +1077,7 @@
                     opts.msgContents.removeClass("visible__").addClass("hidden__");
                     opts.msgContents.one(N.event.whichTransitionEvent(opts.msgContents), function(e){
                         clearTimeout(opts.iTime);
-                        opts.msgContext.remove();
+                        opts.msgContents.remove();
 
                         // DEPRECATED
                         if (opts.onHideG !== null) {
@@ -1132,10 +1133,10 @@
                         }
                     }).trigger("nothing");
                 } else {
-                    opts.msgContext.removeClass("visible__").addClass("hidden__");
-                    opts.msgContext.one(N.event.whichTransitionEvent(opts.msgContext), function(e){
+                    opts.msgContents.removeClass("visible__").addClass("hidden__");
+                    opts.msgContents.one(N.event.whichTransitionEvent(opts.msgContents), function(e){
                         clearTimeout(opts.iTime);
-                        opts.msgContext.remove();
+                        opts.msgContents.remove();
 
                         // DEPRECATED
                         if (opts.onRemoveG !== null) {
