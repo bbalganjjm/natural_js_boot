@@ -71,6 +71,57 @@
 .index-lefter .left-menu sup {
     color: yellow;
 }
+
+.index-lefter nav {
+    margin: 0;
+    padding: 8px 0;
+}
+.index-lefter nav > a {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0.0071428571em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    line-height: 1.5rem;
+    list-style-type: none;
+    color: rgba(0, 0, 0, 0.87);
+    height: calc(48px - 2 * 4px);
+    margin: 8px 8px;
+    padding: 0 8px;
+}
+.index-lefter nav > h6 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.0178571429em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    display: block;
+    margin-top: 0;
+    line-height: normal;
+    margin: 0;
+    padding: 0 16px;
+}
+.index-lefter nav > hr {
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 0;
+}
+.index-lefter nav > a > i {
+    display: none;
+}
+
+.index-lefter .left-menu {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
 </style>
 
 <article class="index-lefter">
@@ -134,7 +185,6 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">view_quilt</i>
                     <span class="mdc-list-item__text">조회폼+탭</span>
                 </a>
-   
             </nav>
         </div>
     </div>
@@ -143,10 +193,12 @@
 <script type="text/javascript">
     N(".index-lefter").cont({
         init : function(view, request) {
-            mdc.list.MDCList.attachTo(N(".left-menu .mdc-list", view).get(0)).wrapFocus = true;
-            N(".left-menu .mdc-list .mdc-list-item", view).each(function(i, el) {
-                mdc.ripple.MDCRipple.attachTo(el);
-            });
+            if(N.context.attr("template").design === "material") {
+                mdc.list.MDCList.attachTo(N(".left-menu .mdc-list", view).get(0)).wrapFocus = true;
+                N(".left-menu .mdc-list .mdc-list-item", view).each(function(i, el) {
+                    mdc.ripple.MDCRipple.attachTo(el);
+                });
+            }
 
             N(".left-menu", view).on("click.left-menu", "a", function(e) {
                 e.preventDefault();

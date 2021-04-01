@@ -16,8 +16,7 @@
 
 <script type="text/javascript" charset="utf-8" src="js/natural_js/lib/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.js.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/natural_js/natural.ui.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/natural_js/natural.template.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/natural_js/natural.template.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.code.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.config.js"></script>
 
@@ -28,6 +27,10 @@
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
 <script type="text/javascript">
+    if(window.localStorage.themeColor === "material") {
+        N.context.attr("template").design = "material";
+    }
+    
     if(N.context.attr("template").design) {
         $(document).ready(function() {
             N.template.design[N.context.attr("template").design](function() {

@@ -3409,10 +3409,14 @@
             val : function(val) {
                 var opts = this.options;
 
-                var rtnVal = $(opts.type === 3 || opts.type === 4
-                            ? this.options.context.closest(".select_input_container__").find(":input") : this.options.context).vals(val);
-                if(val === undefined) {
-                    return rtnVal;
+                if(!N.isEmptyObject(opts.data)) {
+                    var rtnVal = $(opts.type === 3 || opts.type === 4
+                        ? this.options.context.closest(".select_input_container__").find(":input") : this.options.context).vals(val);
+                    if(val === undefined) {
+                        return rtnVal;
+                    }
+                } else {
+                    N.warn("[N.select.prototype.val]There is no data bound to the N.select component.");
                 }
 
                 return this;

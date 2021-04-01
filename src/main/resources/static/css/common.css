@@ -246,8 +246,6 @@ ul.form__ li {
 
     margin-top: -75px;
 
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-
     flex: 1;
 }
 
@@ -532,7 +530,6 @@ article .btnBox {
 .view_context__ .form__.search_box__ .criteria-panel {
  
 }
-
 .view_context__ .form__.search_box__ .criteria-panel ul {
     display: flex;
     flex-wrap: wrap;
@@ -545,7 +542,7 @@ article .btnBox {
     padding: 8px 16px;
     margin: 5px;
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: #E8F5E9;
     
 }
 

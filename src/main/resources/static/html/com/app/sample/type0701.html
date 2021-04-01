@@ -45,7 +45,11 @@
             e.preventDefault();
             // 활성화된 탭 페이지에서 컨트롤러 가져오기
             var cCont = cont["p.tab.master"].cont();
-            cCont["p.form.search"].bind(0, cont["p.form.search"].data());
+            cCont["p.form.search"].bind(0, [{
+                name: cont["p.form.search"].val("name"),
+                gender: cont["p.form.search"].val("gender"),
+                eyeColor: cont["p.form.search"].val("eyeColor")
+            }]);
             cCont["e.btnSearch.click"].click();
         },
         init : function(view, request) {
