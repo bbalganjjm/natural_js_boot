@@ -6,6 +6,11 @@
     }
 }
 
+/* Layouts */
+.flex-horizental>* {
+    min-width: auto;
+}
+
 /* input element styles */
 input[type='text'], input[type='number'], input[type='tel'], input[type='password'], select, textarea {
     color: rgba(0, 0, 0, 0.87);

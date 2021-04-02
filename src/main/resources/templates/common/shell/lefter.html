@@ -48,24 +48,27 @@
     will-change: transform;
 }
 
-.index-lefter .left-menu::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-.index-lefter .left-menu:hover::-webkit-scrollbar-track {
-    background: rgba(0,0,0,.06);
-}
-
-.index-lefter .left-menu:hover::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,.26);
-    border-radius: 2px;
-}
-
 .index-lefter .left-menu {
     padding: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Webkit scrollbars */
+.index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar {
+    background-color: transparent;
+    width: 9px;
+    height: 9px;
+}
+.index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    border: 1px solid #fff;
+}
+.index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar-button {
+    display: none;
 }
 
 .index-lefter .left-menu sup {
@@ -117,10 +120,6 @@
 }
 .index-lefter nav > a > i {
     display: none;
-}
-
-.index-lefter .left-menu {
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 </style>
 
