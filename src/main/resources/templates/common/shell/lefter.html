@@ -7,19 +7,16 @@
 .index-lefter .logo {
     width: 255px;
     height: 123px;
+	line-height: 106px;
+    text-align: center;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+
 .index-lefter .logo .home>span {
-    display: inline-block;
-    width: 255px;
-    height: 123px;
-    background-size: auto 75px;
     font-weight: 600;
     font-size: 32px;
     color: rgba(0,0,0,.87);
-    line-height: 100px;
-    text-align: center;
     font-family: sans-serif;
 }
 
@@ -28,14 +25,16 @@
     font-size: 16px;
 }
 
-.index-lefter .logo .lefter-toggle-button {
+.lefter-toggle-button {
     position: absolute;
     top: 0;
     right: 0;
     transition: margin-right 0.5s ease;
+    line-height: 1;
+    z-index: 2;
 }
 
-.index-lefter .logo .lefter-toggle-button>span {
+.lefter-toggle-button>span {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -44,7 +43,7 @@
     transition: transform 0.3s ease;
 }
 
-.index-lefter .logo .lefter-toggle-button:hover>span {
+.lefter-toggle-button:hover>span {
     will-change: transform;
 }
 
@@ -62,7 +61,7 @@
 .index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar-track {
     background-color: transparent;
 }
-.index-lefter .left-menu .mdc-drawer__content::-webkit-scrollbar-thumb {
+.index-lefter .left-menu .mdc-drawer__content:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     border: 1px solid #fff;
@@ -120,6 +119,10 @@
 }
 .index-lefter nav > a > i {
     display: none;
+}
+
+.mdc-list-item__graphic {
+    margin-right: 16px;
 }
 </style>
 
@@ -208,14 +211,14 @@
                     location.hash = btoa(encodeURIComponent(selfEle.data("pageid") + "$" + selfEle.find("span").text()) + "$" + encodeURIComponent(selfEle.attr("href")));
 
                     if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
-                        N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
+                        N(".lefter-toggle-button", view).trigger("click.lefter");
                     }
                 }
 
                 selfEle = undefined;
             });
 
-            N(".lefter-toggle-button", view.closest(".page-wrap")).on("click.lefter", function(e) {
+            N(".lefter-toggle-button", view).on("click.lefter", function(e) {
                 e.preventDefault();
 
                 var selfEle = N(this);
@@ -223,37 +226,37 @@
 
                 if (selfEle.data("status") === "show") {
                     if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
-                        N(".content-wrap .main-contents", ".page-wrap").off("click.lefter");
+                        N(".page-content", ".page-wrap").off("click.lefter");
                         mainNav.css("z-index", "2");
                     }
 
-                    N(".lefter-toggle-button>span", view.closest(".page-wrap")).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
+                    N(".lefter-toggle-button>span", view).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
 
                     mainNav.css("margin-left", "-" + mainNav.width() + "px");
                     if($(window).width() > 1001) { // 768 + 256 - 17px(?)
                         N(".index-header .logo", ".page-wrap").css("margin-left", "-256px");
-                        mainNav.siblings(".main-contents").css("margin-left", "0");
+                        mainNav.siblings(".page-content").css("margin-left", "0");
                     }
                     selfEle.data("status", "hide").css("margin-right", "-32px");
                 } else {
                     if($(window).width() > 1001) { // 768 + 256 - 17px(?)
-                        mainNav.siblings(".main-contents").css("margin-left", "");
+                        mainNav.siblings(".page-content").css("margin-left", "");
                         N(".index-header .logo", ".page-wrap").css("margin-left", "");
                         mainNav.css("z-index", "");
                     }
                     mainNav.css("margin-left", "");
                     selfEle.data("status", "show").css("margin-right", "");
 
-                    N(".lefter-toggle-button>span", view.closest(".page-wrap")).on("mouseover.lefter", function() {
+                    N(".lefter-toggle-button>span", view).on("mouseover.lefter", function() {
                         $(this).css("transform", "rotate(90deg)");
                     }).on("mouseout.lefter", function() {
                         $(this).css("transform", "");
                     });
 
                     if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
-                        N(".content-wrap .main-contents", ".page-wrap").on("click.lefter", function(e) {
+                        N(".page-content", ".page-wrap").on("click.lefter", function(e) {
                             e.preventDefault();
-                            N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
+                            N(".lefter-toggle-button", view).trigger("click.lefter");
                         });
                     }
                 }
@@ -266,26 +269,26 @@
                 N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
 
                 if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
-                    N(".lefter-toggle-button", view.closest(".page-wrap")).data("status", "show");
+                    N(".lefter-toggle-button", view).data("status", "show");
                     N(".index-header .logo").css({
                         "transition": "none",
                         "margin-left": "-256px"
                     });
-                    N(".content-wrap .main-contents", ".page-wrap").css({
+                    N(".page-content", ".page-wrap").css({
                         "transition": "none",
                         "margin-left": "0"
                     });
                     N(".main-nav", ".page-wrap").show().css({
                         "transition": "none"
                     });
-                    N(".lefter-toggle-button", view.closest(".page-wrap")).trigger("click.lefter");
+                    N(".lefter-toggle-button", view).trigger("click.lefter");
                     setTimeout(function() {
                         N(".main-nav", ".page-wrap").css("transition", "");
-                        N(".content-wrap .main-contents", ".page-wrap").css("transition", "");
+                        N(".page-content", ".page-wrap").css("transition", "");
                         N(".index-header .logo", ".page-wrap").css("transition", "");
                     }, 0);
                 } else {
-                    N(".lefter-toggle-button", view.closest(".page-wrap")).data("status", "hide").trigger("click.lefter");
+                    N(".lefter-toggle-button", view).data("status", "hide").trigger("click.lefter");
                 }
             }).trigger("resize.left-menu");
 

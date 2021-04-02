@@ -222,39 +222,22 @@ ul.form__ li {
 
 .page-header {
     height: 75px;
-}
-
-.content-wrap {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-
-    min-height: 100%;
+    margin-left: 256px;
 }
 
 .main-nav {
     position: fixed;
     max-width: 256px;
     min-width: 256px;
-
-    transform-origin: left;
-    transition: margin-left 0.5s ease;
-
     background-color: #fff;
     min-height: 100%;
-
-    margin-top: -75px;
-
-    flex: 1;
+    transform-origin: left;
+    transition: margin-left 0.5s ease;
 }
 
-.main-contents {
+.page-content {
     min-height: 100%;
-    
     margin-left: 256px;
-    flex: 1;
-
     transition: margin-left 0.5s ease;
 }
 
@@ -313,34 +296,6 @@ ul.form__ li {
 
 .fileSummaryList {
     margin-left: 5px;
-}
-
-/* view common */
-.view-intro {
-    cursor: default;
-}
-
-.view-intro .view-desc {
-    position: absolute;
-    background-color: #E8F5E9;
-    border: 1px solid #A5D6A7;
-    margin: 0;
-    padding: 10px 10px 10px 30px;
-    line-height: 200%;
-    opacity: 0;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
-
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease, opacity 0.15s ease;
-    z-index: 1;
-}
-
-.view-intro:hover .view-desc {
-    will-change: transform, opacity;
-
-    opacity: 1;
-    transform: scaleY(1);
 }
 
 /* margins */
@@ -546,7 +501,7 @@ article .btnBox {
     
 }
 
-.view_context__ .grid__ input,
+.view_context__ .grid__ input:not([type='checkbox']):not([type='radio']),
 .view_context__ .grid__ select,
 .view_context__ .grid__ textarea {
     width: 100%;

@@ -19,7 +19,7 @@
             N(".main-nav").comm("lefter.view").submit();
         },
         loadBody : function() {
-            N(".main-contents").comm("contents.view").submit();
+            N(".page-content").comm("contents.view").submit();
         },
         loadFooter : function() {
             N("footer").comm("footer.view").submit();

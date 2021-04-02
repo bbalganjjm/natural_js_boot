@@ -1,25 +1,26 @@
 <style type="text/css">
-.index-header {
-	text-align: right;
-}
-
 .index-header .header-back {
 	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: 100px;
-	z-index: 0;
+	height: 123px;
 	background: url("images/header-back.png") no-repeat;
     background-color: #fff;
-	z-index: 1;
 }
 
 .index-header .i18n-select,
 .index-header .links {
-	position: relative;
+	position: absolute;
 	display: inline-block;
 	margin: 7px 10px 0 0;
-	color: rgba(0,0,0,.87);
-	z-index: 1;
+}
+.index-header .i18n-select {
+	top: 30px;
+    right: 104px;
+}
+.index-header .links {
+    right: 0;
 }
 
 .index-header .i18n-select a {
@@ -27,14 +28,16 @@
 }
 
 .index-header .theme-color {
-	position: relative;
+	position: absolute;
+	display: inline-block;
+	top: 30px;
+	right: 0;
 	height: 25px;
 	line-height: 25px;
 	min-width: auto;
-	margin: 0 7px 0 0;
+	margin: 6px 7px 0 0;
 	width: auto;
 	opacity: 0.8;
-	z-index: 1;
 	text-align: center;
 	text-align-last: center;
 	background-color: #e6e8e5;
@@ -70,13 +73,18 @@
 }
 
 .index-header .logo {
-	position: absolute;
+	display: inline-block;
+    position: absolute;
+	top: 0;
+	left: 0;
     width: 255px;
-    height: 100px;
+    height: 123px;
+	line-height: 106px;
+	text-align: center;
 	border-right: 1px solid rgba(0, 0, 0, 0.12);
-	z-index: 2;
 
 	transition: margin-left 0.5s ease;
+	z-index: 1;
 }
 
 .index-header .logo .home>span {
@@ -86,32 +94,11 @@
     background: url("images/natural_js.png") no-repeat 50% 50%;
     background-size: auto 75px;
 }
-
-.index-header .logo .lefter-toggle-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transition: margin-right 0.5s ease;
-}
-
-.index-header .logo .lefter-toggle-button>span {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    opacity: 0.3;
-    background: url("images/lefter-toggle-button.png") no-repeat 50% 50%;
-    transition: transform 0.3s ease;
-}
-
-.index-header .logo .lefter-toggle-button:hover>span {
-    will-change: transform;
-}
 </style>
 
 <article class="index-header">
     <div class="logo">
         <a class="home" href="./"><span></span></a>
-        <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
     </div>
 	<div class="header-back"></div>
 	<div class="links">
