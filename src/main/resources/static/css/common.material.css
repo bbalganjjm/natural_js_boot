@@ -20,7 +20,7 @@ input[type='text'], input[type='number'], input[type='tel'], input[type='passwor
     border-bottom: 1px solid rgba(0,0,0,.38);
     background-color: rgba(0, 0, 0, 0.04);
     line-height: 36px;
-    min-width: 168px;
+    /* min-width: 168px; */
     border-radius: 4px 4px 0 0;
 }
 select {
