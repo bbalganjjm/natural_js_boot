@@ -31,6 +31,12 @@
     left: 0;
     line-height: 1;
     z-index: 2;
+
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-wrap .lefter-toggle-button.visible {
+    left: 223px;
 }
 
 .page-wrap .lefter-toggle-button>span {
@@ -39,11 +45,17 @@
     height: 32px;
     opacity: 0.3;
     background: url("images/lefter-toggle-button.png") no-repeat 50% 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-wrap .lefter-toggle-button:hover>span {
     will-change: transform;
+
+    transform: rotate(-90deg);
+}
+
+.page-wrap .lefter-toggle-button.visible:hover>span {
+    transform: rotate(90deg);
 }
 
 .index-lefter .left-menu {
@@ -128,7 +140,6 @@
 <article class="index-lefter">
     <div class="logo">
         <a class="home" href="./"><span>Natural-JS<sup>BOOT</sup></span></a>
-        <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
     </div>
     <aside class="mdc-drawer left-menu">
         <div class="mdc-drawer__content">
@@ -234,7 +245,7 @@
                         N(".index-header .logo", ".page-wrap").css("margin-left", "-256px");
                         mainNav.siblings(".page-content").css("margin-left", "0");
                     }
-                    selfEle.data("status", "hide");
+                    selfEle.data("status", "hide").removeClass("visible");
                 } else {
                     if($(window).width() > 1001) { // 768 + 256 - 17px(?)
                         mainNav.siblings(".page-content").css("margin-left", "");
@@ -242,7 +253,7 @@
                         mainNav.css("z-index", "");
                     }
                     mainNav.css("margin-left", "");
-                    selfEle.data("status", "show");
+                    selfEle.data("status", "show").addClass("visible");
 
                     if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
                         N(".page-content", ".page-wrap").on("click.lefter", function(e) {
@@ -260,7 +271,7 @@
                 N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
 
                 if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
-                    N(".lefter-toggle-button", ".page-wrap").data("status", "show");
+                    N(".lefter-toggle-button", ".page-wrap").data("status", "show").addClass("visible");
                     N(".index-header .logo").css({
                         "transition": "none",
                         "margin-left": "-256px"
@@ -279,7 +290,7 @@
                         N(".index-header .logo", ".page-wrap").css("transition", "");
                     }, 0);
                 } else {
-                    N(".lefter-toggle-button", ".page-wrap").data("status", "hide").trigger("click.lefter");
+                    N(".lefter-toggle-button", ".page-wrap").data("status", "hide").removeClass("visible").trigger("click.lefter");
                 }
             }).trigger("resize.left-menu");
 
