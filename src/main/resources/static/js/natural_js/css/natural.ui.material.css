@@ -89,6 +89,7 @@
 }
 
 .alert__ {
+    display: inline-table;
     will-change: opacity, transform;
     transform: translateZ(0)\0; /* for ie 8+ */
 }

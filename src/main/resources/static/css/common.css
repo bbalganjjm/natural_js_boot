@@ -232,13 +232,13 @@ ul.form__ li {
     background-color: #fff;
     min-height: 100%;
     transform-origin: left;
-    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-content {
     min-height: 100%;
     margin-left: 256px;
-    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-footer {
