@@ -104,10 +104,6 @@
             // blackWhite : ["#000000", "#000000", "#000000", "#000000", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "", "", "", ""]
         },
         reloadCss : function() {
-        	if(!window.localStorage.themeColor || window.localStorage.themeColor === "undefined") {
-    			window.localStorage.themeColor = "material";
-    		}
-
             if(window.localStorage.themeColor !== "material" && window.localStorage.themeColor !== "green") {
                 $("head > link[rel=stylesheet]").each(function() {
                     var href = $(this).attr("href");

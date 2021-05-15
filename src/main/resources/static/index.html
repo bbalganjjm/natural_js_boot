@@ -27,6 +27,9 @@
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
 <script type="text/javascript">
+    if(!window.localStorage.themeColor || window.localStorage.themeColor === "undefined") {
+        window.localStorage.themeColor = "material";
+    }
     if(window.localStorage.themeColor === "material") {
         N.context.attr("template").design = "material";
     }
@@ -48,7 +51,7 @@
 
 <body>
     <section class="page-wrap">
-        <nav class="main-nav"></nav>   
+        <nav class="main-nav"></nav>
         <header class="page-header"></header>
         <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
         <section class="page-content"></section>
