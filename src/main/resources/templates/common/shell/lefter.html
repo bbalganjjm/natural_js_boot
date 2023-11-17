@@ -213,12 +213,10 @@
 <script type="text/javascript">
     N(".index-lefter").cont({
         init : function(view, request) {
-            if(N.context.attr("template").design === "material") {
-                mdc.list.MDCList.attachTo(N(".left-menu .mdc-list", view).get(0)).wrapFocus = true;
-                N(".left-menu .mdc-list .mdc-list-item", view).each(function(i, el) {
-                    mdc.ripple.MDCRipple.attachTo(el);
-                });
-            }
+            mdc.list.MDCList.attachTo(N(".left-menu .mdc-list", view).get(0)).wrapFocus = true;
+            N(".left-menu .mdc-list .mdc-list-item", view).each(function(i, el) {
+                mdc.ripple.MDCRipple.attachTo(el);
+            });
 
             N(".left-menu", view).on("click.left-menu", "a", function(e) {
                 e.preventDefault();

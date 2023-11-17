@@ -66,47 +66,17 @@
                         });
                     }
 
-                    // Load libraries
-                    $.getScript("js/natural_js/lib/material/material-components-web.min.js").done(function(data, textStatus, jqxhr) {
-                        $("<link/>", {
-                            rel: "stylesheet",
-                            type: "text/css",
-                            href: "js/natural_js/css/natural.ui." + N.context.attr("template").design + ".css"
-                        }).appendTo("head");
-                        $("<link/>", {
-                            rel: "stylesheet",
-                            type: "text/css",
-                            href: "css/common." + N.context.attr("template").design + ".css"
-                        }).appendTo("head");
-                        // Load Material Design Libraries.
-                        $("<link/>", {
-                            rel: "stylesheet",
-                            type: "text/css",
-                            href: "js/natural_js/lib/material/icon" + (N.browser.is("ie") ? "_ie" : "") + ".css"
-                        }).appendTo("head");
-                        $("<link/>", {
-                            rel: "stylesheet",
-                            type: "text/css",
-                            href: "js/natural_js/lib/material/material-components-web.min.css"
-                        }).appendTo("head");
-
-                        // Disable mouse related events of N.button.
-                        if(N.context.attr("ui").button === undefined) {
-                            N.context.attr("ui").button = {};
-                        }
-                        N.context.attr("ui").button.customStyle = true;
-                        // Alert, Popup
-                        N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = TEMPLATE.aop.design.material.onBeforeShow;
-                        // Grid
-                        N.context.attr("ui").grid.misc.fixedcolHeadMarginTop = N.browser.is("ie") || N.browser.is("firefox") ? -1 : 0;
-                        N.context.attr("ui").grid.misc.fixedcolHeadHeight = N.browser.is("ie") || N.browser.is("firefox") ? 2 : 1;
-                        N.context.attr("ui").grid.misc.fixedcolBodyMarginTop = N.browser.is("ie") ? 0 : N.browser.is("firefox") ? -1 : 0;
-                        callback();
-                    }).fail(function(data) {
-                        N.log(data);
-                        N.context.attr("template").design = undefined;
-                        callback();
-                    });
+                    // Disable mouse related events of N.button.
+                    if(N.context.attr("ui").button === undefined) {
+                        N.context.attr("ui").button = {};
+                    }
+                    // Alert, Popup
+                    N.context.attr("ui").alert.onBeforeShow = N.context.attr("ui").popup.onBeforeShow = TEMPLATE.aop.design.material.onBeforeShow;
+                    // Grid
+                    N.context.attr("ui").grid.misc.fixedcolHeadMarginTop = N.browser.is("ie") || N.browser.is("firefox") ? -1 : 0;
+                    N.context.attr("ui").grid.misc.fixedcolHeadHeight = N.browser.is("ie") || N.browser.is("firefox") ? 2 : 1;
+                    N.context.attr("ui").grid.misc.fixedcolBodyMarginTop = N.browser.is("ie") ? 0 : N.browser.is("firefox") ? -1 : 0;
+                    callback();
                 }
             },
             aop : {

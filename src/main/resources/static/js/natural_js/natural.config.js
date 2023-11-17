@@ -123,17 +123,6 @@
                                 data = N.code.addSourceURL(data, opts.url);
                             }
 
-                            // color theme
-                            if(window.localStorage.themeColor !== "green") {
-                                $(APP.indx.colorPalette.green).each(function(i, color) {
-                                    data = data.replace(new RegExp(color, "gi"), APP.indx.colorPalette[window.localStorage.themeColor][i]);
-
-                                    if(opts.contentType === "text/css") {
-                                        data = data.replace(/url\(/gi, "*url(");
-                                    }
-                                });
-                            }
-
                             return data;
                         }
                     },
@@ -914,7 +903,6 @@
      * Natural-TEMPLATE Config
      */
     N.context.attr("template", {
-        // design : "material",
         aop : {
             /**
              * Common code request information

@@ -513,7 +513,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 }
 
 .grid__.grid_select__ > .grid_selected__ {
-    background-color: transparent;
+    background-color: rgba(0,0,0,.04);
 }
 .grid__.grid_select__ > .grid_selected__ > tr,
 .grid__.grid_select__ > .grid_selected__ input,

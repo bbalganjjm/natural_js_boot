@@ -105,40 +105,12 @@
         <a class="home" href="./"><span>Natural-JS<sup>Boot</sup></span></a>
     </div>
 	<div class="header-back"></div>
-	<select class="theme-color" title="색상 테마 선택"></select>
 </article>
 
 <script type="text/javascript">
 	N(".index-header").cont({
 		init : function(view, request) {
-			// Language link
-			view.find(".korean").click(function(e) {
-				e.preventDefault();
-				window.sessionStorage.locale = "ko_KR";
-				window.location.reload();
-			});
-			view.find(".english").click(function(e) {
-				e.preventDefault();
-				window.sessionStorage.locale = "en_US";
-				window.location.reload();
-			});
 
-			// Color select
-			var colorSelect = N(".theme-color", view);
-			for(var k in APP.indx.colorPalette) {
-				var selected="";
-				if(k === window.localStorage.themeColor) {
-					selected = 'selected="selected"';
-				} else {
-					selected = "";
-				}
-				colorSelect.append('<option value="' + k + '" ' + selected + '>' + k + '</option>')
-			};
-
-			colorSelect.change(function() {
-				window.localStorage.themeColor = $(this).val();
-				location.reload();
-			});
 		}
 	});
 </script>

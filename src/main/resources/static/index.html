@@ -9,14 +9,14 @@
 <meta name="viewport" content="device-width, initial-scale=1.0, user-scalable=0" />
 <title>Natural-JS Boot</title>
 
-<link rel="stylesheet" type="text/css" href="css/common.pub.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
-
-<link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" />
+<link rel="stylesheet" type="text/css" href="css/common.material.css" />
+<link rel="stylesheet" type="text/css" href="css/common.pub.css" />
 
 <script type="text/javascript" charset="utf-8" src="js/natural_js/lib/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.js.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/natural_js/natural.template.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css" />
+<script type="text/javascript" charset="utf-8" src="js/natural_js/natural.template.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.code.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.config.js"></script>
 
@@ -26,25 +26,22 @@
 <script type="text/javascript" charset="utf-8" src="js/common.pub.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
+<!-- material -->
+<script type="text/javascript" charset="utf-8" src="js/natural_js/lib/material/material-components-web.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.material.css" />
+<link rel="stylesheet" type="text/css" href="js/natural_js/lib/material/material-components-web.min.css" />
+<link rel="stylesheet" type="text/css" href="js/natural_js/lib/material/icon.css" />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="js/natural_js/lib/material/icon_ie.css" />
+<![endif]-->
+
 <script type="text/javascript">
-    if(!window.localStorage.themeColor || window.localStorage.themeColor === "undefined") {
-        window.localStorage.themeColor = "material";
-    }
-    if(window.localStorage.themeColor === "material") {
-        N.context.attr("template").design = "material";
-    }
-    
-    if(N.context.attr("template").design) {
-        $(document).ready(function() {
-            N.template.design[N.context.attr("template").design](function() {
-                APP.indx.init();
-            });
-        })
-    } else {
-        $(document).ready(function() {
+    N.context.attr("template").design = "material";
+    $(document).ready(function() {
+        N.template.design[N.context.attr("template").design](function() {
             APP.indx.init();
-        })
-    }
+        });
+    })
 </script>
 
 </head>
