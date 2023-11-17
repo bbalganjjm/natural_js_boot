@@ -4,13 +4,12 @@ package common.config;
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
  * @since 2020.11.25
  */
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
+import common.exception.ExceptionResolver;
+import common.filter.XSSFilter;
+import common.interceptor.PermissionCheckInterceptor;
+import common.views.FileView;
+import common.views.XlsxStreamingView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -18,13 +17,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.accept.ContentNegotiationManager;
-import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
 import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -36,21 +36,20 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-import common.exception.ExceptionResolver;
-import common.filter.XSSFilter;
-import common.interceptor.PermissionCheckInterceptor;
-import common.views.FileView;
-import common.views.XlsxStreamingView;
+import java.util.*;
 
 @Configuration
-@ComponentScan(basePackages = { "common" }, includeFilters = {
+@ComponentScan(basePackages = { "common", "kr.goldmandata.www" }, includeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Autowired
+    Environment env;
 
     /**
      * Servlet Filters
@@ -117,7 +116,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         srtr.setPrefix("classpath:templates/");
         srtr.setSuffix(".html");
         srtr.setTemplateMode(TemplateMode.HTML);
-        srtr.setCacheable(false);
+
+        if (env.getActiveProfiles().length == 0 || !"prod".equals(env.getActiveProfiles()[0])) {
+            srtr.setCacheable(false);
+        }
         return srtr;
     }
     @Bean
@@ -135,6 +137,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return tvr;
     }
 
+    /*
+    @Override
+    public void configureContentNegotiation (ContentNegotiationConfigurer configurer) {
+        configurer.favorPathExtension(true).
+			ignoreAcceptHeader(true).
+			useJaf(false).
+			defaultContentType(MediaType.APPLICATION_JSON).
+			mediaType("json", MediaType.APPLICATION_JSON).
+			mediaType("view", MediaType.TEXT_HTML).
+			mediaType("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+    }
+    */
     @Override
     public void configureContentNegotiation (ContentNegotiationConfigurer configurer) {
         Map<String, MediaType> mediaTypes = new HashMap<String, MediaType>();
@@ -174,11 +188,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver cmr = new CommonsMultipartResolver();
-        cmr.setMaxUploadSize(52428800); // 50MB
-        cmr.setMaxInMemorySize(52428800); // 50MB
-        return cmr;
+    public MultipartResolver multipartResolver() {
+//        CommonsServletMultipartResolver cmr = new CommonsServletMultipartResolver();
+//        cmr.setMaxUploadSize(52428800); // 50MB
+//        cmr.setMaxInMemorySize(52428800); // 50MB
+        return new StandardServletMultipartResolver();
     }
 
     @Bean

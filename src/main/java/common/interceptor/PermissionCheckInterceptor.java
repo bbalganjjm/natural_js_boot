@@ -1,21 +1,20 @@
 package common.interceptor;
 
-import java.lang.invoke.MethodHandles;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.lang.invoke.MethodHandles;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
  * @since 2018.12.05
  */
-public class PermissionCheckInterceptor extends HandlerInterceptorAdapter {
+public class PermissionCheckInterceptor implements HandlerInterceptor {
     private final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public String[] excludeURLs;
@@ -48,11 +47,9 @@ public class PermissionCheckInterceptor extends HandlerInterceptorAdapter {
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
             throws Exception {
-        super.postHandle(request, response, handler, modelAndView);
     }
 
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        super.afterCompletion(request, response, handler, ex);
     }
 
 }
