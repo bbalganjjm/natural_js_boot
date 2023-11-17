@@ -483,6 +483,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 /* Grid */
 .grid__ > tbody {
+    border-left-color: transparent;
 }
 
 .grid__ > .row_data_changed__,
