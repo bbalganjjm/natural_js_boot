@@ -103,6 +103,33 @@
                      * This function is executed before sending a request to the server.
                      */
                     beforeSend : function(request, xhr, settings) {
+                        // github pages can only send GET requests, so an example of sending data to the server shows only the parameter information here and stops the request.
+                        if(request.options.type !== "GET" || (request.options.data != null && request.options.data.indexOf("q=%7B%22name%22") > -1)) {
+                            var msg;
+                            if(request.options.type !== "GET") {
+                                msg = request.options.data;
+                                xhr.abort();
+
+                                setTimeout(function() {
+                                    N.docs.removeLoadIndicator.call(APP.indx.docs);
+                                }, 1000);
+                            } else {
+                                msg = JSON.parse(decodeURIComponent(request.options.data.replace("q=", "")));
+                            }
+
+                            N.notify({
+                                html: true
+                            }).add("<strong>" + N.message.get({
+                                    "ko_KR" : {
+                                        "COMM_TITLE" : "이 예제의 데이터는 서버에 저장되지 않습니다. 서버로 전송되는 파라미터 만 확인 바랍니다."
+                                    },
+                                    "en_US" : {
+                                        "COMM_TITLE" : "The parameters in this example are not sent to the server. Check only the parameters sent to the server."
+                                    }
+                                }, "COMM_TITLE") + "</strong><br><br>" + "<pre class=\"shell\" style=\"max-height: 500px; overflow-y: auto;\"><code>" + N.json.format(msg) + "</code></pre>"
+                            );
+                        }
+
                         // Display page loading image.
                         if(request.options.dataType === "html" && request.options.target !== null && request.options.append === false) {
                             request.options.target.html('<div style="text-align: center; vertical-align: middle;border: 0; border: none;width: 100%;height: 100%;"><img src="images/loading.gif" height="24"></div>');
@@ -123,6 +150,17 @@
                                 data = N.code.addSourceURL(data, opts.url);
                             }
 
+                            // color theme
+                            if(window.localStorage.themeColor !== "green") {
+                                $(APP.indx.colorPalette.green).each(function(i, color) {
+                                    data = data.replace(new RegExp(color, "gi"), APP.indx.colorPalette[window.localStorage.themeColor][i]);
+
+                                    if(opts.contentType === "text/css") {
+                                        data = data.replace(/url\(/gi, "*url(");
+                                    }
+                                });
+                            }
+
                             return data;
                         }
                     },
@@ -132,7 +170,7 @@
                     error : function(request, xhr, textStatus, errorThrown) {
                         if((xhr.getResponseHeader("Content-Type") && xhr.getResponseHeader("Content-Type").indexOf("html") > -1) || request.options.dataType === "html") {
                             if(request.options.target != null && request.options.target.html !== undefined) {
-                                request.options.target.html('<div style="text-align: center; margin-top: 140px;margin-bottom: 140px;">[ ' + request.options.url + ' ] 페이지나 서비스를 불러오는 도중 에러가 발생했습니다.</div>');
+                                request.options.target.html('<div style="text-align: center; margin-top: 140px;margin-bottom: 140px;">[ ' + request.options.url + ' ] 페이지를 불러오는 도중 에러가 발생했습니다.</div>');
                             } else {
                                 N(window).alert('An error occurred while loading the "' + request.options.url + '" page.').show();
                             }
@@ -172,13 +210,13 @@
                 }
             },
             "request" : {
+                /**
+                 * Global options of Communicator.request.
+                 *  - Refer to the
+                 *    https://bbalganjjm.github.io/natural_js/#cmVmcjAyMDQlMjRDb21tdW5pY2F0b3IucmVxdWVzdCUyNGh0bWwlMkZuYXR1cmFsanMlMkZyZWZyJTJGcmVmcjAyMDQuaHRtbA==
+                 */
                 "options" : {
-                    /**
-                     * Global options of Communicator.request.
-                     *  - Refer to the
-                     *    https://bbalganjjm.github.io/natural_js/#cmVmcjAyMDQlMjRDb21tdW5pY2F0b3IucmVxdWVzdCUyNGh0bWwlMkZuYXR1cmFsanMlMkZyZWZyJTJGcmVmcjAyMDQuaHRtbA==
-                     */
-                    "type" : "POST",
+                    "type" : "GET",
                     "contentType" : "application/json; charset=utf-8",
                     "cache" : true,
                     "urlSync" : true,
@@ -314,7 +352,7 @@
                     notAccept : "\"{0}\" 값은 입력할 수 없습니다.",
                     notMatch : "\"{0}\" 이(가) 포함된 값은 입력할 수 없습니다.",
                     notAcceptFileExt : "\"{0}\" 이(가) 포함된 확장자는 입력할 수 없습니다.",
-                    equalTo : "\"{1}\"의 값과 같아야합니다.",
+                    equalTo : "\"{1}\" 의 값과 같아야 합니다.",
                     maxlength : "{0} 글자 이하만 입력 가능합니다.",
                     minlength : "{0} 글자 이상만 입력 가능합니다.",
                     rangelength : "{0} 글자에서 {1} 글자 까지만 입력 가능합니다.",
@@ -494,6 +532,15 @@
             "tabScrollCorrection" : {
                 tabContainerWidthCorrectionPx : 1,
                 tabContainerWidthReCalcDelayTime : 0
+            },
+            "onActive" : function(tabIdx, tabEle, contentEle, tabEles, contentEles) {
+                if($(window).width() > 751) { // 768 - 17px(?)
+                    if(localStorage.getItem("isListTypeView") == "Y") {
+                        contentEle.find(".api-view-type-select :checkbox").prop("checked", true).trigger("change.aop");
+                    } else {
+                        contentEle.find(".api-view-type-select :checkbox").prop("checked", false).trigger("change.aop");
+                    }
+                }
             }
         },
         "datepicker" : {
@@ -510,14 +557,14 @@
                     "dayNaN" : "일은 1일부터 {0}일까지 입력할 수 있습니다.",
                     "minDate" : "\"{0}\" 이후의 날짜만 입력할 수 있습니다.",
                     "maxDate" : "\"{0}\" 이전의 날짜만 입력할 수 있습니다.",
-                    "minMaxDate" : "\"{0}\" 와 \"{1}\" 사이의 날짜만 입력할 수 있습니다.",
+                    "minMaxDate" : "\"{0}\"와 \"{1}\" 사이의 날짜만 입력할 수 있습니다.",
                     "prev" : "이전",
                     "next" : "다음"
                 },
                 "en_US" : {
                     "year" : "Year",
                     "month" : "Month",
-                    "days" : "S,M,T,W,T,F,S",
+                    "days" : "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
                     "yearNaN" : "You can not enter less AD 100 years",
                     "monthNaN" : "You can enter 1 to 12 months value",
                     "dayNaN" : "You can enter 1 to {0} days value",
@@ -591,6 +638,10 @@
             "append" : true
         },
         "form" : {
+            /**
+             * Global tpBind option.
+             *  - If set to true, it prevents the conflict of the event bound to the input element before component initialization and the component event such as format, validate, and dataSync.
+             */
             "tpBind" : true
         },
         "list" : {
@@ -855,14 +906,23 @@
             "onActive" : function(docId, isFromDocsTabList, isNotLoaded) {
                 if(location.hostname === "bbalganjjm.github.io") {
                     try {
-                        ga('create', 'UA-58001949-2', 'auto');
-                        ga('set', 'location', location.href);
-                        ga('set', 'title', this.doc(docId).docNm);
-                        ga('send', {
-                            'hitType': 'pageview',
-                            'page': location.hash
+                        // GA3
+                        // ga('create', 'UA-58001949-2', 'auto');
+                        // ga('set', 'location', location.href);
+                        // ga('set', 'title', this.doc(docId).docNm);
+                        // ga('send', {
+                        //     'hitType': 'pageview',
+                        //     'page': location.hash
+                        // });
+
+                        // GA4
+                        gtag('event', 'page_view', {
+                            'page_title' : this.doc(docId).docNm,
+                            'page_location' : location.href,
+                            'page_path': location.hash,
+                            'send_to' : 'G-GL64Q27TWZ'
                         });
-                    } catch (e) {}
+                    } catch (e) { console.warn(e) }
                 }
             },
             /**
@@ -911,12 +971,12 @@
              * @codeKey Property name of common code classification code
              */
             codes : {
-                codeUrl : "code/getCommonCodeList.json",
+                codeUrl : "html/naturaljs/exap/data/code.json",
                 codeKey : "code"
             }
         },
         /**
-         * 다국어 메시지
+         * Multilingual Message
          */
         "message" : {
             "ko_KR" : {
@@ -986,6 +1046,143 @@
                         + '\n    cont["p.grid.id"].val(index, "columnName", "value")'
                         + '\n    cont["p.list.id"].val(index, "columnName", "value")'
                 }
+            }
+        }
+    });
+
+    // Advisors for Natural-JS API manuals.
+    N.context.attr("architecture").cont.advisors.push({ // md file conversion.
+        "pointcut" : ".view-markdown:^init$",
+        "adviceType" : "before",
+        "fn" : function(cont, fnChain, args){
+            /* Load markdown file and convert to html */
+            if(typeof showdown == "undefined") {
+                N.comm({
+                    url : "js/lib/markdown/github-markdown.css",
+                    contentType : "text/css",
+                    dataType : "html"
+                }).submit(function(data) {
+                    $('<style type="text/css">\n' + data + '</style>').appendTo("head");
+                    $.getScript("js/lib/markdown/showdown.min.js", function() {
+                        N.comm({
+                            url : cont.request.options.url.replace(/.html/, ".md").replace(/\.md/g, "_" + N.locale() + ".md"),
+                            dataType : "text",
+                            type : "GET"
+                        }).submit(function(data) {
+                            cont.view.addClass("markdown-body").html((new showdown.Converter({ "tables": true })).makeHtml(data));
+                        });
+                    });
+                });
+            } else {
+                N.comm({
+                    url : cont.request.options.url.replace(/\.html/, ".md").replace(/\.md/g, "_" + N.locale() + ".md"),
+                    dataType : "text",
+                    type : "GET"
+                }).submit(function(data) {
+                    cont.view.addClass("markdown-body").html((new showdown.Converter({ "tables": true })).makeHtml(data));
+                });
+            }
+        }
+    }, { // Automatically include API DEMO pages.
+        "pointcut" : ".view-apidemo:^init$",
+        "adviceType" : "before",
+        "fn" : function(cont, fnChain, args){
+            var view = args[0];
+
+            // Loading the API demo page
+            N(".apidemo", view).each(function() {
+                N(this).comm("html/naturaljs/apid/" + N(this).data("page") + ".html").submit(function(apiCont) {
+                    if(apiCont && !apiCont.view.is(".demo.formatter, .demo.validator, .demo.communicator")) {
+                        // Insert a description into the option input elements.
+                        var descTableEle = view.closest(".docs_contents__").find("#defaultoptions .api.form");
+                        var optOrMethodNm;
+                        N(".form.options", apiCont.view).find(":input[id]").each(function() {
+                            optOrMethodNm = this.id;
+                            $(this).after('<div class="demo-desc">' + N.string.trimToEmpty(descTableEle.find("tr").find(">td:first").filter(":contains('" + optOrMethodNm + "'):first").siblings(":last").html()) + '</div>');
+                        });
+                    }
+                });
+            });
+        }
+    }, { // Automatically include API View Type.
+        "pointcut" : ".apiDoc:^init$",
+        "adviceType" : "before",
+        "fn" : function(cont, fnChain, args){
+            if($(window).width() > 751) { // 768 - 17px(?)
+                var view = args[0];
+
+                if(view.closest("#constructor, #advisors, #pointcuts, #defaultoptions, #declarativeoptions, #pluginExtention, " +
+                        "#n, #gc, #string, #element, #date, #browser, #message, #array, #json, #event, #functions, #methods, #utilities, " +
+                        "#conf_core, #conf_architecture, #conf_data, #conf_ui, #conf_ui_shell, #conf_template, #conf_code").length > 0) {
+                    var select = N('<label class="api-view-type-select"><input type="checkbox"><span>' + N.message.get({
+                        "ko_KR" : {
+                            "AOP-0001" : "리스트로 보기"
+                        },
+                        "en_US" : {
+                            "AOP-0001" : "List view"
+                        }
+                    }, "AOP-0001") +'</span></label>');
+                    select.find(":checkbox").on("change.aop", function() {
+                        if(N(this).is(":checked")) {
+                            localStorage.setItem("isListTypeView", "Y");
+                            view.addClass("api-view-list-type");
+                        } else {
+                            localStorage.setItem("isListTypeView", "N");
+                            view.removeClass("api-view-list-type");
+                        }
+                        N(window).trigger("resize.mobile", [ view ]);
+                    });
+                    view.find("h2:first").append(select);
+                    if(localStorage.getItem("isListTypeView") == "Y") {
+                        select.find(":checkbox").prop("checked", true).trigger("change.aop");
+                    }
+                }
+            }
+
+            N(window).on("resize.aop", function() {
+                if($(window).width() > 751) { // 768 - 17px(?)
+                    N(".view_context__ h2 .api-view-type-select").show();
+                } else {
+                    N(".view_context__ h2 .api-view-type-select").hide();
+                }
+                N(window).trigger("resize.mobile", [ view ]);
+            });
+        }
+    }, { // Processing the API document view on mobile
+        "pointcut" : ".view-mobile-layout:^init$",
+        "adviceType" : "before",
+        "fn" : function(cont, fnChain, args){
+            N(window).trigger("resize.mobile", [ args[0] ]);
+        }
+    }, { // Source view button handling
+        "pointcut" : ".view-code:^init$",
+        "adviceType" : "before",
+        "fn" : function(cont, fnChain, args){
+            var view = args[0];
+            var url = cont.request.get("url");
+
+            var btnEle = N('<br><a class="click">View Source Code</a>');
+            if(view.find(btnEle).length === 0) {
+                view.append(btnEle);
+                view.append('<pre id="sourceCodeBox" class="line-numbers" style="display: none;"><code id="sourceCode" class="language-markup"></code></pre>');
+                btnEle.on("click", function() {
+                    var sourceCodeBox = btnEle.next("#sourceCodeBox");
+                    if(!sourceCodeBox.is(":visible")) {
+                        sourceCodeBox.slideDown();
+                    } else {
+                        sourceCodeBox.slideUp();
+                    }
+                });
+                N.comm({
+                    url : url,
+                    contentType : "text/plain; charset=UTF-8",
+                    dataType : "text",
+                    type : "GET"
+                }).submit(function(html) {
+                    var tempView = $("<div>" + html + "</div>");
+                    APP.indx.i18n(undefined, tempView);
+                    N("#sourceCode", view).text(tempView.html().replace(/&quot;/g, '"'));
+                });
             }
         }
     });
