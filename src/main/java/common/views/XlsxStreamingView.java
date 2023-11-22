@@ -7,13 +7,10 @@ import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.Cookie;
@@ -111,7 +108,7 @@ public class XlsxStreamingView extends AbstractXlsxStreamingView {
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if ("n-excel-filename".equals(cookie.getName())) {
-					fileName = URLDecoder.decode(new String(Base64Utils.decodeFromString(URLDecoder.decode(cookie.getValue(), "UTF-8").replaceAll(" ", "+")), "UTF-8"), "UTF-8");
+					fileName = URLDecoder.decode(new String(Base64.getDecoder().decode(URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8"), "UTF-8");
 
 					// Remove Cookie
 					cookie.setValue("");
@@ -142,7 +139,7 @@ public class XlsxStreamingView extends AbstractXlsxStreamingView {
 			}
 			columnNamesStr = "{}";
 		} else {
-			columnNamesStr = URLDecoder.decode(new String(Base64Utils.decodeFromString(URLDecoder.decode(columnNamesStr, "UTF-8").replaceAll(" ", "+")), "UTF-8"), "UTF-8");
+			columnNamesStr = URLDecoder.decode(new String(Base64.getDecoder().decode(URLDecoder.decode(columnNamesStr, StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8"), "UTF-8");
 		}
 
 		ObjectMapper mapper = new ObjectMapper();

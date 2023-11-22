@@ -28,6 +28,10 @@ spring:
     encoding: UTF-8
     use-code-as-default-message: true
     cache-duration: 60
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 50MB
   mvc:
     servlet:
       path: /
@@ -37,6 +41,8 @@ spring:
     restart:
       enabled: true
       additional-exclude: "**/*.class"
+  thymeleaf:
+    cache: false
 
 server:
   port: 8080

@@ -16,8 +16,11 @@ import common.app.code.mappers.CommonCodeMapper;;
 @Service("commonCodeService")
 public class CommonCodeServiceImpl {
 
-	@Autowired
-	private CommonCodeMapper commonCodeMapper;
+	private final CommonCodeMapper commonCodeMapper;
+
+	public CommonCodeServiceImpl(CommonCodeMapper commonCodeMapper) {
+		this.commonCodeMapper = commonCodeMapper;
+	}
 
 	public List<Map<String, Object>> getCommonCodeList(Map<String, Object> vo) {
 		return commonCodeMapper.getCommonCodeList(vo);

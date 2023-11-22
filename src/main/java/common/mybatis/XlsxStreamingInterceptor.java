@@ -9,15 +9,10 @@ import java.io.OutputStream;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -95,14 +90,14 @@ public class XlsxStreamingInterceptor implements Interceptor {
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
 					if ("n-excel-stream".equals(cookie.getName())) {
-						String isStreamingStr = new String(Base64Utils.decodeFromString(URLDecoder.decode(cookie.getValue(), "UTF-8").replaceAll(" ", "+")), "UTF-8");
-						isStreaming = isStreamingStr != null && "true".equals(isStreamingStr);
+						String isStreamingStr = new String(Base64.getDecoder().decode(URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8");
+						isStreaming = "true".equals(isStreamingStr);
 
 						// Remove Cookie
 						cookie.setValue("");
 						cookie.setPath("/");
 						cookie.setMaxAge(0);
-						response.addCookie(cookie);
+						Objects.requireNonNull(response).addCookie(cookie);
 					}
 				}
 			}
@@ -116,7 +111,7 @@ public class XlsxStreamingInterceptor implements Interceptor {
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
 					if ("n-excel-filename".equals(cookie.getName())) {
-						fileName = URLDecoder.decode(new String(Base64Utils.decodeFromString(URLDecoder.decode(cookie.getValue(), "UTF-8").replaceAll(" ", "+")), "UTF-8"), "UTF-8");
+						fileName = URLDecoder.decode(new String(Base64.getDecoder().decode(URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8"), "UTF-8");
 
 						// Remove Cookie
 						cookie.setValue("");
@@ -141,13 +136,13 @@ public class XlsxStreamingInterceptor implements Interceptor {
 				}
 				fileName = "NOFILENAME";
 			}
-			if (columnNamesStr.equals("")) {
+			if (columnNamesStr.isEmpty()) {
 				if (logger.isWarnEnabled()) {
 					logger.warn("No column name was sent from the UI.");
 				}
 				columnNamesStr = "{}";
 			} else {
-				columnNamesStr = URLDecoder.decode(new String(Base64Utils.decodeFromString(URLDecoder.decode(columnNamesStr, "UTF-8").replaceAll(" ", "+")), "UTF-8"), "UTF-8");
+				columnNamesStr = URLDecoder.decode(new String(Base64.getDecoder().decode(URLDecoder.decode(columnNamesStr, StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8"), "UTF-8");
 			}
 
 
@@ -175,7 +170,7 @@ public class XlsxStreamingInterceptor implements Interceptor {
 
 				@Override
 				public void handleResult(ResultContext<? extends Object> context) {
-					// excute ResultHandler of BeforeInterceptor
+					// execute ResultHandler of BeforeInterceptor
 					if(beforeResultHandler != null) {
 						beforeResultHandler.handleResult(context);
 					}
@@ -273,11 +268,9 @@ public class XlsxStreamingInterceptor implements Interceptor {
 			}
 
 			// Closeable only implemented as of POI 3.10
-			if (workbook instanceof Closeable) {
-				((Closeable) workbook).close();
-			}
+            ((Closeable) workbook).close();
 
-			// Dispose of temporary files in case of streaming variant...
+            // Dispose of temporary files in case of streaming variant...
 			((SXSSFWorkbook) workbook).dispose();
 
 			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();

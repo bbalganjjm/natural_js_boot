@@ -2,10 +2,8 @@ package common.mybatis;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -86,7 +84,7 @@ public class MaskingInterceptor implements Interceptor {
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
 					if ("n-excel-stream".equals(cookie.getName())) {
-						String isStreamingStr = new String(Base64Utils.decodeFromString(URLDecoder.decode(cookie.getValue(), "UTF-8").replaceAll(" ", "+")), "UTF-8");
+						String isStreamingStr = new String(Base64.getDecoder().decode(URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8");
 						isStreaming[0] = isStreamingStr != null && "true".equals(isStreamingStr);
 					}
 				}

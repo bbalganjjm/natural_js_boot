@@ -70,7 +70,7 @@ public class MaxRowsLimitInterceptor implements Interceptor {
 
 		Object actual = invocation.proceed();
 
-		if (actual != null && actual instanceof List) {
+		if (actual instanceof List) {
 			if (((List<?>) actual).size() > maxRowsLimit || (request.getAttribute("rowCnt") != null && (int) request.getAttribute("rowCnt") > maxRowsLimit)) {
 				throw new CommonException(-23, new String[] { String.valueOf(maxRowsLimit) });
 			}

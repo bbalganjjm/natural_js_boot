@@ -1,15 +1,10 @@
 package common.aspects;
 
-import java.lang.invoke.MethodHandles;
-import java.net.URLDecoder;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import common.utils.SecurityUtils;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,13 +13,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import common.utils.SecurityUtils;
+import java.lang.invoke.MethodHandles;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
@@ -75,7 +73,7 @@ public class VOFilterAspect {
 					if (cookies != null) {
 					    for (Cookie cookie : cookies) {
 					        if("n-excel-params".equals(cookie.getName())){
-					        	excelParametersStr = URLDecoder.decode(new String(Base64Utils.decodeFromString(URLDecoder.decode(cookie.getValue(), "UTF-8").replaceAll(" ", "+")), "UTF-8"), "UTF-8");
+								excelParametersStr = URLDecoder.decode(new String(Base64.getDecoder().decode(URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8).replaceAll(" ", "+")), "UTF-8"), "UTF-8");
 
 					        	// Remove Cookie
 					        	cookie.setValue("");

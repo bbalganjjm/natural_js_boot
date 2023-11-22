@@ -137,29 +137,28 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return tvr;
     }
 
-    /*
+//    @Override
+//    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+//        configurer.favorPathExtension(true)
+//                .ignoreAcceptHeader(true)
+//                .defaultContentType(MediaType.APPLICATION_JSON)
+//                .mediaType("json", MediaType.APPLICATION_JSON)
+//                .mediaType("view", MediaType.TEXT_HTML)
+//                .mediaType("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+//    }
+
     @Override
-    public void configureContentNegotiation (ContentNegotiationConfigurer configurer) {
-        configurer.favorPathExtension(true).
-			ignoreAcceptHeader(true).
-			useJaf(false).
-			defaultContentType(MediaType.APPLICATION_JSON).
-			mediaType("json", MediaType.APPLICATION_JSON).
-			mediaType("view", MediaType.TEXT_HTML).
-			mediaType("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-    }
-    */
-    @Override
-    public void configureContentNegotiation (ContentNegotiationConfigurer configurer) {
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         Map<String, MediaType> mediaTypes = new HashMap<String, MediaType>();
         mediaTypes.put("json", MediaType.APPLICATION_JSON);
         mediaTypes.put("view", MediaType.TEXT_HTML);
         mediaTypes.put("xlsx", MediaType.valueOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
 
-        PathExtensionContentNegotiationStrategy pecns = new PathExtensionContentNegotiationStrategy(mediaTypes);
-
-        configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.APPLICATION_JSON).defaultContentTypeStrategy(pecns);
+        configurer.ignoreAcceptHeader(true)
+                .defaultContentType(MediaType.APPLICATION_JSON)
+                .defaultContentTypeStrategy(new PathExtensionContentNegotiationStrategy(mediaTypes));
     }
+
     @Bean
     public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
@@ -185,14 +184,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         er.setJson("jsonView");
         er.setForm("common/error/500"); // web(thymeleaf) form request
         return er;
-    }
-
-    @Bean
-    public MultipartResolver multipartResolver() {
-//        CommonsServletMultipartResolver cmr = new CommonsServletMultipartResolver();
-//        cmr.setMaxUploadSize(52428800); // 50MB
-//        cmr.setMaxInMemorySize(52428800); // 50MB
-        return new StandardServletMultipartResolver();
     }
 
     @Bean
