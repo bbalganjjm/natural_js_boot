@@ -96,18 +96,6 @@
 	   			}
 	   		}
 	   	},
-        i18n : function(locale, view) {
-    		if(locale === undefined) {
-    			locale = N.locale();
-    		}
-    		if(locale === "ko_KR") {
-        		$("[lang='ko_KR']", view).show();
-    			$("[lang='en_US']", view).remove();
-    		} else {
-    			$("[lang='en_US']", view).show();
-    			$("[lang='ko_KR']", view).remove();
-    		}
-    	},
         mobileResponsiveView : function() {
 
          // API 문서 모바일 용 보기 처리 이벤트

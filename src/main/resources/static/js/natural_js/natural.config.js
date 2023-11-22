@@ -62,8 +62,6 @@
                 "pointcut" : "^init$",
                 "adviceType" : "around",
                 "fn" : function(cont, fnChain, args, joinPoint) {
-                    // Multilingual processing
-                    APP.indx.i18n(undefined, cont.request.options.target);
                     // Natural-CODE
                     N.template.aop.codes(cont, joinPoint);
                 }
