@@ -905,7 +905,6 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     height: 48px;
     line-height: 48px;
     border: none;
-    border-radius: 0;
     cursor: pointer;
     min-width: auto;
     text-align: center;
