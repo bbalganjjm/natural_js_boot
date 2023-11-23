@@ -10,12 +10,11 @@
     background: #fff;
     border-radius: 4px;
     border: none;
-    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
 }
 
 .alert__.block_overlay_msg__ .msg_title_box__ {
     display: block;
-    margin-top: 0;
     position: relative;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -224,13 +223,12 @@
 /* Button */
 a.btn_common__, input[type='button'].btn_common__, button.btn_common__ {
     display: inline-block;
-    margin-bottom: 2px 0 2px 0 !important;
     overflow: visible;
     cursor: pointer;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    margin: 0px;
+    margin: 0;
 }
 
 a.btn_disabled__, input.btn_disabled__, button.btn_disabled__ {
@@ -308,7 +306,7 @@ input[type='button'].btn_smaller__, button.btn_smaller__ {
 }
 
 a.btn_small__, input[type='button'].btn_small__, button.btn_small__ {
-    padding: 0px 8px 0px 8px;
+    padding: 0 8px 0 8px;
     font-size: 11px;
     height: 20px;
     line-height: 18px;
@@ -324,7 +322,7 @@ input[type='button'].btn_small__, button.btn_small__ {
 }
 
 a.btn_medium__, input[type='button'].btn_medium__, button.btn_medium__ {
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
     font-size: 12px;
     height: 26px;
     line-height: 24px;
@@ -339,7 +337,7 @@ input[type='button'].btn_medium__, button.btn_medium__ {
 }
 
 a.btn_large__, input[type='button'].btn_large__, button.btn_large__ {
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
     font-size: 14px;
     height: 33px;
     line-height: 30px;
@@ -356,7 +354,7 @@ input[type='button'].btn_large__, button.btn_large__ {
 }
 
 a.btn_big__, input[type='button'].btn_big__, button.btn_big__ {
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
     font-size: 16px;
     height: 46px;
     line-height: 43px;
@@ -582,7 +580,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     will-change: margin-right;
     transform: translateZ(0)\0; /* for ie 8+ */
 
-    margin-right: 0px;
+    margin-right: 0;
     transition: margin-right 0.3s ease;
 }
 
@@ -615,7 +613,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     max-width: 300px;
     position: absolute;
     background-color: #fff;
-    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     padding: 8px;
     margin: 0;
     color : rgba(0, 0, 0, 0.87);
@@ -804,7 +802,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
     border: 1px solid rgba(0,0,0,.12);
     background-color: #E8F5E9;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
     padding: 5px;
     text-align: left;
     z-index: 1;
@@ -911,7 +909,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     cursor: pointer;
     min-width: auto;
     text-align: center;
-    background-color: rgba(0,0,0,.04);
+    background-color: #f6f6f6;
 }
 
 .tab__>ul>li>a,
@@ -976,16 +974,32 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     transition: margin-left 0.25s cubic-bezier(0.76, 0.07, 0.3, 1.5);
 }
 
-.tab__>.tab_scroll_prev__, .tab__>.tab_scroll_next__ {
-    border: 1px solid rgba(0,0,0,.12);
-    background-color: #C8E6C9;
-    color : rgba(0, 0, 0, 0.87);
-}
-
 .tab__>.tab_scroll_prev__ span {
     line-height: 24px;
     padding: 4px 11px 4px 10px;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAtUlEQVQoz8XRodJBcRDG4d/+RxAE4QvuAU00siCZMYJ+dlyKIJ/Zc7Iqy4KZL0mKKxAEV3Be5RhGE4yNT3jf2V34yZRl2YyI3rtHxCBFhN5wWFXVUdLsYUVRtCJiDfw3XrAtaQVMgPNLwFhSDhyAlGqcSjoBmFlX0t7M/iJiA+TA0t0XAOnT/RKAu2/NrAsg6WRmI0nXOnUJ5HXbsyHLspu7OzAHOg93952Z9YELUH181u8/9Q42dk+9nXu6TQAAAABJRU5ErkJggg==') no-repeat 50%;
+}
+
+.tab__>.tab_scroll_prev__, .tab__>.tab_scroll_next__ {
+    background-color: #f6f6f6;
+    line-height: 48px;
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: none;
+    color: var(--mdc-theme-primary, #6200ee);
+}
+.tab__>.tab_scroll_prev__ {
+    border-left: none;
+}
+.tab__>.tab_scroll_next__ {
+    border-right: none;
+}
+
+.tab__>.tab_scroll_prev__:hover, .tab__>.tab_scroll_next__:hover {
+    background-color: #eeedf4;
+}
+.tab__>.tab_scroll_prev__:active, .tab__>.tab_scroll_next__:active {
+    background-color: #e3dcf5
 }
 
 .tab__>.tab_scroll_next__ span {
@@ -1005,6 +1019,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 .tab__>ul {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #f6f6f6;
 }
 
 .tab__>ul li.tab_disabled__ {
@@ -1040,7 +1055,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     transform: translateZ(0)\0; /* for ie 8+ */
     border: none;
     border-radius: 4px;
-    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     background-color: #FFFFFF;
     font-size: 95%;
     z-index: 1;
@@ -1250,7 +1265,6 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     background-color: transparent !important;
     box-shadow: none !important;
     color: inherit;
-    border-radius: inherit;
     width: auto;
     padding: 0;
     float: none;
@@ -1450,7 +1464,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 .tree__ ul>li {
     border-left: none;
-    margin-left: 0px;
+    margin-left: 0;
     padding: 0 0 0 24px;
     line-height: 32px;
 }
@@ -1624,7 +1638,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     background-color: rgba(0, 0, 0, 0.7);
     margin-bottom: 5px;
     border-radius: 4px;
-    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
 }
 
 .notify__ .notify_msg__.visible__ {
@@ -1641,7 +1655,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 .notify__ .notify_msg__ a, .notify__ .notify_msg__ span {
     line-height: 120%;
-    color : ffffff;
+    color : #ffffff;
     font-weight: normal;
     text-decoration: none;
     font-size: 95%;
@@ -1795,14 +1809,12 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     float: left;
     padding: 0;
     border: none;
-    border-bottom: none;
     min-width: auto;
     max-width: fit-content;
     height: auto;
     text-align: center;
     background-color: rgba(0,0,0,.12);
     line-height: inherit;
-}
 }
 
 .docs__>.docs_tab_context__>ul.docs_tab_utils__>li>a {
@@ -1844,7 +1856,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     border-radius: 4px;
     max-width: 300px;
     background-color: #fff;
-    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     padding: 8px;
     margin: 2px 0 0 0;
     transform: scale(0.7);
@@ -2014,14 +2026,11 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 /* Material Design styles of select element */
 .mdc-njs-select-wrap {
     position: relative;
-    border-top-left-radius: var(--mdc-shape-small, 4px);
-    border-top-right-radius: var(--mdc-shape-small, 4px);
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
     align-items: baseline;
     background-color: whitesmoke;
     display: inline-block;
     line-height: 1.7rem;
+    border-radius: var(--mdc-shape-small, 4px) var(--mdc-shape-small, 4px) 0 0;
 }
 .mdc-njs-select-wrap:hover {
     background-color: #ececec;
@@ -2034,7 +2043,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     padding: 21px 16px 6px 16px;
     min-width: 166px;
     font-size: 16px;
-    border-radius: 0;
+    border-radius: var(--mdc-shape-small, 4px) var(--mdc-shape-small, 4px) 0 0;
     border: none;
     vertical-align: inherit;
     box-sizing: inherit;
