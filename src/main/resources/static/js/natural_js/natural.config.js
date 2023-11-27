@@ -296,13 +296,10 @@
                     decimal_ : "(유한)소수 {0}번째 자리까지 입력할 수 있습니다.", // TODO
                     phone : "전화번호 형식이 아닙니다.",
                     rrn : "주민등록번호 형식에 맞지 않습니다.",
-                    ssn : "주민등록번호 형식에 맞지 않습니다.", // Deprecated
+                    ssn : "미국 사회보장번호 형식에 맞지 않습니다.",
                     frn : "외국인등록번호 형식에 맞지 않습니다.",
-                    frn_rrn : "주민번호나 외국인등록번호 형식에 맞지 않습니다.", // Deprecated
                     frn_ssn : "주민번호나 외국인등록번호 형식에 맞지 않습니다.",
-                    cno : "사업자등록번호 형식에 맞지 않습니다.", // Deprecated
                     kbrn : "사업자등록번호 형식에 맞지 않습니다.",
-                    cpno : "법인번호 형식에 맞지 않습니다.", // Deprecated
                     kcn : "법인번호 형식에 맞지 않습니다.",
                     date : "날짜 형식에 맞지 않습니다.",
                     time : "시간 형식에 맞지 않습니다.",
@@ -312,7 +309,7 @@
                     notAccept : "\"{0}\" 값은 입력할 수 없습니다.",
                     notMatch : "\"{0}\" 이(가) 포함된 값은 입력할 수 없습니다.",
                     notAcceptFileExt : "\"{0}\" 이(가) 포함된 확장자는 입력할 수 없습니다.",
-                    equalTo : "\"{1}\"의 값과 같아야합니다.",
+                    equalTo : "\"{1}\" 의 값과 같아야 합니다.",
                     maxlength : "{0} 글자 이하만 입력 가능합니다.",
                     minlength : "{0} 글자 이상만 입력 가능합니다.",
                     rangelength : "{0} 글자에서 {1} 글자 까지만 입력 가능합니다.",
@@ -344,21 +341,18 @@
                     decimal_ : "Can enter up to {0} places of (finite)decimal.", // TODO
                     phone : "There is no format of phone number.",
                     rrn : "Don't fit the format of the resident registration number.",
-                    ssn : "Don't fit the format of the resident registration number.", // Deprecated.
+                    ssn : "Don't fit the format of the Social Security number.",
                     frn : "Don't fit the format of foreign registration number.",
                     frn_rrn : "Don't fit the format of the resident registration number or foreign registration number.",
-                    frn_ssn : "Don't fit the format of the resident registration number or foreign registration number.", // Deprecated.
-                    cno : "Don't fit the format of registration of enterpreneur.", // Deprecated
                     kbrn : "Don't fit the format of registration of enterpreneur.",
-                    cpno : "Don't fit the format of corporation number.", // Deprecated
                     kcn : "Don't fit the format of corporation number.",
                     date : "Don't fit the format of date.",
                     time : "Don't fit the format of time.",
                     accept : "Can enter only \"{0}\" value.",
-                    match : "Can enter only value ​​that contains \"{0}\".",
+                    match : "Can enter only value that contains \"{0}\".",
                     acceptFileExt : "Can enter only extension that includes \"{0}\".",
                     notAccept : "Can't enter \"{0}\" value.",
-                    notMatch : "Can't enter only value ​​that contains \"{0}\".",
+                    notMatch : "Can't enter only value that contains \"{0}\".",
                     notAcceptFileExt : "Can't enter only extension that includes \"{0}\".",
                     equalTo : "Must be the same as \"{1}\" value.",
                     maxlength : "Can enter only below {0} letters.",
