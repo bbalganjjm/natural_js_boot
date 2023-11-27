@@ -27,14 +27,14 @@
             var self = this;
             $(window).on("hashchange.index", function() {
                 var docId, docNm, url;
-                if (N.string.trim(location.hash).length === 0) {
+                if (N.string.trimToEmpty(location.hash).length === 0) {
                     docId = "documents";
                     docNm = "개발가이드";
 
                     url = "html/com/app/sample/" + docId + ".html";
                 }
 
-                if ((docId === "documents" || N.string.trim(location.hash).length > 35) && !N.string.endsWith(location.href, "#")) {
+                if ((docId === "documents" || N.string.trimToEmpty(location.hash).length > 35) && !N.string.endsWith(location.href, "#")) {
                     var menuInfoStr = "";
                     var menuInfo = "";
                     try {
