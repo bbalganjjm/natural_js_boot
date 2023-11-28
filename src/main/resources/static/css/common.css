@@ -22,14 +22,8 @@ body {
     height: 100%;
     margin: 0;
     color: rgba(0, 0, 0, 0.87);
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.7;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 15px;
-    }
 }
 
 a {
@@ -305,8 +299,8 @@ ul.form__ li {
 
 .alert:not(article) {
     margin: 5px;
-    padding: 0.23em 0.5em 0.23em 1.8em;
-    font-size: 0.95em;
+    padding: 0.23rem 0.5rem 0.23rem 1.8rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     opacity: 0.8;
     background: #E8F5E9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAkElEQVQoz5WQQQrCUAxE3/z/FXqDegnPUC8k9AIFV17LjZfpBVzUn7ipIDZiGxgCk2EyiQwubKgEDBv0Awb+zRp0Bl3Ae/nhdJr7LYq0rcJIUmtSG2njDe497n00koELdgCC5+xUFPnAhEGd4TXnvcH1g1ugJMjvfKr1DoxIh+Q+/jv+YXCemmbd50w6rtG9ANZ+P7VXtHZhAAAAAElFTkSuQmCC') no-repeat 6px 6px;
@@ -358,7 +352,7 @@ article .btnBox {
 }
 
 .apiDoc hr {
-    height: 0.25em;
+    height: 0.25rem;
     padding: 0;
     margin: 24px 0;
     background-color: #C8E6C9;
@@ -391,7 +385,7 @@ article .btnBox {
 }
 
 .apiDoc fieldset legend {
-    font-size: -9em;
+    font-size: 0.813rem;;
     color : rgba(0, 0, 0, 0.87);;
 }
 
@@ -409,7 +403,7 @@ article .btnBox {
 }
 
 .apiDoc .apidemo table th, .apiDoc .apidemo table td, .apiDoc .apidemo input[type='text'], .apiDoc .apidemo input[type='number'], .apiDoc .apidemo input[type='tel'], .apiDoc .apidemo input[type='password'], .apiDoc .apidemo select, .apiDoc .apidemo textarea {
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .apiDoc .apidemo table.grid th {
@@ -448,7 +442,7 @@ article .btnBox {
     background-color: #E8F5E9EE;
     z-index: 1;
     opacity: 0;
-    font-size: 13px;
+    font-size: 0.875rem;
     transform : scaleY(0);
     transform-origin: top;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -516,7 +510,7 @@ article .btnBox {
     box-shadow: 1px 1px 3px #BCFBBC;
     background: #E8F5E9 url("../images/comm/icon/click.png") no-repeat 160px 6px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 1.063rem;
 }
 
 /* github-markdown.css */
@@ -562,31 +556,31 @@ article .btnBox {
 }
 
 .view_context__ h1 {
-    padding-bottom: 0.5em;
-    font-size: 1.3em;
+    padding-bottom: 0.5rem;
+    font-size: 1.3rem;
     border-bottom: 1px solid #C8E6C9;
 }
 
 .view_context__ h2 {
-    padding-bottom: 0.4em;
-    font-size: 1.3em;
+    padding-bottom: 0.4rem;
+    font-size: 1.3rem;
     border-bottom: 1px solid #C8E6C9;
 }
 
 .view_context__ h3 {
-    font-size: 1.15em;
+    font-size: 1.15rem;
 }
 
 .view_context__ h4 {
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .view_context__ h5 {
-    font-size: 0.875em;
+    font-size: 0.875rem;
 }
 
 .view_context__ h6 {
-    font-size: 0.85em;
+    font-size: 0.85rem;
     color: #6a737d;
 }
 
@@ -617,7 +611,7 @@ pre.shell>code {
     word-wrap: normal;
     white-space: pre;
     overflow: visible;
-    font-size: 12px;
+    font-size: 0.813rem;
 }
 
 /* Mobile */
@@ -661,15 +655,15 @@ pre.shell>code {
         margin: 0;
         padding: 5px 17px;
         box-sizing: border-box;
-        border-left: 0.25em solid #A5D6A7;
+        border-left: 0.25rem solid #A5D6A7;
         text-shadow: none;
         color: rgba(0, 0, 0, 0.87);
         text-align: left !important;
-        font-size: 0.9em;
+        font-size: 0.9rem;
     }
 
     .apiDoc .api.form tr>td:first-child {
-        font-size: 1em;
+        font-size: 1rem;
         border: none;
         padding: 0 10px;
         line-height: 2.5;

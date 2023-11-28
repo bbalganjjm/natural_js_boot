@@ -50,7 +50,9 @@
 <script type="text/javascript">
 	N(".index-header").cont({
 		init : function(view, request) {
-
+            if($(window).width() <= 1001) {
+                N(".logo", view).hide();
+            }
 		}
 	});
 </script>

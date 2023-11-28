@@ -98,7 +98,7 @@
 	   	},
         mobileResponsiveView : function() {
 
-         // API 문서 모바일 용 보기 처리 이벤트
+            // API 문서 모바일 용 보기 처리 이벤트
             N(window).on("resize.mobile", function(e, view) {
 
                 if (e.target == window || view) { // 모바일에서 scroll 시 resize 이벤트가 firing 되서(ios, android 동일).
