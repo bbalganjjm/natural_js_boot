@@ -96,7 +96,6 @@ input[type='radio'], input[type='checkbox'] {
 table {
     border-spacing: 0;
     border-collapse: collapse;
-    table-layout: fixed;
     width: 100%;
 }
 
@@ -144,7 +143,7 @@ th {
     border-radius: inherit;
 }
 ul.form__ li {
-    background-color: rgba(0, 0, 0, 0.04);    
+    background-color: rgba(0, 0, 0, 0.04);
 }
 .thead_wrap__ thead > tr > th,
 .grid__ tbody > tr > td {
