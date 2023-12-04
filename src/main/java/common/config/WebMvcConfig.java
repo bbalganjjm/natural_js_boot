@@ -44,7 +44,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import java.util.*;
 
 @Configuration
-@ComponentScan(basePackages = { "common", "kr.goldmandata.www" }, includeFilters = {
+@ComponentScan(basePackages = { "common" }, includeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 public class WebMvcConfig implements WebMvcConfigurer {
 
