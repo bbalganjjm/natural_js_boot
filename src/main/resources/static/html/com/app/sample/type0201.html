@@ -160,7 +160,7 @@
         },
         "e.btnAdd.click" : function(e) {
             e.preventDefault();
-            
+
             cont["p.grid.master"].add();
         },
         "e.btnDelete.click" : function(e) {
@@ -173,13 +173,13 @@
         },
         "e.btnDept.click" : function(e, idx) {
             e.preventDefault();
-            
+
             cont.selIdx = idx;
             cont["p.popup.dept"].open(cont["p.grid.master"].data()[idx]);
         },
         "e.registered.onSelect" : function(e, inputEle, selDate, isMonthonly, idx) {
             e.preventDefault();
-            // 선택한 날짜가 오늘 날짜보다 크면 #isActive 요소 체크, 아니면 체크 해제. 
+            // 선택한 날짜가 오늘 날짜보다 크면 #isActive 요소 체크, 아니면 체크 해제.
             //  - 입력 요소를 jQuery val 메서드로 직접 다루지 말고 반드시 바인딩되어 있는 컴포넌트의 val 메서드로 값을 세팅해 주세요.
             //  - 입력 요소를 jQuery val 메서드로 직접 다루면 컴포넌트 내부 데이터셋과 동기화되지 않습니다.
             if(N.date.diff((new Date()).formatDate("Ymd"), selDate.obj.formatDate(selDate.format)) > 0) {
@@ -190,11 +190,11 @@
         },
         "e.btnExcelImport.click" : function(e) {
             e.preventDefault();
-			
-            cont["p.grid.master"].bindExcel([ 
-                "key", "deptCd", "deptNm", "index", "guid", "active", "balance", 
+
+            cont["p.grid.master"].bindExcel([
+                "key", "deptCd", "deptNm", "index", "guid", "active", "balance",
                 "picture", "age", "eyeColor", "name", "gender", "company", "email",
-                "phone", "address", "about", "registered", "latitude", "longitude", 
+                "phone", "address", "about", "registered", "latitude", "longitude",
                 "greeting", "favoriteFruit" // 엑셀 컬럼 순서대로 JSON object의 키값을 정의
             ], {
                 start : 1, // 데이터로 추출할 시작 엑셀 행 인덱스
@@ -212,7 +212,7 @@
 				// 부모 페이지 컨트롤러의 검색 버튼 클릭
                 cont.opener["e.btnSearch.click"].click();
             } else {
-                cont["e.btnSearch.click"].click();                
+                cont["e.btnSearch.click"].click();
             }
         }
     });

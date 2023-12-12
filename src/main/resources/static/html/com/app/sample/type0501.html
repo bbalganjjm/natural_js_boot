@@ -147,7 +147,7 @@
                 if(isFirstPage) {
                     this.select(0);
                 }
-                
+
              	// 2.2. 로딩바 업데이트
                 N.docs.updateLoadIndicator.call(APP.indx.docs, 1, 2);
             }
@@ -158,19 +158,19 @@
             selectScroll : false,
             onSelect : function(index, rowEle, data, beforeRow, e) {
              	// TODO 전처리
-                
+
                 APP.comm.utils.selectNBind.call(this, {
                     cont : cont,
                     form : "p.form.detail"
                 });
-             	
+
              	// TODO 후처리
             },
             onBind : function(context, data, isFirstPage, isLastPage) {
                 if(isFirstPage) {
                     this.select(0);
                 }
-                
+
              	// 2.1. 로딩바 업데이트
                 N.docs.updateLoadIndicator.call(APP.indx.docs, 2, 2);
             }
@@ -216,10 +216,10 @@
         },
         "e.btnSearch.click" : function(e) {
             e.preventDefault();
-            
+
             // 1. 로딩바 생성
             N.docs.createLoadIndicator.call(APP.indx.docs);
-            
+
             if (cont["p.form.search"].validate()) {
                 cont["c.getCommonCodeCompanyList"]().submit(function(data) {
                     cont["p.list.codeMaster"].bind(data);
