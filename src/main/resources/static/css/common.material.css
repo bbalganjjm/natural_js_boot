@@ -137,6 +137,11 @@ th {
     border-radius: 4px;
     background-color: #fff;
 }
+.grid__ tfoot .form__ {
+    border-bottom: none;
+    border-right: none;
+    border-left-color: transparent;
+}
 
 .grid__ .form__ {
     border-top: none;
