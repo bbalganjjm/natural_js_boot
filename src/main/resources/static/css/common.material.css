@@ -145,9 +145,10 @@ th {
 ul.form__ li {
     background-color: rgba(0, 0, 0, 0.04);
 }
+.grid__ > thead > tr > th,
 .thead_wrap__ thead > tr > th,
 .grid__ tbody > tr > td {
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid rgba(0,0,0,.12);
 }
 .thead_wrap__ thead > tr > th[rowspan],
 .grid__ tbody > tr > td[rowspan] {

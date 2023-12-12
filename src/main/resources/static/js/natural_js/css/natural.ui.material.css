@@ -509,6 +509,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 .grid__.grid_select__ > tbody {
     cursor: pointer;
+    border-right: none;
 }
 
 .grid__.grid_select__ > .grid_selected__ {
