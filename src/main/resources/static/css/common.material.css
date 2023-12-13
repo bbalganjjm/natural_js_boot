@@ -124,9 +124,6 @@ thead, tbody {
 .tbody_wrap__ thead {
     border-bottom: none !important;
 }
-.tbody_wrap__ tbody:last-child {
-    border-bottom-width: 0 !important;
-}
 .tfoot_wrap__ {
     border-top: 1px solid rgba(0,0,0,.12) !important;
 }
