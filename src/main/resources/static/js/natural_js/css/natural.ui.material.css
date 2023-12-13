@@ -739,6 +739,9 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAIf7n/4zwjjgzgCigKMYAEYB8RmROaABAAQCg/DqNBm8AAAAABJRU5ErkJggg==") repeat;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto !important;
+}
+
+.tbody_wrap__, .tfoot_wrap__ {
     margin-left: 0 !important;
 }
 
