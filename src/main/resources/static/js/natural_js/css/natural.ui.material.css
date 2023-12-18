@@ -722,10 +722,6 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     min-width: 100%;
 }
 
-.tbody_wrap__>table, .tfoot_wrap__>table {
-    border-top: none;
-}
-
 .thead_wrap__ thead th .asc__ {
     color: var(--mdc-theme-primary, #6200ee);
 }
@@ -736,9 +732,12 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 .tbody_wrap__ {
     position: relative;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAIf7n/4zwjjgzgCigKMYAEYB8RmROaABAAQCg/DqNBm8AAAAABJRU5ErkJggg==") repeat;
+    background: none;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto !important;
+}
+
+.tbody_wrap__, .tfoot_wrap__ {
     margin-left: 0 !important;
 }
 
