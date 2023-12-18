@@ -2041,7 +2041,6 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
     background-color: transparent;
     padding: 20px 16px 6px 16px;
     min-width: 166px;
-    font-size: 16px;
     border-radius: var(--mdc-shape-small, 4px) var(--mdc-shape-small, 4px) 0 0;
     border: none;
     vertical-align: inherit;
