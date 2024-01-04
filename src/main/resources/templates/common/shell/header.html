@@ -1,4 +1,8 @@
 <style type="text/css">
+.index-header {
+    height: 123px;
+}
+
 .index-header .header-back {
 	position: absolute;
 	top: 0;
@@ -47,11 +51,15 @@
 </article>
 
 <script type="text/javascript">
-	N(".index-header").cont({
+(function() {
+
+    var cont = N(".index-header").cont({
 		init : function(view, request) {
             if($(window).width() <= 1001) {
                 N(".logo", view).hide();
             }
 		}
 	});
+
+})();
 </script>

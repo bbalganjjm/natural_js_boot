@@ -213,7 +213,9 @@
 </article>
 
 <script type="text/javascript">
-    N(".index-lefter").cont({
+(function() {
+
+    var cont = N(".index-lefter").cont({
         init : function(view, request) {
             mdc.list.MDCList.attachTo(N(".left-menu .mdc-list", view).get(0)).wrapFocus = true;
             N(".left-menu .mdc-list .mdc-list-item", view).each(function(i, el) {
@@ -304,4 +306,6 @@
 
         }
     });
+
+})();
 </script>
