@@ -31,7 +31,7 @@ import common.mybatis.MapWrapperFactory;
 @EnableScheduling
 @EnableTransactionManagement
 @MapperScan(basePackages = { "common" })
-@ComponentScan(basePackages = { "common" }, excludeFilters = {
+@ComponentScan(basePackages = { "common", "naturaljs.natural_template_designer_server.file" }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 @PropertySource(value = { "classpath:config/common/data.properties",
         "classpath:config/common/file.properties" }, ignoreResourceNotFound = true)
