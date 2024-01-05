@@ -42,7 +42,7 @@
                         menuInfo = decodeURIComponent(atob(menuInfoStr)).split("$");
                     } catch(e) {
                         N.warn(e);
-                    };
+                    }
 
                     if (menuInfo.length > 1) {
                         if(!N.string.isEmpty(menuInfo[0])) {
