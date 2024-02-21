@@ -130,10 +130,10 @@
             }
         },
         init : function(view, request) {
-			// cont.opener는 탭이 포함된 부모페이지의 Controller Object.
+            // cont.opener는 탭이 포함된 부모페이지의 Controller Object.
             if(cont.opener) {
                 cont["p.form.search"].context().hide().prev("h3").hide().prev(".view-intro").hide();
-             	// 부모 페이지 컨트롤러의 검색 버튼 클릭
+                // 부모 페이지 컨트롤러의 검색 버튼 클릭
                 cont.opener["e.btnSearch.click"].click();
             } else {
                 cont["e.btnSearch.click"].click();
