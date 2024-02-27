@@ -1,17 +1,12 @@
 package common.config;
 
-import javax.sql.DataSource;
-
+import common.mybatis.MapWrapperFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -19,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import common.mybatis.MapWrapperFactory;
+import javax.sql.DataSource;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
@@ -31,7 +26,7 @@ import common.mybatis.MapWrapperFactory;
 @EnableScheduling
 @EnableTransactionManagement
 @MapperScan(basePackages = { "common" })
-@ComponentScan(basePackages = { "common", "naturaljs.natural_template_designer_server.file" }, excludeFilters = {
+@ComponentScan(basePackages = { "common" }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 @PropertySource(value = { "classpath:config/common/data.properties",
         "classpath:config/common/file.properties" }, ignoreResourceNotFound = true)
