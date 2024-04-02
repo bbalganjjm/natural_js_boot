@@ -23,8 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -44,7 +42,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import java.util.*;
 
 @Configuration
-@ComponentScan(basePackages = { "common" }, includeFilters = {
+@ComponentScan(basePackages = { "common", "naturaljs.natural_template_designer_server.file" }, includeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 public class WebMvcConfig implements WebMvcConfigurer {
 
