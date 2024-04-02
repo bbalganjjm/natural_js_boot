@@ -1,14 +1,13 @@
 package common.app.sample.service.impl;
 
+import common.app.sample.mappers.SampleMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import common.app.sample.mappers.SampleMapper;
 
 /**
  * @author KIM HWANG MAN( bbalganjjm@gmail.com )
@@ -33,7 +32,7 @@ public class SampleServiceImpl {
 		return sampleMapper.getSample(vo);
 	}
 
-	public Map<String, Object> saveSample(List<Map<String, Object>> voList) {
+	public Map<String, Object> saveSampleList(List<Map<String, Object>> voList) {
 		Iterator<Map<String, Object>> iter = voList.iterator();
 
 		Map<String, Object> vo;
