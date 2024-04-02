@@ -627,7 +627,7 @@ N.grid 나 N.list에서 체크되거나 선택된 행들을 삭제하기 위한 
 
     return APP.comm.utils.save.call(this, {
         cont : cont,
-        comm : "c.saveSample",
+        comm : "c.saveSampleList",
         changed : "p.grid.master",
         validate : "p.grid.master",
         before : function() {
@@ -788,9 +788,9 @@ public class SampleController {
         return sampleService.getSample(vo);
     }
 
-    @RequestMapping("saveSample.json")
-    public Map<String, Object> saveSample(@RequestBody List<Map<String, Object>> voList) {
-        return sampleService.saveSample(voList);
+    @RequestMapping("saveSampleList.json")
+    public Map<String, Object> saveSampleList(@RequestBody List<Map<String, Object>> voList) {
+        return sampleService.saveSampleList(voList);
     }
 
     @RequestMapping("insertSample.json")
@@ -854,7 +854,7 @@ public class SampleServiceImpl {
         return sampleMapper.getSample(vo);
     }
 
-    public Map<String, Object> saveSample(List<Map<String, Object>> voList) {
+    public Map<String, Object> saveSampleList(List<Map<String, Object>> voList) {
         Iterator<Map<String, Object>> iter = voList.iterator();
 
         Map<String, Object> vo;
