@@ -757,7 +757,7 @@ Controller의 @RequestMapping은 Camel Case 문자열 형태로 다음과 같이
  * 단건 입력 : `insert` + `MethodName` + `.json`
  * 단건 수정 : `update` + `MethodName` + `.json`
  * 단건 삭제 : `delete` + `MethodName` + `.json`
- * 다건 저장(입력/수정/삭제) : `save` + `MethodName` + `.json`
+ * 다건 저장(입력/수정/삭제) : `save` + `MethodName` + `List.json`
  * 출력 : `get` + `MethodName` + `.print`
  * 엑셀 다운로드 : `get` + `MethodName` + `List` + `.xlsx`
  * 엑셀 업로드 : `save` + `MethodName` + `.xlsx`
