@@ -29,3 +29,5 @@ local.properties
 .DS_Store
 
 localhost*/
+
+src/main/resources/static/localhost:8080/
