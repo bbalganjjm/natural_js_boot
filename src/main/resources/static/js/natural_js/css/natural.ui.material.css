@@ -1513,7 +1513,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 }
 
 .tree__ li.tree_last_node__:last-child>.tree_icon__ {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .tree__ li.tree_last_node__ a>span {
