@@ -130,7 +130,7 @@
 
         <dependency>
             <groupId>naturaljs</groupId>
-            <artifactId>natural-template-designer-server</artifactId>
+            <artifactId>natural-builder-server</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>

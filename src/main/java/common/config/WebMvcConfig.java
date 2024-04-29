@@ -42,7 +42,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import java.util.*;
 
 @Configuration
-@ComponentScan(basePackages = { "common", "naturaljs.natural_template_designer_server.file" }, includeFilters = {
+@ComponentScan(basePackages = { "common", "naturaljs.builder" }, includeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 public class WebMvcConfig implements WebMvcConfigurer {
 
