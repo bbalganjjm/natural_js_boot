@@ -2,7 +2,7 @@
     <div id="search" class="form__ search_box__">
         <div class="criteria-panel">
             <ul>
-                <li><input id="name" type="text" class="mdc-text-field" data-label="Name"></li>
+                <li><input id="name" type="text" class="mdc-text-field" data-label="Name" data-validate='[["required"]]'></li>
                 <li><select id="age" class="mdc-njs-select" data-label="Age"><option value=""></option></select></li>
                 <li><select id="gender" class="mdc-njs-select" data-label="Gender"><option value=""></option></select></li>
                 <li><select id="eyeColor" class="mdc-njs-select" data-label="Eye Color"><option value=""></option></select></li>
@@ -50,28 +50,26 @@
                     <p class="mdc-njs-fixed-label">Default Picture</p>
                     <img id="picture" style="height: 56px;">
                 </li>
-                
-
                 <li>
-                    <input id="name" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Name">
+                    <input id="name" type="text" class="mdc-text-field" data-label="Name">
                 </li>
                 <li>
-                    <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" class="mdc-text-field" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
+                    <input id="deptNm" type="text" readonly="readonly" class="mdc-text-field" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
                 </li>
                 <li>
-                    <input id="email" type="text" data-validate='[["required"], ["email"]]' class="mdc-text-field" data-label="Email">
+                    <input id="email" type="text" class="mdc-text-field" data-label="Email">
                 </li>
                 <li>
-                    <input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]' class="mdc-text-field" data-label="Balance">
+                    <input id="balance" type="text" class="mdc-text-field" data-label="Balance">
                 </li>
                 <li>
-                    <input id="phone" type="text" data-validate='[["required"]]' class="mdc-text-field" data-label="Phone">
+                    <input id="phone" type="text" class="mdc-text-field" data-label="Phone">
                 </li>
                 <li>
-                    <select id="eyeColor" data-validate='[["required"]]' class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select>
+                    <select id="eyeColor" class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select>
                 </li>
                 <li>
-                    <input id="age" type="text" data-validate='[["required"], ["integer"]]' class="mdc-text-field" data-label="Age">
+                    <input id="age" type="text" class="mdc-text-field" data-label="Age">
                 </li>
                 <li>
                     <p class="mdc-njs-fixed-label">Gender</p>
@@ -79,20 +77,20 @@
                 </li>
                 <li>
                     <p class="mdc-njs-fixed-label">Favorite Fruit</p>
-                    <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
+                    <input id="favoriteFruit" type="checkbox">
                 </li>
                 <li>
-                    <input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]' class="mdc-text-field" data-label="Registered">
+                    <input id="registered" type="text" class="mdc-text-field" data-label="Registered">
                 </li>
                 <li>
                     <p class="mdc-njs-fixed-label">Company</p>
-                    <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 100px;"></select>
+                    <select id="company" multiple="multiple" style="height: 100px;"></select>
                 </li>
                 <li>
-                    <textarea id="about" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="About"></textarea>
+                    <textarea id="about" rows="4" cols="34" class="mdc-text-field" data-label="About"></textarea>
                 </li>
                 <li>
-                    <textarea id="greeting" rows="4" cols="34" data-validate='[["required"]]' class="mdc-text-field" data-label="Greeting"></textarea>
+                    <textarea id="greeting" rows="4" cols="34" class="mdc-text-field" data-label="Greeting"></textarea>
                 </li>
                 <li>
                     <p class="mdc-njs-fixed-label">Active</p>
@@ -107,164 +105,4 @@
     </div>
 </article>
 
-<script type="text/javascript">
-(function() {
-
-    var cont = N(".type0401").cont({
-        "p.select.gender" : [ "gender" ],
-        "p.select.eyeColor" : [ "eyeColor" ],
-        "p.select.company" : [ "company" ],
-        "p.select.favoriteFruit" : [ "favoriteFruit" ],
-        "p.select.age" : [ "c.getCommonCodeList", "age", "age", function(data) {
-            return N(N.array.deduplicate(data, "age")).datasort("age");
-        }],
-        "p.form.search" : {
-            "usage" : {
-                "search-box" : {
-                    "defaultButton" : ".btnSearch",
-                    "events" : [{
-                        "event" : "focusin",
-                        "target" : "#name",
-                        "handler" : function(e) {
-                            N.log(e);
-                        }
-                    }]
-                }
-            }
-        },
-        "p.form.detail" : {
-            revert : true,
-            autoUnbind : true
-        },
-        "p.grid.master" : {
-            height : 500,
-            select : true,
-            selectScroll : false,
-            onSelect : function(index, rowEle, data, beforeRow, e) {
-                // TODO 전처리
-
-                APP.comm.utils.selectNBind.call(this, {
-                    cont : cont,
-                    form : "p.form.detail"
-                });
-
-                // 파일 요약 목록 생성
-                if(data.length > 0) {
-                    APP.comm.utils.getFileSummaryList(cont["p.form.detail"].val("fileId"), "fileName", 60, cont["e.btnFile.click"]);
-                }
-
-                // TODO 후처리
-            },
-            onBind : function(context, data, isFirstPage, isLastPage) {
-                if(isFirstPage) {
-                    this.select(0);
-                }
-            }
-        },
-        "p.popup.dept" : {
-            url : "html/com/app/sample/type04P0.html",
-            onOpen : "onOpen",
-            onClose : function(onCloseData) {
-                if (onCloseData) {
-                    cont["p.form.detail"]
-                    .val("deptNm", onCloseData.deptNm)
-                    .val("deptCd", onCloseData.deptCd);
-                }
-            }
-        },
-        /**
-         * 공통 파일 팝업.
-         */
-        "p.popup.file" : {
-            onClose : function(onCloseData) {
-                if(onCloseData) {
-                    cont["p.form.detail"].val("fileId", onCloseData.fileId);
-
-                	// 파일 요약 목록 생성
-                    APP.comm.utils.createFileSummaryList(onCloseData.downloadList, "fileName", 60, cont["e.btnFile.click"]);
-                }
-            }
-        },
-        "c.getCommonCodeList" : function() {
-            return N.comm("sample/getSampleList.json");
-        },
-        "c.getSampleList" : function() {
-            return cont["p.form.search"].data(false).comm("sample/getSampleList.json");
-        },
-        "c.saveSampleList" : function() {
-            return N(cont["p.grid.master"].data("modified")).comm({
-                dataIsArray : true, // Array 타입의 여러 행데이터가 1 개 일때는 자동으로 Object로 변환됩니다. 자동으로 변환되지 않게 하려면 dataIsArray 옵션을 true로 지정해 주세요.
-                url : "sample/saveSampleList.json"
-            });
-        },
-        "e.btnSearch.click" : function(e) {
-            e.preventDefault();
-
-            if (cont["p.form.search"].validate()) {
-                cont["c.getSampleList"]().submit(function(data) {
-                    // N.grid bind
-                    cont["p.grid.master"].bind(data);
-                });
-            }
-        },
-        "e.btnDeptCd.click" : function(e) {
-            e.preventDefault();
-            cont["p.popup.dept"].open(cont["p.form.detail"].data(true)[0]);
-        },
-        "e.btnSave.click" : function(e) {
-            e.preventDefault();
-
-            return APP.comm.utils.save.call(this, {
-                cont : cont,
-                comm : "c.saveSampleList",
-                changed : "p.grid.master",
-                validate : "p.form.detail",
-                before : function() {
-                    // TODO
-                },
-                after : function(data) {
-                    cont["e.btnSearch.click"].click();
-                }
-            });
-        },
-        "e.btnAdd.click" : function(e) {
-            e.preventDefault();
-
-            if (cont["p.form.detail"].validate()) {
-                cont["p.form.detail"].add();
-            }
-        },
-        "e.btnDelete.click" : function(e) {
-            e.preventDefault();
-
-            cont["p.form.detail"].remove();
-        },
-        "e.btnRevert.click" : function(e) {
-            e.preventDefault();
-
-            if (cont["p.grid.master"].data("modified").length === 0) {
-                N(window).alert(N.message.get(APP.comm.messages, "COMM-0001")).show();
-                return false;
-            }
-
-            cont["p.form.detail"].revert();
-        },
-        "e.btnFile.click" : function(e) {
-            e.preventDefault();
-
-            cont["p.popup.file"].open(cont["p.form.detail"].val("fileId"));
-        },
-        init : function(view, request) {
-			// cont.opener는 탭이 포함된 부모페이지의 Controller Object.
-            if(cont.opener) {
-                cont["p.form.search"].context().hide().prev("h3").hide().prev(".view-intro").hide();
-				// 부모 페이지 컨트롤러의 검색 버튼 클릭
-                cont.opener["e.btnSearch.click"].click();
-            } else {
-                cont["e.btnSearch.click"].click();
-            }
-        }
-    });
-
-})();
-</script>
+<script type="text/javascript" src="html/com/app/sample/type0401.js"></script>

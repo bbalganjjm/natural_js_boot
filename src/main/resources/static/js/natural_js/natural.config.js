@@ -822,25 +822,6 @@
              */
             "entireLoadExcludeURLs" : ["contents.html", "footer.html"],
             /**
-             * Global onBeforeActive event
-             *  - This event is executed before the selected tab is activated.
-             */
-            "onBeforeActive" : function(docId, isFromDocsTabList, isNotLoaded) {
-                if(!isNotLoaded) {
-                    // FIXME When the menu DB is created and the page loading service is created, remove the code below (before var hashVal).
-                    var url = N(".index-lefter.view_context__ a[data-pageid='" + docId + "']").attr("href");
-                    if (N.string.trimToEmpty(location.hash).length === 0 || docId === "home0100") {
-                        docId = "home0100";
-                        url = "html/naturaljs/" + docId.substring(0, 4) + "/" + docId + ".html";
-                    }
-
-                    var hashVal = docId + "$" + this.options.docs[docId].docNm + "$" + url;
-                    if(decodeURIComponent(atob(location.hash.replace("#", ""))) != hashVal) {
-                        location.hash = btoa(encodeURIComponent(hashVal));
-                    }
-                }
-            },
-            /**
              * Global onActive event
              *  - This event is executed after the selected tab is activated.
              */

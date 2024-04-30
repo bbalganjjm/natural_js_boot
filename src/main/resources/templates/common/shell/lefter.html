@@ -228,7 +228,7 @@
                 var selfEle = N(this);
 
                 if(selfEle.is("[data-pageid]")) {
-                    location.hash = btoa(encodeURIComponent(selfEle.data("pageid") + "$" + selfEle.find("span").text()) + "$" + encodeURIComponent(selfEle.attr("href")));
+                    location.hash = selfEle.attr("href");
 
                     if($(window).width() <= 1001) { // 768 + 256 - 17px(?)
                         N(".lefter-toggle-button", ".page-wrap").trigger("click.lefter");
