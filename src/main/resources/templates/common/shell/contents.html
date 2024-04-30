@@ -55,10 +55,11 @@
             init : function(view, request) {
                 this.initDocs(this, view);
     
-                if(N.string.trimToEmpty(location.hash).length > 0 && N.string.trimToEmpty(location.hash).length <= 35) {
-                    location.href = "./";
-                } else {
+                if(!N.string.isEmpty(location.hash)
+                    && (N.string.endsWith(location.hash, ".html") || N.string.endsWith(location.hash, ".view"))) {
                     $(window).trigger("hashchange.index");
+                } else {
+                    N(".left-menu [data-pageid='dev-guide']", "body").trigger("click.left-menu");
                 }
             },
             initDocs : function(cont, view) {

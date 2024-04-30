@@ -7,7 +7,6 @@
         	this.setLocale();
             this.loadHeader();
             this.loadLefter();
-            this.loadBody();
             this.loadFooter();
             this.initBrowserHistorySystem();
         },
@@ -15,7 +14,10 @@
             N("header").comm("header.view").submit();
         },
         loadLefter : function() {
-            N(".main-nav").comm("lefter.view").submit();
+            var self = this;
+            N(".main-nav").comm("lefter.view").submit(function () {
+                APP.indx.loadBody();
+            });
         },
         loadBody : function() {
             N(".page-content").comm("contents.view").submit();
@@ -27,9 +29,8 @@
             var self = this;
             $(window).on("hashchange.index", function() {
                 if(self.docs) {
-                    if (N.string.endsWith(location.hash, ".html")
-                        || N.string.endsWith(location.hash, ".view")) {
-
+                    if (!N.string.isEmpty(location.hash)
+                        && (N.string.endsWith(location.hash, ".html") || N.string.endsWith(location.hash, ".view"))) {
                         var url = location.hash.replace("#", "");
                         var selectedMenuEle = N(".index-lefter.view_context__ a[href='" + url + "']");
                         var docId = selectedMenuEle.find("span:last").text();
@@ -38,13 +39,6 @@
                                 "url" : url
                             });
                         }
-                    } else {
-                        self.docs.add("documents", "개발가이드", { // 페이지 홈.
-                            "url" : "html/com/app/sample/documents.html",
-                            "onRemove" : function(docId) { // N.docs MDI 탭 닫을 때 페이지에서 사용된 라이브러리 제거
-                                delete window.showdown;
-                            }
-                        });
                     }
                 }
             });
