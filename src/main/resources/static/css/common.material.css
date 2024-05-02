@@ -275,6 +275,6 @@ th, tfoot td {
     height: 36px;
 }
 
-.view_context__ .form__.search_box__ .criteria-panel ul li {
+.view_context__ .form__.search_box__ .criteria-panel > ul > li {
     padding: 0;
 }

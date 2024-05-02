@@ -475,20 +475,20 @@ article .btnBox {
 .view_context__ .form__.search_box__ .criteria-panel {
  
 }
-.view_context__ .form__.search_box__ .criteria-panel ul {
+.view_context__ .form__.search_box__ .criteria-panel > ul {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
     background-color: #fff;
 }
-.view_context__ .form__.search_box__ .criteria-panel ul li {
+.view_context__ .form__.search_box__ .criteria-panel > ul > li {
     list-style: none;
     padding: 8px 16px;
     margin: 5px;
     border-radius: 4px;
     background-color: #E8F5E9;
-    
+
 }
 
 .view_context__ .grid__ input:not([type='checkbox']):not([type='radio']),
