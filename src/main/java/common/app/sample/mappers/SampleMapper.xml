@@ -224,7 +224,7 @@
             favorite_fruit,
             file_id
           ) VALUES (
-            #{index},
+            (SELECT MAX(index) + 1 FROM SAMPLE),
             #{deptCd},
             #{guid},
             #{isActive},
