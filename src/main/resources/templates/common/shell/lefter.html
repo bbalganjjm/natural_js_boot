@@ -238,10 +238,9 @@
                 selfEle = undefined;
             });
 
-            // if (N.string.isEmpty(location.hash)
-            //     || (!N.string.endsWith(location.hash, ".html") && !N.string.endsWith(location.hash, ".view"))) { // 메인 페이지
-            //     N(".left-menu [data-pageid='dev-guide']", view).trigger("click.left-menu");
-            // }
+            if (N.string.isEmpty(location.hash)) { // 메인 페이지
+                N(".left-menu [data-pageid='dev-guide']", view).trigger("click.left-menu");
+            }
 
             N(".lefter-toggle-button", ".page-wrap").on("click.lefter", function(e) {
                 e.preventDefault();
