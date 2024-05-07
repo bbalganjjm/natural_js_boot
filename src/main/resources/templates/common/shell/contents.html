@@ -54,7 +54,7 @@
         var cont = N(".index-contents").cont({
             init : function(view, request) {
                 this.initDocs(this, view);
-    
+
                 if(!N.string.isEmpty(location.hash)
                     && (N.string.endsWith(location.hash, ".html") || N.string.endsWith(location.hash, ".view"))) {
                     $(window).trigger("hashchange.index");
