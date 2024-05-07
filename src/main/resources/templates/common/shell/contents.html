@@ -58,6 +58,8 @@
                 if(!N.string.isEmpty(location.hash)
                     && (N.string.endsWith(location.hash, ".html") || N.string.endsWith(location.hash, ".view"))) {
                     $(window).trigger("hashchange.index");
+                } else {
+                    N(".left-menu [data-pageid='dev-guide']", "body").trigger("click.left-menu");
                 }
             },
             initDocs : function(cont, view) {
