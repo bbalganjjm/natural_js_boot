@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 @EnableAspectJAutoProxy
 @EnableScheduling
 @EnableTransactionManagement
-@MapperScan(basePackages = { "common", "naturaljs.natural_template_designer_server.file" })
+@MapperScan(basePackages = { "common" })
 @ComponentScan(basePackages = { "common" }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class) })
 @PropertySource(value = { "classpath:config/common/data.properties",
