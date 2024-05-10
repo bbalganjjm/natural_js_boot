@@ -61,7 +61,6 @@
 	   		}
 	   	},
         mobileResponsiveView : function() {
-
             // API 문서 모바일 용 보기 처리 이벤트
             N(window).on("resize.mobile", function(e, view) {
 
