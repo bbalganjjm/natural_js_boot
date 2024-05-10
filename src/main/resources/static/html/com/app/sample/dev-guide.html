@@ -176,7 +176,7 @@ N.cont의 컴포넌트 별 추가 옵션들은 다음과 같습니다.
 | 속성명 | 옵션명 | 변수타입 | 필수 여부 | 기능 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
 | p.select.{id} | - | - | - | - | N.select 컴포넌트를 초기화 한다 |
-| - | comm | string | | 목록을 조회할 N.comm(Communicator) | N.cont 오브젝트로 선언한 "c.{actionName}"(N.comm 참고)을 입력한다. |
+| - | comm | string | | 목록을 조회할 N.comm(Communicator) | N.cont 오브젝트로 선언한 "c.{serviceName}"(N.comm 참고)을 입력한다. |
 | - | data | array[object] | | comm 옵션을 지정하지 않고 data 옵션으로 [{}, {}]와 같이 데이터를 직접 작성하여 바인딩할 수 있다. |
 | - | key | string | O | 선택 요소의 명칭에 바인딩될 데이터 컬럼 명 | 조회 데이터의 컬럼명을 입력한다. |
 | - | val | string | O | 선택 요소의 값에 바인딩될 데이터 컬럼 명 | 조회 데이터의 컬럼명을 입력한다. |
@@ -314,16 +314,17 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
 &lt;/script&gt;
 
 ```
-
+스
 ##2. "c."으로 시작(N.comm(커뮤니케이터) 정의)
-해당 컨트롤러 내에서 서버와 통신하는 모든 N.comm(Communicator) 들을 모두 정의합니다.
-N.comm의 초기화 속성명은 다음과 같이 조합하여 사용할 수 있습니다.
+해당 컨트롤러에서 서버와 통신하는 모든 N.comm(Communicator) 을 정의합니다.
+N.comm 의 초기화 속성명은 다음과 같이 조합하여 사용할 수 있습니다.
 
 ```
-"c.{액션명}" : function() { return N.comm; }
+"c.{서비스명}" : function() { return N.comm; }
 ```
 
->액션명은 가능 하다면 호출하는 URL의 액션명과 맞춰 주고 불가능하면 반드시 목록 조회는 get{ActionName}List, 한건 조회는 get{ActionName}, 다건(CUD) 저장은 save{ActionName}, 입력은 insert{ActionName}, 수정은 update{ActionName}, 삭제는 delete{ActionName}으로 정의 바랍니다.
+>서비스명은 호출하는 URL 의 마지막 경로의 서비스명과 동일하게 정의하고 중복되는 서비스명이 있다면 getSampleList*Json* 과 같이 확장자까지 조합하여 정의 합니다. 그래도 중복되는 서비스명이 있다면 목록 조회는 get{ServiceName}List, 한건 조회는 get{ServiceName}, 다건(CUD) 저장은 save{ServiceName}List, 입력은 insert{ServiceName}, 수정은 update{ServiceName}, 삭제는 delete{ServiceName} 으로 정의 바랍니다.
+
 ```javascript
 ...
 var cont = N(".page-id").cont({
@@ -332,7 +333,7 @@ var cont = N(".page-id").cont({
         return N(".box").comm("sample/PAGEID.html");
     },
     "c.getSampleList" : {
-        // cont["p.form.search"]의 data를 파라미터로 "sample/getSampleList.json" URL 호출
+        // cont["p.form.search"] 의 data 를 파라미터로 "sample/getSampleList.json" URL 호출
         return cont["p.form.search"].data(false).comm("sample/getSampleList.json");
     },
     init : function(view, request) {
@@ -347,7 +348,7 @@ var cont = N(".page-id").cont({
 });
 ```
 
->커뮤니케이터들의 정의는 직접 오브젝트나 값을 대입하는것이 아닌 실행 함수를 지정하는 방식이므로 사용 시 `cont["c.{액션명}"]().submit`와 같이 함수 실행 구문 `()`을 추가하는것에 유의 바랍니다.
+>커뮤니케이터들의 정의는 직접 오브젝트나 값을 대입하는것이 아닌 실행 함수를 지정하는 방식이므로 사용 시 `cont["c.{서비스명}"]().submit`와 같이 함수 실행 구문 `()`을 추가하는것에 유의 바랍니다.
 >커뮤니케이터의 파라미터를 위 예제와 같이 N.form이나 N.grid / N.list의 data() 메서드에 연결(정의)해 놓으면 커뮤케이터의 submit 메서드가 호출되는 시점의 컴포넌트 데이터를 서버로의 요청 파라미터로 쉽게 추출할 수 있습니다.
 
 ###2.1. 엑셀 다운로드
