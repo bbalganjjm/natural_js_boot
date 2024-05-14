@@ -52,12 +52,7 @@
 .alert__.block_overlay_msg__ .msg_box__ {
     padding: 20px 24px;
     color : rgba(0, 0, 0, 0.6);
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    letter-spacing: .03125em;
-    text-decoration: inherit;
-    text-transform: inherit;
+    line-height: inherit;
     display: block;
 
     overflow-x: auto;
