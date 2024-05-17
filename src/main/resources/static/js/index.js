@@ -14,7 +14,6 @@
             N("header").comm("header.view").submit();
         },
         loadLefter : function() {
-            var self = this;
             N(".main-nav").comm("lefter.view").submit(function () {
                 APP.indx.loadBody();
             });
