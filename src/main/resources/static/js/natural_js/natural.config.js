@@ -393,7 +393,7 @@
                  *  - It is specified as an option of the Button(N.button) component.
                  */
                 "okBtnStyle" : {
-                    color : "yellowgreen",
+                    color : "primary",
                     size : "medium"
                 },
                 /**
@@ -401,6 +401,7 @@
                  *  - It is specified as an option of the Button(N.button) component.
                  */
                 "cancelBtnStyle" : {
+                    color : "primary_container",
                     size : "medium"
                 }
             },
