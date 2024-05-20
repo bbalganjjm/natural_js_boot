@@ -1671,6 +1671,7 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 .docs__>.docs_tab_context__>.docs_tabs__, .docs__>.docs_tab_context__>ul.docs_tab_utils__, .docs__>.docs_tab_context__>ul.docs_tab_utils__ .docs_tab_list__ {
     list-style: none;
     margin: 0;
+    background-color: inherit;
 }
 
 .docs__>.docs_tab_context__>.docs_tabs__ {
