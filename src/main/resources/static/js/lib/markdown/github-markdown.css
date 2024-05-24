@@ -57,8 +57,8 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   margin: 0;
-  color: var(--color-fg-default);
-  background-color: var(--color-canvas-default);
+  color: inherit;
+  background-color: inherit;
   font-family: inherit;
   font-size: inherit;
   line-height: 1.5;
