@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="js/natural_js/css/natural.ui.css"/>
     <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.template.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.code.min.js"></script>
+    <!-- Material Design 2 for Natural-JS -->
+    <script type="text/javascript" charset="utf-8" src="js/lib/material/natural.js.material.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/natural_js/natural.config.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/lib/xlsx.full.min.js"></script>
@@ -26,12 +28,18 @@
     <script type="text/javascript" charset="utf-8" src="js/common.pub.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 
+    <!-- Material Design 2 -->
+    <script type="text/javascript" charset="utf-8" src="js/lib/material/material-components-web.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/lib/material/material-components-web.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/lib/material/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.material.css"/>
+
+    <!-- Material Design 2 for Natural-JS -->
+    <link rel="stylesheet" type="text/css" href="js/lib/material/natural.ui.material.css"/>
+
     <script type="text/javascript">
-        N.context.attr("template").design = "material";
         $(document).ready(function () {
-            N.template.design[N.context.attr("template").design](function () {
-                APP.indx.init();
-            });
+            APP.indx.init();
         });
     </script>
 

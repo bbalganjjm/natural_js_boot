@@ -1473,13 +1473,13 @@ a.btn_mouseout__, input[type='button'].btn_mouseout__, button.btn_mouseout__ {
 
 .tree__ li.tree_open__>.tree_icon__ {
     background:
-            url('../../natural_js/lib/material/icons/expand_more-24px.svg')
+            url('icons/expand_more-24px.svg')
             0 0 no-repeat;
 }
 
 .tree__ li.tree_close__>.tree_icon__ {
     background:
-            url('../../natural_js/lib/material/icons/chevron_right-24px.svg')
+            url('icons/chevron_right-24px.svg')
             no-repeat;
 }
 
