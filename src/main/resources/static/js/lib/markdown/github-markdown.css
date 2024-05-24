@@ -6,9 +6,8 @@
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
-  *color: #24292e;
-  *font-family: "NanumSquare", "Apple SD Gothic Neo", "Malgun Gothic", "dotum", "Segoe UI Emoji", "Segoe UI Symbol", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji";
+  *color: var(--md-sys-color-on-surface);
+  font-family: 'NanumSquare', 'Apple SD Gothic Neo', 'Malgun Gothic', 'dotum', 'Segoe UI Emoji', 'Segoe UI Symbol', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
   *font-size: 13px;
   *line-height: 1.5;
   word-wrap: break-word;
@@ -75,7 +74,7 @@
 }
 
 .markdown-body .pl-sr .pl-cce {
-  font-weight: bold;
+  font-weight: 700;
   color: #22863a;
 }
 
@@ -86,7 +85,7 @@
 .markdown-body .pl-mh,
 .markdown-body .pl-mh .pl-en,
 .markdown-body .pl-ms {
-  font-weight: bold;
+  font-weight: 700;
   color: #005cc5;
 }
 
@@ -96,7 +95,7 @@
 }
 
 .markdown-body .pl-mb {
-  font-weight: bold;
+  font-weight: 700;
   color: #24292e;
 }
 
@@ -121,7 +120,7 @@
 }
 
 .markdown-body .pl-mdr {
-  font-weight: bold;
+  font-weight: 700;
   color: #6f42c1;
 }
 
@@ -159,7 +158,7 @@
 }
 
 .markdown-body strong {
-  font-weight: bolder;
+  font-weight: 700;
 }
 
 .markdown-body img {
@@ -169,7 +168,7 @@
 .markdown-body code,
 .markdown-body kbd,
 .markdown-body pre {
-  font-family: Consolas, "NanumSquare", monospace;
+  font-family: Consolas, 'NanumSquare';
   font-size: 1.1em;
 }
 
@@ -204,7 +203,7 @@
 }
 
 .markdown-body a {
-  color: #0366d6;
+  color: var(--md-sys-color-surface-tint);
   text-decoration: none;
 }
 
@@ -213,7 +212,7 @@
 }
 
 .markdown-body strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .markdown-body hr {
@@ -222,7 +221,7 @@
   overflow: hidden;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #dfe2e5;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body hr::before {
@@ -279,14 +278,14 @@
 }
 
 .markdown-body code {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, "NanumSquare", monospace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, 'NanumSquare';
   font-size: 0.9em;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, "NanumSquare", monospace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, 'NanumSquare';
   font-size: 0.9em;
 }
 
@@ -372,7 +371,7 @@
   height: 0.25em;
   padding: 0;
   margin: 24px 0;
-  background-color: #C8E6C9;
+  background-color: var(--md-sys-color-outline-variant);
   border: 0;
 }
 
@@ -380,8 +379,8 @@
   padding: 0 0.7em;
   font-size: 0.95em;
   line-height: 170%;
-  color: rgba(0, 0, 0, 0.7);
-  border-left: 0.25em solid #A5D6A7;
+  color: var(--md-sys-color-surface-tint);
+  border-left: 0.25em solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body blockquote>:first-child {
@@ -400,10 +399,10 @@
   color: #444d56;
   vertical-align: middle;
   background-color: #fafbfc;
-  border: solid 1px #c6cbd1;
-  border-bottom-color: #959da5;
+  border: solid 1px var(--md-sys-color-outline-variant);
+  border-bottom-color: var(--md-sys-color-outline-variant);
   border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #959da5;
+  box-shadow: inset 0 -1px 0 var(--md-sys-color-shadow);
 }
 
 .markdown-body h1,
@@ -414,7 +413,7 @@
 .markdown-body h6 {
   margin-top: 24px;
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -450,13 +449,13 @@
 .markdown-body h1 {
   padding-bottom: 0.3em;
   font-size: 1.5em;
-  border-bottom: 1px solid #C8E6C9;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body h2 {
   padding-bottom: 0.3em;
   font-size: 1.3em;
-  border-bottom: 1px solid #C8E6C9;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body h3 {
@@ -510,7 +509,7 @@
   margin-top: 16px;
   font-size: 1em;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .markdown-body dl dd {
@@ -525,29 +524,27 @@
 }
 
 .markdown-body table th {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .markdown-body table th,
 .markdown-body table td {
   padding: 6px 13px;
-  border: 1px solid #dfe2e5;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #c6cbd1;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+  background-color:  var(--md-sys-color-surface-container-low);
 }
 
 .markdown-body img {
   display: block;
   max-width: 80%;
   box-sizing: content-box;
-  background-color: #fff;
   margin: 0 auto;
 }
 
@@ -563,7 +560,7 @@
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(27,31,35,0.05);
+  background-color: var(--md-sys-color-surface-container);
   border-radius: 3px;
 }
 
@@ -596,7 +593,7 @@
   overflow: auto;
   *font-size: 85%;
   line-height: 1.45;
-  background-color: #E8F5E9B3;
+  background-color: var(--md-sys-color-primary-container);
   border-radius: 3px;
 }
 
@@ -614,7 +611,7 @@
 
 .markdown-body .full-commit .btn-outline:not(:disabled):hover {
   color: #005cc5;
-  border-color: #005cc5;
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 .markdown-body kbd {
@@ -625,16 +622,16 @@
   color: #444d56;
   vertical-align: middle;
   background-color: #fafbfc;
-  border: solid 1px #d1d5da;
-  border-bottom-color: #c6cbd1;
+  border: solid 1px var(--md-sys-color-outline-variant);
+  border-bottom-color: var(--md-sys-color-outline-variant);
   border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #c6cbd1;
+  box-shadow: inset 0 -1px 0 var(--md-sys-color-shadow);
 }
 
 .markdown-body :checked+.radio-label {
   position: relative;
   z-index: 1;
-  border-color: #0366d6;
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 .markdown-body .task-list-item {
@@ -651,5 +648,5 @@
 }
 
 .markdown-body hr {
-  border-bottom-color: #eee;
+  border-bottom-color: var(--md-sys-color-outline-variant);
 }
