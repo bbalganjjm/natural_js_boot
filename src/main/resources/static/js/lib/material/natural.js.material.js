@@ -2,10 +2,11 @@
  * Material Design 2
  */
 var nmd2 = {
-    init : function(cont, isAfterCompInited) {
-        if(isAfterCompInited) {
+    init : function(cont, isAfterCompEventInited) {
+        if(isAfterCompEventInited) {
             this.textfield(cont);
             this.select(cont);
+            this.pagination(cont);
         } else {
             this.list(cont);
         }
@@ -163,5 +164,8 @@ var nmd2 = {
                 // mdc.ripple.MDCRipple.attachTo(liEl.get(0)); // Clone된 요소는 ripple 적용 안됨.
             }
         });
+    },
+    pagination : function(cont) {
+        cont.view.find(".pagination__ .mdc-icon-button").button();
     }
 }
