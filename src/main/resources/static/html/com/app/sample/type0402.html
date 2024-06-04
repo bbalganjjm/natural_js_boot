@@ -204,14 +204,12 @@
                 url : "sample/saveSampleList.json"
             });
         },
-        "e.btnSearch.click" : function(e) {
+        "e.btnSearch.click" : async function(e) {
             e.preventDefault();
 
             if (cont["p.form.search"].validate()) {
-                cont["c.getSampleList"]().submit(function(data) {
-                    // N.grid bind
-                    cont["p.grid.master"].bind(data);
-                });
+                // N.grid bind
+                cont["p.grid.master"].bind(await cont["c.getSampleList"]().submit());
             }
         },
         "e.btnExcel.click" : function(e) {

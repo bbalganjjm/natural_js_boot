@@ -77,6 +77,8 @@ textarea[disabled]:focus {
 input[type='radio'], input[type='checkbox'] {
     vertical-align: middle;
     border: none;
+    height: 16px;
+    width: 16px;
 }
 
 .select_input_label__ input[type='radio'], .select_input_label__ input[type='checkbox'] {
