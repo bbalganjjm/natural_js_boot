@@ -1,7 +1,8 @@
 Natural-JS Boot
 ===
 Natural-JS Boot 는 [Natural-JS](https://bbalganjjm.github.io/natural_js)(Natural-TEMPLATE) 와 Spring Boot 로 구성된 기업용 웹 애플리케이션 개발을 위한 웹 애플리케이션 아키텍처 프레임워크 패키지 입니다.
-Natural-JS Boot Front-end / Back-end 프레임워크와 더불어 기업용 웹 애플리케이션에 필요한 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 유틸리티 패키지를 제공합니다.
+
+Natural-JS Boot 는 Front-end / Back-end 프레임워크와 더불어 기업용 웹 애플리케이션에 필요한 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 유틸리티 패키지를 제공합니다.
 
 > Natural-JS Boot 에는 Material Design 2 가 적용되어 있습니다.
 
