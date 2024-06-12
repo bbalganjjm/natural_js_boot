@@ -1531,6 +1531,7 @@
     float: left;
     padding: 0;
     border: none;
+    width: auto;
     min-width: auto;
     max-width: fit-content;
     height: auto;
