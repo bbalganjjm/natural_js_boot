@@ -521,7 +521,7 @@ article .btnBox {
 .view_context__ h6 {
     margin-top: 24px;
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
 }
 
@@ -682,43 +682,43 @@ pre.shell>code {
     }
     #constructor .apiDoc .api.form td:nth-child(2):before {
         content: 'arguments : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #constructor .apiDoc .api.form td:nth-child(3):before {
         content: 'type : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #constructor .apiDoc .api.form td:nth-child(4):before {
         content: 'return : ';
-        font-weight: 600;
+        font-weight: 700;
     }
 
     #advisors .apiDoc .api.form td:nth-child(2):before,
     #pointcuts .apiDoc .api.form td:nth-child(2):before,
     #defaultoptions .apiDoc .api.form td:nth-child(2):before {
         content: 'type : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #advisors .apiDoc .api.form td:nth-child(3):before,
     #pointcuts .apiDoc .api.form td:nth-child(3):before,
     #defaultoptions .apiDoc .api.form td:nth-child(3):before {
         content: 'default : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #advisors .apiDoc .api.form td:nth-child(4):before,
     #pointcuts .apiDoc .api.form td:nth-child(4):before,
     #defaultoptions .apiDoc .api.form td:nth-child(4):before {
         content: 'required : ';
-        font-weight: 600;
+        font-weight: 700;
     }
 
     #declarativeoptions .apiDoc .api.form td:nth-child(2):before {
         content: 'type : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #declarativeoptions .apiDoc .api.form td:nth-child(3):before {
         content: 'default : ';
-        font-weight: 600;
+        font-weight: 700;
     }
 
     #pluginExtention .apiDoc .api.form tr>td:first-child,
@@ -750,7 +750,7 @@ pre.shell>code {
     #functions .apiDoc .api.form td:nth-child(2):before,
     #methods .apiDoc .api.form td:nth-child(2):before {
         content: 'arguments : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #pluginExtention .apiDoc .api.form td:nth-child(3):before,
     #n .apiDoc .api.form td:nth-child(3):before,
@@ -766,7 +766,7 @@ pre.shell>code {
     #functions .apiDoc .api.form td:nth-child(3):before,
     #methods .apiDoc .api.form td:nth-child(3):before {
         content: 'type : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #pluginExtention .apiDoc .api.form td:nth-child(4):before,
     #n .apiDoc .api.form td:nth-child(4):before,
@@ -782,7 +782,7 @@ pre.shell>code {
     #functions .apiDoc .api.form td:nth-child(4):before,
     #methods .apiDoc .api.form td:nth-child(4):before {
         content: 'return : ';
-        font-weight: 600;
+        font-weight: 700;
     }
 
     #conf_core .apiDoc .api.form td:nth-child(2):before,
@@ -793,7 +793,7 @@ pre.shell>code {
     #conf_template .apiDoc .api.form td:nth-child(2):before,
     #conf_code .apiDoc .api.form td:nth-child(2):before {
         content: 'default : ';
-        font-weight: 600;
+        font-weight: 700;
     }
     #conf_core .apiDoc .api.form td:nth-child(3):before,
     #conf_architecture .apiDoc .api.form td:nth-child(3):before,
@@ -803,7 +803,7 @@ pre.shell>code {
     #conf_template .apiDoc .api.form td:nth-child(3):before,
     #conf_code .apiDoc .api.form td:nth-child(3):before {
         content: 'required : ';
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .apiDoc .apidemo .form .demo-desc {
