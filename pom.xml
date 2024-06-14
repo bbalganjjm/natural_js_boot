@@ -10,7 +10,7 @@
 	<packaging>jar</packaging>
 
 	<name>Natural-BOOT</name>
-	<description>Natural-JS and Spring Boot Sample Project</description>
+	<description>Natural-JS and Spring Boot Template Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
