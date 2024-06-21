@@ -468,8 +468,8 @@
             }
         },
         "button" : {
-            color : "secondary_container",
-            size : "medium"
+            color : "primary_container",
+            size : "large"
         },
         "popup" : {
             /**

@@ -350,12 +350,6 @@ th, tfoot td {
     margin-top: 16px;
 }
 
-.view_context__ .button-panel {
-    text-align: right;
-    margin-bottom: 16px;
-    line-height: 40px;
-}
-
 .docs_contents__ .view_context__ pre>code,
 pre.shell>code {
     font-family: var(--njs-font-family-code);

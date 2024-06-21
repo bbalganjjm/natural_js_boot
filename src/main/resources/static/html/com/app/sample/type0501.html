@@ -1,26 +1,26 @@
 <article class="type0501">
-    <div id="search" class="form__ search_box__">
+    <div id="search" class="form__">
         <div class="search-panel">
             <ul>
-                <li><label><span>Name</span><input id="name" type="text"></label></li>
+                <li><label><span>Company</span><input id="company" type="text"></label></li>
             </ul>
         </div>
     </div>
 
     <div class="flex-horizental">
-        <div style=flex: 1">
+        <div style="flex: 1">
             <div class="button-panel">
-                <button id="btnSearch" class="btn-search mdc-button mdc-button--raised" data-icon="manage_search">조회</button>
-                <button id="btnExcelList" class="mdc-button" data-icon="table_chart">엑셀</button>
+                <button id="btnSearch">조회</button>
+                <button id="btnExcelList">엑셀</button>
             </div>
-            <ul id="codeMaster" class="list__ mdc-list">
+            <ul id="codeMaster" class="list__">
                 <li><span id="val"></span></li>
             </ul>
         </div>
         <div style="flex: 2">
             <div class="button-panel">
-                <button id="btnExcelGrid" class="mdc-button" data-icon="table_chart">엑셀</button>
-                <button id="btnSave" class="mdc-button" data-icon="save">저장</button>
+                <button id="btnExcelGrid">엑셀</button>
+                <button id="btnSave">저장</button>
             </div>
             <table id="master" class="grid__">
                 <colgroup>
@@ -47,65 +47,108 @@
 
         <div style="flex: 4">
             <div class="button-panel">
-                <button id="btnAdd" class="mdc-button" data-icon="playlist_add">추가</button>
-                <button id="btnDelete" class="mdc-button" data-icon="delete_sweep">삭제</button>
-                <button id="btnRevert" class="mdc-button" data-icon="restart_alt">초기화</button>
+                <button id="btnAdd">추가</button>
+                <button id="btnDelete">삭제</button>
+                <button id="btnRevert">초기화</button>
             </div>
 
             <ul id="detail" class="form__">
                 <li>
-                    <p class="mdc-njs-fixed-label">Default Picture</p>
-                    <img id="picture" style="height: 56px;">
+                    <label>
+                        <span>Default Picture</span>
+                        <img id="picture" style="height: 56px;">
+                    </label>
                 </li>
                 <li>
-                    <input id="name" type="text" data-validate='[["required"]]' data-label="Name">
+                    <label>
+                        <span>Name</span>
+                        <input id="name" type="text" data-validate='[["required"]]'>
+                    </label>
                 </li>
                 <li>
-                    <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" data-label="Department Name" data-trailingicon="search" data-btnid="btnDeptCd">
+                    <label>
+                        <span>Department</span>
+                        <input id="deptNm" type="text" data-validate='[["required"]]' readonly="readonly" style="width: 70%;">
+                    </label>
+                    <button id="btnDeptCd" data-opts='{ "size": "middle" }'>Q</button>
                 </li>
                 <li>
-                    <input id="email" type="text" data-validate='[["required"], ["email"]]' data-label="Email">
+                    <label>
+                        <span>Email</span>
+                        <input id="email" type="text" data-validate='[["required"], ["email"]]'>
+                    </label>
                 </li>
                 <li>
-                    <input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]' data-label="Balance">
+                    <label>
+                        <span>Balance</span>
+                        <input id="balance" type="text" data-format='[["numeric", "$#,###.##0"]]' data-validate='[["required"], ["number"]]'>
+                    </label>
                 </li>
                 <li>
-                    <input id="phone" type="text" data-validate='[["required"]]' data-label="Phone">
+                    <label>
+                        <span>Phone</span>
+                        <input id="phone" type="text" data-validate='[["required"]]'>
+                    </label>
                 </li>
                 <li>
-                    <select id="eyeColor" data-validate='[["required"]]' class="mdc-njs-select" data-label="Eye Color"><option>선택</option></select>
+                    <label>
+                        <span>Eye Color</span>
+                        <select id="eyeColor" data-validate='[["required"]]'><option>선택</option></select>
+                    </label>
                 </li>
                 <li>
-                    <input id="age" type="text" data-validate='[["required"], ["integer"]]' data-label="Age">
+                    <label>
+                        <span>Age</span>
+                        <input id="age" type="text" data-validate='[["required"], ["integer"]]'>
+                    </label>
                 </li>
                 <li>
-                    <p class="mdc-njs-fixed-label">Gender</p>
-                    <input id="gender" type="radio">
+                    <label>
+                        <span>Gender</span>
+                        <input id="gender" type="radio">
+                    </label>
                 </li>
                 <li>
-                    <p class="mdc-njs-fixed-label">Favorite Fruit</p>
-                    <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
+                    <label>
+                        <span>Favorite Fruit</span>
+                        <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
+                    </label>
                 </li>
                 <li>
-                    <input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]' data-label="Registered">
+                    <label>
+                        <span>Registered</span>
+                        <input id="registered" type="text" data-format='[["date", 8, "date"]]' data-validate='[["required"]]'>
+                    </label>
                 </li>
                 <li>
-                    <p class="mdc-njs-fixed-label">Company</p>
-                    <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 100px;"></select>
+                    <label>
+                        <span>Company</span>
+                        <select id="company" multiple="multiple" data-validate='[["required"]]' style="height: 100px;"></select>
+                    </label>
                 </li>
                 <li>
-                    <textarea id="about" rows="4" cols="34" data-validate='[["required"]]' data-label="About"></textarea>
+                    <label>
+                        <span>About</span>
+                        <textarea id="about" rows="4" cols="34" data-validate='[["required"]]'></textarea>
+                    </label>
                 </li>
                 <li>
-                    <textarea id="greeting" rows="4" cols="34" data-validate='[["required"]]' data-label="Greeting"></textarea>
+                    <label>
+                        <span>Greeting</span>
+                        <textarea id="greeting" rows="4" cols="34" data-validate='[["required"]]'></textarea>
+                    </label>
                 </li>
                 <li>
-                    <p class="mdc-njs-fixed-label">Active</p>
-                    <input id="isActive" type="checkbox">
+                    <label>
+                        <span>Default Picture</span>
+                        <input id="isActive" type="checkbox">
+                    </label>
                 </li>
                 <li>
-                    <p class="mdc-njs-fixed-label">Attachments</p>
-                    <button id="btnFile" class="mdc-button mdc-button--outlined" data-icon="file_present">File</button>
+                    <label>
+                        <span>Attachments</span>
+                        <button id="btnFile">File</button>
+                    </label>
                 </li>
             </ul>
         </div>

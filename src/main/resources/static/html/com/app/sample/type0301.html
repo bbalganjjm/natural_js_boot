@@ -1,19 +1,19 @@
 <article class="type0301">
-    <div id="search" class="form__ search_box__">
+    <div id="search" class="form__">
         <div class="search-panel">
             <ul>
                 <li><label><span>Name</span><input id="name" type="text"></label></li>
-                <li><label><span>Gender</span><select id="gender" class="mdc-njs-select"><option value="">선택</option></select></label></li>
-                <li><label><span>Eye Color</span><select id="eyeColor" class="mdc-njs-select"><option value="">선택</option></select></label></li>
+                <li><label><span>Gender</span><select id="gender"><option value="">선택</option></select></label></li>
+                <li><label><span>Eye Color</span><select id="eyeColor"><option value="">선택</option></select></label></li>
             </ul>
         </div>
     </div>
     <div class="button-panel">
-        <button id="btnSearch" class="btn-search mdc-button mdc-button--raised" data-icon="manage_search">조회</button>
-        <button id="btnExcel" class="mdc-button" data-icon="table_chart">엑셀</button>
+        <button id="btnSearch">조회</button>
+        <button id="btnExcel">엑셀</button>
     </div>
 
-    <div style="position: relative; min-height: 520px;">
+    <div style="position: relative; min-height: 519px;">
         <table id="master" class="grid__">
             <colgroup>
                 <col style="width: 50px;">
@@ -64,15 +64,15 @@
     <div class="pagination-box">
         <div id="masterPagination">
             <ul>
-                <li><a href="#" title="처음"><button class="mdc-icon-button mdc-icon-button--mini">skip_previous</button></a></li>
-                <li><a href="#" title="이전"><button class="mdc-icon-button mdc-icon-button--mini">navigate_before</button></a></li>
+                <li><a href="#" title="처음"></a></li>
+                <li><a href="#" title="이전"></a></li>
             </ul>
             <ul>
                 <li><a href="#"><span>1</span></a></li>
             </ul>
             <ul>
-                <li><a href="#" title="다음"><button class="mdc-icon-button mdc-icon-button--mini">navigate_next</button></a></li>
-                <li><a href="#" title="마지막"><button class="mdc-icon-button mdc-icon-button--mini">skip_next</button></a></li>
+                <li><a href="#" title="다음"></a></li>
+                <li><a href="#" title="마지막"></a></li>
             </ul>
         </div>
     </div>
@@ -98,7 +98,7 @@
         },
         "p.pagination.masterPagination" : {
             blockOnChangeWhenBind : true,
-            countPerPage : 9,
+            countPerPage : 15,
             countPerPageSet : $(window).width() <= 751 ? 4 : 10,
             onChange : function(pageNo, selEle, selData, currPageNavInfo) {
                 cont["c.getSampleList"]().submit(function(data) {

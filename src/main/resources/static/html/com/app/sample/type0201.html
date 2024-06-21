@@ -1,20 +1,20 @@
 <article class="type0201">
-    <div id="search" class="form__ search_box__">
+    <div id="search" class="form__">
         <div class="search-panel">
             <ul>
                 <li><label><span>Name</span><input id="name" type="text"></label></li>
-                <li><label><span>Gender</span><select id="gender" class="mdc-njs-select"><option value="">선택</option></select></label></li>
-                <li><label><span>Eye Color</span><select id="eyeColor" class="mdc-njs-select"><option value="">선택</option></select></label></li>
+                <li><label><span>Gender</span><select id="gender"><option value="">선택</option></select></label></li>
+                <li><label><span>Eye Color</span><select id="eyeColor"><option value="">선택</option></select></label></li>
             </ul>
         </div>
     </div>
     <div class="button-panel">
-        <button id="btnSearch" class="btn-search mdc-button mdc-button--raised" data-icon="manage_search">조회</button>
-        <button id="btnExcelImport" class="mdc-button" data-icon="table_rows">엑셀임포트</button>
-        <button id="btnExcel" class="mdc-button" data-icon="table_chart">엑셀다운로드</button>
-        <button id="btnAdd" class="mdc-button" data-icon="playlist_add">추가</button> 
-        <button id="btnDelete" class="mdc-button" data-icon="delete_sweep">삭제</button> 
-        <button id="btnSave" class="mdc-button" data-icon="save">저장</button>
+        <button id="btnSearch">조회</button>
+        <button id="btnExcelImport">엑셀임포트</button>
+        <button id="btnExcel">엑셀다운로드</button>
+        <button id="btnAdd">추가</button>
+        <button id="btnDelete">삭제</button>
+        <button id="btnSave">저장</button>
     </div>
     
     <table id="master" class="grid__">
@@ -70,7 +70,7 @@
                 <td><input id="about" type="text"></td>
                 <td colspan="2">
                     <input id="deptNm" type="text" data-validate='[["required"]]' style="width: 75%;" readonly="readonly">
-                    <button id="btnDept" class="mdc-icon-button mdc-icon-button--mini">search</button>
+                    <button id="btnDept" data-opts='{ "size": "middle" }'>Q</button>
                 </td>
                 <td colspan="2"><input id="greeting" type="text"></td>
             </tr>
