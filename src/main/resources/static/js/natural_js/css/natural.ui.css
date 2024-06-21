@@ -2,7 +2,7 @@
 
 @import url(tokens.css);
 @import url(light.css) screen and (prefers-color-scheme: light);
-@import url(light.css) screen and (prefers-color-scheme: dark);
+@import url(dark.css) screen and (prefers-color-scheme: dark);
 
 .docs__,
 .docs__ *,

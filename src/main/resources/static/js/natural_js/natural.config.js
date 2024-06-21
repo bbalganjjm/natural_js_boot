@@ -465,12 +465,7 @@
                     "confirm" : "OK",
                     "cancel" : "Cancel"
                 }
-            },
-            onBeforeShow : nmd2.alert.onBeforeShow // MD2
-        },
-        "button" : {
-            onBeforeCreate: nmd2.button.onBeforeCreate, // MD2
-            onCreate: nmd2.button.onCreate // MD2
+            }
         },
         "popup" : {
             /**
@@ -493,8 +488,7 @@
              * Global saveMemory option
              *  - If set to true, save memory usage by removing unnecessary reference elements.
              */
-            "saveMemory" : true,
-            "onBeforeShow" : nmd2.alert.onBeforeShow // MD2
+            "saveMemory" : true
         },
         "tab" : {
             "tabScrollCorrection" : {
@@ -900,14 +894,6 @@
             codes : {
                 codeUrl : "code/getCommonCodeList.json",
                 codeKey : "code"
-            },
-            template : {
-                onBeforeInitComponents : function (cont, joinPoint) {
-                    nmd2.init(cont);
-                },
-                onInitEvents : function (cont, joinPoint) {
-                    nmd2.init(cont, true);
-                }
             }
         },
         /**
