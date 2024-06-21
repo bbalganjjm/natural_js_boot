@@ -2,10 +2,10 @@
     <div id="search" class="form__ search_box__">
         <div class="criteria-panel">
             <ul>
-                <li><input id="name" type="text" data-label="Name"></li>
-                <li><select id="age" class="mdc-njs-select" data-label="Age"><option value=""></option></select></li>
-                <li><select id="gender" class="mdc-njs-select" data-label="Gender"><option value=""></option></select></li>
-                <li><select id="eyeColor" class="mdc-njs-select" data-label="Eye Color"><option value=""></option></select></li>
+                <li><label><span>Name</span><input id="name" type="text"></label></li>
+                <li><label><span>Age</span><select id="age" class="mdc-njs-select"><option value="">선택</option></select></label></li>
+                <li><label><span>Gender</span><select id="gender" class="mdc-njs-select"><option value="">선택</option></select></label></li>
+                <li><label><span>Eye Color</span><select id="eyeColor" class="mdc-njs-select"><option value="">선택</option></select></label></li>
             </ul>
         </div>
     </div>
@@ -58,8 +58,6 @@
                 <p class="mdc-njs-fixed-label">Default Picture</p>
                 <img id="picture" style="height: 56px;">
             </li>
-            
-
             <li>
                 <input id="name" type="text" data-validate='[["required"]]' data-label="Name">
             </li>

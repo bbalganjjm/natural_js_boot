@@ -7,8 +7,6 @@ Natural-JS Boot 는 [Natural-JS](https://bbalganjjm.github.io/natural_js) 와 [N
 
 Natural-JS Boot 는 Front-end / Back-end 프레임워크와 더불어 기업용 웹 애플리케이션에 필요한 다양한 유틸리티와 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 라이브러리를 제공합니다.
 
-> Natural-JS Boot 에는 Material Design 2 가 적용되어 있습니다.
-
 ## 목차
 
 - [프로젝트 구성](#user-content-프로젝트-구성)
