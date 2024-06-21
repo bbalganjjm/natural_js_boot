@@ -467,6 +467,10 @@
                 }
             }
         },
+        "button" : {
+            color : "secondary_container",
+            size : "medium"
+        },
         "popup" : {
             /**
              * Global draggable option

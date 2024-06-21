@@ -19,7 +19,7 @@
             });
         },
         loadBody : function() {
-            N(".page-content").comm("contents.view").submit();
+            N(".main-contents").comm("contents.view").submit();
         },
         loadFooter : function() {
             N("footer").comm("footer.view").submit();

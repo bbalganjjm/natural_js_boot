@@ -37,7 +37,7 @@
         transition: margin-right var(--njs-motion-duration-ultra-slow) ease;
     }
 
-    .index-lefter .logo .lefter-toggle-button > span {
+    .index-lefter .logo .lefter-toggle-button>span {
         display: inline-block;
         width: 32px;
         height: 32px;
@@ -47,12 +47,12 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        .index-lefter .logo .lefter-toggle-button > span {
+        .index-lefter .logo .lefter-toggle-button>span {
             filter: invert(100%);
         }
     }
 
-    .index-lefter .logo .lefter-toggle-button:hover > span {
+    .index-lefter .logo .lefter-toggle-button:hover>span {
         will-change: transform;
     }
 
@@ -128,168 +128,180 @@
     .index-lefter .left-menu .folding {
         display: none;
     }
-
-    .index-lefter .left-menu sup {
-        color: var(--md-sys-color-surface-tint);
-    }
 </style>
 
 <article class="index-lefter">
     <div class="logo">
         <a class="home" href="./"><span>Natural-JS<sup>Boot</sup></span></a>
+        <a class="lefter-toggle-button" href="#" data-status="show"><span></span></a>
     </div>
     <div class="left-menu">
         <ul>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/dev-guide.html" data-pageid="dev-guide">
-                    <span>개발가이드</span>
+            <li class="expand">
+                <a href="#">
+                    <span>개발 가이드</span>
                 </a>
+                <ul>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/dev-guide.html" data-pageid="dev-guide">
+                            <span>개발 가이드</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/temp0101.html" data-pageid="temp0101">
+                            <span>메시지 처리(N.alert, N.notify)</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/temp0101.html" data-pageid="temp0101">
-                    <span>메시지처리(N.alert, N.notify)</span>
+            <li class="expand">
+                <a href="#">
+                    <span>템플릿</span>
                 </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0101.html" data-pageid="type0101">
-                    <span>조회폼+그리드</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0201.html" data-pageid="type0201">
-                    <span>조회폼+그리드(CRUD)</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0301.html" data-pageid="type0301">
-                    <span>조회폼+그리드+DB페이징</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0401.html" data-pageid="type0401">
-                    <span>조회폼+그리드+상세폼(수평배치)</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0402.html" data-pageid="type0402">
-                    <span>조회폼+그리드+상세폼(수직배치)</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0501.html" data-pageid="type0501">
-                    <span>조회폼+리스트+그리드+상세폼</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0601.html" data-pageid="type0601">
-                    <span>트리+그리드(CRUD)</span>
-                </a>
-            </li>
-            <li class="leaf-node">
-                <a href="html/com/app/sample/type0701.html" data-pageid="type0701">
-                    <span>조회폼+탭</span>
-                </a>
+                <ul>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0101.html" data-pageid="type0101">
+                            <span>조회폼 + 그리드</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0201.html" data-pageid="type0201">
+                            <span>조회폼 + 그리드(CRUD)</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0301.html" data-pageid="type0301">
+                            <span>조회폼 + 그리드+DB페이징</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0401.html" data-pageid="type0401">
+                            <span>조회폼 + 그리드 + 상세폼(수평배치)</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0402.html" data-pageid="type0402">
+                            <span>조회폼 + 그리드 + 상세폼(수직배치)</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0501.html" data-pageid="type0501">
+                            <span>조회폼 + 리스트 + 그리드+상세폼</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0601.html" data-pageid="type0601">
+                            <span>트리 + 그리드(CRUD)</span>
+                        </a>
+                    </li>
+                    <li class="leaf-node">
+                        <a href="html/com/app/sample/type0701.html" data-pageid="type0701">
+                            <span>조회폼 + 탭</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </article>
 
 <script type="text/javascript">
-    (function () {
+    N(".index-lefter").cont({
+        init : function(view, request) {
+            N(".left-menu", view).on("click.left-menu", "a", function(e) {
+                e.preventDefault();
 
-        const cont = N(".index-lefter").cont({
-            init: function (view, request) {
-                N(".left-menu", view).on("click.left-menu", "a", function (e) {
-                    e.preventDefault();
+                // .leaf-node a[data-pageid]
+                var selfEle = N(this);
 
-                    // .leaf-node a[data-pageid]
-                    const selfEle = N(this);
+                if(selfEle.parent().is(".leaf-node") && selfEle.is("[data-pageid]")) {
+                    location.hash = selfEle.attr("href");
 
-                    if (selfEle.parent().is(".leaf-node") && selfEle.is("[data-pageid]")) {
-                        location.hash = selfEle.attr("href");
+                    if($(window).width() <= 1001) { // 748 + 256 - 17px(?)
+                        N(".lefter-toggle-button", ".page-wrap").trigger("click.lefter");
+                    }
+                }
 
-                        if ($(window).width() <= 1001) { // 748 + 256 - 17px(?)
-                            N(".lefter-toggle-button", ".page-wrap").trigger("click.lefter");
-                        }
+                if(selfEle.closest(".leaf-node").length === 0) {
+                    selfEle.parent("li").toggleClass("expand");
+                    selfEle.siblings("ul:last").toggleClass("folding");
+                }
+
+                selfEle = undefined;
+            });
+
+            N(".lefter-toggle-button>span", view).on("mouseover.lefter", function() {
+                $(this).css("transform", "rotate(90deg)");
+            }).on("mouseout.lefter", function() {
+                $(this).css("transform", "");
+            });
+
+            N(".lefter-toggle-button", view).on("click.lefter", function(e) {
+                e.preventDefault();
+
+                var selfEle = N(this);
+                var mainNav = view.closest(".main-nav");
+
+                if (selfEle.data("status") === "show") {
+                    if($(window).width() <= 1001) { // 748 + 270 - 17px(?)
+                        N(".content-wrap", "body").off("click.lefter");
                     }
 
-                    if (selfEle.closest(".leaf-node").length === 0) {
-                        selfEle.parent("li").toggleClass("expand");
-                        selfEle.siblings("ul:last").toggleClass("folding");
+                    N(".lefter-toggle-button>span", view).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
+
+                    mainNav.css("margin-left", "-" + mainNav.width() + "px");
+                    if($(window).width() > 1001) { // 748 + 270 - 17px(?)
+                        mainNav.siblings(".content-wrap").css("margin-left", "0");
                     }
-                });
+                    selfEle.data("status", "hide").css("margin-right", "-42px");
 
-                N(".lefter-toggle-button>span", view).on("mouseover.lefter", function () {
-                    $(this).css("transform", "rotate(90deg)");
-                }).on("mouseout.lefter", function () {
-                    $(this).css("transform", "");
-                });
+                } else {
+                    if($(window).width() > 1001) { // 748 + 270 - 17px(?)
+                        mainNav.siblings(".content-wrap").css("margin-left", "");
+                    }
+                    mainNav.css("margin-left", "");
+                    selfEle.data("status", "show").css("margin-right", "");
 
-                N(".lefter-toggle-button", view).on("click.lefter", function (e) {
-                    e.preventDefault();
+                    N(".lefter-toggle-button>span", view).on("mouseover.lefter", function() {
+                        $(this).css("transform", "rotate(90deg)");
+                    }).on("mouseout.lefter", function() {
+                        $(this).css("transform", "");
+                    });
 
-                    const selfEle = N(this);
-                    const mainNav = view.closest(".main-nav");
-
-                    if (selfEle.data("status") === "show") {
-                        if ($(window).width() <= 1001) { // 748 + 270 - 17px(?)
-                            N(".content-wrap", "body").off("click.lefter");
-                        }
-
-                        N(".lefter-toggle-button>span", view).css("transform", "").off("mouseover.lefter").off("mouseout.lefter");
-
-                        mainNav.css("margin-left", "-" + mainNav.width() + "px");
-                        if ($(window).width() > 1001) { // 748 + 270 - 17px(?)
-                            mainNav.siblings(".content-wrap").css("margin-left", "0");
-                        }
-                        selfEle.data("status", "hide").css("margin-right", "-42px");
-
-                    } else {
-                        if ($(window).width() > 1001) { // 748 + 270 - 17px(?)
-                            mainNav.siblings(".content-wrap").css("margin-left", "");
-                        }
-                        mainNav.css("margin-left", "");
-                        selfEle.data("status", "show").css("margin-right", "");
-
-                        N(".lefter-toggle-button>span", view).on("mouseover.lefter", function () {
-                            $(this).css("transform", "rotate(90deg)");
-                        }).on("mouseout.lefter", function () {
-                            $(this).css("transform", "");
+                    if($(window).width() <= 1001) { // 748 + 270 - 17px(?)
+                        N(".content-wrap", "body").on("click.lefter", function(e) {
+                            e.preventDefault();
+                            N(".lefter-toggle-button", view).trigger("click.lefter");
                         });
-
-                        if ($(window).width() <= 1001) { // 748 + 270 - 17px(?)
-                            N(".content-wrap", "body").on("click.lefter", function (e) {
-                                e.preventDefault();
-                                N(".lefter-toggle-button", view).trigger("click.lefter");
-                            });
-                        }
                     }
-                });
+                }
 
-                N(window).on("resize.left-menu", function () {
-                    N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
+                mainNav = undefined;
+                selfEle = undefined;
+            });
 
-                    if ($(window).width() <= 1001) { // 748 + 270 - 17px(?)
-                        N(".lefter-toggle-button", view).data("status", "show");
-                        N(".content-wrap", "body").css({
-                            "transition": "none",
-                            "margin-left": "0"
-                        });
-                        N(".main-nav", "body").show().css({
-                            "transition": "none"
-                        });
-                        N(".lefter-toggle-button", view).trigger("click.lefter");
-                        setTimeout(function () {
-                            N(".main-nav", "body").css("transition", "");
-                            N(".content-wrap", "body").css("transition", "");
-                        }, 0);
-                    } else {
-                        N(".lefter-toggle-button", view).data("status", "hide").trigger("click.lefter");
-                    }
-                }).trigger("resize.left-menu");
+            N(window).on("resize.left-menu", function() {
+                N(".left-menu", view).innerHeight(N(this).height() - N(".logo", view).height());
 
-            }
-        });
+                if($(window).width() <= 1001) { // 748 + 270 - 17px(?)
+                    N(".lefter-toggle-button", view).data("status", "show");
+                    N(".content-wrap", "body").css({
+                        "transition": "none",
+                        "margin-left": "0"
+                    });
+                    N(".main-nav", "body").show().css({
+                        "transition": "none"
+                    });
+                    N(".lefter-toggle-button", view).trigger("click.lefter");
+                    setTimeout(function() {
+                        N(".main-nav", "body").css("transition", "");
+                        N(".content-wrap", "body").css("transition", "");
+                    }, 0);
+                } else {
+                    N(".lefter-toggle-button", view).data("status", "hide").trigger("click.lefter");
+                }
+            }).trigger("resize.left-menu");
 
-    })();
+        }
+    });
 </script>
