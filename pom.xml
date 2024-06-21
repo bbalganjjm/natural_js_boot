@@ -157,7 +157,8 @@
 				<configuration>
 					<executable>true</executable>
 					<jvmArguments>-Dfile.encoding=UTF8 -Dspring.profiles.active="${environment}"</jvmArguments>
-				</configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
