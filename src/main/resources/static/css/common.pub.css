@@ -67,6 +67,7 @@
 /* N.grid */
 .grid_wrap__ {
     border-radius: var(--njs-border-radius-l) var(--njs-border-radius-l) 0 0;
+    margin-bottom: 10px;
 }
 .grid_wrap__ > .thead_wrap__ table {
     border-collapse: separate;
