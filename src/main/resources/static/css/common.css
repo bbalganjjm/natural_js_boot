@@ -171,14 +171,6 @@ th, tfoot td {
     list-style: none;
 }
 
-.list__>li:first-child {
-    border-radius: var(--njs-border-radius-l) var(--njs-border-radius-l) 0 0;
-}
-
-.list__>li:last-child {
-    border-radius: 0 0 var(--njs-border-radius-l) var(--njs-border-radius-l);
-}
-
 .list__>li {
     margin: 0;
     padding: 0px 5px;
