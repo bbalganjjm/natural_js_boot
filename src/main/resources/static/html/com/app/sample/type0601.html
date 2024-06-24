@@ -1,3 +1,11 @@
+<style>
+    .type0601 #master {
+        border: 1px solid var(--md-sys-color-outline-variant);
+        min-height: 484px;
+        border-radius: var(--njs-border-radius-l);
+    }
+</style>
+
 <article class="type0601">
     <div class="flex-horizental">
         <div style="max-width: 218px;">
@@ -7,7 +15,7 @@
                     <button id="btnOpen">+</button>
                 </div>
             </div>
-            <div id="master" style="min-height: 676px;"></div>
+            <div id="master"></div>
         </div>
         <div>
             <div class="button-panel">
@@ -91,7 +99,7 @@
         },
         "p.grid.detail" : {
             "action" : [ "hide", [ 9, 10 ] ],
-            height : 650,
+            height : 450,
             filter : false,
             checkAll : "#checkAll",
             checkAllTarget : ".checkAllTarget"

@@ -13,7 +13,7 @@
     <div class="flex-horizental">
         <div style="max-width: 33%;">
             <div class="button-panel">
-                <button id="btnSearch">조회</button>
+                <button id="btnSearch" data-opts='{ "color": "primary" }'>조회</button>
                 <button id="btnSave">저장</button>
             </div>
             <table id="master" class="grid__">
@@ -99,14 +99,14 @@
                 <li>
                     <label>
                         <span>Gender</span>
-                        <input id="gender" type="radio">
                     </label>
+                    <input id="gender" type="radio">
                 </li>
                 <li>
                     <label>
                         <span>Favorite Fruit</span>
-                        <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
                     </label>
+                    <input id="favoriteFruit" type="checkbox" data-validate='[["required"]]'>
                 </li>
                 <li>
                     <label>
@@ -179,7 +179,7 @@
                 autoUnbind : true
             },
             "p.grid.master" : {
-                height : 500,
+                height : 450,
                 select : true,
                 selectScroll : false,
                 onSelect : function(index, rowEle, data, beforeRow, e) {
