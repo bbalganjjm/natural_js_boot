@@ -34,6 +34,9 @@
     margin-bottom: 10px;
     line-height: 40px;
 }
+.view_context__ .button-panel button {
+    margin-left: 5px;
+}
 
 /* N.form */
 .view_context__ ul.form__ {
