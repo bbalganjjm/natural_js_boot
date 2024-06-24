@@ -400,7 +400,7 @@
              */
             "okButtonOpts" : {
                 color : "primary",
-                size : "medium"
+                size : "large"
             },
             /**
              * N.alert's Cancel button style
@@ -408,7 +408,7 @@
              */
             "cancelButtonOpts" : {
                 color : "primary_container",
-                size : "medium"
+                size : "large"
             },
             /**
              * Global draggableOverflowCorrectionAddValues option
