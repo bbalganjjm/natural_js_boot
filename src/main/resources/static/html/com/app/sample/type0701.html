@@ -8,9 +8,11 @@
             </ul>
         </div>
     </div>
+
     <div class="button-panel">
         <button id="btnSearch" href="#" data-opts='{ "color": "primary" }'>조회</button>
     </div>
+
     <div id="master">
         <a href="#"><span></span></a> <!-- 맨 앞으로 가기 버튼 -->
         <ul>
@@ -40,6 +42,18 @@
         },
         "p.tab.master" : {
             tabScroll: true
+        },
+        "e.gender.change" : {
+            target : "#search #gender",
+            handler : function(e) {
+                cont["e.btnSearch.click"].trigger("click");
+            }
+        },
+        "e.eyeColor.change" : {
+            target : "#search #eyeColor",
+            handler : function(e) {
+                cont["e.btnSearch.click"].trigger("click");
+            }
         },
         "e.btnSearch.click" : function(e) {
             e.preventDefault();
