@@ -1855,7 +1855,7 @@ a.btn_elevated__, input[type='button'].btn_elevated__, button.btn_elevated__ {
     height: calc(var(--njs-toggle-switch-height) - (var(--njs-toggle-switch-height) / 4));
     width: calc(var(--njs-toggle-switch-height) - (var(--njs-toggle-switch-height) / 4));
     left: calc(((var(--njs-toggle-switch-height) / 4) / 2) + 1px);
-    bottom: calc(((var(--njs-toggle-switch-height) / 4) / 2) + 0.5px);
+    bottom: calc((var(--njs-toggle-switch-height) / 4) / 2);
     background-color: var(--md-sys-color-inverse-on-surface);
     transition: var(--njs-motion-duration-normal);
     border-radius: 999999px;
