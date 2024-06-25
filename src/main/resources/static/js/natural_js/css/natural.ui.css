@@ -1874,7 +1874,7 @@ a.btn_elevated__, input[type='button'].btn_elevated__, button.btn_elevated__ {
     display: inline-block;
     position: absolute;
     top: 50%;
-    left: calc(100% - var(--njs-toggle-switch-height));
+    left: calc(100% - (var(--njs-toggle-switch-height) - 1px));
     transform: translateY(-50%);
     font-size: 75%;
     color: var(--md-sys-color-on-primary-container);
