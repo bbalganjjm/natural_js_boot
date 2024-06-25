@@ -260,7 +260,7 @@
                 var fileLinkEle = $(this).siblings(".file_download_link__");
 
                 N(window).alert({
-                    msg : '"' + fileLinkEle.text() + '" 파일을 삭제 하겠습니까?',
+                    msg : '"' + fileLinkEle.text() + '" 파일을 삭제 하시겠습니까?',
                     confirm : true,
                     onOk : function() {
                         cont["c.deleteFile"](fileLinkEle.data("fileid"), fileLinkEle.data("fileseq")).submit(function() {
