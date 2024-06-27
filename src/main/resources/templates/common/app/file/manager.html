@@ -259,10 +259,14 @@
                     msg : '"' + fileLinkEle.text() + '" 파일을 삭제 하시겠습니까?',
                     confirm : true,
                     onOk : function() {
-                        cont["c.deleteFile"](fileLinkEle.data("fileid"), fileLinkEle.data("fileseq")).submit(function() {
+                        var fileId = fileLinkEle.data("fileid");
+                        cont["c.deleteFile"](fileId, fileLinkEle.data("fileseq")).submit(function() {
                             N.notify.add('"' + fileLinkEle.text() + '" 파일이 삭제되었습니다.');
                             fileLinkEle.parent("li").remove();
                             cont.updateDownloadDesc();
+                            cont["c.getFileList"](fileId).submit(function(data) {
+                                cont.downloadList = data;
+                            });
                         });
                     }
                 }).show();
@@ -328,7 +332,7 @@
                     var li = $("<li />");
 
                     // 다운로드 링크
-                    li.append($('<button />', {
+                    li.append($('<a />', {
                         text : this.fileName,
                         href : "file/getFile/" + fileId + "/" + this.fileSeq
                     }).addClass("file_download_link__").data("fileid", fileId).data("fileseq", this.fileSeq))

@@ -273,7 +273,7 @@
                 }
             } else {
                 if(fileButton) {
-                    fileButton.next(".fileSummaryList").text("(0)");                    
+                    fileButton.next(".fileSummaryList").text("");
                 }
             }
 	   	},

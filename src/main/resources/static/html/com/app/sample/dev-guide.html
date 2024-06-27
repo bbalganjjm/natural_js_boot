@@ -385,13 +385,14 @@ bindExcel 메서드의 인수는 다음과 같습니다.
     - pk : mode 옵션이 update 일 때 INSERT, UPDATE 를 판단할 기준 키 컬럼 명(array)
     - server : JSON 데이터를 추출하기 위해 Excel 파일을 Server 에 업로드하여 처리할 것인지 브라우저에서 javascript 로 처리할 것인지 여부(boolean)
     - after : 엑셀 데이터 추출 완료 후 실행할 콜백 함수(함수의 첫 번째 인수로 추출된 JSON 타입의 엑셀 데이터가 반환 됨)
->Excel 데이터 추출을 브라우저에서 javascript 로 처리하려면 "/natural_js_egov/src/main/webapp/js/lib/xlsx.full.min.js" 파일을 임포트해야 합니다.
+>Excel 데이터 추출을 브라우저에서 javascript 로 처리하려면 "src/main/resources/static/js/lib/xlsx.full.min.js" 파일을 임포트해야 합니다.
 
 #### 1.6. 파일관리 공통 팝업
 
 Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 공통 팝업을 인스턴스를 생성해 줍니다.
 
 > 파일관리 공통 팝업은 파일 업로드/다운로드 기능을 제공합니다.
+
 > 옵션은 N.popup 컴포넌트와 동일하고 mode 옵션이 추가되어 있습니다.
 
 | 속성명 | 추가옵션 | 변수타입 | 필수 여부 | 기능 | 설명 |
@@ -400,6 +401,12 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
 | - | mode | string | | 파일관리 팝업 모드 | "download" 입력 시 다운로드 관련 항목만 표시되고 "upload" 입력 시 업로드 관련 항목만 표시되고 mode 옵션을 정의하지 않으면 모든항목이 다 표시 된다. |
 
 > 팝업의 onClose 이벤트 옵션을 지정하면 핸들러 함수의 인수(onCloseData) 속성에 파일그룹아이디(fileId)와 다운로드파일목록(downloadList) 정보가 포함되어 반환됩니다.
+
+> 파일관련 설정은 src/main/resources/config/common/file.properties 에서 할 수 있습니다.
+> - file.not.allow.exts : 업로드 불가 확장자
+> - file.upload.base.path : 파일 저장 경로
+> - file.upload.max.each : 개별 파일의 최대 업로드 가능 용량
+> - file.upload.max.all : 전체 파일의 최대 업로드 가능 용량
 
 ```javascript
 <article class="type0401">
@@ -1177,7 +1184,7 @@ if(Condition) {
 }
 ```
 
-메시지 프로퍼티는 /natural_js_egov/src/main/resources/egovframework/message 폴더의 message-{업무대분류코드}.properties 파일에(없으면 생성 바람) {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
+메시지 프로퍼티는 src/main/resources/messages 폴더의 message-{업무대분류코드}.properties 파일에(없으면 생성 바람) {메시지코드}={메시지}와 같은 형식으로 지정 바랍니다.
 
 >메시지에 대한 파라미터는  BizException 생성자 함수의 두 번째 인수(Array 타입)로 지정 가능하고 메시지의 변수는 파라미터 배열의 순서에 따라 {0}, {1}, {2} 와같이 선언합니다.
 
@@ -1200,7 +1207,7 @@ if(Condition) {
 
 #### 6.2. 마스킹
 
-마스킹은 DB의 스키마나 테이블 상관없이 대상 컬럼명들을 src/main/resources/egovframework/egovProps/globals.properties 파일의 masking.columns 속성 값으로 다음과 같이 정의해 주면 됩니다.
+마스킹은 DB의 스키마나 테이블 상관없이 대상 컬럼명들을 src/main/resources/config/common/data.properties 파일의 masking.columns 속성 값으로 다음과 같이 정의해 주면 됩니다.
 
 ```
 {컬럼명}|{마스킹룰명}, {컬럼명}|{마스킹룰명}
@@ -1236,7 +1243,7 @@ masking.exclude.urls=/**/sample/getSampleList.json, /**/sample/getSampleBigList.
 #### 6.3. 최대 조회건수 제한
 
 쾌적한 서버 운영환경을 유지하기 위해 DB 데이터의 최대 행(row) 수를 제한할 수 있습니다.
-src/main/resources/egovframework/egovProps/globals.properties 파일의 max.rows.limit 속성 값에 최대 행 수를 지정 가능하고 max.rows.exclude.urls 속성에 예외 URL 들을 등록 가능합니다.
+src/main/resources/config/common/data.properties 파일의 max.rows.limit 속성 값에 최대 행 수를 지정 가능하고 max.rows.exclude.urls 속성에 예외 URL 들을 등록 가능합니다.
 
 >엑셀 다운로드 요청은 최대 조회 건수 제한에 걸리지 않고 모든 데이터를 내려 받습니다.
 
@@ -1260,7 +1267,7 @@ Controller 메서드들의 Map 이나 List 타입의 인수로 변환되면서 X
 
 변환된 문자열은 DB 단까지 전달되어 그대로 저장되고 DB 에서 데이터를 다시 조회하여 UI로 넘어왔을때 Natural-UI의 데이터 관련 여러 컴포넌트들이 HTML 컨트롤의 특성을 파악하여 자동으로 원래 문자열로 표시해 줍니다.
 
-src/main/resources/egovframework/egovProps/globals.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
+src/main/resources/config/common/data.properties 파일의 xss.exclude.urls 속성에 URL 들을 등록하면 등록된 URL(요청) 은 XSS 공격 문자열을 필터링하지 않습니다.
 
 </div>
 </article>
