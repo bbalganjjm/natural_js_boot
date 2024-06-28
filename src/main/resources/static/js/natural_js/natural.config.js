@@ -625,8 +625,8 @@
              * Sort sort indicator when sort function is activated, You can also enter HTML tags
              */
             "sortableItem" : {
-                "asc" : "▼",
-                "desc" : "▲"
+                "asc" : "▲",
+                "desc" : "▼"
             },
             /**
              * Multilingual messages
