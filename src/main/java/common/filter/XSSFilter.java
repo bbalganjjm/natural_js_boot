@@ -11,7 +11,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2018.12.05
  */
 public class XSSFilter implements Filter {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import common.app.sample.mappers.SampleDeptMapper;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2018.12.05
  */
 

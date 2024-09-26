@@ -52,7 +52,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import common.utils.SecurityUtils;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2018.12.05
  *
  * 엑셀 파일로 목록 데이터 조회 시 List 객체에 담지않고 엑셀파일(xlsx)을 바로 생성(대용량 데이터 조회 시 Heap Memory Full 방지).

@@ -42,7 +42,7 @@ import common.exception.CommonException;
 import common.utils.SecurityUtils;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2018.12.05
  */
 

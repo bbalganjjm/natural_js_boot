@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2019.06.25
  */
 

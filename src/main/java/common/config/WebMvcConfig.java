@@ -1,7 +1,7 @@
 package common.config;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2020.11.25
  */
 

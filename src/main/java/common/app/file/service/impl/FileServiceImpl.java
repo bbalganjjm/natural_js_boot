@@ -12,7 +12,7 @@ import common.app.file.mappers.FileMapper;
 import common.app.file.service.FileService;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2019.03.21
  */
 

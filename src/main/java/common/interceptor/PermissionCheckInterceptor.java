@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.lang.invoke.MethodHandles;
 
 /**
- * @author KIM HWANG MAN( bbalganjjm@gmail.com )
+ * @author Goldman Kim( bbalganjjm@gmail.com )
  * @since 2018.12.05
  */
 public class PermissionCheckInterceptor implements HandlerInterceptor {
