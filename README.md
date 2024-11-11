@@ -757,6 +757,7 @@ N.grid 나 N.list 의 행을 선택했을 때(onSelect 이벤트 핸들러 함�
 - Arguments Object
     - opts.cont : N.cont object
 	- opts.form : 데이터를 연동할 N.form 인스턴스 명.
+    - opts.args : selectNBind 호출한 함수의 arguments.
     - opts.dataSync : false 를 입력하면 N.grid 나 N.list 컴포넌트의 데이터와 N.form 의 데이터 참조를 끊어 데이터가 실시간 동기화되지 않습니다.
 
 >.call(this)로 함수를 호출하여 호출되는 함수의 this 에 호출하는 함수의 this 를 바인딩해 줘야 합니다.
@@ -769,7 +770,8 @@ N.grid 나 N.list 의 행을 선택했을 때(onSelect 이벤트 핸들러 함�
 
         APP.comm.utils.selectNBind.call(this, {
             cont : cont,
-            form : "p.form.detail"
+            form : "p.form.detail",
+            args : arguments
         });
 
      	// TODO 후처리
@@ -820,7 +822,8 @@ fileId로 서버에서 업로드된 파일을 조회 후 파일 요약 목록을
     onSelect : function(index, rowEle, data, beforeRow, e) {
         APP.comm.utils.selectNBind.call(this, {
             cont : cont,
-            form : "p.form.detail"
+            form : "p.form.detail",
+            args : arguments
         });
 
         // 파일 요약 목록 생성
