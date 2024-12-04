@@ -3,7 +3,7 @@ Natural-JS Boot
 
 ## 소개 
 
-Natural-JS Boot 는 [Natural-JS](https://bbalganjjm.github.io/natural_js) 와 [Natural-TEMPLATE](https://bbalganjjm.github.io/natural_js/?page=html/naturaljs/template/documents/template-guide.html), Spring Boot 로 구성된 기업용 웹 애플리케이션 개발을 위한 아키텍처 프레임워크 패키지 입니다.
+Natural-JS Boot 는 [Natural-JS](https://bbalganjjm.github.io/natural_js/) 와 [Natural-TEMPLATE](https://bbalganjjm.github.io/natural_js/?page=html/naturaljs/template/documents/template-guide.html), Spring Boot 로 구성된 기업용 웹 애플리케이션 개발을 위한 아키텍처 프레임워크 패키지 입니다.
 
 Natural-JS Boot 는 Front-end / Back-end 프레임워크와 더불어 기업용 웹 애플리케이션에 필요한 다양한 유틸리티와 개인정보보호, 웹 취약점 보완, 파일 관리, 엑셀 업/다운로드 등의 공통 라이브러리를 제공합니다.
 
@@ -164,7 +164,7 @@ Natural-TEMPLATE 에서만 사용 가능한 컴포넌트 별 추가 옵션은 �
 
 #### 1.1. N.select - 공통코드 데이터 바인딩
 
-**이 기능을 사용하려면 공통코드 데이터를 제공하는 서비스 URL 과 공통코드 분류코드 컬럼명을 [Config(natural.config.js)](?page=html/naturaljs/refr/refr0102.html) 의  N.context.attr("template").codes 속성에 설정해 주어야 합니다.**
+**이 기능을 사용하려면 공통코드 데이터를 제공하는 서비스 URL 과 공통코드 분류코드 컬럼명을 [Config(natural.config.js)](https://bbalganjjm.github.io/natural_js/?page=html/naturaljs/refr/refr0102.html) 의  N.context.attr("template").codes 속성에 설정해 주어야 합니다.**
 
 | 속성 | 옵션명 | 타입 | 필수 여부 | 속성 값 | 설명 |
 | :--: | :--: | :--: | :--: | :--: | -- |
@@ -439,7 +439,7 @@ Controller 오브젝트에 "p.popup.file" 속성을 정의하면 파일관리 �
 
 ### 2. "c." 으로 시작 - Communicator(N.comm) 선언
 
-서버와 통신하는 모든 [Communicator(N.comm)](?page=html/naturaljs/refr/refr0203.html) 를 Controller object 의 멤버 변수로 선언할 수 있습니다. Communicator 를 미리 선언해 놓으면 데이터의 흐름을 한눈에 확인할 수 있고 선언된 Communicator 에 AOP 를 적용할 수 있습니다.
+서버와 통신하는 모든 [Communicator(N.comm)](https://bbalganjjm.github.io/natural_js/?page=html/naturaljs/refr/refr0203.html) 를 Controller object 의 멤버 변수로 선언할 수 있습니다. Communicator 를 미리 선언해 놓으면 데이터의 흐름을 한눈에 확인할 수 있고 선언된 Communicator 에 AOP 를 적용할 수 있습니다.
 Communicator 선언하는 Controller object 의 속성명은 다음과 같이 조합하여 사용할 수 있습니다.
 
 ```
