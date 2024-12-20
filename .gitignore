@@ -31,3 +31,7 @@ local.properties
 localhost*/
 
 src/main/resources/static/localhost:8080/
+
+# node
+node_modules/
+package-lock.json
